@@ -1,0 +1,10 @@
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\bin\Debug\ColorPickerDemo.exe
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\bin\Debug\ColorPickerDemo.pdb
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\bin\Debug\PJLControls.dll
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\bin\Debug\PJLControls.pdb
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\bin\Debug\PJLControls.xml
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\obj\Debug\ColorPickerDemo.csprojResolveAssemblyReference.cache
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\obj\Debug\ColorPickerDemo.DemoForm.resources
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\obj\Debug\ColorPickerDemo.csproj.GenerateResource.Cache
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\obj\Debug\ColorPickerDemo.exe
+E:\Téléchargements terminés\dotnetcolorpicker_src\ColorPickerDemo\obj\Debug\ColorPickerDemo.pdb

@@ -1,0 +1,14 @@
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\bin\RRX10Interface.dll
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\bin\RRX10Interface.pdb
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\bin\fr-FR\RRX10Interface.resources.dll
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\bin\RRX10Interface.tlb
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\bin\Interop.ActiveHomeScriptLib.dll
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\obj\Debug\ResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\obj\Debug\RRX10Interface.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\obj\Debug\RRX10Interface.StringFile.resources
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\obj\Debug\RRX10Interface.StringFile.fr-FR.resources
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\obj\Debug\fr-FR\RRX10Interface.resources.dll
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\obj\Debug\RRX10Interface.dll
+C:\tmp\VB.NET-2010\VB.NET RRX10Interface\Source\RRX10Interface\obj\Debug\RRX10Interface.pdb

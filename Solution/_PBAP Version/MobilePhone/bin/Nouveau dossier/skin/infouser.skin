@@ -1,0 +1,15 @@
+RoadRunner Skin
+RRScreen infouser
+infouser.jpg,infouser.jpg,,
+B,593,264,133,73,Редактировать КОнтакт,
+B,403,264,133,73,Удалить КОнтакт и вернуться в записную книгу,
+B,268,377,130,60,menu@open@menu.skin,
+B,419,375,131,60,menu@open@book_create_key.skin,
+I,31,67,259,284,fotot
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

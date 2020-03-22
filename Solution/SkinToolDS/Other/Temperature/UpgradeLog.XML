@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Temperature">
+</Property><Property Name="Fichier solution" Value="E:\Téléchargements terminés\Temperature\Temperature.sln">
+</Property><Property Name="Fichier d'options utilisateur" Value="E:\Téléchargements terminés\Temperature\Temperature.suo">
+</Property><Property Name="Date" Value="mardi 2 août 2016">
+</Property><Property Name="Time" Value="14:26">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Temperature.sln" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature.sln">
+</Event><Event ErrorLevel="0" Project="" Source="Temperature.suo" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature.suo">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Temperature.csproj" Description="Fichier projet correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Temperature.csproj">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Temperature.csproj.user" Description="Fichier utilisateur de projet correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Temperature.csproj.user">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Form1.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Form1.cs">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Form1.Designer.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Form1.Designer.cs">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Program.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Program.cs">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Properties\AssemblyInfo.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Properties\Resources.Designer.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Properties\Settings.Designer.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Properties\Settings.settings" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\OpenHardwareMonitorLib.dll" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\OpenHardwareMonitorLib.dll">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Visualpharm-Ios7v2-Medicine-Thermometer.ico" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Visualpharm-Ios7v2-Medicine-Thermometer.ico">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Form1.resx" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Form1.resx">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Properties\Resources.resx" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\Temperature\Backup\Temperature\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Temperature.csproj" Description="Projet correctement converti">
+</Event><Event ErrorLevel="3" Project="Temperature" Source="Temperature\Temperature.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Temperature.sln" Description="Solution correctement convertie">
+</Event><Event ErrorLevel="3" Project="" Source="Temperature.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Temperature" Source="Temperature\Temperature.csproj" Description="Analyse terminée : la mise à niveau n'est pas requise pour les fichiers projet.">
+</Event></UpgradeLog>

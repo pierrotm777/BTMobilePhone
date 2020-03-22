@@ -1,0 +1,32 @@
+RideRunner Skin
+RRScreen MOBILEPHONE_MESSAGE
+screen_500_300_off.png,screen_500_300_off.png,screen_500_300_off.png,screen_500_300_off.png
+
+INC,xy.txt
+INC,shadow.txt
+INC,FontMainBottom.txt
+INC,FontBar.txt
+INC,FontBottom.txt
+
+/SHOWEFFECT5
+/HIDEEFFECT6
+
+IMG,0,0,500,300,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_800_480.png",out
+
+Script,OnScreenEnd,CLCLEAR;ALL
+
+[Labels]
+L,11,7,478,32,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$MOBILEPHONE_INFO$","CENTER"
+
+[LIST]
+SC01,9,49,483,181,#L_FC_R#,#L_FC_G#,#L_FC_B#,01,040,040,#L_PC_R#,#L_PC_G#,#L_PC_B#,#L_SdC_R#,#L_SdC_G#,#L_SdC_B#,TRUE,18,#FontMainBottomStyle#
+
+[Quit]
+IMG,193,239,121,53,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,193,239,121,53,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,193,239,121,53,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,193,239,121,53,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+I,230,242,45,45,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\close.png:a"
+B,193,239,121,53,"ESC",
+ 
+END

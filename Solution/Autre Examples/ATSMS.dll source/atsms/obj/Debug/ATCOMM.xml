@@ -1,0 +1,322 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ATCOMM
+</name>
+</assembly>
+<members>
+<member name="T:ATCOMM.Rssi">
+	<summary>
+ RSSI class
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Common.Resource.#cctor">
+	<summary>
+ Static constructor
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Common.Resource.GetMessage(System.String)">
+	<summary>
+ Return a particular message based on message code
+ </summary>
+	<param name="msgCode"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:ATCOMM.Common.Resource">
+	<summary>
+ Library resource string class
+ </summary>
+	<remarks></remarks>
+</member><member name="T:ATCOMM.Location">
+	<summary>
+ Location class
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SMS.WapPushMessage.#ctor">
+	<summary>
+ Constructor
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SMS.WapPushMessage.#ctor(System.String,System.String)">
+	<summary>
+ Constructor
+ </summary>
+	<param name="href"></param>
+	<param name="text"></param>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SMS.WapPushMessage.ToString">
+	<summary>
+ Return the PDU coded message content
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:ATCOMM.SMS.WapPushMessage">
+	<summary>
+ WAP push message class.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:ATCOMM.Battery">
+	<summary>
+ Battery class
+ </summary>
+	<remarks></remarks>
+</member><member name="T:ATCOMM.Storage">
+	<summary>
+ Storage class
+ </summary>
+	<remarks></remarks>
+</member><member name="P:ATCOMM.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:ATCOMM.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:ATCOMM.SMS.Outbox">
+	<summary>
+ Message outbox
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ATCOMM.ATHandler.RESPONSE_ERROR">
+	<summary>
+ AT response
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ATCOMM.ATHandler.KEEP_ALIVE_COMMAND">
+	<summary>
+ AT commands
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ATCOMM.ATHandler.NOT_SUPPORTED_MODEL">
+	<summary>
+ Not supported phone models
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.ATHandler.#ctor">
+	<summary>
+ Constructor
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.ATHandler.GetNumberRange(System.String)">
+	<summary>
+ Retrieve the supported range of values from the AT responses
+ </summary>
+	<param name="str"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:ATCOMM.ATHandler">
+	<summary>
+ AT Command class
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SerialDriver.#ctor">
+	<summary>
+ Constructor
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SerialDriver.Send(System.String)">
+	<summary>
+ Sending AT commands to the serial port
+ </summary>
+	<param name="commandString"></param>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SerialDriver.SendCmd(System.String)">
+	<summary>
+ Send AT command
+ </summary>
+	<param name="commandString"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SerialDriver.SendCmd(System.String,System.String)">
+	<summary>
+ Send AT command and expect certain response
+ </summary>
+	<param name="commandString"></param>
+	<param name="expectedResponse"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SerialDriver.Diagnose(System.Object)">
+	<summary>
+ Send diagnostics commands
+ </summary>
+	<param name="commandString"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SerialDriver.Diagnose(System.String,System.String)">
+	<summary>
+ Send diagnostics command in a file
+ </summary>
+	<param name="fileName"></param>
+	<param name="outputFileName"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.SerialDriver.ReadResponse(System.String)">
+	<summary>
+ Read response from the serial port
+ </summary>
+	<param name="expectedResponse"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:ATCOMM.SerialDriver.IsCommandMode">
+	<summary>
+ Indicate if command is being sent
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.GSMModem.#ctor">
+	<summary>
+ Constructor
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.GSMModem.SendSMS(System.String,System.String)">
+	<summary>
+ Send SMS
+ </summary>
+	<param name="destinationNumber"></param>
+	<param name="textMessage"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.GSMModem.SendSMS(System.String,System.String,ATCOMM.Common.EnumEncoding)">
+	<summary>
+ Send SMS
+ </summary>
+	<param name="destinationNumber"></param>
+	<param name="textMessage"></param>
+	<param name="encoding"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.GSMModem.Diagnose(System.Object)">
+	<summary>
+ Send diagnostics commands
+ </summary>
+	<param name="commandString"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.GSMModem.Diagnose(System.String,System.String)">
+	<summary>
+ Send diagnostics command in a file
+ </summary>
+	<param name="fileName"></param>
+	<param name="outputFileName"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.GSMModem.SendSMSToOutbox(System.String,System.String)">
+	<summary>
+ Send SMS to outbox to be delivered later.
+ </summary>
+	<param name="destinationNumber"></param>
+	<param name="textMessage"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.GSMModem.SendSMSToOutbox(System.String,System.String,ATCOMM.Common.EnumQueuePriority,System.Boolean)">
+	<summary>
+ Send SMS to outbox to be delivered later.
+ </summary>
+	<param name="destinationNumber"></param>
+	<param name="textMessage"></param>
+	<param name="priority"></param>
+	<param name="alertMessage"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.GSMModem.SendSMSToOutbox(System.String,System.String,ATCOMM.Common.EnumQueuePriority)">
+	<summary>
+ Send SMS to outbox to be delivered later.
+ </summary>
+	<param name="destinationNumber"></param>
+	<param name="textMessage"></param>
+	<param name="priority"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.GSMModem.CheckATCommands">
+	<summary>
+ Analyze phone capabilities
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.#ctor">
+	<summary>
+ Constructor
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.Dispose(System.Boolean)">
+	<summary>
+ Dispose method
+ </summary>
+	<param name="disposing"></param>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.GetManufacturer">
+	<summary>
+ Get device manufacturer
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.GetRevision">
+	<summary>
+ Get device revision
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.ParseSplitATResponse(System.String)">
+	<summary>
+ Parse response from serial port into a 2 dimensional string array
+ </summary>
+	<param name="response"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.ParseATResponse(System.String)">
+	<summary>
+ Parse response from serial port into a string array
+ </summary>
+	<param name="response"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.AutoDetect">
+	<summary>
+ Auto detect GSM modem
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.AutoDetectBluetooth">
+	<summary>
+ Auto detect bluetooth modem.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.AutoDetectInfrared">
+	<summary>
+ Auto detect infrared modem
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.GetAvailableModems">
+	<summary>
+ Get available modems
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.KeepAlive">
+	<summary>
+ Send heart beat to keep connection alive
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.Connect">
+	<summary>
+ Connect to the serial port
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ATCOMM.Modem.Disconnect">
+	<summary>
+ Disconnect serial port
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

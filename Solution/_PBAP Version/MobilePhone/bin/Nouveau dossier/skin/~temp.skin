@@ -1,0 +1,11 @@
+RoadRunner Skin
+RRScreen status
+status.jpg,status.jpg,,
+B,0,0,20,20,,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

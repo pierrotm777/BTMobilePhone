@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Basic Express 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Mobilephone", "MobilePhone\Mobilephone.vbproj", "{920B1393-50CB-4F1D-9DCF-B68A7976D161}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Debug|x64.ActiveCfg = Debug|x64
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Debug|x64.Build.0 = Debug|x64
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Debug|x86.ActiveCfg = Debug|x86
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Debug|x86.Build.0 = Debug|x86
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Release|x64.ActiveCfg = Release|x64
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Release|x64.Build.0 = Release|x64
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Release|x86.ActiveCfg = Release|x86
+		{5152CA8E-D5D0-44F7-A725-AA8EA34251BE}.Release|x86.Build.0 = Release|x86
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Debug|x64.Build.0 = Debug|Any CPU
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Debug|x86.ActiveCfg = Debug|x86
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Debug|x86.Build.0 = Debug|x86
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Release|x64.ActiveCfg = Release|Any CPU
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Release|x64.Build.0 = Release|Any CPU
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Release|x86.ActiveCfg = Release|x86
+		{E86013C0-EFD5-4E1B-98BD-2D0C7A1D76F7}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

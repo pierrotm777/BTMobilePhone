@@ -1,0 +1,313 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+MessagingToolkit.Core.Utilities
+</name>
+</assembly>
+<members>
+<member name="T:MessagingToolkit.Core.Utilities.frmMain">
+	<summary>
+ Main form
+ </summary>
+</member><member name="M:MessagingToolkit.Core.Utilities.MessageContent.#ctor(System.String,System.String,System.String)">
+	<summary>
+ Initializes a new instance of the <see cref="T:MessagingToolkit.Core.Utilities.MessageContent"/> class.
+ </summary>
+	<param name="contentType">Type of the content.</param>
+	<param name="contentId">The content id.</param>
+	<param name="fileName">Name of the file.</param>
+</member><member name="P:MessagingToolkit.Core.Utilities.MessageContent.ContentType">
+	<summary>
+ Gets or sets the type of the content.
+ </summary>
+	<value>The type of the content.</value>
+</member><member name="P:MessagingToolkit.Core.Utilities.MessageContent.ContentId">
+	<summary>
+ Gets or sets the content id.
+ </summary>
+	<value>The content id.</value>
+</member><member name="P:MessagingToolkit.Core.Utilities.MessageContent.FileName">
+	<summary>
+ File name
+ </summary>
+	<value>The name of the file.</value>
+</member><member name="T:MessagingToolkit.Core.Utilities.MessageContent">
+	<summary>
+ Message content
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmSMPP.smppGateway">
+	<summary>
+ SMPP gateway interface
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmSMPP.SystemMode">
+	<summary>
+ System mode - bind type
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmSMPP.InterfaceVersion">
+	<summary>
+ Interface version
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmSMPP.DataCoding">
+	<summary>
+ Interface version
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmSMPP.TypeOfNumber">
+	<summary>
+ Type of number
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmSMPP.NumberType">
+	<summary>
+ Numbering plan indicator
+ </summary>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.ShowError(System.String)">
+	<summary>
+ Shows the error.
+ </summary>
+	<param name="errorMessage">The error message.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.frmSMPP_Load(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Load event of the frmSMPP control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.btnConnect_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the btnConnect control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.smppGateway_OnAlert(System.Object,MessagingToolkit.Core.Smpp.EventObjects.AlertEventArgs)">
+	<summary>
+ Handles the OnAlert event of the smppGateway control.
+ </summary>
+	<param name="source">The source of the event.</param>
+	<param name="e">The <see cref="T:MessagingToolkit.Core.Smpp.EventObjects.AlertEventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.smppGateway_OnDeliverSm(System.Object,MessagingToolkit.Core.Smpp.EventObjects.DeliverSmEventArgs)">
+	<summary>
+ Handles the OnDeliverSm event of the smppGateway control.
+ </summary>
+	<param name="source">The source of the event.</param>
+	<param name="e">The <see cref="T:MessagingToolkit.Core.Smpp.EventObjects.DeliverSmEventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.frmSMPP_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+	<summary>
+ Handles the FormClosing event of the frmSMPP control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.Windows.Forms.FormClosingEventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.btnDisconnect_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the btnDisconnect control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.tabMain_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the tabMain control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.Output(System.String)">
+	<summary>
+ Outputs the specified text.
+ </summary>
+	<param name="text">The text.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmSMPP.Output(System.String,System.Object[])">
+	<summary>
+ Outputs the specified text.
+ </summary>
+	<param name="text">The text.</param>
+	<param name="args">The args.</param>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.mobileGateway">
+	<summary>
+ Mobile gateway interface
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.config">
+	<summary>
+ Mobile gateway configuration
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.Parity">
+	<summary>
+ Port parity lookup
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.StopBits">
+	<summary>
+ Port stop bits lookup
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.Handshake">
+	<summary>
+ Port handshake lookup
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.QueuePriority">
+	<summary>
+ Message priority in queue
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.mmsProviders">
+	<summary>
+ MMS providers
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.ProviderFileExtension">
+	<summary>
+ MMS provider file extension
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.MMSProviderPath">
+	<summary>
+ Path which points to the embedded resource in the assembly
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.ContentTypeMapping">
+	<summary>
+ Content types
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.TextContentTypeMapping">
+	<summary>
+ Text content type mapping
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.ImageContentTypeMapping">
+	<summary>
+ Image content type mapping
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.AudioContentTypeMapping">
+	<summary>
+ Audio content type mapping
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.mmsContents">
+	<summary>
+ List of message contents
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.MessageType">
+	<summary>
+ Message type lookup
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.MessageEncoding">
+	<summary>
+ Message encoding
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.MessageSplit">
+	<summary>
+ Message split option
+ </summary>
+</member><member name="F:MessagingToolkit.Core.Utilities.frmMM1.ValidityPeriod">
+	<summary>
+ Message priority in queue
+ </summary>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.frmMM1_Load(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Load event of the frmMM1 control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.PopulateMMSProviders">
+	<summary>
+ Populates the MMS providers from embedded resources
+ </summary>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.AddContents(MessagingToolkit.MMS.MultimediaMessage)">
+	<summary>
+ Adds the contents.
+ </summary>
+	<param name="message">The message.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.chkEnableMessageIndication_CheckedChanged(System.Object,System.EventArgs)">
+	<summary>
+ Handles the CheckedChanged event of the chkEnableMessageIndication control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.btnApplyMessageSettings_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the btnApplyMessageSettings control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.OnMessageReceived(System.Object,MessagingToolkit.Core.Mobile.Event.MessageReceivedEventArgs)">
+	<summary>
+ Called when [message received].
+ </summary>
+	<param name="sender">The sender.</param>
+	<param name="e">The <see cref="T:MessagingToolkit.Core.Mobile.Event.MessageReceivedEventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.ShowMessageLog(MessagingToolkit.Core.Mobile.Event.MessageReceivedEventArgs)">
+	<summary>
+ Shows the message log.
+ </summary>
+	<param name="e">The <see cref="T:MessagingToolkit.Core.Mobile.Event.MessageReceivedEventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.ShowCallLog(MessagingToolkit.Core.Mobile.Event.IncomingCallEventArgs)">
+	<summary>
+ Shows the call log.
+ </summary>
+	<param name="e">The <see cref="T:MessagingToolkit.Core.Mobile.Event.IncomingCallEventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.btnSendWapPush_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the btnSendWapPush control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.GetAtLength(System.String)">
+	<summary>
+ Calculate message length
+ </summary>
+	<param name="pduString">PDU string</param>
+	<returns>Message length</returns>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.GetDataCodingScheme(System.String)">
+	<summary>
+ Determine the message data coding scheme
+ </summary>
+	<param name="content">Message content</param>
+	<returns>Message data coding scheme. See <see cref="T:MessagingToolkit.Core.Mobile.MessageDataCodingScheme"/></returns>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.btnViewLogFile_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the btnViewLogFile control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.btnClearLogFile_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the btnClearLogFile control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.btnSendPictureSms_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the btnSendPictureSms control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.btnBrowsePictureSms_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the btnBrowsePictureSms control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.chkPreviewPictureSms_CheckedChanged(System.Object,System.EventArgs)">
+	<summary>
+ Handles the CheckedChanged event of the chkPreviewPictureSms control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.PreviewPictureSms">
+	<summary>
+ Previews the picture SMS.
+ </summary>
+</member><member name="M:MessagingToolkit.Core.Utilities.frmMM1.btnCancelUssdSession_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handles the Click event of the btnCancelUssdSession control.
+ </summary>
+	<param name="sender">The source of the event.</param>
+	<param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+</member><member name="T:MessagingToolkit.Core.Utilities.frmMM1">
+	<summary>
+ MMS MM1 form
+ </summary>
+</member><member name="P:MessagingToolkit.Core.Utilities.My.Resources.Resources.ResourceManager">
+	<summary>
+  Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+</summary>
+</member><member name="P:MessagingToolkit.Core.Utilities.My.Resources.Resources.Culture">
+	<summary>
+  Remplace la propriété CurrentUICulture du thread actuel pour toutes
+  les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+</summary>
+</member><member name="T:MessagingToolkit.Core.Utilities.My.Resources.Resources">
+	<summary>
+  Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+</summary>
+</member>
+</members>
+</doc>

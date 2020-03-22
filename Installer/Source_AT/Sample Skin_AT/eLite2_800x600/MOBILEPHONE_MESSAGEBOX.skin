@@ -1,0 +1,21 @@
+RideRunner Skin
+RRScreen MessageBox.
+message-coming-soon_transparent.png,message-coming-soon_transparent.png,clear.png,message-coming-soon_transparent.png
+INC,FONT.ELITE
+
+/EFFECTIN=0
+/EFFECTOUT=0
+IDL,5
+
+[Labels]
+L,186,78,427,25,255,255,255,18,"#FONTFAMILY#","=$MOBILEPHONE_INFO$","CENTER",,"DS=2,2,0,0,0"
+L,373,373,63,25,255,255,255,18,"#FONTFAMILY#","=OK","CENTER",,"DS=2,2,0,0,0"
+
+[LIST]
+SC01,182,172,431,171,255,255,255,0,0,0,255,0,0,255,128,0,TRUE,16,"#FONTFAMILY#",02,"","",""
+IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60 
+
+[Buttons]
+B,330,356,136,59,"ESC",
+ 
+END

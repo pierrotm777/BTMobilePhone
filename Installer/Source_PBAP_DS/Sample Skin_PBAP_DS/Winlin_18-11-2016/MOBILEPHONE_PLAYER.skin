@@ -1,0 +1,113 @@
+RideRunner Skin
+RRScreen AVRCP
+screen_1024x600_off.png,screen_1024x600_off.png,screen_1024x600_off.png,screen_1024x600_off.png
+
+INC,xy.txt
+INC,panel_top_1024_120.txt
+INC,shadow.txt
+INC,FontMainBottom.txt
+INC,FontBar.txt
+INC,FontBottom.txt
+INC,1_cf_BTMPlayer.txt
+
+[Background Images]
+IMG,0,0,1024,600,"$SKINPATH$Theme\$ThemePanels$\Panels\full_1024_600.png",out
+IMG,3,307,1019,215,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_924_420.png",out
+IMG,4,119,1019,184,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_924_420.png",out
+
+[]
+IMG,2,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,2,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,2,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,2,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+IMG1,28,537,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\list_internal.png",all
+I,28,590,50,5,"MOBILEPHONE_AVRBROWSINGOK"
+IND,MOBILEPHONE_AVRBROWSINGOK,i_Off.png,i_On.png
+B,2,525,102,75,"MOBILEPHONE_AVRBROWSINGOK"
+L,4,527,99,30,255,255,255,13,"Arial Narrow:b","=Browsing OK","CENTER",
+
+[Mute]
+IMG,104,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,104,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,104,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,104,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+IMG,130,537,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\volume_off.png",off
+IMG,130,537,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\volume_on.png",on
+I,130,537,50,50,"MOBILEPHONE_AVRMUTE"
+B,104,525,102,75,"MOBILEPHONE_AVRMUTE",
+
+[]
+IMG,206,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,206,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,206,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,206,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+
+[]
+IMG,308,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,308,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,308,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,308,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+
+[Prev]
+IMG,410,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,410,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,410,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,410,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+I,436,537,50,50,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\prev.png"
+B,410,525,102,75,"MOBILEPHONE_AVRPREV"
+
+[Play]
+IMG,512,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,512,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,512,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,512,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+/I,538,537,50,50,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\play.png"
+IMG,538,537,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\pause.png",on
+IMG,538,537,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\play.png",off
+IMG,538,537,50,50,"MOBILEPHONE_AVRSTATUS"
+B,512,525,102,75,"MOBILEPHONE_AVRPLAY",@MOBILEPHONE_AVRSTOP@
+
+
+
+[Next]
+IMG,614,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,614,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,614,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,614,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+I,640,537,50,50,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\next.png"
+B,614,525,102,75,"MOBILEPHONE_AVRNEXT"
+
+[]
+IMG,716,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,716,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,716,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,716,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+
+[]
+IMG,818,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,818,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,818,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,818,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+
+[Quit]
+IMG,920,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,920,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,920,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,920,525,102,75,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+I,940,530,60,60,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\close.png:a"
+B,920,525,102,75,"ESC",""
+
+[Labels]
+L,304,365,437,31,255,255,255,18,"Arial:b","MOBILEPHONE_AVRCP_ALBUM","LEFT"
+L,304,403,437,31,255,255,255,18,"Arial:b","MOBILEPHONE_AVRCP_ARTIST","LEFT"
+L,304,441,437,31,255,255,255,18,"Arial:b","MOBILEPHONE_AVRCP_TITLE","LEFT"
+L,304,478,144,31,255,255,255,18,"Arial:b","MOBILEPHONE_AVRCP_TRACKPOS","LEFT"
+L,596,478,144,31,255,255,255,18,"Arial:b","MOBILEPHONE_AVRCP_TRACKLEN","LEFT"
+L,196,478,100,31,255,255,255,18,"Arial:b","=Pos. :","LEFT"
+L,488,478,100,31,255,255,255,18,"Arial:b","=Lenght :","LEFT"
+L,196,441,100,31,255,255,255,18,"Arial:b","=Title :","LEFT"
+L,196,403,100,31,255,255,255,18,"Arial:b","=Artist :","LEFT"
+L,359,327,290,31,255,255,255,18,"Arial:b","=AVRCP Informations","LEFT"
+L,196,365,100,31,255,255,255,18,"Arial:b","=Album :","LEFT"
+ 
+END

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="vCardViewer">
+</Property><Property Name="Fichier solution" Value="C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\vCardViewer.sln">
+</Property><Property Name="Fichier d'options utilisateur" Value="C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\vCardViewer.suo">
+</Property><Property Name="Date" Value="22 August 2013">
+</Property><Property Name="Time" Value="14:14">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="vCardViewer.sln" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer.sln">
+</Event><Event ErrorLevel="0" Project="" Source="vCardViewer.suo" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer.suo">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\vCardViewer.vbproj" Description="Fichier projet correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\vCardViewer.vbproj">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\MainForm.vb" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\MainForm.vb">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\MainForm.Designer.vb" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\MainForm.Designer.vb">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\My Project\AssemblyInfo.vb" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\My Project\AssemblyInfo.vb">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\My Project\Application.Designer.vb" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\My Project\Application.Designer.vb">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\My Project\Resources.Designer.vb" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\My Project\Resources.Designer.vb">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\My Project\Settings.Designer.vb" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\My Project\Settings.Designer.vb">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\My Project\Application.myapp" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\My Project\Application.myapp">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\My Project\Settings.settings" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\My Project\Settings.settings">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\MainForm.resx" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\MainForm.resx">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\My Project\Resources.resx" Description="Fichier correctement sauvegardé en tant que C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCardViewer\Backup\vCardViewer\My Project\Resources.resx">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\vCardViewer.vbproj" Description="Projet correctement converti">
+</Event><Event ErrorLevel="3" Project="vCardViewer" Source="vCardViewer\vCardViewer.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="vCardViewer.sln" Description="Solution correctement convertie">
+</Event><Event ErrorLevel="3" Project="" Source="vCardViewer.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="vCardViewer" Source="vCardViewer\vCardViewer.vbproj" Description="Analyse terminée : la mise à niveau n'est pas requise pour les fichiers projet.">
+</Event></UpgradeLog>

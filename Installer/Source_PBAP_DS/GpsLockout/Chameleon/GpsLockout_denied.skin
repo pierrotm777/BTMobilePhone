@@ -1,0 +1,34 @@
+RideRunner Skin
+RRScreen denied
+GpsLockout_denied_off.png,GpsLockout_denied_off.png,GpsLockout_denied_on.png,GpsLockout_denied_off.png
+
+[Include files]
+
+/INC,Indicator_status.skin
+
+/INC,Indicator_status_2.skin
+INC,Bottomtext.txt
+
+[ Dynamic Labels that rely on indicator status ]
+B,675,6,122,58,"ESC",
+B,6,8,75,52,"MINIMIZE",
+
+/, L, x, y, w, h, color R;RGB, G, B, font size;FONT, font name, Code;LABELCODES, Tooltip;LABELALIGNMENT
+L,2,287,799,218,255,0,0,40,"Arial:b","=This function is disabled while the vehicule is in motion !!!","WRAP-CENTER",,"DS=3,3,0,0,0"
+L,84,-1,205,76,255,255,255,24,"Arial:b","=Motion Lock Security !!!","WRAP-CENTER",,"DS=3,3,0,0,0"
+
+/,IMG,
+IMG,325,78,148,201,"warning2.png",
+IMG,625,75,148,144,"warning.png",
+IMG,16,77,148,144,"warning.png",
+
+[Indicators]
+I,574,10,51,48,"ONLINE"
+I,626,9,40,56,"MOBILEPHONE_CONNECTED"
+I,288,3,88,72,"GpsLockout",,,
+IMG,384,19,39,37,"Indicators\GpsLockout_Video.png",ALL
+IMG,431,19,39,37,"Indicators\GpsLockout_Phone.png",ALL
+
+/I,354,13,70,53,"IFIND;GpsLockout;GpsLockout_Engaged,1000,500,"Indicators\GpsLockoutEngaged_*.png"
+ 
+END

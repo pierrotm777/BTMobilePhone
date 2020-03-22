@@ -1,0 +1,9 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\SkinToolDS\obj\x86\Debug\SkinToolDS.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\SkinToolDS\obj\x86\Debug\SkinToolDS.vbproj.GenerateResource.Cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\SkinToolDS\bin\Debug\SkinToolDS.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\SkinToolDS\bin\Debug\SkinToolDS.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\SkinToolDS\bin\Debug\SkinToolDS.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\SkinToolDS\obj\x86\Debug\SkinToolDS.Slideshow.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\SkinToolDS\obj\x86\Debug\SkinToolDS.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\SkinToolDS\obj\x86\Debug\SkinToolDS.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\SkinToolDS\obj\x86\Debug\SkinToolDS.pdb

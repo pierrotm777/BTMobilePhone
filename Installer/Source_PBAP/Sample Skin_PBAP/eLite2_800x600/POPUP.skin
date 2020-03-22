@@ -1,0 +1,17 @@
+RideRunner Skin
+RRScreen "POPUP"
+popup.png,popup.png,popup.png,popup.png
+
+IDLE,5,"Esc"
+
+/EFFECTIN=17
+/EFFECTOUT=18
+
+/TRANSTIME=.4
+
+INC,THEME\$FONTCOLOR$\FONT.elite
+
+[Label]
+L,9,52,749,36,#FontColorR#,#FontColorG#,#FontColorB#,20,"#FONTFAMILY#","=$POPUP$","SCROLL-CENTER",,"DS=2,2,0,0,0"
+ 
+END

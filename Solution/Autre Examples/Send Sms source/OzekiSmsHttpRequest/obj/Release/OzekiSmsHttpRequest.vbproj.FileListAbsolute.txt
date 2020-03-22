@@ -1,0 +1,10 @@
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\bin\Release\OzekiSmsHttpRequest.exe
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\bin\Release\OzekiSmsHttpRequest.pdb
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\bin\Release\OzekiSmsHttpRequest.xml
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\obj\Release\ResolveAssemblyReference.cache
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\obj\Release\OzekiSmsHttpRequest.fMain.resources
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\obj\Release\OzekiSmsHttpRequest.Resources.resources
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\obj\Release\OzekiSmsHttpRequest.vbproj.GenerateResource.Cache
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\obj\Release\OzekiSmsHttpRequest.exe
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\obj\Release\OzekiSmsHttpRequest.xml
+c:\Documents and Settings\USER\My Documents\Visual Studio 2008\Projects\OzekiSmsHttpRequest\OzekiSmsHttpRequest\obj\Release\OzekiSmsHttpRequest.pdb

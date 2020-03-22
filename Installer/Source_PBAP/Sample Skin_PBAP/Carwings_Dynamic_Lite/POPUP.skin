@@ -1,0 +1,16 @@
+RideRunner Skin
+RRScreen "SKYPEUSRDETAILS"
+popup.png,popup.png,popup.png,popup.png
+
+IDLE,5,"Esc"
+
+/EFFECTIN=17
+
+/EFFECTOUT=18
+
+/TRANSTIME=.4
+
+[Label]
+L,12,100,574,36,255,128,0,20,"Arial:B","=$POPUP$","SCROLL-CENTER",,"DS=2,2,0,0,0"
+ 
+END

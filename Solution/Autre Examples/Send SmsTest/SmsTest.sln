@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmsTest", "http://localhost/SmsTest/SmsTest.csproj", "{5280E508-DEDD-4E8D-B25D-7B76F2CA8010}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5280E508-DEDD-4E8D-B25D-7B76F2CA8010}.Debug|Default.ActiveCfg = Debug|Any CPU
+		{5280E508-DEDD-4E8D-B25D-7B76F2CA8010}.Debug|Default.Build.0 = Debug|Any CPU
+		{5280E508-DEDD-4E8D-B25D-7B76F2CA8010}.Release|Default.ActiveCfg = Release|Any CPU
+		{5280E508-DEDD-4E8D-B25D-7B76F2CA8010}.Release|Default.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

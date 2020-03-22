@@ -1,0 +1,32 @@
+RideRunner Skin
+RRScreen MOBILEPHONE_SMS
+MOBILEPHONE_SMSMODELS.png,MOBILEPHONE_SMSMODELS.png,clear.png,themed-SMS_AddPic.png
+
+[ REQUIRED FILES TO LOAD ]
+INC,ELITE\STATIC\STATIC.ELITE
+INC,font.elite 
+
+[   SMS   ] 
+L06,765,39,33,20,255,255,0,12,"Arial","MOBILEPHONE_NUMBEROFSMSFOUND","LEFT",,"DS=2,2,0,0,0"
+I04,727,31,41,27,"MOBILEPHONE_MESSAGERECEIVED",0,0,"Mobile_Indicators\SMS_*.png"
+
+[Labels]
+L,320,260,199,19,255,255,255,12,"Arial Narrow","=Text Model:","CENTER",,"DS=2,2,0,0,0"
+L,320,80,199,17,255,255,255,12,"Arial Narrow","=Models List:","CENTER",,"DS=2,2,0,0,0"
+L,123,279,605,114,255,128,64,18,"Arial","CLTEXT","WRAP",,"DS=2,2,0,0,0"
+L,32,213,47,21,255,255,255,13,"Bitstream Vera Sans","=Add","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,9,236,95,21,255,255,255,13,"Bitstream Vera Sans","=Model","WRAP-CENTER",,"DS=2,2,0,0,0"
+
+[Buttons]
+B,7,201,100,67,"MOBILEPHONE_ADDMODEL",""
+
+[Indicators]
+
+[List]
+SC01,124,98,604,139,255,255,255,01,025,025,255,0,0,255,128,0,true,16,"Arial"
+IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60
+
+[Sliders]
+S03,746,82,32,154,746,82,32,154,V,01,"SLIDERS\EQ.png",20,"CLSLIDER",""
+ 
+END

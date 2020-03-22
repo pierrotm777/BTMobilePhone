@@ -1,0 +1,4 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCard\Solution\Thought.vCards.UnitTests\obj\Debug\ResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCard\Solution\Thought.vCards.UnitTests\obj\Debug\Tests.SampleCards.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCard\Solution\Thought.vCards.UnitTests\obj\Debug\GenerateResource.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\vCard\Solution\Thought.vCards.UnitTests\obj\Debug\GenerateResource.write.1.tlog

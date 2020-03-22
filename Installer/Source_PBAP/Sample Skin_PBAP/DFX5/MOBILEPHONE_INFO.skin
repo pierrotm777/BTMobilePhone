@@ -1,0 +1,18 @@
+RideRunner Skin
+RRScreen MOBILEPHONE
+MOBILEPHONE_INFO_off.png,MOBILEPHONE_INFO_off.png,MOBILEPHONE_INFO_off.png,MOBILEPHONE_INFO_off.png,,,Indicators\Empty.png
+IDL,10,"ESC"
+INC,DFX_Font_Color.txt
+
+[Labels]
+L,11,7,659,35,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"MOBILEPHONE_INFO","SCROLL-LEFT"
+L,297,415,112,26,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Quit","CENTER"
+
+[ List Definitions ]
+B,10,411,663,31,"ESC",
+
+S,621,49,52,356,621,49,52,356,V,01,"EQ.png",20,"CLSLIDER",
+SC01,9,48,606,357,#DFX1R#,#DFX1G#,#DFX1B#,01,025,025,255,0,0,255,128,0,True,16,#DFXFont#,00,"","",""
+IL,CL,transparent.bmp,sel.bmp,end.bmp,2,80,80
+ 
+END

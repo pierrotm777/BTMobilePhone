@@ -1,0 +1,46 @@
+/,INC,font.elite 
+INC,THEME\$FONTCOLOR$\FONT.elite
+L,174,40,70,18,200,200,200,12,"#FONTFAMILY#","=V: ||VOLUME","CENTER",,"DS=1,2,0,0,0"
+L,669,5,174,24,200,200,200,14,"#FONTFAMILY#","TIME","LEFT",,"DS=1,2,0,0,0"
+L,2,5,172,24,200,200,200,14,"#FONTFAMILY#","TODAY","SCROLL-CENTER",,"DS=1,2,0,0,0"
+L06,762,45,33,20,255,255,0,12,"#FONTFAMILY#","MOBILEPHONE_NUMBEROFSMSFOUND","LEFT",,"DS=2,2,0,0,0"
+
+/,
+IMG,553,31,35,29,"static\indicators\shuffle.png",ON
+IMG,589,31,35,29,"static\indicators\repeat.png",ON
+
+I04,720,35,41,27,"MOBILEPHONE_MESSAGERECEIVED",,,"Mobile_Indicators\SMS_*.png"
+I04,720,35,41,27,"MUTE",0,0,
+/,
+/,
+I,553,31,35,29,"SHUFFLE",0,0,""
+I,589,31,35,29,"REPEAT",0,0,""
+/,
+L,175,2,450,28,255,255,255,16,"#FONTFAMILY#","BYVAR;ACTIVESOURCEID;=<<TAGTITLE||= - ||TAGARTIST<<RDSTEXT<<TAGTITLE||= - ||TAGARTIST<<TAGTITLE||= - ||TAGARTIST<<TAGTITLE<<=Video File<<TRACKNAME<<TRACKNAME<<TRACKNAME<<PLAYLIST<<","SCROLL-CENTER",,"DS=1,2,0,0,0"
+/,
+L,246,38,305,24,#FontColorR#,#FontColorG#,#FontColorB#,14,"#FONTFAMILY#","BYVAR;ACTIVESOURCEID;=<<FREQUENCE||= ||FMAM||= - ||RDSNAME<<FREQUENCE||= ||FMAM||= - ||RDSNAME<<TAGTRACKNUMBER||= - ||TAGALBUM<<TAGTRACKNUMBER||= - ||TAGALBUM<<TAGARTIST<<TRACKTIME<<TRACKTIME<<TRACKTIME<<TRACKTIME<<TRACKNAME<<","SCROLL-CENTER",,"DS=1,2,0,0,0"
+/,
+/,
+IMG,247,36,45,26,"$usethemeindicatorpath$\icons\indicators\small\Scanmode.png",on
+/,
+/
+I,247,36,45,26,"BYVAR;ACTIVESOURCEID;<<SCAN<<SCAN<<SCANMODE<<SCANMODE<<<<<<<<",,,
+ 
+[ SHOWS SET INDICATORS ]
+I,1,35,42,26,"$INDICATOR01$",,,
+IND,$INDICATOR01$,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL01$.png,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL01$-on.png
+I,44,35,42,26,"$INDICATOR02$"
+IND,$INDICATOR02$,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL02$.png,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL02$-on.png
+I,87,35,42,26,"$INDICATOR03$",,,
+IND,$INDICATOR03$,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL03$.png,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL03$-on.png
+I,130,35,42,26,"$INDICATOR04$",,,
+IND,$INDICATOR04$,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL04$.png,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL04$-on.png
+I,627,35,42,26,"$INDICATOR05$",,,
+IND,$INDICATOR05$,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL05$.png,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL05$-on.png
+I,670,35,42,26,"$INDICATOR06$",,,
+IND,$INDICATOR06$,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL06$.png,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL06$-on.png
+/,I,713,35,42,26,"$INDICATOR07$",
+/,IND,$INDICATOR07$,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL07$.png,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL07$-on.png
+/,I,756,35,42,26,"$INDICATOR08$",,,
+/,IND,$INDICATOR08$,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL08$.png,$usethemeindicatorpath$\icons\indicators\small\$INDILABEL08$-on.png
+

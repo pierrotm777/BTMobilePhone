@@ -1,0 +1,43 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ExtractIconsFromFilesSample
+</name>
+</assembly>
+<members>
+<member name="M:ExtractIconsFromFilesSample.Form1.ExtractAssociatedIcon(System.IntPtr,System.String,System.Int32@)">
+	<summary>
+ this is one way to import a dll
+ </summary>
+	<param name="hinst"></param>
+	<param name="lpiconpath">ENGLISH : file path ; FRANCAIS : chemin d'accès au fichier</param>
+	<param name="lpiicon">ENGLISH : icon number or index ; FRANCAIS : numéro d'icône</param>
+	<returns>ENGLISH : return a handle ; FRANCAIS: retourne un pointeur</returns>
+	<remarks></remarks>
+</member><member name="T:ExtractIconsFromFilesSample.Form1">
+	<summary>
+ Author : Check-Kay Wong
+ 
+ the Shared funtion Icon.ExtractAssociatedIcon from System.Drawing.Icon
+ only have one single argument, choosing the first icon from a file.
+ Because the basic extractIcon from Framework.NET don't have enought options,
+ you will need to import and use ExtractAssociatedIcon from Shell32.dll
+ </summary>
+	<remarks></remarks>
+</member><member name="P:ExtractIconsFromFilesSample.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ExtractIconsFromFilesSample.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:ExtractIconsFromFilesSample.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,7 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\bin\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\bin\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Debug\MobilePhone.frmDebugBox.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Debug\Mobilephone.vbproj.GenerateResource.Cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Debug\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Debug\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Debug\Mobilephone.vbprojResolveAssemblyReference.cache

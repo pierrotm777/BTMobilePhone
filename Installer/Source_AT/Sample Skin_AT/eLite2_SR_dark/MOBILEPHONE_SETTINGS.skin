@@ -1,0 +1,74 @@
+RideRunner Skin
+RRScreen THCT80_SETTINGS
+MOBILEPHONE_SETTINGS.png,MOBILEPHONE_SETTINGS.png,clear.png,themed-settings.png
+
+[ REQUIRED FILES TO LOAD ]
+INC,ELITE\STATIC\STATIC.ELITE
+INC,font.elite 
+
+[   SMS   ] 
+L06,765,39,33,20,255,255,0,12,"Arial","MOBILEPHONE_NUMBEROFSMSFOUND","LEFT",,"DS=2,2,0,0,0"
+I04,727,31,41,27,"MOBILEPHONE_MESSAGERECEIVED",0,0,"Mobile_Indicators\SMS_*.png"
+
+[Labels]
+L,143,75,167,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=Phone Name :","LEFT",,"DS=2,2,0,0,0"
+
+/L,382,115,286,25,255,255,255,18,"Arial Narrow:b","MOBILEPHONE_PHONEDEVICENAME","LEFT",,"DS=2,2,0,0,0"
+L,322,75,335,25,255,255,255,18,"Arial Narrow:b","CLDESC","LEFT",,"DS=2,2,0,0,0"
+L,144,113,166,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=Mac Address :","LEFT",,"DS=2,2,0,0,0"
+
+/L,379,172,287,25,255,255,255,18,"Arial Narrow:b","MOBILEPHONE_PHONEMACADDRESS","LEFT",,"DS=2,2,0,0,0"
+L,322,114,334,25,255,255,255,18,"Arial Narrow:b","CLTEXT","LEFT",,"DS=2,2,0,0,0"
+L,144,153,166,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=Phone Status :","LEFT",,"DS=2,2,0,0,0"
+L,144,192,167,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=Phone Books :","LEFT",,"DS=2,2,0,0,0"
+L,322,153,334,25,255,255,255,18,"Arial Narrow:b","MOBILEPHONE_PHONESTATUS","LEFT",,"DS=2,2,0,0,0"
+L,322,192,334,25,255,255,255,18,"Arial Narrow:b","MOBILEPHONE_PHONEBOOKTYPELIST","SCROLL-LEFT",,"DS=2,2,0,0,0"
+L,145,228,510,30,255,0,0,18,"Arial Narrow:b","MOBILEPHONE_INFO","SCROLL-LEFT",,"DS=2,2,0,0,0"
+L,745,88,35,22,255,0,0,14,"Arial Narrow:b","=OFF","CENTER",,"DS=2,2,0,0,0"
+L,690,88,35,22,0,255,0,14,"Arial Narrow:b","=ON","CENTER",,"DS=2,2,0,0,0"
+L,690,67,91,18,255,255,255,13,"Bitstream Vera Sans","=BlueSoleil","CENTER",,"DS=2,2,0,0,0"
+L,684,173,99,28,255,255,255,13,"Bitstream Vera Sans","=Paire","CENTER",,"DS=2,2,0,0,0"
+L,685,223,99,20,255,255,255,13,"Bitstream Vera Sans","=UnPaire","CENTER",,"DS=2,2,0,0,0"
+L,685,260,99,19,255,255,255,13,"Bitstream Vera Sans","=Delete","CENTER",,"DS=2,2,0,0,0"
+L,714,117,47,18,255,255,255,13,"Bitstream Vera Sans","=Sync","CENTER",,"DS=2,2,0,0,0"
+L,701,138,68,18,255,255,255,13,"Bitstream Vera Sans","=On / Off","CENTER",,"DS=2,2,0,0,0"
+L,679,327,80,25,255,255,255,13,"Bitstream Vera Sans","=Phone 2","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,679,307,64,18,255,255,255,13,"Bitstream Vera Sans","=Set ","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,685,281,99,20,255,255,255,13,"Bitstream Vera Sans","=Paired","CENTER",,"DS=2,2,0,0,0"
+L,34,78,59,28,255,255,255,13,"Bitstream Vera Sans","=Apply","CENTER",,"DS=2,2,0,0,0"
+L,16,126,95,25,255,255,255,13,"Bitstream Vera Sans","=Cancel","CENTER",,"DS=2,2,0,0,0"
+L,19,307,93,25,255,255,255,13,"Bitstream Vera Sans","=Update","CENTER",,"DS=2,2,0,0,0"
+L,19,357,93,25,255,255,255,13,"Bitstream Vera Sans","=Services","CENTER",,"DS=2,2,0,0,0"
+L,18,378,93,21,255,255,255,13,"Bitstream Vera Sans","=List","CENTER",,"DS=2,2,0,0,0"
+L,19,329,93,25,255,255,255,13,"Bitstream Vera Sans","=Devices","CENTER",,"DS=2,2,0,0,0"
+L,18,268,93,25,255,255,255,13,"Bitstream Vera Sans","=Default","CENTER",,"DS=2,2,0,0,0"
+L,10,405,353,14,#FontColorR#,#FontColorG#,#FontColorB#,9,"Segoe UI","=Plugin version : ||pluginmgr;version;MOBILEPHONE","LEFT",,"DS=2,2,0,0,0"
+L,377,405,413,14,#FontColorR#,#FontColorG#,#FontColorB#,9,"Segoe UI","=BlueSoleil SDK Version : ||mobilephone_sdkversion","LEFT",,"DS=2,2,0,0,0"
+
+[Buttons]
+B,675,65,60,46,"MOBILEPHONE_BTSTART",""
+B,735,65,57,46,"MOBILEPHONE_BTSTOP",""
+B,675,112,118,47,"mobilephone_sync",
+IMG,681,366,106,22,"Call_Settings2.PNG",ALL
+B,675,354,118,45,"MOBILEPHONE_SETTINGS2",""
+B,675,160,118,48,"NUMOSKTOCMD;MOBILEPHONE_PINCODE;MOBILEPHONE_PAIRED",""
+
+/B,703,285,94,65,"MOBILEPHONE_PAIRED",""
+B,675,210,118,45,"MOBILEPHONE_UNPAIRED",""
+B,675,257,118,46,"MOBILEPHONE_DELETEPAIRED",""
+B,7,63,116,47,"MOBILEPHONE_SETTINGS_APPLY",""
+B,7,112,116,47,"MOBILEPHONE_SETTINGS_CANCEL",""
+B,7,304,116,49,"MOBILEPHONE_SETTINGS_UPDATEDEVICELIST",""
+B,8,355,115,45,"MOBILEPHONE_SETTINGS_UPDATESERVICESLIST",""
+B,7,256,116,47,"MOBILEPHONE_SETTINGS_DEFAULT",""
+
+[Indicators]
+I,16,65,106,4,"MOBILEPHONE_SETTINGS_CHANGED:B",500,500,"Mobile_Indicators\LED_Balken_*.png"
+I,675,304,118,49,"MOBILEPHONE_SETTINGS_PHONE2",,,
+I01,676,112,115,4,"MOBILEPHONE_PHONEBOOKUPDATE",500,500,"Mobile_Indicators\LED_Balken_*.png"
+
+[ List Definitions ]
+SC01,144,268,511,123,255,255,255,1,30,40,200,200,200,255,128,0,TRUE,18,"Arial:B",00,"","MOBILEPHONE_SETTINGS_UPDATEINFODEVICE",""
+IL,CL,transparent.bmp,sel.bmp,end.bmp,2,80,80
+ 
+END

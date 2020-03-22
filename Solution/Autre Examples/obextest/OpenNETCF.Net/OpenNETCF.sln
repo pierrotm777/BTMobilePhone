@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{20D4826A-C6FA-45DB-90F4-C717570B9F32}") = "OpenNETCF.Net", "OpenNETCF.Net.csdproj", "{39DC4301-E4CC-4C4E-9579-336E2B993F51}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 1
+		SccProjectUniqueName0 = OpenNETCF.Net.csdproj
+		SccProjectName0 = $/SDF/OpenNETCF.Net
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:GotDotNet\u0020Workspaces
+		CanCheckoutShared = false
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		NDoc = NDoc
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{39DC4301-E4CC-4C4E-9579-336E2B993F51}.Debug.ActiveCfg = Debug|Windows CE
+		{39DC4301-E4CC-4C4E-9579-336E2B993F51}.Debug.Build.0 = Debug|Windows CE
+		{39DC4301-E4CC-4C4E-9579-336E2B993F51}.Debug.Deploy.0 = Debug|Windows CE
+		{39DC4301-E4CC-4C4E-9579-336E2B993F51}.NDoc.ActiveCfg = NDoc|Windows CE
+		{39DC4301-E4CC-4C4E-9579-336E2B993F51}.NDoc.Build.0 = NDoc|Windows CE
+		{39DC4301-E4CC-4C4E-9579-336E2B993F51}.NDoc.Deploy.0 = NDoc|Windows CE
+		{39DC4301-E4CC-4C4E-9579-336E2B993F51}.Release.ActiveCfg = Release|Windows CE
+		{39DC4301-E4CC-4C4E-9579-336E2B993F51}.Release.Build.0 = Release|Windows CE
+		{39DC4301-E4CC-4C4E-9579-336E2B993F51}.Release.Deploy.0 = Release|Windows CE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

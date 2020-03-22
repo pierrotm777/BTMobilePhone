@@ -1,0 +1,7 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin RRSkinToolDS\Source\RRSkinToolDS\bin\RRSkinToolDS.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin RRSkinToolDS\Source\RRSkinToolDS\bin\RRSkinToolDS.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin RRSkinToolDS\Source\RRSkinToolDS\bin\RRSkinToolDS.tlb
+C:\tmp\VB.NET-2010\VB.NET Plugin RRSkinToolDS\Source\RRSkinToolDS\obj\Release\RRSkinToolDS.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin RRSkinToolDS\Source\RRSkinToolDS\obj\Release\RRSkinToolDS.vbproj.GenerateResource.Cache
+C:\tmp\VB.NET-2010\VB.NET Plugin RRSkinToolDS\Source\RRSkinToolDS\obj\Release\RRSkinToolDS.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin RRSkinToolDS\Source\RRSkinToolDS\obj\Release\RRSkinToolDS.pdb

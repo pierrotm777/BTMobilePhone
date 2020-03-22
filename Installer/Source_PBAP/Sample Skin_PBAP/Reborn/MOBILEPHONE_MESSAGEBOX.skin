@@ -1,0 +1,22 @@
+RideRunner Skin
+RRScreen MessageBox.
+11ASTATUS_EMPTY.gif,11ASTATUS_OFF.jpg,11ASTATUS_OFF.jpg,11ASTATUS_DOWN.jpg,,,Icons\empty.png
+INC,COLOR.txt
+
+/EFFECTIN=17
+/EFFECTOUT=18
+IDL,5
+/DISCARDABLE
+
+[Labels]
+L,187,315,119,40,#COLOR#,22,"Ericsson GA628","=Esc","CENTER",
+L,37,43,427,25,#COLOR#,22,"Ericsson GA628","=$MOBILEPHONE_INFO$","CENTER",
+
+[LIST]
+SC01,37,76,425,163,255,255,255,01,025,025,0,0,0,255,255,255,TRUE,18,"Arial Narrow",02,"","","mobilephone_delcontactinblacklist"
+IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60 
+
+[Buttons]
+B,91,269,316,122,"ESC",
+ 
+END

@@ -1,0 +1,30 @@
+RideRunner Skin
+RRScreen autovol_menu
+screen_800_480_off.png,screen_800_480_off.png,screen_800_480_off.png,screen_800_480_off.png
+
+[Includes]
+INC,xy.txt
+INC,shadow.txt
+INC,FontMainBottom.txt
+INC,FontBar.txt
+INC,FontBottom.txt
+
+IDL,5
+
+/SHOWEFFECT5
+/HIDEEFFECT6
+
+[Background]
+IMG,0,0,800,480,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_800_480.png",out
+B,0,0,800,480,"ESC"
+
+[Labels]
+L,4,270,770,144,255,0,0,40,"Arial:b","=$l_set_BTM_LockInMotionText$","WRAP-CENTER",,"DS=3,3,0,0,0"
+L,217,3,369,38,255,255,255,24,"Arial:b","=$l_set_BTM_LockInMotionInfo$","WRAP-CENTER",,"DS=3,3,0,0,0"
+
+[Logos]
+IMG,327,78,148,201,"warning2.png",all
+IMG,638,75,148,144,"warning.png",all
+IMG,16,77,148,144,"warning.png",all
+ 
+END

@@ -1,0 +1,16 @@
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\bin\RRVarToFrom.dll
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\bin\RRVarToFrom.pdb
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\bin\fr-FR\RRVarToFrom.resources.dll
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\bin\RRVarToFrom.tlb
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\ResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\RRVarToFrom.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\RRVarToFrom.StringFile.resources
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\RRVarToFrom.StringFile.fr-FR.resources
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\GenerateResource-ResGen.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\GenerateResource.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\GenerateResource-ResGen.write.1.tlog
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\GenerateResource.write.1.tlog
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\GenerateResource.write.5.tlog
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\fr-FR\RRVarToFrom.resources.dll
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\RRVarToFrom.dll
+C:\tmp\VB.NET-2010\VB.NET RRVarToFrom\Source\RRVarToFrom\obj\Release\RRVarToFrom.pdb

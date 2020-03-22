@@ -1,0 +1,159 @@
+RideRunner Skin
+RRScreen PhoneNumPad
+screen_800_480_off.png,screen_800_480_off.png,screen_800_480_off.png,screen_800_480_off.png
+
+INC,xy.txt
+INC,FontMainBottom.txt
+INC,FontOSKDOWN.txt
+INC,FontOSKUP.txt
+INC,xy.txt
+INC,shadow.txt
+
+/Script,OnScreenStart,MOBILEPHONE_CLEAR
+/POSY=120
+
+[Background]
+IMG,0,0,800,480,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_800_480.png",out
+
+[Label]
+L,55,35,380,54,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,24,#FontMainBottomStyle#,"MOBILEPHONE_DIALBOX","LEFT",
+
+[C]
+IMG,450,10,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,450,10,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,450,10,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,450,10,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+I,525,30,50,50,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\prev.png:a"
+B,450,10,200,90,"MOBILEPHONE_DEL",@MOBILEPHONE_CLEAR@
+
+[+]
+IMG,650,10,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,650,10,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_on.png",on
+IMG,650,10,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_down.png",down
+IMG,650,10,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_90_$shadow$.png",off
+L,650,10,100,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= + ","VHCENTER" 
+B,650,10,100,90,"MOBILEPHONE_+",""
+
+[*]
+IMG,50,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,50,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,50,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,50,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,50,370,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,50,#FontUpStyle#,"= * ","VHCENTER"
+B,50,370,200,90,"MOBILEPHONE_*",""
+
+[0]
+IMG,250,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,250,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,250,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,250,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,250,370,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 0 ","VHCENTER"
+B,250,370,200,90,"MOBILEPHONE_0",""
+
+[#]
+IMG,450,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,450,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,450,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,450,370,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,450,370,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= # ","VHCENTER"
+B,450,370,200,90,"MOBILEPHONE_#",""
+
+[7]
+IMG,50,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,50,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,50,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,50,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,50,280,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 7 ","VHCENTER"
+B,50,280,200,90,"MOBILEPHONE_7",""
+
+[8]
+IMG,250,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,250,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,250,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,250,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,250,280,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 8 ","VHCENTER"
+B,250,280,200,90,"MOBILEPHONE_8",""
+
+[9]
+IMG,450,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,450,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,450,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,450,280,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,450,280,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 9 ","VHCENTER"
+B,450,280,200,90,"MOBILEPHONE_9",""
+
+[4]
+IMG,50,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,50,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,50,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,50,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,50,190,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 4 ","VHCENTER"
+B,50,190,200,90,"MOBILEPHONE_4",""
+
+[5]
+IMG,250,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,250,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,250,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,250,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,250,190,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 5 ","VHCENTER"
+B,250,190,200,90,"MOBILEPHONE_5",""
+
+[6]
+IMG,450,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,450,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,450,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,450,190,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,450,190,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 6 ","VHCENTER"
+B,450,190,200,90,"MOBILEPHONE_6",""
+
+[1]
+IMG,50,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,50,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,50,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,50,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,50,100,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 1 ","VHCENTER"
+B,50,100,200,90,"MOBILEPHONE_1",""
+
+[2]
+IMG,250,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,250,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,250,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,250,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,250,100,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 2 ","VHCENTER"
+B,250,100,200,90,"MOBILEPHONE_2",""
+
+[3]
+IMG,450,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_off.png",off
+IMG,450,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_on.png",on
+IMG,450,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_down.png",down
+IMG,450,100,200,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_200_90_shadow_$shadow$.png",off
+L,450,100,200,90,#FontUpRed#,#FontUpGreen#,#FontUpBlue#,30,#FontUpStyle#,"= 3 ","VHCENTER"
+B,450,100,200,90,"MOBILEPHONE_3",""
+
+[Return]
+IMG,650,100,100,180,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_100_300_off.png",off
+IMG,650,100,100,180,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_100_300_on.png",on
+IMG,650,100,100,180,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_100_300_down.png",down
+IMG,650,100,100,180,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_100_300_shadow_$shadow$.png",off
+I,675,210,50,50,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\select.png:a"
+B14,650,100,100,180,"ESC||RELOADSCREEN",""
+
+[Dial]
+IMG,650,280,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_100_300_off.png",off
+IMG,650,280,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_100_300_on.png",on
+IMG,650,280,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_100_300_down.png",down
+IMG,650,280,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_100_300_shadow_$shadow$.png",off
+I,675,300,50,50,"File;$SKINPATH$phone_up.png"
+B14,650,280,100,90,"ESC||SETVARBYCODE;NEWDIAL;MOBILEPHONE_DIALBOX||MOBILEPHONE_DIAL;$NEWDIAL$",""
+
+[Clear]
+I,675,390,50,50,"File;$skinpath$Theme\$ThemeIcons$\MenuIcons\close.png:a"
+IMG,650,370,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,650,370,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_on.png",on
+IMG,650,370,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_down.png",down
+IMG,650,370,100,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_90_$shadow$.png",off
+B,650,370,100,90,"MOBILEPHONE_HANGUP||ESC",@MOBILEPHONE_CLEAR@
+IMG,49,27,384,54,"$SKINPATH$Theme\$ThemePanels$\Panels\bottom_614_50.png",all
+
+ 
+END

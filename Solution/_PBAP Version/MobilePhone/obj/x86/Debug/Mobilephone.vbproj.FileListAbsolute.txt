@@ -1,0 +1,15 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_PBAP Version\MobilePhone\bin\MobilePhone.dll.config
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_PBAP Version\MobilePhone\bin\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_PBAP Version\MobilePhone\bin\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_PBAP Version\MobilePhone\obj\x86\Debug\MobilePhone.frmDebugBox.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_PBAP Version\MobilePhone\obj\x86\Debug\Mobilephone.vbproj.GenerateResource.Cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_PBAP Version\MobilePhone\obj\x86\Debug\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_PBAP Version\MobilePhone\obj\x86\Debug\MobilePhone.pdb
+C:\Users\jyeager\Downloads\_PBAP Version_0122\_PBAP Version\MobilePhone\bin\MobilePhone.dll.config
+C:\Users\jyeager\Downloads\_PBAP Version_0122\_PBAP Version\MobilePhone\bin\MobilePhone.dll
+C:\Users\jyeager\Downloads\_PBAP Version_0122\_PBAP Version\MobilePhone\bin\MobilePhone.pdb
+C:\Users\jyeager\Downloads\_PBAP Version_0122\_PBAP Version\MobilePhone\obj\x86\Debug\MobilePhone.frmDebugBox.resources
+C:\Users\jyeager\Downloads\_PBAP Version_0122\_PBAP Version\MobilePhone\obj\x86\Debug\Mobilephone.vbproj.GenerateResource.Cache
+C:\Users\jyeager\Downloads\_PBAP Version_0122\_PBAP Version\MobilePhone\obj\x86\Debug\MobilePhone.dll
+C:\Users\jyeager\Downloads\_PBAP Version_0122\_PBAP Version\MobilePhone\obj\x86\Debug\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_PBAP Version\MobilePhone\obj\x86\Debug\Mobilephone.vbprojResolveAssemblyReference.cache

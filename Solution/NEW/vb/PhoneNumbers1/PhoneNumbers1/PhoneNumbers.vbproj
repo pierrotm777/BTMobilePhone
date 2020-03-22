@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{825CDB1E-FF29-4063-AF75-E75082C27772}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PhoneNumbers</RootNamespace>
+    <AssemblyName>PhoneNumbers1</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>PhoneNumbers1.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PhoneNumbers1.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AreaCodeMaps.vb" />
+    <Compile Include="AreaCodeMapStorageStrategy.vb" />
+    <Compile Include="AreaCodeParser.vb" />
+    <Compile Include="AsYouTypeFormatter.vb" />
+    <Compile Include="BuildMetadataFromXml.vb" />
+    <Compile Include="Class1.vb" />
+    <Compile Include="CountryCodeToRegionCodeMap.vb" />
+    <Compile Include="DefaultMapStorage.vb" />
+    <Compile Include="FlyweightMapStorage.vb" />
+    <Compile Include="ListExtension.vb" />
+    <Compile Include="LocaleData.vb" />
+    <Compile Include="MappingFileProvider.vb" />
+    <Compile Include="MetadataManager.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="NumberParseException.vb" />
+    <Compile Include="Phonemetadata.vb" />
+    <Compile Include="Phonenumber.vb" />
+    <Compile Include="PhoneNumberMatch.vb" />
+    <Compile Include="PhoneNumberMatcher.vb" />
+    <Compile Include="PhoneNumberOfflineGeocoder.vb" />
+    <Compile Include="PhoneNumberUtil.vb" />
+    <Compile Include="PhoneRegex.vb" />
+    <Compile Include="RegexCache.vb" />
+    <Compile Include="RegionCode.vb" />
+    <Compile Include="ShortNumberUtil.vb" />
+    <Compile Include="Util.vb" />
+    <Compile Include="XDocumentLegacy.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="PhoneNumbers.nuspec" />
+    <None Include="res\localedata" />
+    <None Include="res\prod_1_en" />
+    <None Include="res\prod_20_en" />
+    <None Include="res\prod_212_en" />
+    <None Include="res\prod_212_fr" />
+    <None Include="res\prod_213_en" />
+    <None Include="res\prod_216_en" />
+    <None Include="res\prod_220_en" />
+    <None Include="res\prod_221_en" />
+    <None Include="res\prod_222_en" />
+    <None Include="res\prod_222_fr" />
+    <None Include="res\prod_224_en" />
+    <None Include="res\prod_225_en" />
+    <None Include="res\prod_225_fr" />
+    <None Include="res\prod_226_en" />
+    <None Include="res\prod_228_en" />
+    <None Include="res\prod_228_es" />
+    <None Include="res\prod_228_fr" />
+    <None Include="res\prod_229_en" />
+    <None Include="res\prod_229_fr" />
+    <None Include="res\prod_230_en" />
+    <None Include="res\prod_230_es" />
+    <None Include="res\prod_230_fr" />
+    <None Include="res\prod_232_en" />
+    <None Include="res\prod_233_en" />
+    <None Include="res\prod_234_en" />
+    <None Include="res\prod_238_en" />
+    <None Include="res\prod_238_pt" />
+    <None Include="res\prod_239_en" />
+    <None Include="res\prod_239_pt" />
+    <None Include="res\prod_242_en" />
+    <None Include="res\prod_242_fr" />
+    <None Include="res\prod_243_en" />
+    <None Include="res\prod_243_fr" />
+    <None Include="res\prod_244_en" />
+    <None Include="res\prod_244_pt" />
+    <None Include="res\prod_245_en" />
+    <None Include="res\prod_245_pt" />
+    <None Include="res\prod_247_en" />
+    <None Include="res\prod_249_en" />
+    <None Include="res\prod_251_en" />
+    <None Include="res\prod_252_en" />
+    <None Include="res\prod_254_en" />
+    <None Include="res\prod_256_en" />
+    <None Include="res\prod_258_en" />
+    <None Include="res\prod_258_pt" />
+    <None Include="res\prod_260_en" />
+    <None Include="res\prod_261_en" />
+    <None Include="res\prod_263_en" />
+    <None Include="res\prod_264_en" />
+    <None Include="res\prod_266_en" />
+    <None Include="res\prod_267_en" />
+    <None Include="res\prod_268_en" />
+    <None Include="res\prod_269_en" />
+    <None Include="res\prod_269_fr" />
+    <None Include="res\prod_27_en" />
+    <None Include="res\prod_290_en" />
+    <None Include="res\prod_290_fr" />
+    <None Include="res\prod_299_en" />
+    <None Include="res\prod_30_el" />
+    <None Include="res\prod_30_en" />
+    <None Include="res\prod_31_en" />
+    <None Include="res\prod_31_nl" />
+    <None Include="res\prod_33_en" />
+    <None Include="res\prod_33_fr" />
+    <None Include="res\prod_34_en" />
+    <None Include="res\prod_34_es" />
+    <None Include="res\prod_351_en" />
+    <None Include="res\prod_351_pt" />
+    <None Include="res\prod_352_de" />
+    <None Include="res\prod_352_en" />
+    <None Include="res\prod_352_fr" />
+    <None Include="res\prod_353_en" />
+    <None Include="res\prod_354_en" />
+    <None Include="res\prod_355_en" />
+    <None Include="res\prod_358_en" />
+    <None Include="res\prod_358_fi" />
+    <None Include="res\prod_358_se" />
+    <None Include="res\prod_36_en" />
+    <None Include="res\prod_36_hu" />
+    <None Include="res\prod_370_en" />
+    <None Include="res\prod_371_en" />
+    <None Include="res\prod_372_en" />
+    <None Include="res\prod_373_en" />
+    <None Include="res\prod_373_ro" />
+    <None Include="res\prod_373_ru" />
+    <None Include="res\prod_374_en" />
+    <None Include="res\prod_381_en" />
+    <None Include="res\prod_381_sr" />
+    <None Include="res\prod_39_en" />
+    <None Include="res\prod_39_it" />
+    <None Include="res\prod_40_en" />
+    <None Include="res\prod_40_ro" />
+    <None Include="res\prod_41_de" />
+    <None Include="res\prod_41_en" />
+    <None Include="res\prod_41_fr" />
+    <None Include="res\prod_41_it" />
+    <None Include="res\prod_420_en" />
+    <None Include="res\prod_421_en" />
+    <None Include="res\prod_43_de" />
+    <None Include="res\prod_43_en" />
+    <None Include="res\prod_44_en" />
+    <None Include="res\prod_46_en" />
+    <None Include="res\prod_46_sv" />
+    <None Include="res\prod_48_en" />
+    <None Include="res\prod_48_pl" />
+    <None Include="res\prod_49_de" />
+    <None Include="res\prod_49_en" />
+    <None Include="res\prod_51_en" />
+    <None Include="res\prod_53_en" />
+    <None Include="res\prod_54_en" />
+    <None Include="res\prod_54_es" />
+    <None Include="res\prod_55_en" />
+    <None Include="res\prod_55_pt" />
+    <None Include="res\prod_56_en" />
+    <None Include="res\prod_56_es" />
+    <None Include="res\prod_57_en" />
+    <None Include="res\prod_57_es" />
+    <None Include="res\prod_58_en" />
+    <None Include="res\prod_58_es" />
+    <None Include="res\prod_62_en" />
+    <None Include="res\prod_62_id" />
+    <None Include="res\prod_66_en" />
+    <None Include="res\prod_66_th" />
+    <None Include="res\prod_7_en" />
+    <None Include="res\prod_7_ru" />
+    <None Include="res\prod_81_en" />
+    <None Include="res\prod_81_ja" />
+    <None Include="res\prod_82_en" />
+    <None Include="res\prod_82_fr" />
+    <None Include="res\prod_82_ko" />
+    <None Include="res\prod_82_zh" />
+    <None Include="res\prod_82_zh_Hant" />
+    <None Include="res\prod_84_en" />
+    <None Include="res\prod_84_vi" />
+    <None Include="res\prod_86_en" />
+    <None Include="res\prod_86_zh" />
+    <None Include="res\prod_886_en" />
+    <None Include="res\prod_886_zh" />
+    <None Include="res\prod_886_zh_Hant" />
+    <None Include="res\prod_90_en" />
+    <None Include="res\prod_90_tr" />
+    <None Include="res\prod_91_en" />
+    <None Include="res\prod_94_en" />
+    <None Include="res\prod_98_en" />
+    <None Include="res\prod_98_fa" />
+    <None Include="res\test_1_de" />
+    <None Include="res\test_1_en" />
+    <None Include="res\test_82_en" />
+    <None Include="res\test_82_ko" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PhoneNumberAlternateFormats.xml" />
+    <Content Include="PhoneNumberMetaData.xml" />
+    <Content Include="PhoneNumberMetaDataForTesting.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

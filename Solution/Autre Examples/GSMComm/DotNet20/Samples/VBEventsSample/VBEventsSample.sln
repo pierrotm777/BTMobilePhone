@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VBEventsSample", "VBEventsSample.vbproj", "{725A6B6F-01D6-4893-A90E-BA596C18DD05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{725A6B6F-01D6-4893-A90E-BA596C18DD05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725A6B6F-01D6-4893-A90E-BA596C18DD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725A6B6F-01D6-4893-A90E-BA596C18DD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725A6B6F-01D6-4893-A90E-BA596C18DD05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

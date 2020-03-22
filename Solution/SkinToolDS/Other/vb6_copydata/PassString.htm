@@ -1,0 +1,357 @@
+<html>
+
+<head>
+<meta http-equiv="description" content="Pass a string or data between 2 applications without using COM.">
+<meta http-equiv="keywords" content="The Scarms, TheScarms, Visual Basic Code Library, VB programming, VB5.0, VB6.0 programs, microsoft windows, win32 apis, ActiveX, SetWindowLong, GWL_WNDPROC, WM_COPYDATA, CallWindowProc, CopyDataStruct, CopyMemory, FindWindow, SendMessage, StrPtr, VarPtr, ObjPtr, pass string, hooks, subclassing, sub-classing, sub classing, windows messages, COM, sendmessagetimeout, memory mapped files, wm_copydata">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="Microsoft Border" content="none">
+<title>Pass Data Between two Applications without COM.</title>
+
+<!------------------------------------------>
+<!-- Cascading Style Sheet                -->
+<!------------------------------------------>
+<link REL="stylesheet" HREF="VBCommon.css" Type="text/css" Title="VB Page">
+
+<script language=javascript>
+<!--
+var bIsIE  = navigator.appName == "Microsoft Internet Explorer";
+if (bIsIE) {
+  sCSS = '<link REL="stylesheet" HREF="VBStyleIE.css"  TYPE="text/css">'
+}
+else {
+  sCSS = '<link REL="stylesheet" HREF="VBStyleNav.css" TYPE="text/css">'
+}
+document.write(sCSS);
+//-->
+</script>
+
+</head>
+
+<body class="body">
+
+<!-------------------------------->
+<!-- Menu JavaScript Code       -->
+<!-------------------------------->
+<script language=javascript src="menu.js"></script>
+
+<table border="0" width="665" cellspacing="0" cellpadding="0" bgcolor="white">
+  <tr>
+    <td width="525" nowrap colspan=7>
+      <img border="0" src="../VBImages/header.gif" alt="TheScarms Visual Basic Code Library" width="520" height="46">   
+    </td>
+    <td width=140 rowspan=2>
+      <p align="center">
+      <img src="../VBImages/TheScarmsButton.gif" border="0" width="100" height="32" > 
+      </p>
+   </td>
+  </tr>
+  <tr>
+    <td width="75" align="center">
+      <a href="../default.htm" target="_top" id="nav" onmouseout="btnTimer();" onmouseover="showLayer('NavMenu')">
+      <img id="nav2" src="../VBImages/mgoto.gif" border="0" width="75" height="20"></a> 
+    </td>
+    <td width="75" align="center">
+      <a href="default.htm" target="_self" id="code" onmouseout="btnTimer();" onmouseover="showLayer('CodeMenu')">
+      <img id="code2" src="../VBImages/mCode.gif" border="0" width="75" height="20"></a>
+    </td>
+    <td width="75" align="center">
+      <a href="Tips.htm" target="_self" id="tips" onmouseout="btnTimer();" onmouseover="showLayer('TipsMenu')">
+      <img id="tips2" src="../VBImages/mtips.gif" border="0" width="75" height="20"></a>
+    </td>
+    <td width="75" align="center">
+      <a href="Search.htm" target="_self" id="search" onmouseout="btnTimer();" onmouseover="showLayer('SearchMenu')">
+      <img id="search2" src="../VBImages/msearch.gif" border="0" width="75" height="20"></a>
+    </td>
+    <td width="75" align="center">
+      <a href="VBLinks.htm" target="_self" id="links" onmouseout="btnTimer();" onmouseover="showLayer('LinksMenu')">
+      <img id="links2" src="../VBImages/mlinks.gif" border="0" width="75" height="20"></a>
+    </td>
+    
+    <td width="75" align="center">
+      <a href="Email.htm" target="_self" id="talk" onmouseout="btnTimer();" onmouseover="showLayer('TalkMenu')">
+      <img id="talk2" src="../VBImages/mtalk.gif" border="0" width="75" height="20"></a>
+    </td>    
+
+    <td width="75" align="center">
+      <a href="Awards.htm" target="_self" id="misc" onmouseout="btnTimer();" onmouseover="showLayer('MiscMenu')">
+      <img id="misc2" src="../VBImages/mmisc.gif" border="0" width="75" height="20"></a>
+    </td>    
+  </tr>
+</table>
+
+<!-------------------------------->
+<!-- Body                       -->
+<!-------------------------------->
+<p>&nbsp;</p>
+<table width=665 border="0" align=center><tr><td>
+
+<h1 class="heading">Share Data Between Apps Without COM</h1>
+
+<p>Here's an easy way to <span class="KeyWord">share data between 2 VB applications.</span> 
+Since each app runs in its own process space, a variable in one application is not meaningful 
+to another application in a different process space.</p>
+
+<p>Typically you pass data between apps by turning one of them into an
+ActiveX server to create a client/server relationship using COM 
+to handle the inter-process communication. Your client application sets or reads a 
+property in the server application and you pass the data that way.</p>
+
+<p>Here is a faster, simpler approach using the <span class="KeyWord">SendMessage</span>
+API function. I will demonstrate a few variations of this technique: passing strings then 
+a larger amount of data. Unlike COM, however, this approach will not work cross machines.</p>
+
+<span>
+<center>
+<p>
+<img src="../VBImages/PassString1.gif" alt="Send a string to another application." WIDTH="195" HEIGHT="101">
+<img src="../VBImages/PassString2.gif" alt="Receive a string passed from another application" WIDTH="193" HEIGHT="102">
+<br><a href="../Downloads/PassString.zip">Download Source Code</a>
+<br><span class="LastChg">(Last Updated 08/15/2000)</span>
+</p>
+</center>
+</span>
+
+<p>
+<table class="OuterTable" border='2' cellspacing='0' cellpadding='0'  bordercolor='#808080' bordercolorlight='#C0C0C0' bordercolordark=blue width=100%>
+  <tr>
+    <td>
+      <table cellspacing='0'>
+        <tr>
+          <td class="InnerTable">
+            Overview
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p>Application A communicates with application B by sending a message to a
+window in application B. The message carries with it the desired data. 
+This sample consists of 2 programs. As their names imply, <i>SendData</i> and 
+<i>ReceiveData</i> send and receive data respectively.</p>
+
+<p>Application B needs to know when the message arrives and then needs to process it.  
+Application A may want to have application B process the data either synchronously or 
+asynchronously.</p>
+
+<p>Sending a string to application B is easy. Remember, the form and everything on it, 
+such as a textbox, are windows. A textbox is ideal for receiving a string since its <span class="KeyWord">Change
+Event</span> will automatically fire when a <span class="KeyWord">WM_SETTEXT</span> message is received. 
+This event can contain whatever logic is necessary to process the string. My sample application 
+simply displays a message box.</p>
+
+<p>The problem with sending data to a textbox is that there is no good way to distinguish among 
+multiple textboxes on the same window. So, I load an additional form containing a single 
+textbox. This form is invisible since it is Loaded but not shown and its <span class="KeyWord">Visible</span> 
+and <span class="KeyWord">ShowInTaskBar</span> properties are set false.</p>
+
+<p>This solves another issue as well. The easiest way to find the window containing the textbox is 
+by looking at its caption. If two applications have windows with similar captions we may not find
+the correct window. Using an invisible form lets you set its caption to one that is unlikely to
+be duplicated in another program.</p>
+
+<p>
+<table class="OuterTable" border='2' cellspacing='0' cellpadding='0'  bordercolor='#808080' bordercolorlight='#C0C0C0' bordercolordark=blue width=100%>
+  <tr>
+    <td>
+      <table cellspacing='0'>
+        <tr>
+          <td class="InnerTable">
+            Sending a String
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p>I call the <span class="KeyWord">FindWindow</span> API function with the caption of the target
+window in the ReceiveData application. <span class="KeyWord">FindWindow</span> returns the handle
+of the window containing the textbox. Now we need the textbox's handle. <span class="KeyWord">
+FindWindowEx</span> can be used to find child windows. I pass it the window's handle and since the
+window only has a single child, the textbox, <span class="KeyWord">FindWindowEx</span> returns
+the desired handle.</p>
+
+<p>Next I call <span class="KeyWord">SendMessage</span> to pass a string from
+Application A to the textbox in Application B. <span class="KeyWord">SendMessage</span> takes as parameters the 
+handle of the textbox, the <span class="KeyWord">WM_SETTEXT</span> message and the string to pass.</p>
+
+<p>
+<table class="OuterTable" border='2' cellspacing='0' cellpadding='0'  bordercolor='#808080' bordercolorlight='#C0C0C0' bordercolordark=blue width=100%>
+  <tr>
+    <td>
+      <table cellspacing='0'>
+        <tr>
+          <td class="InnerTable">
+            Receiving the String
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p>When the textbox receives the message its Change event uses a message box to display it. 
+The <span class="KeyWord">SendMessage</span> call waits until the message box is dismissed before
+processing in Application A continues. To allow Application B to process the data asynchronously and have
+Application A continue to respond, you have 2 options. First, you can use the <span class="KeyWord">SendMessageTimeout</span> 
+function. With this call you can set the time interval after which the API will return. Or, you can
+call the <span class="KeyWord">ReplyMessage</span> API in the textbox's change event. This API 
+returns a value to the <span class="KeyWord">SendMessage</span> call telling it to return and
+continue processing.</p>
+
+<p>
+<table class="OuterTable" border='2' cellspacing='0' cellpadding='0'  bordercolor='#808080' bordercolorlight='#C0C0C0' bordercolordark=blue width=100%>
+  <tr>
+    <td>
+      <table cellspacing='0'>
+        <tr>
+          <td class="InnerTable">
+            Sending String Data
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p>Sending larger amounts of data is harder because we need to use the <span class="KeyWord">WM_COPYDATA</span> 
+message. This message lets you use <span class="KeyWord">Memory Mapped</span> files to communicate between applications. This is
+what COM does. Problem is, the target window does not automatically respond to this message. Subclassing
+the window is required to trap the message.</p>
+
+<p>To pass string data from one Visual Basic application to
+another, the Unicode string must be converted to ASCII before you pass it. The
+receiving application must then convert the ASCII string back to Unicode.</p>
+
+<p>Using the <span class="KeyWord">CopyMemory</span> API, the string is converted to an ASCII 
+byte array. We now need to populate a <span class="KeyWord">CopyDataStruct</span> structure 
+to pass the data. The trick here is that the lpData element of <span class="KeyWord">CopyDataStruct</span> 
+must be a <i>pointer</i> to the data to pass. To do this we must use Visual Basic&#146;s undocumented 
+<span class="KeyWord">VarPtr</span> function which yields the address of variables and user-defined 
+types (similarly <span class="KeyWord"><i>StrPtr</i></span> returns the address of a string and 
+<span class="KeyWord"><i>ObjPtr</i></span> the address of an object).</p>
+
+<p>Lastly, the <span class="KeyWord">SendMessage</span>
+function sends the <span class="KeyWord">WM_COPYDATA</span> message along with our 
+<span class="KeyWord">CopyDataStruct</span> structure.</p>
+
+<p>
+<table class="OuterTable" border='2' cellspacing='0' cellpadding='0'  bordercolor='#808080' bordercolorlight='#C0C0C0' bordercolordark=blue width=100%>
+  <tr>
+    <td>
+      <table cellspacing='0'>
+        <tr>
+          <td class="InnerTable">
+            Receiving String Data
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p>To receive the string data the ReceiveData application must
+hook into Window&#146;s message stream to catch the <span class="KeyWord">WM_COPYDATA</span>
+message. This is accomplished by using the <span class="KeyWord">SetWindowLong</span>
+API with the <span class="KeyWord">GWL_WNDPROC</span> flag to replace the original
+procedure called whenever the form receives a message with our own <i>fWindowProc</i>
+callback procedure.</p>
+
+<p>When a message is received the <i>fWindowProc</i>
+function is invoked. If it is the copy message, a call is made to the <i>pReceiveMsg</i>
+procedure. In any case, the <span class="KeyWord">CallWindowProc</span> API is called to
+pass the message to original window procedure.</p>
+
+<p><i>PReceiveMsg</i> uses the <span class="KeyWord">CopyMemory</span>
+API to copy the <span class="KeyWord">CopyDataStruct</span> sent to this application to a
+local structure. A second call to <span class="KeyWord">CopyMemory</span> copies the
+string pointed to by the lpData element of <span class="KeyWord">CopyDataStruct</span>
+into a byte array. The string is converted back to Unicode and then displayed.</i></p>
+
+<p>
+<table class="OuterTable" border='2' cellspacing='0' cellpadding='0'  bordercolor='#808080' bordercolorlight='#C0C0C0' bordercolordark=blue width=100%>
+  <tr>
+    <td>
+      <table cellspacing='0'>
+        <tr>
+          <td class="InnerTable">
+            Other Types of Data
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p>Other types of data can be handled similarly. This sample can also pass an array of strings
+and an array of doubles. For simplicity sake, the array of strings is first stored in a 
+<span class="KeyWord">PropertyBag</span> to facilitate converting it to a byte array.</p>
+
+<p>
+<table class="OuterTable" border='2' cellspacing='0' cellpadding='0'  bordercolor='#808080' bordercolorlight='#C0C0C0' bordercolordark=blue width=100%>
+  <tr>
+    <td>
+      <table cellspacing='0'>
+        <tr>
+          <td class="InnerTable">
+            Instructions
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p>Start both sample applications.</p>
+
+<ol>
+<li>Enter a string into the textbox of the SendData application. Click the 
+"Send the Above String" button. The text appears in the ReceiveData application.
+</li><br><br>
+<li>Clear the textbox in SendData. Click the "Get a String from its Textbox" button. 
+The text appears in the SendData application.
+</li><br><br>
+<li>Enter a new string into the textbox of SendData. This is important. If you send the 
+same text again, the textbox's Change event will not fire since the text hasn't changed. 
+Select the "SendMessage" option. Click the "Send a String to its Textbox" button. 
+The Change event for the textbox on the hidden window in the Receive Data application 
+fires and displays a message box.
+<br><br>
+Note that the SendData application does not respond until you dismiss the message box.
+</li><br><br>
+<li>Enter a new string into the textbox of SendData. Select "SendMessageTimeout". 
+Click the "Send a String to its Textbox" button. Again the Receive Data application 
+displays a message box.
+<br><br>
+This time, however, the SendData application does respond without dismissing the message 
+box because the SendMessage call timed out.
+</li><br><br>
+<li>Change the text in SendData again. Now check the "Send Reply" box on "Receive Data"  
+and select "SendMessage". Click the "Send a String to its Textbox" button. Again the Receive 
+Data application displays a message box.
+<br><br>
+Now, event though you used the synchronous SendMessage command, the SendData application will 
+respond without dismissing the message box.
+</li><br><br>
+<li>Sending text clears the textbox. Copying text appends to the existing contents. Click the 
+"Copy a String to its Textbox" button to try it.
+</li><br><br>
+<li>In the SendData application, enter the number items to send. Click the  
+"Send Numeric Data" button to populate the listbox.
+</li><br><br>
+<li>Click the "Send String Data" button to populate the listbox.
+</li>
+</ol>
+
+<!---- Common Footer ---->
+<p align="center">
+<span class="footer">If you use this code, please mention &quot;www.TheScarms.com&quot;</span>
+</p>
+
+
+</td></tr></table>
+
+</body>
+</html>

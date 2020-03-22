@@ -1,0 +1,20 @@
+RideRunner Skin
+RRScreen MobilePhone.
+MOBILEPHONE_SMS_TEMPLATE_off.jpg,MOBILEPHONE_SMS_TEMPLATE_off.jpg,MOBILEPHONE_SMS_TEMPLATE_on.png,MOBILEPHONE_SMS_TEMPLATE_down.jpg
+
+[ Include File ]
+INC,TopText.txt
+INC,Bottomtext.txt
+
+[Buttons]
+
+[List Filter]
+S,112,266,399,235,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,128,0,TRUE,16,"Arial"
+SD,00,01,80,80,"$PLUGINSPATH$MobilePhone\Photo\","*.jpg;*.bmp;*.gif;*.png",true
+S03,551,248,40,252,550,176,40,252,V,01,"SLIDERS\EQ.png",20,"DLSLIDER",""
+IL01,DL,transparent.bmp,sel.bmp,1,70,50
+
+[Picture]
+I02,441,142,68,72,"PICTURE"
+ 
+END

@@ -1,0 +1,82 @@
+RideRunner Skin
+RRScreen Choose Number
+screen_800_480_off.png,screen_800_480_off.png,screen_800_480_off.png,screen_800_480_off.png
+
+[Includes]
+INC,shadow.txt
+INC,FontMainBottom.txt
+INC,xy.txt
+
+/SHOWEFFECT5
+/HIDEEFFECT6
+
+[Background]
+IMG,0,0,800,480,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_800_480.png",out
+
+[Choice 1]
+IMG,50,15,94,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,15,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,15,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_on.png",on
+IMG,153,15,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_down.png",down
+IMG,153,15,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_shadow_$shadow$.png",off
+L,163,40,263,40,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,24,#FontMainBottomStyle#,"=$MOBILEPHONE_NUMBER0$","LEFT"
+I,73,35,50,50,"File;$PhoneNumber1Type$"
+B10,50,15,378,90,"ESC||MOBILEPHONE_DIAL;$MOBILEPHONE_NUMBER0$||MOBILEPHONE_PICKUP||MOBILEPHONE_DIALSELECTORRESET",
+
+[Choice 2]
+IMG,50,105,94,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,105,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,105,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_on.png",on
+IMG,153,105,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_down.png",down
+IMG,153,105,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_shadow_$shadow$.png",off
+L,163,130,263,40,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,24,#FontMainBottomStyle#,"=$MOBILEPHONE_NUMBER1$","LEFT"
+I,73,125,50,50,"File;$PhoneNumber2Type$"
+B10,50,105,378,90,"ESC||MOBILEPHONE_DIAL;$MOBILEPHONE_NUMBER1$||MOBILEPHONE_PICKUP||MOBILEPHONE_DIALSELECTORRESET",
+
+[Choice 3]
+IMG,50,195,94,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,195,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,195,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_on.png",on
+IMG,153,195,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_down.png",down
+IMG,153,195,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_shadow_$shadow$.png",off
+L,163,220,263,40,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,24,#FontMainBottomStyle#,"=$MOBILEPHONE_NUMBER2$","LEFT"
+I,73,215,50,50,"File;$PhoneNumber3Type$"
+B06,50,195,378,90,"ESC||MOBILEPHONE_DIAL;$MOBILEPHONE_NUMBER2$||MOBILEPHONE_PICKUP||MOBILEPHONE_DIALSELECTORRESET",
+
+[Choice 4]
+IMG,50,285,94,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,285,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,285,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_on.png",on
+IMG,153,285,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_down.png",down
+IMG,153,285,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_shadow_$shadow$.png",off
+L,163,310,263,40,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,24,#FontMainBottomStyle#,"=$MOBILEPHONE_NUMBER3$","LEFT"
+I,73,305,50,50,"File;$PhoneNumber4Type$"
+B10,50,285,378,90,"ESC||MOBILEPHONE_DIAL;$MOBILEPHONE_NUMBER3$||MOBILEPHONE_PICKUP||MOBILEPHONE_DIALSELECTORRESET",
+
+[Choice 5]
+IMG,50,375,94,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,375,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_off.png",off
+IMG,153,375,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_on.png",on
+IMG,153,375,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_down.png",down
+IMG,153,375,250,90,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_600_90_shadow_$shadow$.png",off
+L,163,400,263,40,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,24,#FontMainBottomStyle#,"=$MOBILEPHONE_NUMBER4$","LEFT"
+I,73,395,50,50,"File;$PhoneNumber5Type$"
+B10,50,375,378,90,"ESC||MOBILEPHONE_DIAL;$MOBILEPHONE_NUMBER4$||MOBILEPHONE_PICKUP||MOBILEPHONE_DIALSELECTORRESET",
+
+[Quit]
+IMG,580,378,200,90,"$skinpath$Theme\$ThemeButtons$\Buttons\menu_8_260_90_off.png",off
+IMG,580,378,200,90,"$skinpath$Theme\$ThemeButtons$\Buttons\menu_8_260_90_on.png",on
+IMG,580,378,200,90,"$skinpath$Theme\$ThemeButtons$\Buttons\menu_8_260_90_down.png",down
+IMG,580,378,200,90,"$skinpath$Theme\$ThemeButtons$\Buttons\menu_8_260_90_shadow_$shadow$.png",off
+I,652,396,50,50,"File;$SKINPATH$Theme\$ThemeName$\MenuIcons\close.png:a"
+B,580,378,200,90,"CANCEL||MOBILEPHONE_DIALSELECTORRESET",""
+
+[Contact]
+IMG,549,20,161,161,"$SkinPath$Contact.png",all
+/I05,549,20,161,161,"MOBILEPHONE_PHONEBOOKPICTURE",,,
+I05,549,20,161,161,"File;$CONTACTIMGTOSEND$",,,
+IMG,448,198,343,43,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_shadow_$shadow$.png",out
+IMG,448,198,343,43,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L,460,202,320,43,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,20,#FontMainBottomStyle#,"=$MOBILEPHONE_NAME$","SCROLL-LEFT",
+ 
+END

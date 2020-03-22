@@ -1,0 +1,19 @@
+RideRunner Skin
+RRScreen MessageBox.
+MessageBox_OK_transparent.jpg,MessageBox_Ok_off.jpg,MessageBox_Ok_on.jpg,MessageBox_Ok_down.jpg
+
+/EFFECTIN=17
+/EFFECTOUT=18
+IDL,5
+
+[Labels]
+L,11,7,427,25,255,128,64,18,"Arial","=$MOBILEPHONE_INFO$","CENTER",,"DS=2,2,0,0,0"
+
+[LIST]
+SC01,9,45,431,174,255,255,255,0,0,0,255,0,0,255,128,0,TRUE,16,"Arial",02,"","",""
+IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60 
+
+[Buttons]
+B,169,222,121,53,"ESC",
+ 
+END

@@ -1,0 +1,10 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\bin\Debug\ATSMS.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\bin\Debug\ATSMS.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\bin\Debug\ATSMS.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\obj\Debug\ResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\obj\Debug\ATSMS.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\obj\Debug\GenerateResource.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\obj\Debug\GenerateResource.write.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\obj\Debug\ATSMS.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\obj\Debug\ATSMS.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\ATSMS.dll source\atsms\obj\Debug\ATSMS.pdb

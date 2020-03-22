@@ -1,0 +1,20 @@
+C:\Program Files\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommDemo.exe.config
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommDemo.exe.config
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommDemo.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommDemo.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommServer.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommShared.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommunication.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\PDUConverter.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommServer.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommShared.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\GSMCommunication.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\bin\Debug\PDUConverter.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\obj\Debug\ResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\obj\Debug\GSMCommDemo.frmSecurity.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\obj\Debug\GSMCommDemo.frmConnection.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\obj\Debug\GSMCommDemo.frmDemo.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\obj\Debug\GenerateResource.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\obj\Debug\GenerateResource.write.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\obj\Debug\GSMCommDemo.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\GSMComm\DotNet40\Samples\Demo Source\obj\Debug\GSMCommDemo.pdb

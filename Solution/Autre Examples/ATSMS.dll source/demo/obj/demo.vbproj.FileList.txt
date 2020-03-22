@@ -1,0 +1,13 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\demo.Resources.resources
+obj\Debug\demo.vbproj.GenerateResource.Cache
+obj\Debug\demo.TestATSMS.resources
+bin\Debug\demo.exe
+bin\Debug\demo.pdb
+bin\Debug\demo.xml
+bin\Debug\ATSMS.dll
+bin\Debug\ATSMS.pdb
+bin\Debug\ATSMS.xml
+obj\Debug\demo.exe
+obj\Debug\demo.xml
+obj\Debug\demo.pdb

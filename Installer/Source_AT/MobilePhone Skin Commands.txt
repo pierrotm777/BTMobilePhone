@@ -1,0 +1,281 @@
+**********************************************************************************************
+I-Create a button:
+  1)Carwings_Dynamic_Lite
+    "MyApp13","MOBILEPHONE"
+  2)Carwings_Dynamic_Lite with RideRunner Dynamic Menus
+    You need to do nothing, just select PI-MobilePhone into your list.
+II-Copy the Carwings_Dynamic_Lite screens files into your skin folder
+
+III-Read the Reame.txt file (DF5 or Reborn !!!)
+
+IV-Into your ExecTBL.ini file you can add the line: (used with the speech synthetizer)
+"ONMOBILEPHONESPEECHDIAL","SAY;I CALL THE NUMBER $DIALNUMBER$"
+"ONMOBILEPHONEEMERGENCY","SAY;I CALL FOR HELP"
+
+MobilePhone RR Plugin Skin Commands
+----------------------------------------------------------------------------------------------
+
+Installation instructions
+**********************************************************************************************
+Pre-requisites:
+1) IVT BlueSoleil 5.x or 6.x or 8.x has to be installed. 
+For BlueSoleil 5.x,version 5.4.236.0 or greater is required. 
+For BlueSoleil 6.x, version 6.4.236.0 or greater is required.
+For BlueSoleil 8.x, version 8.0.338.0 or greater is required.
+
+2) This is a .net application so the .net framework must be installed. 2.0 is recommended.
+
+
+Installing:
+Copy all files into a folder C:\Program Files\RideRunner\Plugins\MobilePhone\ (not profile mode)
+
+
+You need to pair the phone before using this dll. Do this in bluesoleil itself. Once paired it will remain paired forever unless you unpair.
+
+Next, you need the bluetooth address for the phone. Hover over your phone in bluesoleil and you'll see it. 
+This needs to be added to your mobilephone.xml file for the dll to allow you to connect only that phone. This is for security reasons.
+
+Test Skin
+**********************************************************************************************
+This plugin is supplied with a skin for the Carwings_Dynamic_Lite skin. To install this:
+Copy all files found into the skin folder into the Carwings_Dynamic_Lite skin folder.
+
+
+Skinning
+**********************************************************************************************
+****NOTE*** the onclselclick and onclclick and commands marked with a * only work if the skin file 
+starts with mobilephone. This is to stop interaction problems with other plugins. 
+
+Button commands
+-----------------------------------------------------------------------------------------------
+mobilephone_connect              Connect to the mobilephone hands free
+mobilephone_disconnect           Disconnect from the mobilephone
+
+
+
+Note the following buttons also work as access code entering when in access code mode
+**********************************************************************************************
+
+mobilephone_0                    0 button pressed
+mobilephone_1                    1 button pressed
+mobilephone_2                    2 button pressed
+mobilephone_3                    3 button pressed
+mobilephone_4                    4 button pressed
+mobilephone_5                    5 button pressed
+mobilephone_6                    6 button pressed
+mobilephone_7                    7 button pressed
+mobilephone_8                    8 button pressed
+mobilephone_9                    9 button pressed
+mobilephone_#                    # button pressed
+mobilephone_*                    * button pressed
+mobilephone_+                    + button pressed
+mobilephone_del                  delete button pressed
+mobilephone_clear                Clears the mobilephone_dialbox label.
+mobilephone_mutemic              Mute the phones mic.
+mobilephone_unmutemic            Unmute the phone mic.
+mobilephone_mutespkr             Mute the phone speaker.
+mobilephone_unmutespkr           Unmute the phone speaker and set volume to max.
+
+mobilephone_dial                 begin a call with the number in dialbox.
+mobilephone_pickup               either answer call if ringing,make a call if mobilephoe_dialbox has number or redial last number if mobilephoe_dialbox is empty.
+mobilephone_hangup               terminate current call.
+/mobilephone_cancelaa             cancels auto answer for this call only.
+mobilephone_transaudio           Transfers audio to the phone or headset.
+
+/mobilephone_smssend              send a new sms message
+/mobilephone_smsread              read the incomming sms
+
+/mobilephone_duncon               Start a DUN connection. Cannot use the phone for calls in this mode.
+/mobilephone_dundiscon            Stop the DUN connection.
+
+/mobilephone_pancon               Start a PAN connection. 
+/mobilephone_pandiscon            Stop the PAN connection.
+
+mobilephone_pb_first_entry       Goto first entry
+mobilephone_pb_previous_page     Goto previos page
+mobilephone_pb_previous_entry    Goto previous entry
+mobilephone_pb_next_entry        Goto next entry
+mobilephone_pb_next_page         Goto next page
+mobilephone_pb_last_entry        Goto last entry
+mobilephone_add_entry            Add entry to current phonebook .txt file
+mobilephone_delete_entry         Delete entry from current phonebook .txt file
+mobilephone_edit_entry           Add typed in phonenumber to PC phonebook not yet implemented
+mobilephone_sync                 Loads the ME,SM,RC,DC,MC phonebooks from phone into their respective MobilePhone_xx.txt file
+mobilephone_pc                   Loads the MobilePhone_PC.txt file into the custom list
+mobilephone_me                   Loads the MobilePhone_ME.txt file into the custom list
+mobilephone_sm                   Loads the MobilePhone_SM.txt file into the custom list
+mobilephone_rc                   Loads the MobilePhone_RC.txt file into the custom list
+mobilephone_dc                   Loads the MobilePhone_DC.txt file into the custom list
+mobilephone_mc                   Loads the MobilePhone_MC.txt file into the custom list
+/mobilephone_accesscodecomplete   Commits an access code to be checked.
+
+new commands:
+mobilephone_dial;911					call automatically the 911 (112 is used in EU)
+mobilephone_debugon						open the debug window
+mobilephone_debugoff					close the debug window
+mobilephone_debugclear					clear the debug window
+mobilephone_btstart						start bluesoleil
+mobilephone_btstop						stop bluesoleil	
+mobilephone_microvolume;x				set the volume of the micro where x is 0 to 15
+mobilephone_speakervolume;x				set the volume of the speaker where x is 0 to 15
+mobilephone_phonebooksort;x				sort one of your phone book list where x is me or sm or pc , etc..
+mobilephone_siri
+mobilephone_unformatednumber	format the phone number (delete the (,),-,. or space characters)
+
+new settings commands:
+mobilephone_atcmd;x						send AT command (ex: mobilephone_atcmd;AT+CNMI?)	
+mobilephone_settings					load settings screens
+mobilephone_settings_default			write defaults settings into the .xml file
+mobilephone_settings_apply				write changed settings into the .xml file
+mobilephone_settings_cancel				abort the changed settings
+mobilephone_settings_synconoff			phone book synchro on/off 
+mobilephone_settings_updatedevicelist	devices list update
+mobilephone_settings_updateinfodevice	devices infos update
+mobilephone_settings_updateserviceslist	devices update services
+mobilephone_paired						paire a device
+mobilephone_unpaired					unpaire a device
+mobilephone_deletepaired				delete a paired device
+mobilephone_addcountryprefix			select a prefix country number
+
+'Phonebook'
+mobilephone_phoneprefixbycountry		load the Country phone prefix list
+mobilephone_addpicturetoitem;+33557590878.gif	set a new picture to a item from contact list
+mobilephone_save_entry					save contact custom list after modification
+
+'Alarm'
+mobilephone_phonealarm;"11:15",3,1,"Alarm Text","1,2,3,4,5" set an alarm in the phone (five are possible)
+mobilephone_phonealarmdelete;1			delete phone's alarm (1 to 5)
+
+'SMS'
+mobilephone_smsmodels					load the SMS screen's models  'LOAD;MOBILEPHONE_SMSMODELS.skin'
+mobilephone_smswrite					load the SMS screen for write 'LOAD;MOBILEPHONE_SMSWRITE.skin'
+mobilephone_sendsms						send sms written into the screen 'MOBILEPHONE_SMSWRITE.skin'
+mobilephone_smsreadone;x				read the sms number x
+mobilephone_smsreadone;$MOBILEPHONE_SMSNUMBER$ idem with variable
+mobilephone_smsselectone;+				select sms number x+1
+mobilephone_smsselectone;-				select sms number x-1
+
+Labels
+--------------------------------------------------------------------------------------------------
+Label name                      
+--------------------------------------------------------------------------------------------------
+mobilephone_dialbox                  	Shows current phone number or phone number being typed.
+mobilephone_manufacturer             	Shows the phone manufacturer.
+mobilephone_model                    	Shows the phone model.          
+mobilephone_batterycharging          	Shows if the phone is charging or not.
+mobilephone_communicating            	Shows when communication with phone is in progress
+mobilephone_batterystrength          	0 - 100%    | Shows current battery level as a percentage.
+mobilephone_signalstrength           	0 - 100%    | Shows current signal strength as a percentage.               
+mobilephone_connected                	TRUE/FALSE  | Shows if RoadRunner is currently connected to the phone.               
+mobilephone_network                  	Shows the Network operators name.
+mobilephone_networkavail             	TRUE/FALSE  | Shows whether a network is available.
+mobilephone_ownnumber                	Shows your phone number.
+mobilephone_callerid                 	Shows the caller id of incomming phone call or last caller. 
+mobilephone_callername               	Shows the caller name of incomming phone call or last caller if found in mobilephone_pc.txt file. 
+
+/mobilephone_alarmcode               	Shows a number of *'s depending on the number of code digits entered.
+
+new labels:
+mobilephone_phonestatus				 	Shows the phone's status 'Connected/Not Connected')
+mobilephone_sdkversion               	Shows the current BlueSoleil drivers version
+mobilephone_info                     	Shows Info's plugin
+mobilephone_imei                     	Shows IMEI phone's number
+mobilephone_revision                 	Shows revision phone's number
+mobilephone_atresultcode             	Shows the result of an AT command
+mobilephone_imsi                     	Shows IMSI phon's number
+mobilephone_phonebook                	Shows the phone book type
+mobilephone_phoneconnection          	TRUE/FALSE  | Shows current connection.       
+mobilephone_contactsfromphone        	Shows the number of contacts copied from the phone
+mobilephone_phonebooktypelist        	Shows the list of all types phone book
+mobilephone_phonebooklistinuse       	Shows the phone book type in use
+mobilephone_smstoread
+mobilephone_smsreceivedmemory
+mobilephone_smsreceivednumber
+mobilephone_numberofsmsfound
+mobilephone_operatornames
+mobilephone_missedcall
+mobilephone_phoneselected            	Shows the phone number in use (1 or 2)
+mobilephone_settings_setphone2       	Shows the name of the second phone (setting screen only)
+
+mobilephone_speechrecognized
+mobilephone_speecherror
+
+mobilephone_speechculture				Shows the Actual Culture name
+mobilephone_phoneculture	     		Shows the Country phone prefix
+
+mobilephone_phonetime					phone time
+mobilephone_phonedate					phone date
+
+mobilephone_smsnumber					sms number selected
+mobilephone_smsfromnumber				sms phone number
+mobilephone_smsfromdatetime				sms date time
+
+Variables
+--------------------------------------------------------------------------------------------------
+mobilephone_phonedevicename
+mobilephone_pincode
+mobilephone_unformatednumber			phone number send from another plugin or by command
+
+
+Indicators
+--------------------------------------------------------------------------------------------------
+Indicators                      
+--------------------------------------------------------------------------------------------------
+mobilephone_connected            		TRUE/FALSE  | Shows if RoadRunner is currently connected to the phone.
+mobilephone_batterycharging      		TRUE/FALSE  | Shows if the battery is charging.
+mobilephone_batteryisfull        		TRUE/FALSE  | Shows if the battery is full.
+mobilephone_incommingcall        		TRUE/FALSE  | Shows whether there is an incomming call to answer.
+mobilephone_incall               		TRUE/FALSE  | Shows if currently in a call either made or answered by you.
+mobilephone_messagereceived      		TRUE/FALSE  | Shows if an SMS has been received.
+mobilephone_synchronizing        		TRUE/FALSE  | Shows if RoadRunner is synchronising with the phones address book.
+mobilephone_communicating        		TRUE/FALSE  | Shows if RoadRunner is currntly communicating with the phone. Use to avoid conflicts.
+mobilephone_networkavail         		TRUE/FALSE  | Shows whether a network is available.
+/mobilephone_panconnected         		 TRUE/FALSE  | Shows whether a PAN network is available.
+/mobilephone_dunconnected         		 TRUE/FALSE  | Shows whether a DUN network is available.
+mobilephone_settings_phone2	 	 		TRUE/FALSE  | Shows whether a second phone is defined.
+mobilephone_sdkfound 			 		TRUE/FALSE  | Shows if the sdk is installed
+bt_connected				     		idem mobilephone_sdkfound
+
+New:
+mobilephone_phonebookpicture	 		picture's contact 
+Special Indicators                      
+--------------------------------------------------------------------------------------------------
+"FILE;$mobilephone_photopath$"   		Shows the photo of the caller
+
+sliders
+--------------------------------------------------------------------------------------------------
+mobilephone_batterystrength      		Shows the battery bar
+mobilephone_signalstrength       		Shows the signal bar
+
+
+Events                   
+--------------------------------------------------------------------------------------------------
+ONMOBILEPHONECONNECTED           		Raises an event when the phone is connected.
+ONMOBILEPHONEDISCONNECTED        		Raises an event when the phone is disconnected.
+ONMOBILEPHONERINGING             		Raises an event when an incomming call is detected.
+ONMOBILEPHONEINCALL              		Raises an event when you first answer a call
+ONMOBILEPHONEHUNGUP		 				Raises an event when quit a call
+ONMOBILEPHONENETAVAIL            		Raises an event when first connect to a network.
+ONMOBILEPHONENETUNAVAIL          		Raises an event when first disconnect from a network.
+ONMOBILEPHONEBATTERYFULLCHARGE	 		Raises an event when the battery is 100%
+ONMOBILEPHONEEMERGENCY		 			Raises an event when the phone number = 911 (US) or 112 (EU) (define into the .xml file)
+ONMOBILEPHONEVOICEON		 			Raises an event when voice activation is on
+ONMOBILEPHONEVOICEOFF		 			Raises an event when voice activation is off
+ONMOBILEPHONEEXTPOWERON		 			Raises an event when an external power is connected to the phone
+ONMOBILEPHONEEXTPOWEROFF	 			Raises an event when the phone use it's own battery
+ONMOBILEPHONE1NOTFOUND           		Raises an event when the phone 1 isn't found.
+ONMOBILEPHONE2NOTFOUND           		Raises an event when the phone 2 isn't found.
+
+ONMOBILEPHONESPEECHLOAD		 			Raises an event when the phone speech recognition is loaded
+ONMOBILEPHONESPEECHUNLOAD	 			Raises an event when the phone speech recognition is unloaded
+ONMOBILEPHONESPEECHHELP		 			Raises an event when the phone speech recognition ask the speech help
+ONMOBILEPHONESPEECHSUPP1	 			Raises an event when the phone speech recognition ask the speech supplement 1
+ONMOBILEPHONESPEECHSUPP2	 			Raises an event when the phone speech recognition ask the speech supplement 2
+ONMOBILEPHONESPEECHSUPP3	 			Raises an event when the phone speech recognition ask the speech supplement 3
+
+ONMOBILEPHONESMSISSEND					Raises an event when the phone send a SMS message
+ONMOBILEPHONEMAPISRECEIVED				Raises an event when the phone recieve a new SMS message
+
+
+
+

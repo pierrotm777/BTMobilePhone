@@ -1,0 +1,17 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\obj\Release\ResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\obj\Release\MobilePhone.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\obj\Release\GenerateResource.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\obj\Release\GenerateResource.write.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\MobilePhone.ini
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\obj\Release\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\obj\Release\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\MobilePhone.tlb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\bin\Debug\MobilePhone.ini
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\bin\Debug\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\bin\Debug\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\bin\Debug\MobilePhone.tlb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\bin\Debug\ATSMS.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\bin\Debug\ATSMS.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Original Code\MobilePhone.NET\MobilePhone\bin\Debug\ATSMS.xml

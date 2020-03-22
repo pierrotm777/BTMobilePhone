@@ -1,0 +1,22 @@
+RideRunner Skin
+RRScreen MessageBox.
+MOBILEPHONE_MESSAGE.png,MOBILEPHONE_MESSAGE.png,MOBILEPHONE_MESSAGE.png,MOBILEPHONE_MESSAGE.png,,,clempty.gif
+
+/EFFECTIN=17
+/EFFECTOUT=18
+INC,THEME\$FONTCOLOR$\FONT.elite
+
+IDL,5
+
+[Labels]
+L,18,17,414,25,255,0,0,18,"#FONTFAMILY#","=$MOBILEPHONE_INFO$","CENTER",,"DS=2,2,0,0,0"
+L,200,310,63,25,#FontColorR#,#FontColorG#,#FontColorB#,18,"#FONTFAMILY#","=OK","CENTER",,"DS=2,2,0,0,0"
+
+[LIST]
+SC01,11,56,431,230,#FontColorR#,#FontColorG#,#FontColorB#,01,040,040,0,0,0,255,128,0,TRUE,16,"#FONTFAMILY#",02,"","","mobilephone_delcontactinblacklist"
+IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60 
+
+[Buttons]
+B,4,288,445,70,"ESC",
+ 
+END

@@ -1,0 +1,8 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Vista Speech\Speechpad\Speechpad\bin\Debug\Speechpad.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Vista Speech\Speechpad\Speechpad\bin\Debug\Speechpad.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Vista Speech\Speechpad\Speechpad\obj\Debug\Speechpad.Main.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Vista Speech\Speechpad\Speechpad\obj\Debug\Speechpad.Properties.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Vista Speech\Speechpad\Speechpad\obj\Debug\Speechpad.TextDocument.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Vista Speech\Speechpad\Speechpad\obj\Debug\Speechpad.csproj.GenerateResource.Cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Vista Speech\Speechpad\Speechpad\obj\Debug\Speechpad.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Vista Speech\Speechpad\Speechpad\obj\Debug\Speechpad.pdb

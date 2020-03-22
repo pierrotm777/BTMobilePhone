@@ -1,0 +1,19 @@
+RoadRunner Skin
+RRScreen selekt_port
+picture_open.jpg,picture_open.jpg,,
+B,91,286,567,52,tapport@4@open@podro,
+B,92,229,567,52,tapport@3@open@podro,
+B,91,170,567,52,tapport@2@open@podro,
+B,92,109,567,52,tapport@1@open@podro,
+W,86,105,578,238,255,255,255,28,"Arial",booksearch@30@4,
+B,418,383,134,55,setti@open@menu.skin,
+B,267,384,134,55,,setti@open@menu.skin
+B,622,368,131,69,lvniz@,
+B,51,370,131,69,lvverh@,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,
+L,270,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

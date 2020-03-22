@@ -1,0 +1,22 @@
+RoadRunner Skin
+RRScreen sms
+sms_on.jpg,sms_vhodiashie.jpg,,
+B,91,287,567,52,taprov@4,
+B,92,229,567,52,taprov@3,
+B,91,170,567,52,taprov@2,
+B,92,109,567,52,taprov@1,
+W,86,105,578,238,255,255,255,28,"Arial",booksearch@30@4,
+B,668,149,132,65,openoutsms@open@sms_ishodiashie.skin,
+B,667,235,132,65,send@gg,
+B,417,386,132,53,setti@open@menu.skin,
+B,270,385,132,53,,
+B,667,313,132,65,setti@open@sms_createt_text.skin,
+B,17,260,60,80,lvniz@,
+B,18,118,60,80,lvverh@,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

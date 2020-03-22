@@ -1,0 +1,140 @@
+
+Option Strict On
+  
+Public Class Form1
+    'One timer controls the entire game loop
+    Private WithEvents Timer1 As New Timer
+  
+    'A list of the game tile objects used by the game
+    Private _GameTiles As New List(Of GameTile)
+    'An instance of GameTime to track running game time
+    Private _GameTime As New GameTime
+  
+    'Two bitmaps and a boolean used to buffer drawing and rendering
+    Private _Buffer1 As New Bitmap(ClientSize.width, ClientSize.height)
+    Private _Buffer2 As New Bitmap(_Buffer1.Width, _Buffer1.Height)
+    Private _BufferFlag As Boolean
+  
+    Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        'setup the form
+        Me.DoubleBuffered = True
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.Fixed3D
+        'load some image assets to use for frames of animation
+        Dim imageList As New List(Of Image)
+        imageList.Add(SystemIcons.Application.ToBitmap)
+        imageList.Add(SystemIcons.Error.ToBitmap)
+        imageList.Add(SystemIcons.Exclamation.ToBitmap)
+        imageList.Add(SystemIcons.Information.ToBitmap)
+        imageList.Add(SystemIcons.Question.ToBitmap)
+        'create a grid of tiles
+        For y As Integer = 0 To 7
+            For x As Integer = 0 To 7
+                Dim tile As New GameTile
+                tile.FrameImages.AddRange(imageList)
+                tile.Location = New Point(12 + (x * tile.Bounds.Width), 12 + (y * tile.Bounds.Height))
+                _GameTiles.Add(tile)
+            Next
+        Next
+        'set the game time to 30 fps (1000ms / 30frames)
+        Timer1.Interval = 33
+        'start the game loop
+        Timer1.Start()
+    End Sub
+  
+    'Use a stopwatch to track the execution time
+    Private _ElapsedTime As New Stopwatch
+    Private Sub Timer1_Tick(sender As Object, e As System.EventArgs) Handles Timer1.Tick
+        _ElapsedTime.Stop()
+        'Record they time since the last loop iteration
+        _GameTime.Elapse(_ElapsedTime.ElapsedMilliseconds)
+        'Reset the stopwatch to 0 and start tracking again
+        _ElapsedTime.Restart()
+        'Run a loop to check input for each item.
+        For Each tile In _GameTiles
+            If MouseButtons = Windows.Forms.MouseButtons.Left Then
+                If tile.Bounds.Contains(PointToClient(MousePosition)) Then
+                    tile.OnInput(_GameTime)
+                End If
+            End If
+        Next
+        'Run a loop to draw each item after determining which
+        'buffer to draw on this frame
+        Dim gfx As Graphics
+        If _BufferFlag Then
+            gfx = Graphics.FromImage(_Buffer1)
+        Else
+            gfx = Graphics.FromImage(_Buffer2)
+        End If
+        gfx.Clear(BackColor)
+        For Each tile In _GameTiles
+            tile.OnDraw(_GameTime, gfx)
+        Next
+        'Cleanup and swap buffers
+        gfx.Dispose()
+        _BufferFlag = Not _BufferFlag
+        'Show the drawn scene
+        Invalidate()
+    End Sub
+  
+    Protected Overrides Sub OnPaint(e As System.Windows.Forms.PaintEventArgs)
+        MyBase.OnPaint(e)
+        'Draw the approprite render buffer
+        If _BufferFlag Then
+            e.Graphics.DrawImageUnscaled(_Buffer2, Point.Empty)
+        Else
+            e.Graphics.DrawImageUnscaled(_Buffer1, Point.Empty)
+        End If
+    End Sub
+End Class
+  
+Public Class GameTile
+    Public Property Location As Point
+    Public Property FrameImages As New List(Of Image)
+    'this is the images per second of the animation
+    Public Property FrameRate As Double = 8.0
+    'this is the total time to animate after recieving a click
+    Private _AnimationTime As Double
+  
+    Public ReadOnly Property Bounds As Rectangle
+        Get
+            Return New Rectangle(Location, FrameImages(CurrentFrameIndex).Size)
+        End Get
+    End Property
+  
+    Private _FrameIndex As Double
+    Public ReadOnly Property CurrentFrameIndex As Integer
+        Get
+            Return CInt(Math.Floor(_FrameIndex))
+        End Get
+    End Property
+  
+    Public Sub OnInput(gameTime As GameTime)
+        'set the remaining animation time to 3 seconds when clicked
+        _AnimationTime = 3.0
+    End Sub
+  
+    Public Sub OnDraw(gameTime As GameTime, gfx As Graphics)
+        'draw the current frame at its current location
+        gfx.DrawImageUnscaled(FrameImages(CurrentFrameIndex), Location)
+        'if there is remaining animation time, then animate
+        If _AnimationTime > 0 Then
+            _FrameIndex += gameTime.LastFrame * FrameRate
+            If CurrentFrameIndex = FrameImages.Count Then _FrameIndex = 0.0
+            _AnimationTime -= gameTime.LastFrame
+        Else
+            _FrameIndex = 0.0
+        End If
+    End Sub
+End Class
+  
+'GameTime can be a simple structure or class which just tracks executed
+'game time based on what the game loop tells it
+Public Structure GameTime
+    Public ElapsedTime As TimeSpan
+    Public LastFrame As Double
+  
+    Public Sub Elapse(milliseconds As Long)
+        ElapsedTime += TimeSpan.FromMilliseconds(milliseconds)
+        LastFrame = milliseconds / 1000
+    End Sub
+End Structure

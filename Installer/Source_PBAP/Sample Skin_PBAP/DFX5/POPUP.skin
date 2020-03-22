@@ -1,0 +1,15 @@
+RideRunner Skin
+RRScreen "POPUP"
+popup.png,popup.png,popup.png,popup.png
+
+IDLE,5,"Esc"
+INC,DFX_Font_Color.txt
+
+/EFFECTIN=17
+/EFFECTOUT=18
+/TRANSTIME=.4
+
+[Label]
+L,8,50,740,36,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=$POPUP$","SCROLL-CENTER",,"DS=2,2,0,0,0"
+ 
+END

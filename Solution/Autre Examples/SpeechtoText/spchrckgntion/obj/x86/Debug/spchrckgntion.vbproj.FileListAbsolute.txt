@@ -1,0 +1,22 @@
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\bin\Debug\spchrckgntion.exe
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\bin\Debug\spchrckgntion.pdb
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\bin\Debug\spchrckgntion.xml
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\obj\x86\Debug\spchrckgntion.Form1.resources
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\obj\x86\Debug\spchrckgntion.Resources.resources
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\obj\x86\Debug\spchrckgntion.exe
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\obj\x86\Debug\spchrckgntion.xml
+C:\Users\Maha\AppData\Local\Temporary Projects\spchrckgntion\obj\x86\Debug\spchrckgntion.pdb
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\obj\x86\Debug\spchrckgntion.exe
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\obj\x86\Debug\spchrckgntion.xml
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\obj\x86\Debug\spchrckgntion.pdb
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\bin\Debug\spchrckgntion.exe
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\bin\Debug\spchrckgntion.pdb
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\bin\Debug\spchrckgntion.xml
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\obj\x86\Debug\spchrckgntion.Form1.resources
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\obj\x86\Debug\spchrckgntion.Resources.resources
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\mhmd\visual studio 2010\spchrckgntion\spchrckgntion\obj\x86\Debug\GenerateResource.write.1.tlog

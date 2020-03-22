@@ -1,0 +1,21 @@
+RideRunner Skin
+RRScreen mobilecall
+MobileCall_Off.png,MobileCall_Off.png,MobileCall_On.png,MobileCall_Off.png 
+INC,DFX_Font_Color.txt
+
+[Labels]
+L,7,10,484,32,#DFX1R#,#DFX1G#,#DFX1B#,20,#DFXFont#,"=You Have an Incoming Call","CENTER"
+L,18,84,85,32,#DFX1R#,#DFX1G#,#DFX1B#,20,#DFXFont#,"=Name:","LEFT"
+L,19,153,106,32,#DFX1R#,#DFX1G#,#DFX1B#,20,#DFXFont#,"=Number:","LEFT"
+L,115,84,219,32,#DFX1R#,#DFX1G#,#DFX1B#,20,#DFXFont#,"mobilephone_callername","LEFT"
+I,359,75,125,122,"FILE;$mobilephone_photopath$" 
+L,134,153,201,32,#DFX1R#,#DFX1G#,#DFX1B#,20,#DFXFont#,"mobilephone_callerid","LEFT"
+
+[Buttons]
+B01,10,218,157,112,"MOBILEPHONE_PICKUP||MOBILEPHONE_UNMUTEMIC||MOBILEPHONE_UNMUTESPKR",""
+B03,172,217,166,112,"MOBILEPHONE_TRANSAUDIO",""
+B02,339,218,153,112,"MOBILEPHONE_HANGUP","" 
+
+[Indicators]
+ 
+END

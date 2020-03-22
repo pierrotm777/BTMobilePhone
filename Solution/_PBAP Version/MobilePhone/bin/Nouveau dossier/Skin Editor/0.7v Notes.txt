@@ -1,0 +1,22 @@
+
+NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE 
+
+	NOTE: Once you start using this version, you will have to delete your 
+	      "settings.txt" file before going back to the 0.6 version. If you 
+	      do not do that, you will get an "Error: 53", File not found message.
+	      You have been worned!
+
+NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE
+
+
+Changes/Additions
+=================
+
+These 3 Screen Menu items have been moved to a new "Actions" Menu and the "skin" part changed to "screen"
+	Create new skin
+	Copy current skin
+	Delete current skin
+
+A New "Recent" Menu added next to the "Screens" menu to easly navigate back to a previously viewed screens
+Upon saving a skin, it also remembesr the Recent history for next time.
+

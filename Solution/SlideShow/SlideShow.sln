@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Basic Express 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SlideShow", "SlideShow\SlideShow.vbproj", "{A4D19275-79F0-4EB3-ADD1-7E2170AC3BBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4D19275-79F0-4EB3-ADD1-7E2170AC3BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D19275-79F0-4EB3-ADD1-7E2170AC3BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D19275-79F0-4EB3-ADD1-7E2170AC3BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D19275-79F0-4EB3-ADD1-7E2170AC3BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

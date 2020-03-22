@@ -1,0 +1,9 @@
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers.Test\bin\Debug\PhoneNumbers.Test.dll
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers.Test\bin\Debug\PhoneNumbers.Test.pdb
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers.Test\bin\Debug\nunit.framework.dll
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers.Test\bin\Debug\PhoneNumbers.dll
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers.Test\bin\Debug\PhoneNumbers.pdb
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers.Test\bin\Debug\nunit.framework.xml
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers.Test\obj\Debug\PhoneNumbers.Test.csprojResolveAssemblyReference.cache
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers.Test\obj\Debug\PhoneNumbers.Test.dll
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers.Test\obj\Debug\PhoneNumbers.Test.pdb

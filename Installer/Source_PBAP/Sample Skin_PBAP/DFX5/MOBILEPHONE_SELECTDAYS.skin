@@ -1,0 +1,37 @@
+RideRunner Skin
+RRScreen MessageBox_Ok.
+MOBILEPHONE_MESSAGE_Off.png,MOBILEPHONE_MESSAGE_Off.png,MOBILEPHONE_MESSAGE_On.png,MOBILEPHONE_MESSAGE_Off.png
+
+/EFFECTIN=17
+
+/EFFECTOUT=18
+INC,DFX_Font_Color.txt
+
+[Labels]
+L,12,12,374,25,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=$MOBILEPHONE_INFO$","CENTER",
+L,56,53,108,27,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Monday","LEFT",
+L,56,87,115,27,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Tuesday","LEFT",
+L,55,122,132,27,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Wednesday","LEFT",
+L,243,53,104,27,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Friday","LEFT",
+L,243,87,124,27,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Saturday","LEFT",
+L,243,122,124,27,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Sunday","LEFT",
+L,243,157,124,27,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Week","LEFT",
+L,144,316,119,27,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Return","CENTER",
+L,55,157,119,27,#DFX1R#,#DFX1G#,#DFX1B#,18,#DFXFont#,"=Thirsday","LEFT",
+
+[Indicators]
+I,18,52,27,27,"MOBILEPHONE_ALARM_MONDAY",,,"Indicators\Check_*.png"
+I,205,52,27,27,"MOBILEPHONE_ALARM_FRIDAY",,,"Indicators\Check_*.png"
+I,205,87,27,27,"MOBILEPHONE_ALARM_SATURDAY",,,"Indicators\Check_*.png"
+I,205,122,27,27,"MOBILEPHONE_ALARM_SUNDAY",,,"Indicators\Check_*.png"
+I,205,157,27,27,"MOBILEPHONE_ALARM_WEEKDAY",,,"Indicators\Check_*.png"
+I,19,86,27,27,"MOBILEPHONE_ALARM_TUESDAY",,,"Indicators\Check_*.png"
+I,18,122,27,27,"MOBILEPHONE_ALARM_WEDNESDAY",,,"Indicators\Check_*.png"
+I,19,157,27,27,"MOBILEPHONE_ALARM_THIRSDAY",,,"Indicators\Check_*.png"
+
+[Buttons]
+B,116,278,171,83,"ESC",
+IMG,122,291,160,60,"Button_one_Off.png",OFF
+IMG,122,291,160,60,"Button_one_On.png",ON
+ 
+END

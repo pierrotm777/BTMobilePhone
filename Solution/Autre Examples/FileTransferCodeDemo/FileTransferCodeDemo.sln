@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Basic Express 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FileTransferCodeDemo", "FileTransferCodeDemo\FileTransferCodeDemo.vbproj", "{146BF32A-30B3-4D37-9895-F3CC8ACAA379}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "NokiaS40", "NokiaS40\NokiaS40.vbproj", "{69A0B005-F67B-48A4-A3EA-66CB360BECC5}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Moto", "MotoC650\Moto.vbproj", "{A45A78EA-CB7A-4653-A3DA-017F8E37D3DF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Samsung", "Samsung\Samsung.vbproj", "{EBBC76E3-25EB-4F20-8589-27686165D9BD}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SonyEricsson", "SonyEricsson\SonyEricsson.vbproj", "{A33EEE71-31DF-4F49-AF70-A0731CAA70B7}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SDK", "SDK\SDK.vbproj", "{F7DEDA6A-CA6C-417B-BE9A-7B6F5F23B5C8}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Siemens CX6C", "Siemens\Siemens CX6C.vbproj", "{908CC5D3-333A-4397-8D44-27402FC41CEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{146BF32A-30B3-4D37-9895-F3CC8ACAA379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146BF32A-30B3-4D37-9895-F3CC8ACAA379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146BF32A-30B3-4D37-9895-F3CC8ACAA379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146BF32A-30B3-4D37-9895-F3CC8ACAA379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69A0B005-F67B-48A4-A3EA-66CB360BECC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A0B005-F67B-48A4-A3EA-66CB360BECC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A0B005-F67B-48A4-A3EA-66CB360BECC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A0B005-F67B-48A4-A3EA-66CB360BECC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A45A78EA-CB7A-4653-A3DA-017F8E37D3DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A45A78EA-CB7A-4653-A3DA-017F8E37D3DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A45A78EA-CB7A-4653-A3DA-017F8E37D3DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A45A78EA-CB7A-4653-A3DA-017F8E37D3DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBBC76E3-25EB-4F20-8589-27686165D9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBBC76E3-25EB-4F20-8589-27686165D9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBBC76E3-25EB-4F20-8589-27686165D9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBBC76E3-25EB-4F20-8589-27686165D9BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A33EEE71-31DF-4F49-AF70-A0731CAA70B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A33EEE71-31DF-4F49-AF70-A0731CAA70B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A33EEE71-31DF-4F49-AF70-A0731CAA70B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A33EEE71-31DF-4F49-AF70-A0731CAA70B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7DEDA6A-CA6C-417B-BE9A-7B6F5F23B5C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DEDA6A-CA6C-417B-BE9A-7B6F5F23B5C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DEDA6A-CA6C-417B-BE9A-7B6F5F23B5C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DEDA6A-CA6C-417B-BE9A-7B6F5F23B5C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{908CC5D3-333A-4397-8D44-27402FC41CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908CC5D3-333A-4397-8D44-27402FC41CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908CC5D3-333A-4397-8D44-27402FC41CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908CC5D3-333A-4397-8D44-27402FC41CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

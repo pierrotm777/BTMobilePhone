@@ -1,0 +1,38 @@
+RideRunner Skin
+RRScreen MOBILEPHONE_SETPHONETYPE
+MOBILEPHONE_CHOOSENUMBER_off.png,MOBILEPHONE_CHOOSENUMBER_off.png,MOBILEPHONE_CHOOSENUMBER_on.png,MOBILEPHONE_CHOOSENUMBER_on.png
+IDL,10,"ESC"
+
+[ REQUIRED FILES TO LOAD ]
+INC,THEME\$FONTCOLOR$\FONT.elite
+
+/EFFECTIN=17
+
+/EFFECTOUT=18
+L,74,16,250,40,#FontColorR#,#FontColorG#,#FontColorB#,24,"#FONTFAMILY#","=$l_set_BTM_Mobile_Number$","LEFT",
+L,74,72,250,40,#FontColorR#,#FontColorG#,#FontColorB#,24,"#FONTFAMILY#","=$l_set_BTM_Home_Number$","LEFT",
+L,74,125,250,40,#FontColorR#,#FontColorG#,#FontColorB#,24,"#FONTFAMILY#","=$l_set_BTM_Work_Number$","LEFT",
+L,74,179,250,40,#FontColorR#,#FontColorG#,#FontColorB#,24,"#FONTFAMILY#","=$l_set_BTM_Fax_Number$","LEFT",
+L,211,330,98,40,#FontColorR#,#FontColorG#,#FontColorB#,24,"#FONTFAMILY#","=Quit","CENTER",
+L,74,234,250,40,#FontColorR#,#FontColorG#,#FontColorB#,24,"#FONTFAMILY#","=$l_set_BTM_Other_Number$","LEFT",
+
+/
+B10,69,6,307,60,"Esc||SetVar;PhoneNumberNType;1",
+B10,69,64,307,54,"Esc||SetVar;PhoneNumberNType;2",
+B06,69,117,307,54,"Esc||SetVar;PhoneNumberNType;3",
+B10,69,172,307,52,"Esc||SetVar;PhoneNumberNType;4",
+B10,69,226,307,54,"Esc||SetVar;PhoneNumberNType;5",
+
+/
+IMG,18,18,44,40,"$SKINPATH$Indicators\phone_mobile.png",all
+IMG,18,72,44,40,"$SKINPATH$Indicators\phone_home.png",all
+IMG,18,126,44,40,"$SKINPATH$Indicators\phone_work.png",all
+IMG,18,180,44,40,"$SKINPATH$Indicators\phone_fax.png",all
+IMG,18,234,44,40,"$SKINPATH$Indicators\phone_other.png"
+
+/
+B,127,314,266,72,"CANCEL",""
+I05,400,13,135,128,"VAR;MOBILEPHONE_NEWPHOTOPATH",,,""
+L,382,144,171,27,#FontColorR#,#FontColorG#,#FontColorB#,18,"#FONTFAMILY#","=$MOBILEPHONE_NAME$","SCROLL-LEFT",
+ 
+END

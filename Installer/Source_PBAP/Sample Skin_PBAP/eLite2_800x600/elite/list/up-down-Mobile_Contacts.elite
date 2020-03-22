@@ -1,0 +1,9 @@
+IMG,7,78,77,88,"icons\list\arrow-pg-up.png",ALL
+IMG,7,175,78,85,"icons\list\arrow-up.png",ALL
+IMG,7,269,78,86,"icons\list\arrow-down.png",ALL
+IMG,7,363,78,87,"icons\list\arrow-pg-down.png",ALL
+
+B,8,75,76,95,"PGUP||MOBILEPHONE_UPDATECL",
+B,7,172,76,91,"UP||MOBILEPHONE_UPDATECL",
+B,7,265,76,93,"DOWN||MOBILEPHONE_UPDATECL",
+B,7,359,76,94,"PGDOWN||MOBILEPHONE_UPDATECL",

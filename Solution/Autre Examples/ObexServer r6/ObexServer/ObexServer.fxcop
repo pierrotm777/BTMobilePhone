@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="1.36" Name="My FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">d:\program files\microsoft fxcop 1.35\Xml\FxCopReport.Xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>100</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>10</RuleExceptionsThreshold>
+  <Spelling Locale="en-GB" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <Target Name="$(ProjectDir)/CmdlineRunner/bin/CodeAnalysis/CmdlineRunner.exe" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/CmdlineRunner/bin/CodeAnalysis/ObexServer.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/WinFormsRunner/bin/CodeAnalysis/WinFormsRunner.exe" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="1.36">
+  <Namespaces>
+   <Namespace Name="CmdlineRunner">
+    <Messages>
+     <Message Id="Cmdline" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2006-12-26 12:07:55Z">
+      <Issue Name="Namespace">
+       <Item>Cmdline</Item>
+       <Item>CmdlineRunner</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="ForCf">
+    <Messages>
+     <Message Id="Cf" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2010-03-13 13:04:41Z">
+      <Issue Name="Namespace">
+       <Item>Cf</Item>
+       <Item>ForCf</Item>
+       <Item>CF</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+  </Namespaces>
+  <Targets>
+   <Target Name="$(ProjectDir)/CmdlineRunner/bin/CodeAnalysis/CmdlineRunner.exe">
+    <Modules>
+     <Module Name="cmdlinerunner.exe">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2006-12-26 12:07:55Z">
+        <Issue Name="NoStrongName">
+         <Item>'CmdlineRunner.exe'</Item>
+        </Issue>
+       </Message>
+       <Message Id="Cmdline" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2010-03-13 11:57:43Z">
+        <Issue Name="Assembly">
+         <Item>Cmdline</Item>
+         <Item>'CmdlineRunner.exe'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="CmdlineRunner">
+        <Types>
+         <Type Name="NetworkServer">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2008-01-01 10:44:15Z" FixCategory="Breaking">
+            <Issue Name="DependsOnFix">
+             <Item>'NetworkServer'</Item>
+             <Item>'ManualResetEvent'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Create_BluetoothListener(System.Guid,InTheHand.Net.Bluetooth.ServiceRecord)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2010-03-13 11:57:43Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'NetworkServer.Create_BluetoothListener(Guid, ServiceRecord)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#CreateFilePathSafely(ObexServer.IObexServer,System.IO.DirectoryInfo,System.String)">
+            <Messages>
+             <Message Id="server" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2008-01-01 14:07:36Z" FixCategory="Breaking">
+              <Issue>
+               <Item>'server'</Item>
+               <Item>'NetworkServer.CreateFilePathSafely(IObexServer, DirectoryInfo, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#FolderNormalizeAndSecurityCheck(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-01-01 14:07:36Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'NetworkServer.FolderNormalizeAndSecurityCheck(DirectoryInfo, DirectoryInfo)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#FolderNormalizeAndSecurityCheck(System.String,System.String,System.IO.DirectoryInfo&amp;)">
+            <Messages>
+             <Message Id="2#" TypeName="AvoidOutParameters" Category="Microsoft.Design" CheckId="CA1021" Created="2008-01-01 10:44:15Z">
+              <Issue>
+               <Item>'folder'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#m_console">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Created="2010-03-13 11:57:43Z">
+              <Issue>
+               <Item>'NetworkServer.m_console'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#WritePutToNull(System.Object,ObexServer.CreatePutStreamEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2007-12-09 13:10:52Z">
+              <Issue>
+               <Item>'NetworkServer.WritePutToNull(object, CreatePutStreamEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Program">
+          <Members>
+           <Member Name="#CreateBigFiles()">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-01-01 10:44:15Z">
+              <Issue>
+               <Item>'Program.CreateBigFiles()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#CreateFileOfLength(System.String,System.Int64)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2008-01-01 10:44:15Z">
+              <Issue>
+               <Item>'Program.CreateFileOfLength(string, long)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DumpTraceListeners()">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2010-03-13 11:57:43Z">
+              <Issue>
+               <Item>'Program.DumpTraceListeners()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PutToNullServer">
+          <Messages>
+           <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Created="2006-12-26 12:07:55Z">
+            <Issue>
+             <Item>'PutToNullServer'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="SocketClient">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2010-03-13 11:57:43Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'SocketClient'</Item>
+             <Item>'NetworkStream'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(InTheHand.Net.Sockets.IrDAClient)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2010-03-13 11:57:43Z">
+              <Issue>
+               <Item>'SocketClient.SocketClient(IrDAClient)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#.ctor(System.Net.Sockets.TcpClient)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2010-03-13 11:57:43Z">
+              <Issue>
+               <Item>'SocketClient.SocketClient(TcpClient)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RemoteEndPoint">
+            <Messages>
+             <Message Id="EndPoint" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2010-03-13 11:57:43Z">
+              <Issue Name="MemberShouldBeDiscreteTerm">
+               <Item>EndPoint</Item>
+               <Item>'SocketClient.RemoteEndPoint'</Item>
+               <Item>Endpoint</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/CmdlineRunner/bin/CodeAnalysis/ObexServer.dll">
+    <Modules>
+     <Module Name="obexserver.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2006-12-26 12:07:55Z">
+        <Issue Name="NoStrongName">
+         <Item>'ObexServer.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="ObexServer">
+        <Types>
+         <Type Name="Async2ObexServerHost">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2010-03-13 11:57:43Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'Async2ObexServerHost'</Item>
+             <Item>'SocketAsyncEventArgs'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#CheckSocketAsyncEventArgs_(System.Net.Sockets.SocketAsyncEventArgs)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2010-03-13 11:57:43Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Async2ObexServerHost.CheckSocketAsyncEventArgs_(SocketAsyncEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ObexInboxServer">
+          <Members>
+           <Member Name="#HandlePutAbandon()">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2006-12-26 12:07:55Z">
+              <Issue>
+               <Item>'ObexInboxServer.HandlePutAbandon()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#m_folder">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Created="2010-03-13 11:57:43Z">
+              <Issue>
+               <Item>'ObexInboxServer.m_folder'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SetLocalPassphrase(System.String)">
+            <Messages>
+             <Message Id="Passphrase" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2010-03-13 11:57:43Z">
+              <Issue Name="Member">
+               <Item>Passphrase</Item>
+               <Item>'ObexInboxServer.SetLocalPassphrase(string)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="passphrase" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2010-03-13 11:57:43Z">
+              <Issue Name="MemberParameter">
+               <Item>'ObexInboxServer.SetLocalPassphrase(string)'</Item>
+               <Item>passphrase</Item>
+               <Item>'passphrase'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2010-03-13 11:57:43Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'ObexInboxServer.SetLocalPassphrase(string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ObexServerHost">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2007-12-05 19:32:30Z" FixCategory="Breaking">
+            <Issue Name="DependsOnFix">
+             <Item>'ObexServerHost'</Item>
+             <Item>'ManualResetEvent'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#CloseClientFatalError(ObexServer.ServerExitReason,System.Exception)">
+            <Messages>
+             <Message Id="error" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2007-12-05 19:32:30Z" FixCategory="Breaking">
+              <Issue>
+               <Item>'error'</Item>
+               <Item>'ObexServerHost.CloseClientFatalError(ServerExitReason, Exception)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#CloseClientFatalError(ObexServer.ServerExitReason,System.String)">
+            <Messages>
+             <Message Id="reason" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2007-12-05 19:32:30Z" FixCategory="Breaking">
+              <Issue>
+               <Item>'reason'</Item>
+               <Item>'ObexServerHost.CloseClientFatalError(ServerExitReason, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#m_closed">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Created="2007-12-05 19:32:30Z">
+              <Issue>
+               <Item>'ObexServerHost.m_closed'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#m_error">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Created="2007-12-05 19:32:30Z">
+              <Issue>
+               <Item>'ObexServerHost.m_error'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#m_pduHandler">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Created="2007-12-05 19:32:30Z">
+              <Issue>
+               <Item>'ObexServerHost.m_pduHandler'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#m_peer">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Created="2007-12-05 19:32:30Z">
+              <Issue>
+               <Item>'ObexServerHost.m_peer'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RemoteEndPoint">
+            <Messages>
+             <Message Id="EndPoint" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2010-03-13 11:57:43Z">
+              <Issue Name="MemberShouldBeDiscreteTerm">
+               <Item>EndPoint</Item>
+               <Item>'ObexServerHost.RemoteEndPoint'</Item>
+               <Item>Endpoint</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RethrowAnyErrorInTIEx()">
+            <Messages>
+             <Message TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711" Created="2010-03-13 11:57:43Z">
+              <Issue Name="MemberNewerVersion">
+               <Item>Ex</Item>
+               <Item>'ObexServerHost.RethrowAnyErrorInTIEx()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#s_trace">
+            <Messages>
+             <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'ObexServerHost.s_trace'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SetRemoteEndPoint(System.Net.EndPoint)">
+            <Messages>
+             <Message Id="EndPoint" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2010-03-13 11:57:43Z">
+              <Issue Name="MemberShouldBeDiscreteTerm">
+               <Item>EndPoint</Item>
+               <Item>'ObexServerHost.SetRemoteEndPoint(EndPoint)'</Item>
+               <Item>Endpoint</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ServerExitReason">
+          <Members>
+           <Member Name="#ConnectionHardCloseOutwithAPdu">
+            <Messages>
+             <Message Id="Outwith" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2006-12-26 12:07:55Z">
+              <Issue Name="Member">
+               <Item>Outwith</Item>
+               <Item>'ServerExitReason.ConnectionHardCloseOutwithAPdu'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/WinFormsRunner/bin/CodeAnalysis/WinFormsRunner.exe">
+    <Modules>
+     <Module Name="winformsrunner.exe">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2010-03-13 13:04:41Z">
+        <Issue Name="NoStrongName">
+         <Item>'WinFormsRunner.exe'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2010-03-13 13:04:41Z">
+        <Issue>
+         <Item>'WinFormsRunner.exe'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824" Created="2010-03-13 13:04:41Z">
+        <Issue>
+         <Item>'WinFormsRunner.exe'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="AndyH.SWF">
+        <Types>
+         <Type Name="FormsControlWriter">
+          <Members>
+           <Member Name="#.ctor(System.Windows.Forms.Control)">
+            <Messages>
+             <Message Id="System.IO.TextWriter.#ctor" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'TextWriter.TextWriter()'</Item>
+               <Item>'FormsControlWriter.FormsControlWriter(Control)'</Item>
+               <Item>'TextWriter.TextWriter(IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="CmdlineRunner">
+        <Types>
+         <Type Name="NetworkServer">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2010-03-13 13:04:41Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'NetworkServer'</Item>
+             <Item>'ManualResetEvent'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Create_BluetoothListener(System.Guid,InTheHand.Net.Bluetooth.ServiceRecord)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2010-03-13 13:04:41Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'NetworkServer.Create_BluetoothListener(Guid, ServiceRecord)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#CreateFilePathSafely(ObexServer.IObexServer,System.IO.DirectoryInfo,System.String)">
+            <Messages>
+             <Message Id="server" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2010-03-13 13:04:41Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'server'</Item>
+               <Item>'NetworkServer.CreateFilePathSafely(IObexServer, DirectoryInfo, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#FolderNormalizeAndSecurityCheck(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2010-03-13 13:04:41Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'NetworkServer.FolderNormalizeAndSecurityCheck(DirectoryInfo, DirectoryInfo)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#FolderNormalizeAndSecurityCheck(System.String,System.String,System.IO.DirectoryInfo&amp;)">
+            <Messages>
+             <Message Id="2#" TypeName="AvoidOutParameters" Category="Microsoft.Design" CheckId="CA1021" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'folder'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#m_console">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'NetworkServer.m_console'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#WritePutToNull(System.Object,ObexServer.CreatePutStreamEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'NetworkServer.WritePutToNull(object, CreatePutStreamEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PutToNullServer">
+          <Messages>
+           <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Created="2010-03-13 13:04:41Z">
+            <Issue>
+             <Item>'PutToNullServer'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="SocketClient">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2010-03-13 13:04:41Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'SocketClient'</Item>
+             <Item>'NetworkStream'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(InTheHand.Net.Sockets.IrDAClient)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'SocketClient.SocketClient(IrDAClient)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#.ctor(System.Net.Sockets.TcpClient)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'SocketClient.SocketClient(TcpClient)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RemoteEndPoint">
+            <Messages>
+             <Message Id="EndPoint" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2010-03-13 13:04:41Z">
+              <Issue Name="MemberShouldBeDiscreteTerm">
+               <Item>EndPoint</Item>
+               <Item>'SocketClient.RemoteEndPoint'</Item>
+               <Item>Endpoint</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="ForCf">
+        <Types>
+         <Type Name="Form1">
+          <Members>
+           <Member Name="#menuItemQuit_Click(System.Object,System.EventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'Form1.menuItemQuit_Click(object, EventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#menuItemStart_Click(System.Object,System.EventArgs)">
+            <Messages>
+             <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'Form1.menuItemStart_Click(object, EventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#MessageBox_Show(System.Windows.Forms.Form,System.String,System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2010-03-13 13:04:41Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'Form1.MessageBox_Show(Form, string, string)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'Form1.MessageBox_Show(Form, string, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="NetworkStartDialog">
+          <Members>
+           <Member Name="#NetworkStartDialog_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <Messages>
+             <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Created="2010-03-13 13:04:41Z">
+              <Issue>
+               <Item>'NetworkStartDialog.NetworkStartDialog_Closing(object, CancelEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Rules>
+   <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+    <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidOutParameters" Category="Microsoft.Design" CheckId="CA1021">
+    <Resolution Name="Default">Consider a design that does not require that {0} be an out parameter.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+    <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812">
+    <Resolution Name="Default">{0} is an internal class that is apparently never instantiated. If so, remove the code from the assembly. If this class is intended to contain only static methods, consider adding a private constructor to prevent the compiler from generating a default constructor.</Resolution>
+   </Rule>
+   <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
+    <Resolution Name="MemberShouldBeDiscreteTerm">The compound word '{0}' in member name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}' or strip the first token entirely if it represents any sort of Hungarian notation.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051">
+    <Resolution Name="Default">Because field {0} is visible outside of its declaring type, change its accessibility to private and add a property, with the same accessibility as the field has currently, to provide access to it.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+    <Resolution Name="Namespace">Correct the casing of '{0}' in namespace name '{1}' by changing it to '{2}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+    <Resolution Name="Assembly">Correct the spelling of '{0}' in assembly name {1}.</Resolution>
+    <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="MemberParameter">In method {0}, correct the spelling of '{1}' in parameter name {2} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="Namespace">Correct the spelling of '{0}' in namespace name '{1}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711">
+    <Resolution Name="MemberNewerVersion">Either replace the suffix '{0}' in member name {1} with the suggested numeric alternate '2' or provide a more meaningful suffix that distinguishes it from the member it replaces.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
+    <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824">
+    <Resolution Name="Default">Because assembly {0} contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+    <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   </Rule>
+   <Rule TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211">
+    <Resolution Name="Default">Consider making {0} non-public or a constant.</Resolution>
+   </Rule>
+   <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+    <Resolution Name="Default">Parameter {0} of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+    <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300">
+    <Resolution Name="Default">Change {0} to call the MessageBox.Show overload that specifies MessageBoxOptions, and make sure to set MessageBoxOptions.RightAlign and MessageBoxOptions.RtlReading if RightToLeft is set to RightToLeft.Yes on the parent control.</Resolution>
+   </Rule>
+   <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
+    <Resolution Name="DependsOnFix">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}. If {0} has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>

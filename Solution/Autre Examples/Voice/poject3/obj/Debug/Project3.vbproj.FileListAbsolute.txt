@@ -1,0 +1,6 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Voice\poject3\obj\Debug\Interop.DICTLib.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Voice\poject3\obj\Debug\Interop.HSRLib.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Voice\poject3\obj\Debug\AxInterop.DICTLib.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Voice\poject3\obj\Debug\AxInterop.HSRLib.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Voice\poject3\obj\Debug\Project3.vbproj.ResolveComReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Voice\poject3\bin\Project3.exe.config

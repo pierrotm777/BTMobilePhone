@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="SendSMSToIndia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MobileNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromEmailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSToIndiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendSMSToIndiaResult" type="s0:SMSResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SMSResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FromEmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobileNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Provider" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SMSResult" nillable="true" type="s0:SMSResult" />
+    </s:schema>
+  </types>
+  <message name="SendSMSToIndiaSoapIn">
+    <part name="parameters" element="s0:SendSMSToIndia" />
+  </message>
+  <message name="SendSMSToIndiaSoapOut">
+    <part name="parameters" element="s0:SendSMSToIndiaResponse" />
+  </message>
+  <message name="SendSMSToIndiaHttpGetIn">
+    <part name="MobileNumber" type="s:string" />
+    <part name="FromEmailAddress" type="s:string" />
+    <part name="Message" type="s:string" />
+  </message>
+  <message name="SendSMSToIndiaHttpGetOut">
+    <part name="Body" element="s0:SMSResult" />
+  </message>
+  <message name="SendSMSToIndiaHttpPostIn">
+    <part name="MobileNumber" type="s:string" />
+    <part name="FromEmailAddress" type="s:string" />
+    <part name="Message" type="s:string" />
+  </message>
+  <message name="SendSMSToIndiaHttpPostOut">
+    <part name="Body" element="s0:SMSResult" />
+  </message>
+  <portType name="SendSMSSoap">
+    <operation name="SendSMSToIndia">
+      <documentation>Send unlimited free SMS to India - Maximum message size is 120 characters&lt;br&gt;&lt;br&gt;&lt;b&gt;Usage:&lt;/b&gt;If your mobile number is 098XXXXXXXX ,Please enter as 98XXXXXXXX&lt;br&gt;&lt;b&gt;Network Covered:&lt;/b&gt; Airtel,Idea Cellular,Skycell ,RPG Cellular,Hutch,Celforce / Fascel,BPL Mobile,Escotel </documentation>
+      <input message="s0:SendSMSToIndiaSoapIn" />
+      <output message="s0:SendSMSToIndiaSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SendSMSHttpGet">
+    <operation name="SendSMSToIndia">
+      <documentation>Send unlimited free SMS to India - Maximum message size is 120 characters&lt;br&gt;&lt;br&gt;&lt;b&gt;Usage:&lt;/b&gt;If your mobile number is 098XXXXXXXX ,Please enter as 98XXXXXXXX&lt;br&gt;&lt;b&gt;Network Covered:&lt;/b&gt; Airtel,Idea Cellular,Skycell ,RPG Cellular,Hutch,Celforce / Fascel,BPL Mobile,Escotel </documentation>
+      <input message="s0:SendSMSToIndiaHttpGetIn" />
+      <output message="s0:SendSMSToIndiaHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SendSMSHttpPost">
+    <operation name="SendSMSToIndia">
+      <documentation>Send unlimited free SMS to India - Maximum message size is 120 characters&lt;br&gt;&lt;br&gt;&lt;b&gt;Usage:&lt;/b&gt;If your mobile number is 098XXXXXXXX ,Please enter as 98XXXXXXXX&lt;br&gt;&lt;b&gt;Network Covered:&lt;/b&gt; Airtel,Idea Cellular,Skycell ,RPG Cellular,Hutch,Celforce / Fascel,BPL Mobile,Escotel </documentation>
+      <input message="s0:SendSMSToIndiaHttpPostIn" />
+      <output message="s0:SendSMSToIndiaHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SendSMSSoap" type="s0:SendSMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SendSMSToIndia">
+      <soap:operation soapAction="http://www.webserviceX.NET/SendSMSToIndia" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SendSMSHttpGet" type="s0:SendSMSHttpGet">
+    <http:binding verb="GET" />
+    <operation name="SendSMSToIndia">
+      <http:operation location="/SendSMSToIndia" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SendSMSHttpPost" type="s0:SendSMSHttpPost">
+    <http:binding verb="POST" />
+    <operation name="SendSMSToIndia">
+      <http:operation location="/SendSMSToIndia" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SendSMS">
+    <port name="SendSMSSoap" binding="s0:SendSMSSoap">
+      <soap:address location="http://www.webservicex.net/SendSMS.asmx" />
+    </port>
+    <port name="SendSMSHttpGet" binding="s0:SendSMSHttpGet">
+      <http:address location="http://www.webservicex.net/SendSMS.asmx" />
+    </port>
+    <port name="SendSMSHttpPost" binding="s0:SendSMSHttpPost">
+      <http:address location="http://www.webservicex.net/SendSMS.asmx" />
+    </port>
+  </service>
+</definitions>

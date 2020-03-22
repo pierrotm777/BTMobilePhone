@@ -1,0 +1,17 @@
+C:\Users\William\AppData\Local\Temporary Projects\MultipleParser\bin\Debug\MultipleParser.exe.config
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\bin\Debug\MultipleParser.exe.config
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\obj\Debug\MultipleParser.Resources.resources
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\obj\Debug\MultipleParser.vbproj.GenerateResource.Cache
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\bin\Debug\MultipleParser.exe
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\bin\Debug\MultipleParser.pdb
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\bin\Debug\MultipleParser.xml
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\obj\Debug\MultipleParser.exe
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\obj\Debug\MultipleParser.xml
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\obj\Debug\MultipleParser.pdb
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\bin\Debug\System.Data.SQLite.dll
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\bin\Debug\System.Data.SQLite.xml
+C:\Users\William\Desktop\Development\MultipleParser\MultipleParser\obj\Debug\MultipleParser.vbprojResolveAssemblyReference.cache
+D:\My Documents\Development\MultipleParser\MultipleParser\bin\Debug\MultipleParser.exe.config
+D:\My Documents\Development\MultipleParser\MultipleParser\obj\Debug\MultipleParser.exe
+D:\My Documents\Development\MultipleParser\MultipleParser\obj\Debug\MultipleParser.xml
+D:\My Documents\Development\MultipleParser\MultipleParser\obj\Debug\MultipleParser.pdb

@@ -1,0 +1,14 @@
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\bin\Debug\ExtractIconsFromFilesSample.exe
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\bin\Debug\ExtractIconsFromFilesSample.pdb
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\bin\Debug\ExtractIconsFromFilesSample.xml
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\ExtractIconsFromFilesSample.Form1.resources
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\ExtractIconsFromFilesSample.Resources.resources
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\ExtractIconsFromFilesSample.exe
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\ExtractIconsFromFilesSample.xml
+C:\Users\checkkay\Documents\Visual Studio 2010\Projects\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\ExtractIconsFromFilesSample.pdb
+E:\Téléchargements terminés\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\ExtractIconsFromFilesSample.exe
+E:\Téléchargements terminés\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\ExtractIconsFromFilesSample.xml
+E:\Téléchargements terminés\ExtractIconsFromFilesSample\ExtractIconsFromFilesSample\obj\x86\Debug\ExtractIconsFromFilesSample.pdb

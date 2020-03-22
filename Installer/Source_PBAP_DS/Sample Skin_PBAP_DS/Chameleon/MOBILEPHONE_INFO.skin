@@ -1,0 +1,36 @@
+RideRunner Skin
+RRScreen autovol_menu
+screen_800_480_off.png,screen_800_480_off.png,screen_800_480_off.png,screen_800_480_off.png
+
+[Includes]
+INC,xy.txt
+INC,shadow.txt
+INC,FontMainBottom.txt
+INC,FontBar.txt
+INC,FontBottom.txt
+
+/SHOWEFFECT5
+/HIDEEFFECT6
+
+[Background]
+IMG,0,0,800,480,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_800_480.png",out
+IMG,8,50,751,364,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_924_420.png",out
+IMG,762,50,27,364,"$SKINPATH$Theme\$ThemeButtons$\buttons\btn_main_slider.png",out
+
+[Labels]
+L,11,7,780,35,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_INFO","SCROLL-LEFT"
+
+[Button]
+IMG,343,418,118,53,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,343,418,118,53,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,343,418,118,53,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,343,418,118,53,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+I,377,420,50,50,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\close.png:a"
+B,343,418,118,53,"ESC",""
+
+[ List Definitions ]
+S,738,50,52,364,738,50,52,364,V,,"slider_r.png",80,"CLSLIDER",
+SC01,9,51,750,362,#L_FC_R#,#L_FC_G#,#L_FC_B#,01,040,040,#L_PC_R#,#L_PC_G#,#L_PC_B#,#L_SdC_R#,#L_SdC_G#,#L_SdC_B#,TRUE,20,#FontMainBottomStyle#
+/IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60
+ 
+END

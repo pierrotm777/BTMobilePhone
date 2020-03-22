@@ -1,0 +1,256 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Drivers\USB\ClientDrivers\Bluetooth_USB_Driver]
+"FriendlyName"="IVT BlueTooth Usb Driver"
+"Prefix"="BTH"
+"Dll"="bthusb.dll"
+"Index"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Drivers\USB\LoadClients\Default\224_1_1\Default\Bluetooth_USB_Driver]
+"DLL"="bthusb.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTMgr1]
+"Index"=dword:00000001
+"Order"=dword:000000A1
+"Dll"="BTMgr.Dll"
+"Prefix"="BMG"
+"DeviceArrayIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Comm\BTNIC]
+"ImagePath"="BTNic.dll"
+"Group"="NDIS"
+"DisplayName"="BT network adapter"
+
+[HKEY_LOCAL_MACHINE\Comm\BTNIC\Linkage]
+"Route"=hex(7):\
+  42,00,54,00,4e,00,49,00,43,00,31,00,00,00,00,00
+
+[HKEY_LOCAL_MACHINE\Comm\BTNIC1]
+"ImagePath"="BTNic.dll"
+"Group"="NDIS"
+"DisplayName"="BT network adapter"
+
+[HKEY_LOCAL_MACHINE\Comm\BTNIC1\Parms]
+"NetworkAddress"="666666666666"
+"CardType"=dword:00000000
+"Transceiver"=dword:00000003
+"IoBaseAddress"=dword:00000000
+"InterruptNumber"=dword:00000000
+"BusType"=dword:00000000
+"BusNumber"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Comm\BTNIC1\Parms\TcpIp]
+"IpAddress"=hex(7):\
+  30,00,2e,00,30,00,2e,00,30,00,2e,00,30,00,00,00,00,00
+"Subnetmask"=hex(7):\
+  30,00,2e,00,30,00,2e,00,30,00,2e,00,30,00,00,00,00,00
+"UseZeroBroadcast"=dword:00000000
+"DefaultGateway"=hex(7):\
+  30,00,2e,00,30,00,2e,00,30,00,2e,00,30,00,00,00,00,00
+"EnableDHCP"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTMgr6]
+"Dll"="BTMgr.dll"
+"Prefix"="BMG"
+"Index"=dword:00000006
+"Order"=dword:000000A6
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTMgr8]
+"Dll"="BTMgr.dll"
+"Prefix"="BMG"
+"Index"=dword:00000008
+"Order"=dword:000000A8
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTHID]
+"Dll"="BTHID.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\HID]
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\ClientDrivers]
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\ClientDrivers\Keyboard]
+"DLL"="KBDHID.DLL"
+"Prefix"="KBD"
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients]
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default]
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default\Default]
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default\Default\1_2]
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default\Default\1_2\Mouse]
+"Dll"="MOUHID.DLL"
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default\Default\1_6]
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default\Default\1_6\Keyboard]
+"Dll"="KBDHID.DLL"
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default\Default\1_5]
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default\Default\1_5\Gamepad]
+"Dll"="GamepadHID.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default\Default\12_1]
+
+[HKEY_LOCAL_MACHINE\Drivers\HID\LoadClients\Default\Default\12_1\Consumer]
+"Dll"="CONSHID.DLL"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\IVT Corporation\BlueSoleil\Drivers\BCSP\Priority]
+"RxThread"=dword:00000097
+"FSMThread"=dword:00000097
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BSF]
+"Prefix"="BSF"
+"Dll"="IVT_WavBSF.dll"
+"Index"=dword:00000000
+"Order"=dword:000000C0
+"DeviceArrayIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTWav]
+"Prefix"="WAV"
+"Index"=dword:00000008
+"Dll"="BTWav.dll"
+"Order"=dword:000000C1
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTWav\Params]
+"Sample"=dword:0002B110
+"Timer"=dword:00000014
+"CacheLen"=dword:00001800
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTMgr]
+"Index"=dword:00000000
+"Order"=dword:000000A0
+"Dll"="BTMgr.Dll"
+"Prefix"="BMG"
+"DeviceArrayIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTSerial1]
+"FriendlyName"="IVT Virtual COM1:"
+"Index"=dword:00000001
+"Order"=dword:000000B1
+"Dll"="BTVcm.dll"
+"Prefix"="VCM"
+"DeviceArrayIndex"=dword:00000000
+"Tsp"="Unimodem.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTSerial2]
+"FriendlyName"="IVT Virtual COM2:"
+"Index"=dword:00000002
+"Order"=dword:000000B2
+"Dll"="BTVcm.dll"
+"Prefix"="VCM"
+"DeviceArrayIndex"=dword:00000000
+"Tsp"="Unimodem.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTSerial3]
+"FriendlyName"="IVT Virtual COM3:"
+"Index"=dword:00000003
+"Order"=dword:000000B3
+"Dll"="BTVcm.Dll"
+"Prefix"="VCM"
+"DeviceArrayIndex"=dword:00000000
+"Tsp"="Unimodem.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTSerial4]
+"FriendlyName"="IVT Virtual COM4:"
+"Index"=dword:00000004
+"Order"=dword:000000B4
+"Dll"="BTVcm.Dll"
+"Prefix"="VCM"
+"DeviceArrayIndex"=dword:00000000
+"Tsp"="Unimodem.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTSerial5]
+"FriendlyName"="IVT Virtual COM5:"
+"Index"=dword:00000005
+"Order"=dword:000000B5
+"Dll"="BTVcm.Dll"
+"Prefix"="VCM"
+"DeviceArrayIndex"=dword:00000000
+"Tsp"="Unimodem.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTSerial6]
+"FriendlyName"="IVT Virtual COM6:"
+"Index"=dword:00000006
+"Order"=dword:000000B6
+"Dll"="BTVcm.Dll"
+"Prefix"="VCM"
+"DeviceArrayIndex"=dword:00000000
+"Tsp"="Unimodem.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTSerial7]
+"FriendlyName"="IVT Virtual COM7:"
+"Index"=dword:00000007
+"Order"=dword:000000B7
+"Dll"="BTVcm.Dll"
+"Prefix"="VCM"
+"DeviceArrayIndex"=dword:00000000
+"Tsp"="Unimodem.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTSerial8]
+"FriendlyName"="IVT Virtual COM8:"
+"Index"=dword:00000008
+"Order"=dword:000000B8
+"Dll"="BTVcm.Dll"
+"Prefix"="VCM"
+"DeviceArrayIndex"=dword:00000000
+"Tsp"="Unimodem.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTSerial9]
+"FriendlyName"="IVT Virtual COM9:"
+"Index"=dword:00000009
+"Order"=dword:000000B9
+"Dll"="BTVcm.Dll"
+"Prefix"="VCM"
+"DeviceArrayIndex"=dword:00000000
+"Tsp"="Unimodem.dll"
+
+[HKEY_LOCAL_MACHINE\ExtModems]
+
+[HKEY_LOCAL_MACHINE\ExtModems\IVTBlueletMdm1]
+"FriendlyName"="IVT BT Modem VCOM1:"
+"DeviceType"=dword:00000001
+"Port"="VCM1:"
+
+[HKEY_LOCAL_MACHINE\ExtModems\IVTBlueletMdm2]
+"FriendlyName"="IVT BT Modem VCOM2:"
+"DeviceType"=dword:00000001
+"Port"="VCM2:"
+
+[HKEY_LOCAL_MACHINE\ExtModems\IVTBlueletMdm3]
+"FriendlyName"="IVT BT Modem VCOM3:"
+"DeviceType"=dword:00000001
+"Port"="VCM3:"
+
+[HKEY_LOCAL_MACHINE\ExtModems\IVTBlueletMdm4]
+"FriendlyName"="IVT BT Modem VCOM4:"
+"DeviceType"=dword:00000004
+"Port"="VCM4:"
+
+[HKEY_LOCAL_MACHINE\ExtModems\IVTBlueletMdm5]
+"FriendlyName"="IVT BT Modem VCOM5:"
+"DeviceType"=dword:00000005
+"Port"="VCM5:"
+
+[HKEY_LOCAL_MACHINE\ExtModems\IVTBlueletMdm6]
+"FriendlyName"="IVT BT Modem VCOM6:"
+"DeviceType"=dword:00000001
+"Port"="VCM6:"
+
+[HKEY_LOCAL_MACHINE\ExtModems\IVTBlueletMdm7]
+"FriendlyName"="IVT BT Modem VCOM7:"
+"DeviceType"=dword:00000001
+"Port"="VCM7:"
+
+[HKEY_LOCAL_MACHINE\ExtModems\IVTBlueletMdm8]
+"FriendlyName"="IVT BT Modem VCOM8:"
+"DeviceType"=dword:00000001
+"Port"="VCM8:"
+
+[HKEY_LOCAL_MACHINE\ExtModems\IVTBlueletMdm9]
+"FriendlyName"="IVT BT Modem VCOM9:"
+"DeviceType"=dword:00000001
+"Port"="VCM9:"

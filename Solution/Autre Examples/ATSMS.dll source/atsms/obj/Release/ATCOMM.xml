@@ -1,0 +1,155 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ATCOMM
+</name>
+</assembly>
+<members>
+<member name="P:ATCOMM.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._300">
+	<summary>
+  Looks up a localized string similar to ME failure.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._301">
+	<summary>
+  Looks up a localized string similar to SMS service of ME reserved.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._302">
+	<summary>
+  Looks up a localized string similar to Operation not allowed.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._303">
+	<summary>
+  Looks up a localized string similar to Operation not supported.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._304">
+	<summary>
+  Looks up a localized string similar to Invalid PDU mode parameter.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._305">
+	<summary>
+  Looks up a localized string similar to Invalid text mode parameter.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._310">
+	<summary>
+  Looks up a localized string similar to (U)SIM not inserted.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._311">
+	<summary>
+  Looks up a localized string similar to (U)SIM PIN required.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._312">
+	<summary>
+  Looks up a localized string similar to PH-(U)SIM PIN required.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._313">
+	<summary>
+  Looks up a localized string similar to (U)SIM failure.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._314">
+	<summary>
+  Looks up a localized string similar to (U)SIM busy.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._315">
+	<summary>
+  Looks up a localized string similar to (U)SIM wrong.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._316">
+	<summary>
+  Looks up a localized string similar to (U)SIM PUK required.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._317">
+	<summary>
+  Looks up a localized string similar to (U)SIM PIN2 required.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._318">
+	<summary>
+  Looks up a localized string similar to (U)SIM PUK2 required.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._320">
+	<summary>
+  Looks up a localized string similar to Memory failure.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._321">
+	<summary>
+  Looks up a localized string similar to Invalid memory index.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._322">
+	<summary>
+  Looks up a localized string similar to Memory full.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._330">
+	<summary>
+  Looks up a localized string similar to SMSC address unknown.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._331">
+	<summary>
+  Looks up a localized string similar to No network service.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._332">
+	<summary>
+  Looks up a localized string similar to Network timeout.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._340">
+	<summary>
+  Looks up a localized string similar to No +CNMA acknowledgement expected.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources._500">
+	<summary>
+  Looks up a localized string similar to Unknown error.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources.About">
+	<summary>
+  Looks up a localized string similar to ATCOMM version 0.0.1.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources.CopyRight">
+	<summary>
+  Looks up a localized string similar to ClickMore (M) Sdn. Bhd..
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources.HAS_ERROR">
+	<summary>
+  Looks up a localized string similar to ERROR.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources.NO_CARRIER">
+	<summary>
+  Looks up a localized string similar to NO CARRIER.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources.NO_ERROR">
+	<summary>
+  Looks up a localized string similar to OK.
+</summary>
+</member><member name="P:ATCOMM.My.Resources.Resources.PHONE_MODEL_NOT_SUPPORTED_RECV_SMS">
+	<summary>
+  Looks up a localized string similar to Nokia N70,Nokia 6600,Nokia 3650.
+</summary>
+</member><member name="T:ATCOMM.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="E:ATCOMM.Phone.Phone.NewDeliveryReport">
+	<summary>
+	</summary>
+	<remarks>
+ ''' The NewDeliveryReport Event is raised whenever a delivery 
+ report is raised for a previously 
+ sent text message with delivery status report request, 
+ if DeliveryReport property is set as True.
+ If a message was sent with LongMessage property is set as 
+ EnumLongMessage.Concatenate then delivery 
+ status report will be received only for the last 
+ of all the part messages.
+ The NewDeliveryReport event is raised on a 
+ secondary thread when a new delivery report is received.
+ </remarks>
+</member>
+</members>
+</doc>

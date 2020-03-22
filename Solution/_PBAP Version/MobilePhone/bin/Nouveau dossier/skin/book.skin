@@ -1,0 +1,21 @@
+RoadRunner Skin
+RRScreen pfone_book
+book_on.jpg,book.jpg,,
+B,91,286,567,52,taprov@4@open@podro,
+B,92,229,567,52,taprov@3@open@podro,
+B,91,170,567,52,taprov@2@open@podro,
+B,92,109,567,52,taprov@1@open@podro,
+W,85,115,578,238,255,255,255,28,"Arial",booksearch@30@4,
+B,668,243,129,71,Book@open@book_create_name.skin,
+B,664,126,134,76,Book@open@book_poisk.skin,
+B,418,383,134,55,setti@open@menu.skin,
+B,267,383,134,55,,
+B,16,257,60,81,lvniz@,
+B,17,119,60,81,lvverh@,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

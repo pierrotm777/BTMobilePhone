@@ -1,0 +1,30 @@
+RoadRunner Skin
+RRScreen audio_player
+main.jpg,main_on.png,,
+B,225,3,356,20,setti@open@status.skin,
+B,267,388,134,49,call@add@call.skin,open
+B,238,134,108,49,send@edit@1,
+B,355,260,109,56,send@edit@8,
+B,472,326,110,57,send@edit@#,
+B,238,193,109,53,send@edit@4,
+B,355,193,109,53,send@edit@5,
+B,476,195,107,51,send@edit@6,
+B,419,387,131,49,send@edit@Bs
+B,474,134,109,47,send@edit@3,
+B,474,259,110,55,send@edit@9,
+B,356,134,107,48,send@edit@2,
+B,603,14,189,182,setti@open@setting.skin,open
+B,11,15,196,182,openicall@Open@Vizovi.skin,open
+B,239,261,107,57,send@edit@7,
+B,356,323,108,57,send@edit@0,
+B,239,326,107,54,send@edit@+,
+B,601,237,189,184,Book@open@book_poisk.skin,open
+B,10,236,194,184,setti@open@sms_vhodiashie.skin,open
+T,260,51,298,53,255,255,255,45,"Arial",edit1@,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,10,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,10,"Lucida Sans Unicode",model@,
+
+END

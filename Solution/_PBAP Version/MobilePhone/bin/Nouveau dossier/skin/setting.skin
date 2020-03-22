@@ -1,0 +1,18 @@
+RoadRunner Skin
+RRScreen setting
+setting.jpg,setting.jpg,,
+B,20,182,342,131,openportset@open@selekt_port.skin,
+B,624,288,160,116,rrun@Skin Editor\CarPhone_SkinEditor.exe,
+B,624,166,160,102,End,
+B,623,39,160,102,setti@open@o_prog.skin,
+B,260,386,148,52,setti@open@menu.skin,
+B,416,387,148,52,setti@open@menu.skin,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,226,273,121,30,255,255,255,13,"Lucida Sans Unicode",speed@,
+L,226,193,121,30,255,255,255,13,"Lucida Sans Unicode",port@,
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

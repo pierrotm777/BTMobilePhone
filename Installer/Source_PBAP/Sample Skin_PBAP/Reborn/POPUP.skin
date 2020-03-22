@@ -1,0 +1,17 @@
+RideRunner Skin
+RRScreen "POPUP"
+POPUP.jpg,POPUP.jpg,POPUP.jpg,POPUP.jpg
+IDL,5
+INC,COLOR.txt
+
+[Label]
+L,10,87,681,32,#COLOR#,22,"Arial Narrow","=$POPUP$","SCROLL-CENTER",
+
+[Button]
+B01,5,4,688,193,"ESC",""
+
+/EFFECTIN=17
+
+/EFFECTOUT=18
+ 
+END

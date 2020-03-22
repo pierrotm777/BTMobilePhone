@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{aac031c2-f52e-4bab-b756-97360432b4dc}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{66a3df5f-0478-49b3-b7a9-70bca13428b2}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{7e748f4f-58ef-48e0-8cc9-810ea565d031}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="av_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ftpopp_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gatt_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hfp_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hid_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="loc_dev_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="map_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pan_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pbap_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="profiles_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="report.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rmt_dev_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rmt_svc_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="spp_tst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vcard_parser\vcc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vcard_parser\vobject.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="map_tst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="profiles_tst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk_gatt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk_tst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vcard_parser\vcc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vcard_parser\vobject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,485 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SkinToolDS
+</name>
+</assembly>
+<members>
+<member name="M:SkinToolDS.DemoForm.Dispose(System.Boolean)">
+	<summary>
+ Clean up any resources being used.
+ </summary>
+</member><member name="M:SkinToolDS.DemoForm.InitializeComponent">
+	<summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member><member name="M:SkinToolDS.DemoForm.Main">
+	<summary>
+ The main entry point for the application.
+ </summary>
+</member><member name="T:SkinToolDS.DemoForm">
+	<summary>
+ Summary description for Form1.
+ </summary>
+</member><member name="P:SkinToolDS.My.Resources.Resources.ResourceManager">
+	<summary>
+  Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+</summary>
+</member><member name="P:SkinToolDS.My.Resources.Resources.Culture">
+	<summary>
+  Remplace la propriété CurrentUICulture du thread actuel pour toutes
+  les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+</summary>
+</member><member name="P:SkinToolDS.My.Resources.Resources.GpsGate_Off">
+	<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SkinToolDS.My.Resources.Resources.GpsGate_On">
+	<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SkinToolDS.My.Resources.Resources.led">
+	<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SkinToolDS.My.Resources.Resources.tools">
+	<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:SkinToolDS.My.Resources.Resources">
+	<summary>
+  Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+</summary>
+</member><member name="M:SkinToolDS.NativeMethods.FindWindow(System.String,System.String)">
+	<summary>
+ Retrieves a handle to the top-level window whose class name and window name match 
+ the specified strings.
+ This function does not search child windows.
+ This function does not perform a case-sensitive search.
+ </summary>
+	<param name="lpClassName">If lpClassName is null, it finds any window whose title matches
+ the lpWindowName parameter.</param>
+	<param name="lpWindowName">The window name (the window's title). If this parameter is null,
+ all window names match.</param>
+	<returns>If the function succeeds, the return value is a handle to the window 
+ that has the specified class name and window name.</returns>
+</member><member name="F:SkinToolDS.NativeMethods.HWND_BROADCAST">
+	<summary>
+ Handle used to send the message to all windows
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.WM_COPYDATA">
+	<summary>
+ An application sends the WM_COPYDATA message to pass data to another application.
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.COPYDATASTRUCT.dwData">
+	<summary>
+ User defined data to be passed to the receiving application.
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.COPYDATASTRUCT.cbData">
+	<summary>
+ The size, in bytes, of the data pointed to by the lpData member.
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.COPYDATASTRUCT.lpData">
+	<summary>
+ The data to be passed to the receiving application. This member can be IntPtr.Zero.
+ </summary>
+</member><member name="T:SkinToolDS.NativeMethods.COPYDATASTRUCT">
+	<summary>
+ Contains data to be passed to another application by the WM_COPYDATA message.
+ </summary>
+</member><member name="M:SkinToolDS.NativeMethods.SendMessage(System.IntPtr,System.UInt32,System.IntPtr,System.IntPtr)">
+	<summary>
+ Sends the specified message to a window or windows.
+ </summary>
+	<param name="hWnd">A handle to the window whose window procedure will receive the message.
+ If this parameter is HWND_BROADCAST ((HWND)0xffff), the message is sent to all top-level
+ windows in the system.</param>
+	<param name="Msg">The message to be sent.</param>
+	<param name="wParam">Additional message-specific information.</param>
+	<param name="lParam">Additional message-specific information.</param>
+	<returns>The return value specifies the result of the message processing; 
+ it depends on the message sent.</returns>
+</member><member name="F:SkinToolDS.NativeMethods.MessageFilterInfo.None">
+	<summary>
+ Certain messages whose value is smaller than WM_USER are required to pass 
+ through the filter, regardless of the filter setting. 
+ There will be no effect when you attempt to use this function to 
+ allow or block such messages.
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.MessageFilterInfo.AlreadyAllowed">
+	<summary>
+ The message has already been allowed by this window's message filter, 
+ and the function thus succeeded with no change to the window's message filter. 
+ Applies to MSGFLT_ALLOW.
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.MessageFilterInfo.AlreadyDisAllowed">
+	<summary>
+ The message has already been blocked by this window's message filter, 
+ and the function thus succeeded with no change to the window's message filter. 
+ Applies to MSGFLT_DISALLOW.
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.MessageFilterInfo.AllowedHigher">
+	<summary>
+ The message is allowed at a scope higher than the window.
+ Applies to MSGFLT_DISALLOW.
+ </summary>
+</member><member name="T:SkinToolDS.NativeMethods.MessageFilterInfo">
+	<summary>
+ Values used in the struct CHANGEFILTERSTRUCT
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.ChangeWindowMessageFilterExAction.Reset">
+	<summary>
+ Resets the window message filter for hWnd to the default.
+ Any message allowed globally or process-wide will get through,
+ but any message not included in those two categories,
+ and which comes from a lower privileged process, will be blocked.
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.ChangeWindowMessageFilterExAction.Allow">
+	<summary>
+ Allows the message through the filter. 
+ This enables the message to be received by hWnd, 
+ regardless of the source of the message, 
+ even it comes from a lower privileged process.
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.ChangeWindowMessageFilterExAction.DisAllow">
+	<summary>
+ Blocks the message to be delivered to hWnd if it comes from
+ a lower privileged process, unless the message is allowed process-wide 
+ by using the ChangeWindowMessageFilter function or globally.
+ </summary>
+</member><member name="T:SkinToolDS.NativeMethods.ChangeWindowMessageFilterExAction">
+	<summary>
+ Values used by ChangeWindowMessageFilterEx
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.CHANGEFILTERSTRUCT.size">
+	<summary>
+ The size of the structure, in bytes. Must be set to sizeof(CHANGEFILTERSTRUCT), 
+ otherwise the function fails with ERROR_INVALID_PARAMETER.
+ </summary>
+</member><member name="F:SkinToolDS.NativeMethods.CHANGEFILTERSTRUCT.info">
+	<summary>
+ If the function succeeds, this field contains one of the following values, 
+ <see cref="T:SkinToolDS.NativeMethods.MessageFilterInfo"/>
+	</summary>
+</member><member name="T:SkinToolDS.NativeMethods.CHANGEFILTERSTRUCT">
+	<summary>
+ Contains extended result information obtained by calling 
+ the ChangeWindowMessageFilterEx function.
+ </summary>
+</member><member name="M:SkinToolDS.NativeMethods.ChangeWindowMessageFilterEx(System.IntPtr,System.UInt32,SkinToolDS.NativeMethods.ChangeWindowMessageFilterExAction,SkinToolDS.NativeMethods.CHANGEFILTERSTRUCT@)">
+	<summary>
+ Modifies the User Interface Privilege Isolation (UIPI) message filter for a specified window
+ </summary>
+	<param name="hWnd">
+ A handle to the window whose UIPI message filter is to be modified.</param>
+	<param name="msg">The message that the message filter allows through or blocks.</param>
+	<param name="action">The action to be performed, and can take one of the following values
+ <see cref="T:SkinToolDS.NativeMethods.MessageFilterInfo"/></param>
+	<param name="changeInfo">Optional pointer to a 
+ <see cref="T:SkinToolDS.NativeMethods.CHANGEFILTERSTRUCT"/> structure.</param>
+	<returns>If the function succeeds, it returns TRUE; otherwise, it returns FALSE. 
+ To get extended error information, call GetLastError.</returns>
+</member><member name="F:SkinToolDS.IniFile.MaxSectionSize">
+	<summary>
+ The maximum size of a section in an ini file.
+ </summary>
+	<remarks>
+ This property defines the maximum size of the buffers 
+ used to retreive data from an ini file.  This value is 
+ the maximum allowed by the win32 functions 
+ GetPrivateProfileSectionNames() or 
+ GetPrivateProfileString().
+ </remarks>
+</member><member name="T:SkinToolDS.IniFile.NativeMethods">
+	<summary>
+ A static class that provides the win32 P/Invoke signatures 
+ used by this class.
+ </summary>
+	<remarks>
+ Note:  In each of the declarations below, we explicitly set CharSet to 
+ Auto.  By default in C#, CharSet is set to Ansi, which reduces 
+ performance on windows 2000 and above due to needing to convert strings
+ from Unicode (the native format for all .Net strings) to Ansi before 
+ marshalling.  Using Auto lets the marshaller select the Unicode version of 
+ these functions when available.
+ </remarks>
+</member><member name="M:SkinToolDS.IniFile.#ctor(System.String)">
+	<summary>
+ Initializes a new instance of the <see cref="T:SkinToolDS.IniFile"/> class.
+ </summary>
+	<param name="path">The ini file to read and write from.</param>
+</member><member name="P:SkinToolDS.IniFile.Path">
+	<summary>
+ Gets the full path of ini file this object instance is operating on.
+ </summary>
+	<value>A file path.</value>
+</member><member name="M:SkinToolDS.IniFile.GetString(System.String,System.String,System.String)">
+	<summary>
+ Gets the value of a setting in an ini file as a <see cref="T:System.String"/>.
+ </summary>
+	<param name="sectionName">The name of the section to read from.</param>
+	<param name="keyName">The name of the key in section to read.</param>
+	<param name="defaultValue">The default value to return if the key
+ cannot be found.</param>
+	<returns>The value of the key, if found.  Otherwise, returns 
+ <paramref name="defaultValue"/></returns>
+	<remarks>
+ The retreived value must be less than 32KB in length.
+ </remarks>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.GetInt16(System.String,System.String,System.Int16)">
+	<summary>
+ Gets the value of a setting in an ini file as a <see cref="T:System.Int16"/>.
+ </summary>
+	<param name="sectionName">The name of the section to read from.</param>
+	<param name="keyName">The name of the key in section to read.</param>
+	<param name="defaultValue">The default value to return if the key
+ cannot be found.</param>
+	<returns>The value of the key, if found.  Otherwise, returns 
+ <paramref name="defaultValue"/>.</returns>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.GetInt32(System.String,System.String,System.Int32)">
+	<summary>
+ Gets the value of a setting in an ini file as a <see cref="T:System.Int32"/>.
+ </summary>
+	<param name="sectionName">The name of the section to read from.</param>
+	<param name="keyName">The name of the key in section to read.</param>
+	<param name="defaultValue">The default value to return if the key
+ cannot be found.</param>
+	<returns>The value of the key, if found.  Otherwise, returns 
+ <paramref name="defaultValue"/></returns>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.GetDouble(System.String,System.String,System.Double)">
+	<summary>
+ Gets the value of a setting in an ini file as a <see cref="T:System.Double"/>.
+ </summary>
+	<param name="sectionName">The name of the section to read from.</param>
+	<param name="keyName">The name of the key in section to read.</param>
+	<param name="defaultValue">The default value to return if the key
+ cannot be found.</param>
+	<returns>The value of the key, if found.  Otherwise, returns 
+ <paramref name="defaultValue"/></returns>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.GetBoolean(System.String,System.String,System.Boolean)">
+	<summary>
+ Gets the value of a setting in an ini file as a <see cref="T:System.Boolean"/>.
+ </summary>
+	<param name="sectionName">The name of the section to read from.</param>
+	<param name="keyName">The name of the key in section to read.</param>
+	<param name="defaultValue">The default value to return if the key
+ cannot be found.</param>
+	<returns>The value of the key, if found.  Otherwise, returns 
+ <paramref name="defaultValue"/></returns>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.GetSectionValuesAsList(System.String)">
+	<summary>
+ Gets all of the values in a section as a list.
+ </summary>
+	<param name="sectionName">
+ Name of the section to retrieve values from.
+ </param>
+	<returns>
+ A <see cref="!:List{T}"/> containing <see cref="!:KeyValuePair{T1, T2}"/> objects 
+ that describe this section.  Use this verison if a section may contain
+ multiple items with the same key value.  If you know that a section 
+ cannot contain multiple values with the same key name or you don't 
+ care about the duplicates, use the more convenient 
+ <see cref="M:SkinToolDS.IniFile.GetSectionValues(System.String)"/> function.
+ </returns>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> is a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.GetSectionValues(System.String)">
+	<summary>
+ Gets all of the values in a section as a dictionary.
+ </summary>
+	<param name="sectionName">
+ Name of the section to retrieve values from.
+ </param>
+	<returns>
+ A <see cref="!:Dictionary{T, T}"/> containing the key/value 
+ pairs found in this section.  
+ </returns>
+	<remarks>
+ If a section contains more than one key with the same name, 
+ this function only returns the first instance.  If you need to 
+ get all key/value pairs within a section even when keys have the 
+ same name, use <see cref="M:SkinToolDS.IniFile.GetSectionValuesAsList(System.String)"/>.
+ </remarks>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> is a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.GetKeyNames(System.String)">
+	<summary>
+ Gets the names of all keys under a specific section in the ini file.
+ </summary>
+	<param name="sectionName">
+ The name of the section to read key names from.
+ </param>
+	<returns>An array of key names.</returns>
+	<remarks>
+ The total length of all key names in the section must be 
+ less than 32KB in length.
+ </remarks>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> is a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.GetSectionNames">
+	<summary>
+ Gets the names of all sections in the ini file.
+ </summary>
+	<returns>An array of section names.</returns>
+	<remarks>
+ The total length of all section names in the section must be 
+ less than 32KB in length.
+ </remarks>
+</member><member name="M:SkinToolDS.IniFile.ConvertNullSeperatedStringToStringArray(System.IntPtr,System.Int32)">
+	<summary>
+ Converts the null seperated pointer to a string into a string array.
+ </summary>
+	<param name="ptr">A pointer to string data.</param>
+	<param name="valLength">
+ Length of the data pointed to by <paramref name="ptr"/>.
+ </param>
+	<returns>
+ An array of strings; one for each null found in the array of characters pointed
+ at by <paramref name="ptr"/>.
+ </returns>
+</member><member name="M:SkinToolDS.IniFile.WriteValueInternal(System.String,System.String,System.String)">
+	<summary>
+ Writes a <see cref="T:System.String"/> value to the ini file.
+ </summary>
+	<param name="sectionName">The name of the section to write to .</param>
+	<param name="keyName">The name of the key to write to.</param>
+	<param name="value">The string value to write</param>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ The write failed.
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.WriteValue(System.String,System.String,System.String)">
+	<summary>
+ Writes a <see cref="T:System.String"/> value to the ini file.
+ </summary>
+	<param name="sectionName">The name of the section to write to .</param>
+	<param name="keyName">The name of the key to write to.</param>
+	<param name="value">The string value to write</param>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ The write failed.
+ </exception>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> or 
+ <paramref name="value"/>  are a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.WriteValue(System.String,System.String,System.Int16)">
+	<summary>
+ Writes an <see cref="T:System.Int16"/> value to the ini file.
+ </summary>
+	<param name="sectionName">The name of the section to write to .</param>
+	<param name="keyName">The name of the key to write to.</param>
+	<param name="value">The value to write</param>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ The write failed.
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.WriteValue(System.String,System.String,System.Int32)">
+	<summary>
+ Writes an <see cref="T:System.Int32"/> value to the ini file.
+ </summary>
+	<param name="sectionName">The name of the section to write to .</param>
+	<param name="keyName">The name of the key to write to.</param>
+	<param name="value">The value to write</param>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ The write failed.
+ </exception>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.WriteValue(System.String,System.String,System.Single)">
+	<summary>
+ Writes an <see cref="T:System.Single"/> value to the ini file.
+ </summary>
+	<param name="sectionName">The name of the section to write to .</param>
+	<param name="keyName">The name of the key to write to.</param>
+	<param name="value">The value to write</param>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ The write failed.
+ </exception>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.WriteValue(System.String,System.String,System.Double)">
+	<summary>
+ Writes a <see cref="T:System.Double"/> value to the ini file.
+ </summary>
+	<param name="sectionName">The name of the section to write to .</param>
+	<param name="keyName">The name of the key to write to.</param>
+	<param name="value">The value to write</param>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ The write failed.
+ </exception>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.WriteValue(System.String,System.String,System.Boolean)">
+	<summary>
+ Writes a <see cref="T:System.Boolean"/> value to the ini file.
+ </summary>
+	<param name="sectionName">The name of the section to write to .</param>
+	<param name="keyName">The name of the key to write to.</param>
+	<param name="value">The value to write</param>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ The write failed.
+ </exception>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.DeleteKey(System.String,System.String)">
+	<summary>
+ Deletes the specified key from the specified section.
+ </summary>
+	<param name="sectionName">
+ Name of the section to remove the key from.
+ </param>
+	<param name="keyName">
+ Name of the key to remove.
+ </param>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> or <paramref name="keyName"/> are 
+ a null reference  (Nothing in VB)
+ </exception>
+</member><member name="M:SkinToolDS.IniFile.DeleteSection(System.String)">
+	<summary>
+ Deletes a section from the ini file.
+ </summary>
+	<param name="sectionName">
+ Name of the section to delete.
+ </param>
+	<exception cref="T:System.ArgumentNullException">
+		<paramref name="sectionName"/> is a null reference (Nothing in VB)
+ </exception>
+</member><member name="T:SkinToolDS.IniFile">
+	<summary>
+ Provides methods for reading and writing to an INI file.
+ </summary>
+</member>
+</members>
+</doc>

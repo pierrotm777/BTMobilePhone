@@ -1,0 +1,9 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\_libphonenumber\csharp\PhoneNumbers.Test\bin\Release\PhoneNumbers.Test.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\_libphonenumber\csharp\PhoneNumbers.Test\bin\Release\PhoneNumbers.Test.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\_libphonenumber\csharp\PhoneNumbers.Test\bin\Release\nunit.framework.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\_libphonenumber\csharp\PhoneNumbers.Test\bin\Release\PhoneNumbers.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\_libphonenumber\csharp\PhoneNumbers.Test\bin\Release\PhoneNumbers.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\_libphonenumber\csharp\PhoneNumbers.Test\bin\Release\nunit.framework.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\_libphonenumber\csharp\PhoneNumbers.Test\obj\Release\PhoneNumbers.Test.csprojResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\_libphonenumber\csharp\PhoneNumbers.Test\obj\Release\PhoneNumbers.Test.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\_libphonenumber\csharp\PhoneNumbers.Test\obj\Release\PhoneNumbers.Test.pdb

@@ -1,0 +1,48 @@
+2012-07-19
+- Set system globalization to US so that number parsing uses periods instead of commas. Thanks to Johan Djupmarker.
+
+2011-11-29
+- Fixed minor bug in Capture, was reporting logging when not logging in rare scenario. Thanks to Matt Elias.
+
+2010-08-27
+- Added display of average lat/lon/alt to HTML file from Processing app.
+
+2010-04-03
+- Bug fixes in the Processing app
+
+2010-02-19
+- The Processing app can now filter out bad data, and it generates numerous images and a web page.
+- Added short term drift processing to the Processing app
+- The Capture app has improvments for capturing 24 hour blocks of time.
+
+2009-06-16
+- Major rewrite to combine the simulator, capture, and processing apps into a suite.
+- Simulator can now read .GPS files
+- Capture will record data from a serial port to a .GPS file
+- Process will parse .GPS files and create a static accuracy report.
+
+2009-02-19
+- Added support for automatic turning at some interval. This allows the system to drive a simulated tractor back and fourth in a field.
+
+2009-01-16
+- All 4 NMEA sentences are now generated at the frequency you choose. The JD GS2 didn't like GSA at 1 Hz
+
+2009-01-04
+- Fixed bug with timestamps not being UTC.
+
+2008-12-23
+- Fixed bug with line breaks between lines of data.
+
+2008-12-22
+- Improved serial handling to dispose of any incoming serial data, such as when connecting to an NTRIP client.
+- Bug fixes
+
+2008-01-07
+- Added support for GPGGA and GPGSA sentences, which, along with GPGSV, get sent at 1Hz regardless of what speed GPRMC is being sent.
+- Added support for multiple frequencies on GPRMC sentences. (1Hz, 2Hz, 5Hz, or 10Hz)
+
+2008-01-05
+- Recompiled using .Net 2.0 because 3.5 has a ton of issues with serial communication. 2.0 works much better, and does everything I need it to.
+
+2007-12-18
+- Initial Release

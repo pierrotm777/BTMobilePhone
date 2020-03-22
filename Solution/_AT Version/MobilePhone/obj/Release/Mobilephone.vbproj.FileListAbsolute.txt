@@ -1,0 +1,16 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\bin\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\bin\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Release\MobilePhone.frmDebugBox.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Release\Mobilephone.vbproj.GenerateResource.Cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Release\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Release\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\obj\Release\Mobilephone.vbprojResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\MobilePhone\bin\MobilePhone.dll.config
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_AT Version\MobilePhone\bin\MobilePhone.dll.config
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_AT Version\MobilePhone\bin\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_AT Version\MobilePhone\bin\MobilePhone.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_AT Version\MobilePhone\obj\Release\Mobilephone.vbprojResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_AT Version\MobilePhone\obj\Release\MobilePhone.frmDebugBox.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_AT Version\MobilePhone\obj\Release\Mobilephone.vbproj.GenerateResource.Cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_AT Version\MobilePhone\obj\Release\MobilePhone.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\_AT Version\MobilePhone\obj\Release\MobilePhone.pdb

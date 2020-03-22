@@ -1,0 +1,12 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\bin\MotoC650 Plugin.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\bin\MotoC650 Plugin.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\bin\MotoC650 Plugin.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\MotoC650\obj\Debug\ResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\MotoC650\obj\Debug\Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\MotoC650\obj\Debug\GenerateResource.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\MotoC650\obj\Debug\GenerateResource.write.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\MotoC650\obj\Debug\MotoC650 Plugin.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\MotoC650\obj\Debug\MotoC650 Plugin.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\MotoC650\obj\Debug\MotoC650 Plugin.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\MotoC650\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\MotoC650\obj\Debug\GenerateResource-ResGen.write.1.tlog

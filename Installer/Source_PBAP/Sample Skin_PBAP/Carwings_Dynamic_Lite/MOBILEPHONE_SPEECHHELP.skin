@@ -1,0 +1,32 @@
+RideRunner Skin
+RRScreen MenuItemSet
+MenuItemSet_Off.png,MenuItemSet_Off.png,MenuItemSet_On.png,MenuItemSet_On.png
+IDL,15,"EXIT"
+
+/DISCARDABLE
+
+[ Standard RideRunner Labels ]
+L,103,0,208,34,255,255,255,18,"Arial:B","=Speech Help","CENTER",,"DS=2,2,0,0,0"
+
+[ Standard RideRunner Button ]
+B,314,504,152,55,"ESC",
+B,20,43,60,44,"PGUP",
+B,20,231,60,74,"DOWN",
+B,20,313,60,44,"PGDOWN",
+B,20,98,60,74,"UP",
+
+[  ]
+B,239,370,109,55,"ESC",
+B,67,370,109,55,"EXIT",
+
+[ LIST ]
+
+/,  x   y   w   h   r   g   b   1   2   3   r   g   b   r   g   b   trs  pt font
+SC,88,44,313,318, 255,255,255, 000, 000, 000, 255,255,255, 255,120,047, true, 22,"Arial:B",00,"","",""
+IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60
+
+/EFFECTIN=17
+
+/EFFECTOUT=18
+ 
+END

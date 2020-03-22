@@ -1,0 +1,348 @@
+ENUM COMMANDCODES
+
+k1           -  
+k2           -  
+k3           -  
+k4           -  
+k5           -  
+k6           -  
+k7           -  
+k8           -  
+k9           -  
+k0           -  
+k*           -  
+k#           -  
+call           -  
+end                               -  
+open                             -  открыть фаил: open@"name".skin      
+open@vizovi.skin        - открыть окно вызовов
+
+
+
+
+
+
+END ENUM
+
+ENUM LABELCODES
+"TIME"			- Current Time of day, in format set by INI.
+"DATE"			- Current Date in format set by INI.
+"TRACKNAME"		- Current song's Title. When XM/SIRIUS is on, This is the song name.
+"AUDIOTRACK"		- Current song's Title.
+"TRACKNUMBER"		- Current song's PLAYLIST number. When XM/SIRIUS is ON, This is the station number.
+"KHZ"			- Song's Frequency/Quality
+"KBPS"			- Song's Bitrate
+"TRACKTIME"		- Song's Total Time
+"CURRENTTRACKTIME"	- Song's Current Progress Time. When XM/SIRIUS is ON, This is the time of the current song.
+"REMAININGTRACKTIME"	- Song's Current Time Left
+"VOLUME"		- Volume %
+"STATUS"		- Status of playing video/song (PLAY, PAUSE or STOP)
+"SHUFFLEREPEAT"		- Shows status of Shuffle and Repeat indicators (Off, Shuffle, Repeat or Shuffle and Repeat)
+"PLAYLIST"		- Playlist Name
+"PLAYLISTCOUNT"		- Number of items in the Playlist, XM channels or SIRIUS channels
+"TEMPX"			- Temperature Sensor X value (scale set by INI)
+"VOLTX"			- Mauri's voltimeter sensor X value
+"TAGTITLE"		- Song Title   (Road Runner Only) -- If no tag, RR will use the filename
+"TAGARTIST"		- Artist Name  (Road Runner Only)
+"TAGTRACKNUMBER"	- Track Number (Road Runner Only)
+"TAGYEAR"		- Song's Year  (Road Runner Only)
+"TAGALBUM"		- Album Name   (Road Runner Only)
+"TAGGENRE"		- Album Name   (Road Runner Only)
+"TODAY"			- Today's Date (Road Runner Only -- same as "DATE" but for flash support)
+"MBMXX"			- Information from Mother Board Monitor 5 (XX denotes the sensor number). When using this, the tooltip defines the format of display examples are: "MBM01", "C2F" (Celcius to Farenheit conversion, "F2C" also available) -- "MBM01", "0C" (0 is replaced to show "59C", could also be "0.0 C" etc) -- "MBM49", "0 RPM" (0 is replaced to show "4216 RPM", "0.00V" etc)
+"SFXXX"			- Information from SpeedFan -- SF codes start with a letter denoting the type of Info. 'v' for voltage, 't' for temperature and 'f' for fan. For instance '"SFV3" would be the third voltage sensor
+"PHIDXX"		- Information from Phidgets Sensors (XX denotes the sensor number). This code supports the same "Tooltip" parameters as MBM does.
+"MM"			- This allows you to display Map Monkey information in RR skins (even flash). See Map Monkey SDK for complete list of requests. The toolpit sets the format. Example: "MM;CurrentSpeed","0 MPH" or "MM;SatCount","" etc -- Added Codes are: "MM;ETA", "MM;ETR", "MM;CITY", "MM;STREET", "MM;ZIP" and "MM;SETELLITECOUNT"
+"FREQUENCE"		- Radio FrequencY (Yeah, it's misspelled to support older MediaCar skins)
+"STATION"		- Current Station Name (Radio)
+"PRESET"		- Current Preset Number (Radio)
+"GPSLAT"		- GPS Latitude (Road Runner Only)
+"GPSLON"		- GPS Longitude (Road Runner Only)
+"GPSSPD"		- GPS Speed (In whatever units specified in RRConfig -- Mi/h or Km/h)
+"GPSHDG"		- GPS Heading (in degrees only) (Road Runner Only)
+"GPSALT"		- GPS Altitude (In whatever units specified in RRConfig -- ft or m) (Road Runner Only)
+"GPSSAT"		- GPS Satellites used (this is 0 if GPS has no valid info) (Road Runner Only)
+"GPSWATERTEMP"		- GPS (Extended) Water Temperature (Road Runner Only)
+"GPSWATERDEPTH"		- GPS (Extended) Water Depth (Road Runner Only)
+"RRPATH"		- Road Runner's Path -- Mainly for SDK (Road Runner Only)
+"RRSCREEN"		- Road Runner's Current Screen -- Mainly for SDK (Road Runner Only)
+"RRSKIN"		- Road Runner's Current Skin's path -- Mainly for SDK (Road Runner Only)
+"RRVER"			- Road Runner's Version -- Mainly for SDK (Road Runner Only)
+"RRDAYNIGHT"		- Returns DAY/NIGHT/OTHER according to current skin selected. (Road Runner Only)
+"XMSTATION"		- XM Station Name (Road Runner Only)
+"XMGENRE"		- XM Station Genre (Road Runner Only)
+"XMSAT"			- XM Satellite Signal Quality (Road Runner Only)
+"XMTER"			- XM Terrestrial Signal Quality (Road Runner Only)
+"XMFAV"			- XM Favorite List's Name (Road Runner Only)
+"XMFAVNUM"		- Number of Current XM Favorite list. 0=Main list, 1=1st list and so on. (Road Runner Only)
+"XMINFO;<CH>;<FORMAT>"	- XM Channel info (updated every minute) -- <CH>=Channel, <FORMAT>=Format of info. (Road Runner Only) -- You can use %artist%, %title%, %genre%, %station% to build your custom format.
+"SRSTATION"		- SIRIUS Station Name (Road Runner Only)
+"SRGENRE"		- SIRIUS Station Genre (Road Runner Only)
+"SRSAT"			- SIRIUS Satellite Signal Quality (Road Runner Only)
+"SRTER"			- SIRIUS Terrestrial Signal Quality (Road Runner Only)
+"SRFAV"			- SIRIUS Favorite List's Name (Road Runner Only)
+"XMFAVNUM"		- Number of Current SIRIUS Favorite list. 0=Main list, 1=1st list and so on. (Road Runner Only)
+"SRINFO;<CH>;<FORMAT>"	- SIRIUS Channel info (updated every minute) -- <CH>=Channel, <FORMAT>=Format of info. (Road Runner Only) -- You can use %artist%, %title%, %genre%, %station% to build your custom format.
+"CPU"			- Shows CPU Load % (Road Runner Only)
+"MEM"			- Shows Total Memory usage % (Road Runner Only)
+"FREEMEM"		- Shows Physical Memory available (Kb can be used as format, otherwise it is in Mb)
+"ALLMEM"		- Shows Total Physical Memory (Kb can be used as format, otherwise it is in Mb)
+"PAGEMEM"		- Shows Page Memory available (Kb can be used as format, otherwise it is in Mb)
+"PAGESIZE"		- Shows Page Memory Size (Kb can be used as format, otherwise it is in Mb)
+"ALLFREEMEM"		- Shows All Memory available (Kb can be used as format, otherwise it is in Mb)
+"TOTALMEM"		- Shows Total Memory size (Kb can be used as format, otherwise it is in Mb)
+"RDSNAME"		- RDS Name of Station (if any)
+"RDSTEXT"		- RDS Text from Station (if any)
+"RDSSIGNAL"		- RDS Signal Level (SiLabs Radio Card Only)
+"PTY"			- RDS Program Type currently received (PTY)
+"DISTANCE" 		- Map Monkey Distance to next turn
+"NEXTROAD" 		- Name of next road to turn onto
+"PLTEXT"		- Shows the text currently selected on a playlist
+"DLTEXT"		- Shows the text currently selected on a Directory List (Folder list)
+"DLPATH"                - Shows the current path on a Directory List (Folder List)
+"PBTEXT"		- Shows the text currently selected on a Phone Book List
+"PLPOS"			- PlayList Position (can also be polled directly from flash -- see below)
+"DLPOS"			- Directory List Position (can also be polled directly from flash -- see below)
+"PBPOS"			- PhoneBook List Position (can also be polled directly from flash -- see below)
+"LISTTEXT"		- Shows the text selected on the currently selected list
+"LISTPOS"		- Shows the Current Item Position in the current list
+"ALBUMART"		- Shows the full path to the current album/xm/sirius art (if any) -- Mostly for Flash/SDK
+"COVERART"		- Shows the full path to the art of the currently selected item/folder on file/application/map browsers.
+"PICTURE"		- Shows the full path to the current picture of the picture viewer
+"TRACKPATH"		- Shows the full path to the current audio track (if any) -- Mostly for Flash/SDK
+"TRACKPATHXXX"		- Shows the full path to the specified item on playlist (i.e. TRACKPATH0 / TRACKPATH100 = 1st/100th item)
+"LISTPOSXXXTRACKPATH"	- Shows the full path to the specified item relative to current song (i.e. LISTPOS2TRACKPATH = next item)
+"CURRENTZIP"		- Current GPS based Zip Code
+"CURRENTSTATE"		- Current GPS based State
+"CURRENTCITY"		- Current GPS based City
+"CURRENTCOUNTY"		- Current GPS based County
+"BYVAR;VAR;CMD1<<CMD2"  - This allows you to display a labelcode based on a user variable (VAR) -- any label codes can be used. Example: "BYVAR;MODE;GPSSPEED<<TIME<<DATE<<=Hello"
+"BYIND;IND;CMD1<<CMD2"  - This allows you to display a labelcode based on an indicator state -- any indicator codes can be used. Example: "BYIND;REPEAT;=Repeat OFF<<=Repeat ON"
+"VOL"			- This allows you to display the volume of any mixer line by name. Also, special names can be used: Treble, Bass, Balance, FreqX (1-10), Winamp, Player Examples: "VOL;Bass" "VOL:Wave" "VOL;FREQ2" etc., Note that : (colon) also works in this label code. Ranges: Winamp & Player: 0-255 Freq & Preamp: 64-0	Other Volumes: 0-100
+"EXEC;<COMMAND CODE>"	- This allows you to make clickable areas that are not buttons but behave as such. You can use this to make invisible buttons or mix it with labels. Example: "EXEC;MUTE||VOL;Wave" (Will display the wave volume and if clicked, will mute/unmute master)
+"CLPOS"			- Custom List Position (can also be polled directly from flash -- see below)
+"CLMAX"			- Max Value of Custom List (Number of Items)
+"CLTOP"			- The first item on display in the List (Top line in view)
+"CLLINES"		- Number of Lines the list can display at once (Height in lines of the list)
+"CLTEXT"		- The Text from the selected item in the list. Optionally the item number can be specified. Example: "CLTEXT5" or "CLTEXT136" (Text of the item 5 and 136 in the list)
+"CLDESC"		- The Description from the selected item in the list. Optionally the item number can be specified. Example: "CLDESC5" or "CLDESC136" (Description of the item 5 and 136 in the list)
+"CALL_NAME_PHOCO"	- Name of Caller
+"CALL_NUMBER_PHOCO"	- Number of Caller
+"CALLSTATE_PHOCO"	- State of the call
+"NUMBER_HOME_PHOCO"	- Home number
+"NUMBER_MOBIL_PHOCO"	- Mobile Number
+"NUMBER_WORK_PHOCO"	- Work Number
+"NUMBER_FAX_PHOCO"	- Fax Number
+"NUMBER_OTHER_PHOCO"	- Other Number
+"NUMBER_MANUAL_PHOCO"	- Manualy entered Number
+"INLIST_PHOCO"		- Current PhoneBook list used
+"Operator_phoco" 	- Shows the Provider of your Phone
+"Phonename_phoco" 	- Shows the Bluetooth-Name of your Phone (beta)
+"Phoco_version" 	- Version of Phoco
+"SMS_number_phoco" 	- Active SMS Number
+"SMS_name_phoco" 	- Active SMS Name
+"SMS_date_phoco" 	- Active SMS Date
+"SMS_time_phoco" 	- Active SMS Time
+"contactpic_phoco"	- Contact Pic Label
+"NAME"			- Name of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"CONTACTNAME"		- Name of Contact (same as "NAME") -- WHEN IN CONTACTDETAILS.SKIN
+"NUMBERHOME"		- Home number of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"NUMBERWORK"		- Work number of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"NUMBERMOBIL"		- Mobile number of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"NUMBERFAX"		- Fax number of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"NUMBEROTHER"		- Other number of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"EMAIL"			- Email Address of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"STREET"		- Street Address of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"ZIP"			- Zip Code of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"CITY"			- City of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"COUNTRY"		- Country of Contact -- WHEN IN CONTACTDETAILS.SKIN
+"gaszip"  		- Shows gas finder zip
+"gasfiledate"		- Show date and time of last prices refresh
+"gas_#_distance" 	- (Where # is a number from 0 to 11) Shows surface distance between current gps coordinate to gas station gps coordinate
+"gas_#_name" 		- (Where # is a number from 0 to 11) Shows brand of gas
+"gas_#_address" 	- (Where # is a number from 0 to 11) Shows gas station street address
+"gas_#_address2" 	- (Where # is a number from 0 to 11) Shows gas station city, state and zip code
+"gas_#_fulladdress" 	- (Where # is a number from 0 to 11) Shows gas station full address
+"gas_#_unleaded" 	- (Where # is a number from 0 to 11) Shows price for unleaded
+"gas_#_plus" 		- (Where # is a number from 0 to 11) Shows price for plus
+"gas_#_premium" 	- (Where # is a number from 0 to 11) Shows price for premium
+"gas_#_diesel" 		- (Where # is a number from 0 to 11) Shows price for diesel
+"gas_#_lon" 		- (Where # is a number from 0 to 11) Shows gas station GPS coordinates (Lon.)
+"gas_#_lat" 		- (Where # is a number from 0 to 11) Shows gas station GPS coordinates (Lat.)
+"w_titinfo" 		- Weather Title info
+"w_dnam" 		- Weather location  name
+"w_tm" 			- Weather Time
+"w_lat"			- Weather Latitude
+"w_lon" 		- Weather Longitude
+"w_sunr"		- Weather SunRise
+"w_suns" 		- Weather SunSet
+"w_lsup" 		- Weather Latest Update (date/time)
+"w_obst" 		- Weather Observation Station (place name/country)
+"w_tmp" 		- Weather Temperature
+"w_flik" 		- Weather Feels Like Temperature
+"w_t" 			- Weather Text
+"w_bar" 		- Weather Barometric pressure
+"w_wind" 		- Weather Winds
+"w_hmid" 		- Weather Humidity
+"w_vis" 		- Weather Visibility
+"w_uv" 			- Weather UV Index
+"w_dewp" 		- Weather Dew Point
+"w_moont"		- Weather Moon Phase Text
+"w_#day"		- (Where # is a number from 0 to 4) Weather Day Title
+"w_#day_hi"		- (Where # is a number from 0 to 4) Weather Day Hi Temp
+"w_#day_low"		- (Where # is a number from 0 to 4) Weather Day Low Temp
+"w_#day_sunr" 		- (Where # is a number from 0 to 4) Weather Day SunRise
+"w_#day_suns"		- (Where # is a number from 0 to 4) Weather Day SunSet
+"w_#day_t"		- (Where # is a number from 0 to 4) Weather Day Text
+"w_#day_wind" 		- (Where # is a number from 0 to 4) Weather Day Wind
+"w_#day_bt"		- (Where # is a number from 0 to 4) Weather Day Title2
+"w_#day_ppcp"		- (Where # is a number from 0 to 4) Weather Day Precipitation
+"w_#day_hmid"		- (Where # is a number from 0 to 4) Weather Day Humidity
+"w_#night_t"		- (Where # is a number from 0 to 4) Weather Night Title
+"w_#night_wind"		- (Where # is a number from 0 to 4) Weather Night Wind
+"w_#night_bt"		- (Where # is a number from 0 to 4) Weather Night Title2
+"w_#night_ppcp"		- (Where # is a number from 0 to 4) Weather Night Precipitation
+"w_#night_hmid"		- (Where # is a number from 0 to 4) Weather Night Humidity
+"HDARTISTX" 		- HD Artist on Sub Channel X
+"HDTITLEX" 		- HD Title on Sub Channel X
+"HDSUB"			- Current HD Sub Channel
+"HDSUBCOUNT"		- Number of Sub Channels Available for current Station
+"RDSNAME"/"RDSTEXT"	- Those also may provide information about the Current Station for HD Radio
+END ENUM
+
+ENUM LABELALIGNMENT
+"LEFT"			- Align left
+"RIGHT"			- Align right
+"CENTER"		- Align center
+"SCROLL-LEFT"		- Align left, scrolls if contents don't fit
+"SCROLL-CENTER"		- Align center, scrolls if contents don't fit
+"SCROLL-RIGHT"		- Align right, scrolls if contents don't fit
+"SCROLL-UP"		- Wrap text up and scroll up
+"WRAP"			- Align left, wrap text to multiple lines when needed
+"WRAP-RIGHT"		- Align right, wrap text to multiple lines when needed
+"WRAP-CENTER"		- Align center, wrap text to multiple lines when needed
+"C2F"			- Converts a temperature value from C to F
+"F2C"			- Converts a temperature value from F to C
+END ENUM
+
+ENUM SLIDERCODES
+"MASTER"		- Master Volume
+"BALANCE"		- Master Balance
+"TREBLE"		- Treble Level
+"BASS"			- Bass Level
+"FREQX"			- Winamp Equalizer Frequency Level (1-10)
+"WAVE"			- Wave out level
+"LINE"			- Line in Level
+"CD"			- CD out level
+"AUX"			- Aux in level
+"SYNTH"			- Synthetized out level
+"WINAMPVOL"		- Winamp Master volume
+"PREAMPVOL"		- Winamp PreAmp level
+"SONGPOS"		- Current Song's Position  (Road Runner Only)
+"VIDEOPOS"		- Current Video's Position (Road Runner Only)
+"SIGNAL_STRENGTH_PHOCO" - Signal Strengh for Phoco (Road Runner Only)
+"BATTERY_STRENGTH_PHOCO"- Battery Charge for Phoco (Road Runner Only)
+"VOL;<AUDIO LINE>"	- Creates a slider to control a specific audio line (Example: "VOL;Wave" -- Road Runner Only)
+"GPSSIGNAL"		- GPS Signal (Based on number of satelites)
+"PLSLIDER"		- PlayList Scroll Position
+"DLSLIDER"		- Directory List Scroll Position
+"PBSLIDER"		- PhoneBook Scroll Position
+"CLSLIDER"		- CustomList Scroll Position
+"CPU"			- CPU Load
+"HDSIGNAL"		- HD Radio Tuner Signal Strength (Road Runner Only -- for MitchJS's HD Radio Tuner only)
+"RSIGNAL" 		- Signal strength of the radio station received
+"$VARNAME$"		- Variable Slider. This Makes a slider from a variable (SDK/Plugin/Scripting supporT). The Slider value is set/read to/from a RR variable that you can set with SETVAR and use in commands. The Range of values is from 0 to 65535 -- Use EVAL on the variable to convert ranges if needed. If the Slider is clicked/changed a "ONSLDVARNAME" event is triggered.
+END ENUM
+
+ENUM INDICATORCODES
+
+opri                                          -уровень приема сигнала
+"REPEAT"		- Repeat List Mode
+"MODE"			- Mode (HD/CD) (Not Implemented)
+"SHUFFLE"		- Shuffle Play Mode
+"MUTE"			- Master Mute
+"MASTERMUTE"		- Master Mute
+"WAVEMUTE"		- Wave Mute
+"LINEMUTE"		- Line in Mute
+"CDMUTE"		- CD Mute
+"AUXMUTE"		- Aux in Mute
+"SYNTHMUTE"		- Synthetized Mute
+"WINAMPPREAMPMUTE"	- Winamp PreAmp (ON/OFF) (Not Implemented)
+"SCANMODE"		- Playlist Scan/Intro Mode
+"SURF"			- Radio Surf Mode (Same as "SCANMODE")
+"STEREO"		- Radio Stereo (Works with DLink Cards ONLY)
+"SCAN"			- Radio Scan Mode (Indicates whether FREQ+/- will "seek")
+"AF" 			- Indicates that the RDS AF function is active
+"TP" 			- Indicates that the tuned station transmits traffic programs
+"TA" 			- Indicates that the RDS TA function is active
+"ACTIVEPL"		- Indicates whether the Playlist is the Highlighted Object in the screen
+"ACTIVEDL"		- Indicates whether the Dirlist is the Highlighted Object in the screen
+"ACTIVEPB"		- Indicates whether the Phonebook is the Highlighted Object in the screen
+"ACTIVECL"		- жопа
+"TOPPL"			- Indicates whether more data exists above the TOP of Playlist
+"TOPDL"			- Indicates whether more data exists above the TOP of Folder List
+"TOPPB"			- Indicates whether more data exists above the TOP of Phone Book List
+"TOPCL"			- Indicates whether more data exists above the TOP of Custom List
+"BOTTOMPL"		- Indicates whether more data exists below the BOTTOM of Playlist
+"BOTTOMDL"		- Indicates whether more data exists below the BOTTOM of Folder List
+"BOTTOMPB"		- Indicates whether more data exists below the BOTTOM of Phone Book List
+"BOTTOMCL"		- Indicates whether more data exists below the BOTTOM of Custom List
+"DIRECTION" 		- Will display the direction image (MM_*.jpg) from the CURRENT SKIN's folder.
+"VOL;<AUDIO LINE>"	- Indicates the mute state of any audio line. (Example: "VOL;Wave")
+"STATUS"		- This will attempt to show Play|Pause|Stop.gif from the CURRENT SKIN's FOLDER into the defined area.
+"ONLINE"		- Indicates the connectivity status -- WAN/LAN/Dial-Up.
+"HEADING"		- Indicates the most aproximate heading and displays the propper image for it (N, NE, E, SE, S, SW, W, NW -- JPGs on the SKIN's folder)
+"GPSVOL"		- Indicates the current state of the GPS controlled Volume.
+"GPSGAMMA"		- Indicates the current state of the GPS controlled gamma.
+"GPSSKIN"		- Indicates the current state of the GPS controlled skin.
+"ALBUMART"		- Album Art for current song/station.
+"COVERART"		- Album/Movie art for the currently selected item/folder on file/application/map browsers.
+"PICTURE"		- Picture selected in the picture viewer
+"FMAM"			- Inficates if the current frequency is FM (True) or AM (False)
+"IGIND"			- ON when iG is in Guidance mode OR voice direction OR both.
+"HDACTIVE"		- HD Radio Signal Active (For MitchJS's HD Radio tuner)
+"INUMBER_HOME_PHOCO"	- Indicates if the Home number is current in memory
+"INUMBER_WORK_PHOCO"	- Indicates if the Work number is current in memory
+"INUMBER_MOBIL_PHOCO" 	- Indicates if the Mobile is current in memory
+"INUMBER_FAX_PHOCO" 	- Indicates if the Fax is current in memory
+"INUMBER_OTHER_PHOCO" 	- Indicates if the Other is current in memory
+"MISSED_CALL_PHOCO" 	- Indicates if there are missed calls from Phoco
+"NUMBER_MANUAL_PHOCO"	- Indicates if the Manual number is current in memory
+"BATTERY_CHARGING_PHOCO"- Indicates if the Battery is charging
+"PHONE_CONNECTED_PHOCO" - Indicates if the Phone is connected
+"SMS_ARRIVED_PHOCO" 	- Shows that a new sms has arrived until you go to sms-inbox
+"SMSSTATUS"		- This will attempt to show Empty|Sending|Sent|NotSent.gif from the CURRENT SKIN's FOLDER into the defined area
+"HEADSET_CONNECTED_PHOCO" - Indicates if the BT-Headset is connected.
+"incoming_call_phoco"	- Indicator for Incomming Call
+"gas_#_icon"		- (Where # is a number from 0 to 11) Shows image for gas brand
+"wicon"			- Shows Current Weather Icon
+"wmoonicon"		- Shows Night Weather Icon
+"w#dayicon"		- (Where # is a number from 0 to 4) Shows Day Weather Icon
+"w#nighticon"		- (Where # is a number from 0 to 4) Shows Night Weather Icon
+"EXISTS;PATH+FILENAME"	- Indicates the presence of a file on disk.
+"FILE;PATH+FILENAME"	- Updates the indicator automatically upon modification of the indicator image file specified.
+END ENUM
+
+/, SPECIAL CODES
+/, RGB 			- combines r, g, b values into a color picker
+/, FONT			- combines pt, font name values into a font picker
+
+/, (B) Кнопка
+Button,B,x,y,w,h,Команда;COMMANDCODES,Tooltip
+
+/, (L) Label
+Label,L,x,y,w,h,Цвет текста R;RGB,G,B,Размер текста;FONT,Название текста,Code,Tooltip;LABELALIGNMENT
+
+/, (T) Редактируемый текст
+TextBox,T,x,y,w,h,Цвет текста R;RGB,G,B,Размер текста;FONT,Название текста,Code,tooltip
+
+
+/, (I) Иконки
+Indicator,I,x,y,w,h,Code;INDICATORCODES
+
+/, (W) Album Art and Application Image
+Label,W,x,y,w,h,color R;RGB,G,B,font size;FONT,font name,Code;LABELCODES,Tooltip;LABELALIGNMENT
+
+
+/, (H) Комбинация клавиш
+Button,H,x,y,w,h,Команда;COMMANDCODES,Tooltip

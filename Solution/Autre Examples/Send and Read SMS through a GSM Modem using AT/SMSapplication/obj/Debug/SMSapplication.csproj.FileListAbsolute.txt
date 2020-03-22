@@ -1,0 +1,16 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Send and Read SMS through a GSM Modem using AT\SMSapplication\bin\Debug\SMSapplication.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Send and Read SMS through a GSM Modem using AT\SMSapplication\bin\Debug\SMSapplication.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\ResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\SMSapplication.SMSapplication.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\SMSapplication.Properties.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\GenerateResource.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\GenerateResource.write.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\SMSapplication.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\SMSapplication.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\SMSapplication.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\SMSapplication.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\Send and Read SMS through a GSM Modem using AT\SMSapplication\bin\Debug\SMSapplication.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\Send and Read SMS through a GSM Modem using AT\SMSapplication\bin\Debug\SMSapplication.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\SMSapplication.SMSapplication.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\SMSapplication.Properties.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\Send and Read SMS through a GSM Modem using AT\SMSapplication\obj\Debug\SMSapplication.csproj.GenerateResource.Cache

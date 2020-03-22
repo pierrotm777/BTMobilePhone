@@ -1,0 +1,15 @@
+ObjectColor=16777215
+ObjectBorder=2
+SelectedObjectColor=65535
+SelectedObjectBorder=4
+EnableMouseOver=False
+EnableMouseDown=True
+EnableFlashPlayback=False
+ENABLEAUTOUPDATE=True
+RRSkinPath=
+EnableSaveConformation=False
+PropertyBoxWidth=6065
+LWO_1=C:\Documents and Settings\Admin\Рабочий стол\tell_3.0_sp\skin||menu.skin,setting.skin,infouser.skin,proplvv.skin,call.skin,inncall.skin
+LWO_2=C:\Documents and Settings\Admin\Рабочий стол\Новая папка (2)\плеер\skin||menu.skin
+LWO_3=C:\Documents and Settings\Admin\Мои документы\ICQ\368510421\ReceivedFiles\430178006 St@rz\Гармин\skin
+

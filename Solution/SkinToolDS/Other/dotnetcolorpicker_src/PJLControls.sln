@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PJLControls", "PJLControls\PJLControls.csproj", "{46C6D9CE-672F-4491-BF67-AA3F8DC811B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorPickerDemo", "ColorPickerDemo\ColorPickerDemo.csproj", "{771D52DC-61A0-4F62-868E-9CC3BA000E13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46C6D9CE-672F-4491-BF67-AA3F8DC811B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C6D9CE-672F-4491-BF67-AA3F8DC811B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C6D9CE-672F-4491-BF67-AA3F8DC811B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C6D9CE-672F-4491-BF67-AA3F8DC811B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{771D52DC-61A0-4F62-868E-9CC3BA000E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{771D52DC-61A0-4F62-868E-9CC3BA000E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{771D52DC-61A0-4F62-868E-9CC3BA000E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{771D52DC-61A0-4F62-868E-9CC3BA000E13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SolutionUniqueID = {F5D609B9-2D87-4BBC-B330-3F424931C98A}
+		SccProjectUniqueName1 = PJLControls\\PJLControls.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PJLControls\\
+		SccProjectUniqueName2 = ColorPickerDemo\\ColorPickerDemo.csproj
+		SccProjectName2 = \u0022$/DotNet/PJLControls/ColorPickerDemo\u0022,\u0020HSHAAAAA
+		SccLocalPath2 = ColorPickerDemo
+	EndGlobalSection
+EndGlobal

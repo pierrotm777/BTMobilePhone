@@ -1,0 +1,327 @@
+
+2013.09.01-12.48.15: Sending: ATZ
+2013.09.01-12.48.15: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.48.15: Sending: ATE0
+2013.09.01-12.48.15: Response: ATE0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.48.15: Found echo in response
+2013.09.01-12.48.15: Sending: AT+CPIN?
+2013.09.01-12.48.16: Response: <cr><lf>+CPIN: READY<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.48.16: Sending: ATE0
+2013.09.01-12.48.16: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.48.16: Sending: AT+COPS=0,1
+2013.09.01-12.48.16: CME ERROR: 4	Operation not supported
+2013.09.01-12.48.16: Sending: ATE0
+2013.09.01-12.48.17: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.48.17: Sending: AT+CMEE=1
+2013.09.01-12.48.17: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.48.17: Sending: AT+CPMS?
+2013.09.01-12.48.18: Response: <cr><lf>+CPMS: "ME",11,300,"ME",11,300,"ME",11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.48.18: Sending: AT+CMGF=0
+2013.09.01-12.48.18: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.48.18: Sending: AT+CNMI=0,0,0,0,0
+2013.09.01-12.48.18: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.48.18: Sending: AT+CSCA?
+2013.09.01-12.48.18: Response: <cr><lf>+CSCA: "+33695000695",145<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.48.18: Sending: AT+CGDCONT?
+2013.09.01-12.48.19: Response: <cr><lf>+CGDCONT: 1,"IP","websfr?1`??1????????!","0.0.0.0",0,0<cr><lf>+CGDCONT: 3,"IP","","0.0.0.0",0,0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.48.19: Sending: AT+CGATT=1
+2013.09.01-12.48.19: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.48.22: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-12.48.22: Response: <cr><lf>+CPMS: 11,300,11,300,11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.48.22: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-12.48.23: Response: <cr><lf>+CPMS: 11,300,11,300,11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.48.23: Sending: AT+CSCS=?
+2013.09.01-12.48.23: Response: <cr><lf>+CSCS: ("GSM","UCS2""UTF-8")<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.48.23: Sending: AT+CNUM
+2013.09.01-12.48.54: Sending: AT+CGMM
+2013.09.01-12.49.24: Sending: AT+GMM
+2013.09.01-12.49.54: Sending: AT+CGMI
+2013.09.01-12.50.18: Sending watch dog message
+2013.09.01-12.50.25: Sending: AT+GMI
+2013.09.01-12.50.55: Sending: AT+CGSN
+2013.09.01-12.51.25: Sending: AT+CIMI
+2013.09.01-12.51.56: Sending: AT+CGMR
+2013.09.01-12.52.26: Sending: AT+GMR
+2013.09.01-12.52.56: Sending: AT+CBC
+2013.09.01-12.53.27: Sending: AT+CNMI=?
+2013.09.01-12.54.00: Sending: AT+CSQ
+2013.09.01-12.55.01: Sending: ATZ
+2013.09.01-12.55.02: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.55.02: Sending: ATE0
+2013.09.01-12.55.02: Response: ATE0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.55.02: Found echo in response
+2013.09.01-12.55.02: Sending: AT+CPIN?
+2013.09.01-12.55.02: Response: <cr><lf>+CPIN: READY<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.55.02: Sending: ATE0
+2013.09.01-12.55.02: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.55.02: Sending: AT+COPS=0,1
+2013.09.01-12.55.03: CME ERROR: 4	Operation not supported
+2013.09.01-12.55.03: Sending: ATE0
+2013.09.01-12.55.03: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.55.03: Sending: AT+CMEE=1
+2013.09.01-12.55.03: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.55.03: Sending: AT+CPMS?
+2013.09.01-12.55.04: Response: <cr><lf>+CPMS: "ME",11,300,"ME",11,300,"ME",11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.55.04: Sending: AT+CMGF=0
+2013.09.01-12.55.04: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.55.04: Sending: AT+CNMI=0,0,0,0,0
+2013.09.01-12.55.05: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.55.05: Sending: AT+CSCA?
+2013.09.01-12.55.05: Response: <cr><lf>+CSCA: "+33695000695",145<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.55.05: Sending: AT+CGDCONT?
+2013.09.01-12.55.05: Response: <cr><lf>+CGDCONT: 1,"IP","websfr?1`??1????????!","0.0.0.0",0,0<cr><lf>+CGDCONT: 3,"IP","","0.0.0.0",0,0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.55.05: Sending: AT+CGATT=1
+2013.09.01-12.55.06: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.55.09: Sending: AT+CSCS=?
+2013.09.01-12.55.09: Response: <cr><lf>+CSCS: ("GSM","UCS2""UTF-8")<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.55.09: Sending: AT+CNUM
+2013.09.01-12.56.09: Sending: ATZ
+2013.09.01-12.56.09: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.56.09: Sending: ATE0
+2013.09.01-12.56.10: Response: ATE0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.56.10: Found echo in response
+2013.09.01-12.56.10: Sending: AT+CPIN?
+2013.09.01-12.56.10: Response: <cr><lf>+CPIN: READY<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.56.10: Sending: ATE0
+2013.09.01-12.56.10: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.56.10: Sending: AT+COPS=0,1
+2013.09.01-12.56.11: CME ERROR: 4	Operation not supported
+2013.09.01-12.56.11: Sending: ATE0
+2013.09.01-12.56.11: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.56.11: Sending: AT+CMEE=1
+2013.09.01-12.56.11: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.56.11: Sending: AT+CPMS?
+2013.09.01-12.56.12: Response: <cr><lf>+CPMS: "ME",11,300,"ME",11,300,"ME",11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.56.12: Sending: AT+CMGF=0
+2013.09.01-12.56.12: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.56.12: Sending: AT+CNMI=0,0,0,0,0
+2013.09.01-12.56.13: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.56.13: Sending: AT+CSCA?
+2013.09.01-12.56.13: Response: <cr><lf>+CSCA: "+33695000695",145<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.56.13: Sending: AT+CGDCONT?
+2013.09.01-12.56.13: Response: <cr><lf>+CGDCONT: 1,"IP","websfr?1`??1????????!","0.0.0.0",0,0<cr><lf>+CGDCONT: 3,"IP","","0.0.0.0",0,0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.56.13: Sending: AT+CGATT=1
+2013.09.01-12.56.13: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.56.21: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-12.56.21: Response: <cr><lf>+CPMS: 11,300,11,300,11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.56.21: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-12.56.22: Response: <cr><lf>+CPMS: 11,300,11,300,11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.56.22: Sending: AT+CSCS=?
+2013.09.01-12.56.22: Response: <cr><lf>+CSCS: ("GSM","UCS2""UTF-8")<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.56.22: Sending: AT+CNUM
+2013.09.01-12.57.18: Sending: ATZ
+2013.09.01-12.57.18: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.57.18: Sending: ATE0
+2013.09.01-12.57.19: Response: ATE0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.57.19: Found echo in response
+2013.09.01-12.57.19: Sending: AT+CPIN?
+2013.09.01-12.57.19: Response: <cr><lf>+CPIN: READY<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.57.19: Sending: ATE0
+2013.09.01-12.57.19: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.57.19: Sending: AT+COPS=0,1
+2013.09.01-12.57.20: CME ERROR: 4	Operation not supported
+2013.09.01-12.57.20: Sending: ATE0
+2013.09.01-12.57.20: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.57.20: Sending: AT+CMEE=1
+2013.09.01-12.57.20: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.57.20: Sending: AT+CPMS?
+2013.09.01-12.57.21: Response: <cr><lf>+CPMS: "ME",11,300,"ME",11,300,"ME",11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.57.21: Sending: AT+CMGF=0
+2013.09.01-12.57.21: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.57.21: Sending: AT+CNMI=0,0,0,0,0
+2013.09.01-12.57.22: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.57.22: Sending: AT+CSCA?
+2013.09.01-12.57.22: Response: <cr><lf>+CSCA: "+33695000695",145<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.57.22: Sending: AT+CGDCONT?
+2013.09.01-12.57.22: Response: <cr><lf>+CGDCONT: 1,"IP","websfr?1`??1????????!","0.0.0.0",0,0<cr><lf>+CGDCONT: 3,"IP","","0.0.0.0",0,0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.57.22: Sending: AT+CGATT=1
+2013.09.01-12.57.23: Response: <cr><lf>OK<cr><lf>
+2013.09.01-12.57.25: Sending: AT+CSCS=?
+2013.09.01-12.57.25: Response: <cr><lf>+CSCS: ("GSM","UCS2""UTF-8")<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-12.57.25: Sending: AT+CNUM
+2013.09.01-12.57.28: Ending Async DisconnectedEventHandler call
+2013.09.01-01.00.00: Sending: ATZ
+2013.09.01-01.00.01: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.00.01: Sending: ATE0
+2013.09.01-01.00.01: Response: ATE0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.00.01: Found echo in response
+2013.09.01-01.00.01: Sending: AT+CPIN?
+2013.09.01-01.00.02: Response: <cr><lf>+CPIN: READY<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.00.02: Sending: ATE0
+2013.09.01-01.00.02: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.00.02: Sending: AT+COPS=0,1
+2013.09.01-01.00.02: CME ERROR: 4	Operation not supported
+2013.09.01-01.00.02: Sending: ATE0
+2013.09.01-01.00.03: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.00.03: Sending: AT+CMEE=1
+2013.09.01-01.00.03: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.00.03: Sending: AT+CPMS?
+2013.09.01-01.00.04: Response: <cr><lf>+CPMS: "ME",11,300,"ME",11,300,"ME",11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.00.04: Sending: AT+CMGF=0
+2013.09.01-01.00.04: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.00.04: Sending: AT+CNMI=0,0,0,0,0
+2013.09.01-01.00.04: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.00.04: Sending: AT+CSCA?
+2013.09.01-01.00.04: Response: <cr><lf>+CSCA: "+33695000695",145<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.00.04: Sending: AT+CGDCONT?
+2013.09.01-01.00.05: Response: <cr><lf>+CGDCONT: 1,"IP","websfr?1`??1????????!","0.0.0.0",0,0<cr><lf>+CGDCONT: 3,"IP","","0.0.0.0",0,0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.00.05: Sending: AT+CGATT=1
+2013.09.01-01.00.05: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.00.24: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-01.00.25: Response: <cr><lf>+CPMS: 11,300,11,300,11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.00.25: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-01.00.25: Response: <cr><lf>+CPMS: 11,300,11,300,11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.00.25: Sending: AT+CSCS=?
+2013.09.01-01.00.26: Response: <cr><lf>+CSCS: ("GSM","UCS2""UTF-8")<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.00.26: Sending: AT+CNUM
+2013.09.01-01.00.27: Ending Async DisconnectedEventHandler call
+2013.09.01-01.05.08: Sending: ATZ
+2013.09.01-01.05.08: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.05.08: Sending: ATE0
+2013.09.01-01.05.08: Response: ATE0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.05.08: Found echo in response
+2013.09.01-01.05.08: Sending: AT+CPIN?
+2013.09.01-01.05.09: Response: <cr><lf>+CPIN: READY<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.05.09: Sending: ATE0
+2013.09.01-01.05.09: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.05.09: Sending: AT+COPS=0,1
+2013.09.01-01.05.09: CME ERROR: 4	Operation not supported
+2013.09.01-01.05.09: Sending: ATE0
+2013.09.01-01.05.10: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.05.10: Sending: AT+CMEE=1
+2013.09.01-01.05.10: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.05.10: Sending: AT+CPMS?
+2013.09.01-01.05.11: Response: <cr><lf>+CPMS: "ME",11,300,"ME",11,300,"ME",11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.05.11: Sending: AT+CMGF=0
+2013.09.01-01.05.11: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.05.11: Sending: AT+CNMI=0,0,0,0,0
+2013.09.01-01.05.11: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.05.11: Sending: AT+CSCA?
+2013.09.01-01.05.12: Response: <cr><lf>+CSCA: "+33695000695",145<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.05.12: Sending: AT+CGDCONT?
+2013.09.01-01.05.12: Response: <cr><lf>+CGDCONT: 1,"IP","websfr?1`??1????????!","0.0.0.0",0,0<cr><lf>+CGDCONT: 3,"IP","","0.0.0.0",0,0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.05.12: Sending: AT+CGATT=1
+2013.09.01-01.05.12: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.05.18: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-01.05.18: Response: <cr><lf>+CPMS: 11,300,11,300,11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.05.18: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-01.05.19: Response: <cr><lf>+CPMS: 11,300,11,300,11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.05.19: Sending: AT+CSCS=?
+2013.09.01-01.05.19: Response: <cr><lf>+CSCS: ("GSM","UCS2""UTF-8")<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.05.21: Ending Async DisconnectedEventHandler call
+2013.09.01-01.07.42: Sending: ATZ
+2013.09.01-01.07.42: Response: ATZ<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.42: Found echo in response
+2013.09.01-01.07.42: Sending: ATE0
+2013.09.01-01.07.43: Response: ATE0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.43: Found echo in response
+2013.09.01-01.07.43: Sending: AT+CPIN?
+2013.09.01-01.07.43: Response: <cr><lf>+CPIN: READY<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.43: Sending: ATE0
+2013.09.01-01.07.43: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.07.43: Sending: AT+COPS=0,1
+2013.09.01-01.07.44: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.07.44: Sending: ATE0
+2013.09.01-01.07.44: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.07.44: Sending: AT+CMEE=1
+2013.09.01-01.07.44: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.07.44: Sending: AT+CPMS?
+2013.09.01-01.07.45: Response: <cr><lf>+CPMS: "SM",16,30,"SM",16,30,"ME",0,1000<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.45: Sending: AT+CMGF=0
+2013.09.01-01.07.45: Response: <cr><lf>+CMGF: 0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.45: Sending: AT+CNMI=0,0,0,0,0
+2013.09.01-01.07.45: CMS ERROR: 303	 Operation not supported
+2013.09.01-01.07.45: Sending: AT+CSCA?
+2013.09.01-01.07.46: Response: <cr><lf>+CSCA: "+33609001390",145<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.46: Sending: AT+CGDCONT?
+2013.09.01-01.07.46: Response: <cr><lf>+CGDCONT: 1,"IP","orange","0.0.0.0",0,0<cr><lf>+CGDCONT: 2,"IP","orange.acte","0.0.0.0",0,0<cr><lf>+CGDCONT: 3,"IP","orange-mib","0.0.0.0",0,0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.46: Sending: AT+CGDCONT=4,"IP",""
+2013.09.01-01.07.46: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.07.46: Sending: AT+CGATT=1
+2013.09.01-01.07.47: Error in command AT+CGATT=1 : ERROR  
+2013.09.01-01.07.48: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-01.07.48: Response: <cr><lf>+CPMS: 0,1000,0,1000,0,1000<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.49: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-01.07.49: Response: <cr><lf>+CPMS: 0,1000,0,1000,0,1000<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.49: Sending: AT+CSCS=?
+2013.09.01-01.07.49: Response: <cr><lf>+CSCS: ("GSM","IRA","8859-1","UTF-8","UCS2")<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.49: Sending: AT+CNUM
+2013.09.01-01.07.49: Response: <cr><lf>+CNUM: ,"0603363212",129,,4<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.52: Sending: AT+CGMM
+2013.09.01-01.07.52: Response: <cr><lf>AAD-3022041-BV<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.52: Sending: AT+GMM
+2013.09.01-01.07.52: Response: <cr><lf>Sony Ericsson K610<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.52: Sending: AT+CGMI
+2013.09.01-01.07.52: Response: <cr><lf>Sony Ericsson<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.52: Sending: AT+GMI
+2013.09.01-01.07.53: Response: <cr><lf>Sony Ericsson<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.53: Sending: AT+CGSN
+2013.09.01-01.07.53: Response: <cr><lf>353813010714078<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.53: Sending: AT+CIMI
+2013.09.01-01.07.53: Response: <cr><lf>208101375390240<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.53: Sending: AT+CGMR
+2013.09.01-01.07.54: Response: <cr><lf>R1JC002 070122 2040 CXC1250537_ORANGE_TH<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.07.54: Sending: AT+GMR
+2013.09.01-01.07.54: Response: <cr><lf>R1JC002<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.08.04: Sending: AT+CBC
+2013.09.01-01.08.04: Response: <cr><lf>+CBC: 0, 69<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.08.04: Sending: AT+CSQ
+2013.09.01-01.08.04: Response: <cr><lf>+CSQ: 99,99<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.08.04: Sending: AT+COPS?
+2013.09.01-01.08.05: Response: <cr><lf>+COPS: 0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.08.35: Sending: AT+CMGL=0
+2013.09.01-01.08.35: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.08.38: Sending: AT+CMGL=4
+2013.09.01-01.08.39: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.08.55: Sending: AT+CPBS=?
+2013.09.01-01.08.55: Response: <cr><lf>+CPBS: ("FD","LD","ME","SM","DC","RC","MC","MV","HP","BC")<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.09.01: Sending: AT+CPMS="MT","MT","MT"
+2013.09.01-01.09.01: CMS ERROR: 321	 Invalid memory index
+2013.09.01-01.09.01: Sending: AT+CPMS="MT","MT"
+2013.09.01-01.09.01: CMS ERROR: 321	 Invalid memory index
+2013.09.01-01.09.01: Sending: AT+CPMS="MT"
+2013.09.01-01.09.02: CMS ERROR: 321	 Invalid memory index
+2013.09.01-01.09.02: Sending: AT+CMGL=4
+2013.09.01-01.09.02: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.09.16: Sending: ATZ
+2013.09.01-01.09.16: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.09.16: Sending: ATE0
+2013.09.01-01.09.17: Response: ATE0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.09.17: Found echo in response
+2013.09.01-01.09.17: Sending: AT+CPIN?
+2013.09.01-01.09.17: Response: <cr><lf>+CPIN: READY<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.09.17: Sending: ATE0
+2013.09.01-01.09.17: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.09.17: Sending: AT+COPS=0,1
+2013.09.01-01.09.18: CME ERROR: 4	Operation not supported
+2013.09.01-01.09.18: Sending: ATE0
+2013.09.01-01.09.18: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.09.18: Sending: AT+CMEE=1
+2013.09.01-01.09.18: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.09.18: Sending: AT+CPMS?
+2013.09.01-01.09.19: Response: <cr><lf>+CPMS: "ME",11,300,"ME",11,300,"ME",11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.09.19: Sending: AT+CMGF=0
+2013.09.01-01.09.19: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.09.19: Sending: AT+CNMI=0,0,0,0,0
+2013.09.01-01.09.19: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.09.19: Sending: AT+CSCA?
+2013.09.01-01.09.20: Response: <cr><lf>+CSCA: "+33695000695",145<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.09.20: Sending: AT+CGDCONT?
+2013.09.01-01.09.20: Response: <cr><lf>+CGDCONT: 1,"IP","websfr?1`??1????????!","0.0.0.0",0,0<cr><lf>+CGDCONT: 3,"IP","","0.0.0.0",0,0<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.09.20: Sending: AT+CGATT=1
+2013.09.01-01.09.20: Response: <cr><lf>OK<cr><lf>
+2013.09.01-01.09.24: Sending: AT+CPMS="ME","ME","ME"
+2013.09.01-01.09.24: Response: <cr><lf>+CPMS: 11,300,11,300,11,300<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.09.24: Sending: AT+CSCS=?
+2013.09.01-01.09.25: Response: <cr><lf>+CSCS: ("GSM","UCS2""UTF-8")<cr><lf><cr><lf>OK<cr><lf>
+2013.09.01-01.09.25: Sending: AT+CNUM
+2013.09.01-01.09.49: Ending Async DisconnectedEventHandler call
+2013.09.01-01.09.55: Sending: AT+CBC
+2013.09.01-01.09.55: Sending: AT+CGMM
+2013.09.01-01.09.55: Sending: AT+GMM
+2013.09.01-01.09.55: Sending: AT+CGMI
+2013.09.01-01.09.55: Sending: AT+GMI
+2013.09.01-01.09.55: Sending: AT+CGSN
+2013.09.01-01.09.55: Sending: AT+CIMI
+2013.09.01-01.09.55: Sending: AT+CGMR
+2013.09.01-01.09.55: Sending: AT+GMR

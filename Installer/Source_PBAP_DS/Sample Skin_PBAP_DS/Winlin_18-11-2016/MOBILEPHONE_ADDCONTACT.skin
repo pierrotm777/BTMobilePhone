@@ -1,0 +1,43 @@
+RideRunner Skin
+RRScreen MessageBox_AddContact.
+screen_500_300_off.png,screen_500_300_off.png,screen_500_300_off.png,screen_500_300_off.png
+
+INC,xy.txt
+INC,shadow.txt
+INC,FontMainBottom.txt
+
+IMG,0,0,500,300,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_800_480.png",out
+
+[Labels]
+L,39,7,425,32,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,20,#FontMainBottomStyle#,"=$l_set_BTM_CopyLastNumberIn$","CENTER",,"DS=2,2,0,0,0"
+L,12,142,476,38,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,20,#FontMainBottomStyle#,"MOBILEPHONE_CALLERID","CENTER",,"DS=2,2,0,0,0"
+L,39,79,423,38,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,20,#FontMainBottomStyle#,"=$NEWCONTACTNAME$","CENTER",,"DS=2,2,0,0,0"
+L,34,206,107,63,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,20,#FontMainBottomStyle#,"=In Phone","VHCENTER",,"DS=2,2,0,0,0"
+L,361,206,107,63,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,20,#FontMainBottomStyle#,"=In Black List","VHCENTER",,"DS=2,2,0,0,0"
+
+[Buttons]
+B,12,70,476,53,"SETVARBYCODE;NEWCONTACTNAME;MOBILEPHONE_CALLERNAME||OSKTOCMD;NEWCONTACTNAME;MENU;MOBILEPHONE_ADDCONTACTTOPHONE.SKIN||OSKTEXT;$NEWCONTACTNAME$",
+
+[Add In Phone]
+IMG,25,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,25,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,25,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,25,198,123,79,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+B,25,198,123,79,"ESC||MOBILEPHONE_ADDCONTACTINPHONE",
+
+[Quit]
+IMG,188,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,188,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,188,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,188,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+I,229,215,45,45,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\close.png:a"
+B,188,198,123,79,"ESC",
+
+[Add In Blacklist]
+IMG,352,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,352,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,352,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,352,198,123,79,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+B,352,198,123,79,"ESC||MOBILEPHONE_ADDCONTACTINBLACKLIST",
+ 
+END

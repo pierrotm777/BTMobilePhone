@@ -1,0 +1,185 @@
+RideRunner Skin
+RRScreen MOBILEPHONE_SETTINGS2
+screen_1024x600_off.png,screen_1024x600_off.png,screen_1024x600_off.png,screen_1024x600_off.png
+
+[Includes]
+INC,xy.txt
+INC,shadow.txt
+INC,FontMainBottom.txt
+INC,FontBar.txt
+INC,FontBarLabel.txt
+INC,FontBottom.txt
+INC,4_cf_s$Media_S$0.txt
+
+[Background Images]
+IMG,0,0,1024,600,"$SKINPATH$Theme\$ThemePanels$\Panels\full_1024_600.png",out
+IMG,23,457,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+
+[Bottom]
+IMG,0,563,1024,36,"$SKINPATH$Theme\$ThemePanels$\Panels\bottom_1024_60.png",out
+
+[Top buttons]
+IMG,8,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_off.png",off
+IMG,8,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_on.png",on
+IMG,8,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_down.png",down
+IMG,8,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_shadow_$shadow$.png",off
+I,33,5,50,50,"FILE;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\$CurrentAppImg$:a"
+B,8,0,100,60,"SETVAR;TOP_State;1||TopButtonsLoad",@SetMyAppHotKey@
+I,33,52,50,5,"!iCarDS_Active"
+
+IND,!iCarDS_Active,i_Off.png,i_on.png
+IMG,108,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_off.png",off
+IMG,108,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_on.png",on
+IMG,108,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_down.png",down
+IMG,108,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_shadow_$shadow$.png",off
+IMG,133,5,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\$button10img$:a",all
+B,108,0,100,60,"$button10command$",@SetTopButton10@
+IMG,816,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_off.png",off
+IMG,816,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_on.png",on
+IMG,816,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_down.png",down
+IMG,816,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_shadow_$shadow$.png",off
+IMG,841,5,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\$button11img$:a",all
+B,816,0,100,60,"$button11command$",@SetTopButton11@
+
+[Quit]
+IMG,916,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_off.png",off
+IMG,916,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_on.png",on
+IMG,916,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_down.png",down
+IMG,916,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_shadow_$shadow$.png",off
+IMG,941,5,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\close.png:a",all
+B,916,0,100,60,"ESC",""
+
+[Left Settings]
+
+[Run On start]
+IMG,23,94,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,420,97,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,420,97,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I03,420,97,36,36,"MOBILEPHONE_RUNONSTART",,,
+L09,30,101,151,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_RunOnStart$","LEFT"
+B01,407,84,73,53,"MOBILEPHONE_RUNONSTART"
+
+[Phone book update]
+IMG,23,146,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,420,151,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,420,151,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I06,420,151,36,36,"MOBILEPHONE_PHONEBOOKUPDATE",,,
+L06,30,152,260,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_PhoneBookUpdate$","LEFT"
+B09,408,137,73,53,"MOBILEPHONE_PHONEBOOKUPDATE"
+
+[Pan Ip]
+IMG,23,198,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+L02,30,203,335,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_PanIpAddress$ : ||MOBILEPHONE_PANIPADDRESS","LEFT"
+
+[Emergency]
+IMG,23,250,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+L07,30,255,380,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_EmergencyNumber$ :     ||MOBILEPHONE_EMERGENCYNUMBER","LEFT"
+B01,14,243,465,53,"SETVARBYCODE;MOBILEPHONE_EMERGENCYNUMBER;MOBILEPHONE_EMERGENCYNUMBER||OSKTOCMD;MOBILEPHONE_EMERGENCYNUMBER;MOBILEPHONE_UPDATE_EMERGENCYNUMBER||OSKTEXT;$MOBILEPHONE_EMERGENCYNUMBER$",
+
+[Voice Messages]
+IMG,23,302,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+L07,30,307,400,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_VocalMessageryNumber$:     ||MOBILEPHONE_VOCALMESSAGERYNUMBER","LEFT"
+B01,14,291,465,53,"SETVARBYCODE;MOBILEPHONE_VOCALMESSAGERYNUMBER;MOBILEPHONE_VOCALMESSAGERYNUMBER||OSKTOCMD;MOBILEPHONE_VOCALMESSAGERYNUMBER;MOBILEPHONE_UPDATE_VOCALMESSAGERYNUMBER||OSKTEXT;$MOBILEPHONE_VOCALMESSAGERYNUMBER$",
+
+[Auto swap phone]
+IMG,23,354,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,420,360,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,420,360,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I05,421,360,36,36,"MOBILEPHONE_AUTOSWAPPHONE",
+L08,30,360,288,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_AutoSwapPhones$","LEFT"
+B10,408,343,73,53,"MOBILEPHONE_AUTOSWAPPHONE"
+
+[Speech recognition]
+L05,30,443,331,17,255,255,0,10,"Arial:B","=(||MOBILEPHONE_SPEECHNUMBERS||=)","SCROLL-LEFT"
+IMG,23,406,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,420,411,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,420,411,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I06,420,411,36,36,"MOBILEPHONE_SPEECH_RECOGNITION",,,
+L02,30,412,290,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_PhoneSpeechRecognition$","LEFT"
+L03,30,462,336,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_PhoneSpeechRecognitionReset$","LEFT"
+B12,408,397,73,53,"MOBILEPHONE_SPEECH_RECOGNITION"
+B06,14,452,394,44,"MOBILEPHONE_SPEECH_RECOGNITIONRESET"
+
+[Right Settings]
+
+[Country prefix List]
+IMG,563,94,350,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+L11,581,101,193,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_PhoneCountryList$","LEFT"
+IMG,924,94,60,40,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,924,94,60,40,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,924,94,60,40,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,924,94,60,40,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+I,935,90,40,40,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\down.png:a"
+B06,924,94,60,40,"MOBILEPHONE_PHONEPREFIXBYCOUNTRY",
+
+[Phone culture]
+IMG,563,146,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+L19,581,130,304,18,255,255,0,10,"Arial:B","MOBILEPHONE_SPEECHCULTURE||=    +||MOBILEPHONE_PHONECULTURE","SCROLL-LEFT"
+L10,581,151,295,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_PhoneCountryCode$ : ||=+||MOBILEPHONE_PHONECULTURE","LEFT"
+B02,558,136,452,52,"SETVARBYCODE;MOBILEPHONE_PHONECULTURE;MOBILEPHONE_PHONECULTURE||OSKTOCMD;MOBILEPHONE_PHONECULTURE;MOBILEPHONE_UPDATE_PHONECULTURE||OSKTEXT;$MOBILEPHONE_PHONECULTURE$",
+
+[Debug log]
+IMG,563,198,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,964,202,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,964,202,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I,964,202,36,36,"MOBILEPHONE_DEBUGLOG",,,
+L12,581,204,250,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_DebugLog$","LEFT"
+B13,946,190,73,53,"MOBILEPHONE_DEBUGLOG"
+
+[Execute AT command (deprecated)]
+IMG,563,250,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,964,254,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,964,254,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I,964,254,36,36,"MOBILEPHONE_PHONEEXECATCMD",,,
+L06,581,256,290,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_ExecuteATcommands$","LEFT"
+B08,946,244,73,53,"MOBILEPHONE_PHONEEXECATCMD"
+
+[Translator]
+IMG,563,302,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,964,306,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,964,306,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I,964,306,36,36,"GTRANSLATOR",,,
+L19,581,285,213,16,255,255,0,10,"Arial:B","BYVAR;GTRANSLATOR;=RRTRANSLATOR is OFF<<=RRTRANSLATOR is ON","SCROLL-LEFT"
+/I02,814,339,50,36,"MOBILEPHONE_TRANSLATORTOLANG",,,
+IMG,814,302,50,36,"$skinpath$language\$language$.gif",all
+L08,581,307,226,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_FromTo$","LEFT",
+B03,948,295,73,53,"MOBILEPHONE_TOLANGUAGE",
+
+[Lock in Motion]
+IMG,563,354,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,964,358,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,964,358,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I,964,358,36,36,"MOBILEPHONE_LOCKINMOTION"
+L15,581,360,350,24,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_LockInMotion$","LEFT"
+B14,946,346,73,53,"MOBILEPHONE_LOCKINMOTION"
+L10,581,338,295,27,255,255,0,10,"Arial:B","MOBILEPHONE_LOCKINMOTIONCMD","LEFT"
+B02,559,346,378,52,"SETVARBYCODE;MOBILEPHONE_LOCKINMOTIONCMD;MOBILEPHONE_LOCKINMOTIONCMD||OSKTOCMD;MOBILEPHONE_LOCKINMOTIONCMD;MOBILEPHONE_LOCKINMOTIONCMD||OSKTEXT;$MOBILEPHONE_LOCKINMOTIONCMD$",
+
+[Auto answer call in]
+IMG,563,406,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,964,410,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,964,410,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I,964,410,36,36,"MOBILEPHONE_AUTONOTANSWERCALLIN"
+L15,581,412,250,24,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_AutoNotAnswerCallIn$","LEFT"
+B15,946,398,73,53,"MOBILEPHONE_AUTONOTANSWERCALLIN",
+
+[No Popup]
+IMG,563,457,454,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,741,460,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,741,460,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I,741,460,36,36,"MOBILEPHONE_NOADDCONTACT"
+L15,581,463,155,24,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_NoAddContact$","LEFT"
+B15,723,450,73,53,"MOBILEPHONE_NOADDCONTACT",
+
+/
+IMG,964,460,36,36,"$SKINPATH$Indicators\LED_GREEN_00.png",off
+IMG,964,460,36,36,"$SKINPATH$Indicators\LED_GREEN_01.png",on
+I,964,460,36,36,"MOBILEPHONE_NOSMSPOPUP"
+L15,783,463,177,24,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_NoSmsPopup$","LEFT",
+B15,945,451,73,53,"MOBILEPHONE_NOSMSPOPUP",
+
+[Versions]
+L,10,571,300,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_PluginVersion$ : ||MOBILEPHONE_PLUGINVER","LEFT",
+L,660,571,350,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_BlueSoleilSDKVersion$ : ||MOBILEPHONE_SDKVERSION","RIGHT",
+ 
+END

@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{405373DE-8634-4738-BA16-DE4FA6204AE4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>MessagingToolkit.Core.Utilities.My.MyApplication</StartupObject>
+    <RootNamespace>MessagingToolkit.Core.Utilities</RootNamespace>
+    <AssemblyName>MessagingToolkit.Core.Utilities</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>MessagingToolkit.Core.Utilities.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>MessagingToolkit.Core.Utilities.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MessagingToolkit.Barcode, Version=1.3.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MessagingToolkit\MessagingToolkit.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.Core, Version=1.3.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MessagingToolkit\MessagingToolkit.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.MMS, Version=1.3.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MessagingToolkit\MessagingToolkit.MMS.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.Pdu, Version=1.3.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MessagingToolkit\MessagingToolkit.Pdu.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.UI, Version=1.3.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MessagingToolkit\MessagingToolkit.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.Wap, Version=1.3.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MessagingToolkit\MessagingToolkit.Wap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMM1.Designer.vb">
+      <DependentUpon>frmMM1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMM1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSMPP.Designer.vb">
+      <DependentUpon>frmSMPP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSMPP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageContent.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMM1.resx">
+      <DependentUpon>frmMM1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSMPP.resx">
+      <DependentUpon>frmSMPP.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="bin\Debug\MessagingToolkit.Wap_201101.log" />
+    <None Include="bin\Debug\messagingtoolkit_201101.log" />
+    <None Include="bin\Debug\MMSProviders\Albania\AMC.mm1" />
+    <None Include="bin\Debug\MMSProviders\Albania\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Algeria\Djezzy.mm1" />
+    <None Include="bin\Debug\MMSProviders\Algeria\Nedjma.mm1" />
+    <None Include="bin\Debug\MMSProviders\Andorra\STA.mm1" />
+    <None Include="bin\Debug\MMSProviders\Anguilla\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Antigua&amp;Barbuda\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Antigua&amp;Barbuda\Digicel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Argentina\CTI Movil.mm1" />
+    <None Include="bin\Debug\MMSProviders\Argentina\Personal.mm1" />
+    <None Include="bin\Debug\MMSProviders\Argentina\Unifon.mm1" />
+    <None Include="bin\Debug\MMSProviders\Arub\Digicel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Arub\Setar.mm1" />
+    <None Include="bin\Debug\MMSProviders\Australia\Optus.mm1" />
+    <None Include="bin\Debug\MMSProviders\Australia\Telstra.mm1" />
+    <None Include="bin\Debug\MMSProviders\Australia\Three.mm1" />
+    <None Include="bin\Debug\MMSProviders\Australia\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Austria\Drei.mm1" />
+    <None Include="bin\Debug\MMSProviders\Austria\MobilKom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Austria\One.mm1" />
+    <None Include="bin\Debug\MMSProviders\Austria\T-Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Austria\Tele Ring.mm1" />
+    <None Include="bin\Debug\MMSProviders\Azerbaijan\Azercell.mm1" />
+    <None Include="bin\Debug\MMSProviders\Azerbaijan\Bakcell.mm1" />
+    <None Include="bin\Debug\MMSProviders\Bahrain\Batelco.mm1" />
+    <None Include="bin\Debug\MMSProviders\Bangladesh\Aktel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Barbados\Digicel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Belgium\Base.mm1" />
+    <None Include="bin\Debug\MMSProviders\Belgium\Mobistar.mm1" />
+    <None Include="bin\Debug\MMSProviders\Belgium\Proximus.mm1" />
+    <None Include="bin\Debug\MMSProviders\Belgium\Tempo.mm1" />
+    <None Include="bin\Debug\MMSProviders\Bosnia&amp;Herzegowina\Mobis.mm1" />
+    <None Include="bin\Debug\MMSProviders\Brazil\Brazil Telecom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Brazil\Claro.mm1" />
+    <None Include="bin\Debug\MMSProviders\Brazil\Oi.mm1" />
+    <None Include="bin\Debug\MMSProviders\Brazil\TIM.mm1" />
+    <None Include="bin\Debug\MMSProviders\Brunei\DST.mm1" />
+    <None Include="bin\Debug\MMSProviders\Bulgaria\Globul.mm1" />
+    <None Include="bin\Debug\MMSProviders\Bulgaria\Mtel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Cambodia\Hello.mm1" />
+    <None Include="bin\Debug\MMSProviders\Canada\Rogers.mm1" />
+    <None Include="bin\Debug\MMSProviders\Cayman Islands\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Chile\Entel PCS.mm1" />
+    <None Include="bin\Debug\MMSProviders\Chile\Telefonica.mm1" />
+    <None Include="bin\Debug\MMSProviders\China\China Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Croatia\VIPNet.mm1" />
+    <None Include="bin\Debug\MMSProviders\Cyprus\Areeba.mm1" />
+    <None Include="bin\Debug\MMSProviders\Cyprus\CytaMobile VodaFone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Czech Republic\Eurotel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Czech Republic\O2.mm1" />
+    <None Include="bin\Debug\MMSProviders\Czech Republic\Oskar.mm1" />
+    <None Include="bin\Debug\MMSProviders\Czech Republic\T-Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Denmark\Sonofon.mm1" />
+    <None Include="bin\Debug\MMSProviders\Denmark\Tele Denamrk.mm1" />
+    <None Include="bin\Debug\MMSProviders\Denmark\Telia.mm1" />
+    <None Include="bin\Debug\MMSProviders\Denmark\Tre.mm1" />
+    <None Include="bin\Debug\MMSProviders\Dominica\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Egypt\MobilNil.mm1" />
+    <None Include="bin\Debug\MMSProviders\Egypt\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Estonia\Elisa.mm1" />
+    <None Include="bin\Debug\MMSProviders\Estonia\EMT.mm1" />
+    <None Include="bin\Debug\MMSProviders\Estonia\Tele 2.mm1" />
+    <None Include="bin\Debug\MMSProviders\Finland\Alands.mm1" />
+    <None Include="bin\Debug\MMSProviders\Finland\DNA.mm1" />
+    <None Include="bin\Debug\MMSProviders\Finland\Elisa.mm1" />
+    <None Include="bin\Debug\MMSProviders\Finland\Go Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Finland\PGFree.mm1" />
+    <None Include="bin\Debug\MMSProviders\Finland\Sonera.mm1" />
+    <None Include="bin\Debug\MMSProviders\France\Bouygues.mm1" />
+    <None Include="bin\Debug\MMSProviders\France\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\France\SFR.mm1" />
+    <None Include="bin\Debug\MMSProviders\Georgia\Magti.mm1" />
+    <None Include="bin\Debug\MMSProviders\Germany\E-Plus.mm1" />
+    <None Include="bin\Debug\MMSProviders\Germany\O2.mm1" />
+    <None Include="bin\Debug\MMSProviders\Germany\T-Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Germany\VodaFone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Greece\Cosmote.mm1" />
+    <None Include="bin\Debug\MMSProviders\Greece\Q-Telecom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Greece\TIM.mm1" />
+    <None Include="bin\Debug\MMSProviders\Greece\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Grenada\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hong Kong\CSL.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hong Kong\New World.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hong Kong\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hong Kong\Peoples.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hong Kong\SmartOne.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hong Kong\Sunday.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hong Kong\Three.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hungary\PannonGSM.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hungary\T-Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Hungary\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\India\Airtel.mm1" />
+    <None Include="bin\Debug\MMSProviders\India\BPL.mm1" />
+    <None Include="bin\Debug\MMSProviders\India\CellOne.mm1" />
+    <None Include="bin\Debug\MMSProviders\India\Hutch.mm1" />
+    <None Include="bin\Debug\MMSProviders\India\VodaFone.MM1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\Alands.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\DNA.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\Elisa.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\EMT.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\IM3.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\Mentari.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\MobilNil.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\ProXL.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\Sat-C.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\Tele 2.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\Telkomsel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Indonesia\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Ireland\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Israel\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\Italy\TIM.mm1" />
+    <None Include="bin\Debug\MMSProviders\Italy\Tre.mm1" />
+    <None Include="bin\Debug\MMSProviders\Italy\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Italy\Wind.mm1" />
+    <None Include="bin\Debug\MMSProviders\Jamaica\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Jamaica\Digicell.mm1" />
+    <None Include="bin\Debug\MMSProviders\Jordan\MobileCom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Kazakhstan\K Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Kazakhstan\Kcell.mm1" />
+    <None Include="bin\Debug\MMSProviders\Kuwait\MTC.mm1" />
+    <None Include="bin\Debug\MMSProviders\Kuwait\Wataniya.mm1" />
+    <None Include="bin\Debug\MMSProviders\Liechtenstein\MobilKom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Lithuania\Omnitel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Luxembourg\Lux GSM.mm1" />
+    <None Include="bin\Debug\MMSProviders\Luxembourg\Tango.mm1" />
+    <None Include="bin\Debug\MMSProviders\Luxembourg\VOX.mm1" />
+    <None Include="bin\Debug\MMSProviders\Macau\CTM.mm1" />
+    <None Include="bin\Debug\MMSProviders\Macedonia\Cosmofon.mm1" />
+    <None Include="bin\Debug\MMSProviders\Malaysia\Celcom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Malaysia\DiGi.mm1" />
+    <None Include="bin\Debug\MMSProviders\Malaysia\Maxis.mm1" />
+    <None Include="bin\Debug\MMSProviders\Malta\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Mexico\Telcel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Moldova\MoldCell.mm1" />
+    <None Include="bin\Debug\MMSProviders\Monaco\Monacell.mm1" />
+    <None Include="bin\Debug\MMSProviders\Montserrat\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Morocco\IAM.mm1" />
+    <None Include="bin\Debug\MMSProviders\Morocco\MarocTelecom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Netherlands\KPN.mm1" />
+    <None Include="bin\Debug\MMSProviders\Netherlands\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\Netherlands\T-Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Netherlands\Telfort.mm1" />
+    <None Include="bin\Debug\MMSProviders\Netherlands\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\New Zealand\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Nigeria\Globacom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Nigeria\Glomobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Norway\Netcom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Norway\Telenor.mm1" />
+    <None Include="bin\Debug\MMSProviders\Oman\Nawras.mm1" />
+    <None Include="bin\Debug\MMSProviders\Oman\Oman Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Pakistan\Telenor.mm1" />
+    <None Include="bin\Debug\MMSProviders\Pakistan\Ufone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Panama\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Paraguay\VOX.mm1" />
+    <None Include="bin\Debug\MMSProviders\Philippines\Digitell.mm1" />
+    <None Include="bin\Debug\MMSProviders\Philippines\Globe Telecom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Philippines\Smart.mm1" />
+    <None Include="bin\Debug\MMSProviders\Philippines\SUN.mm1" />
+    <None Include="bin\Debug\MMSProviders\Poland\ERA.mm1" />
+    <None Include="bin\Debug\MMSProviders\Poland\Heyah.mm1" />
+    <None Include="bin\Debug\MMSProviders\Poland\Idea.mm1" />
+    <None Include="bin\Debug\MMSProviders\Poland\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\Poland\Plus.mm1" />
+    <None Include="bin\Debug\MMSProviders\Poland\Sami Swoi.mm1" />
+    <None Include="bin\Debug\MMSProviders\Portugal\Optimus.mm1" />
+    <None Include="bin\Debug\MMSProviders\Portugal\TMN.mm1" />
+    <None Include="bin\Debug\MMSProviders\Portugal\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Qatar\Qtel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Romania\Connex-Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Romania\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\Russia\A Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Russia\Beeline.mm1" />
+    <None Include="bin\Debug\MMSProviders\Russia\Megafon.mm1" />
+    <None Include="bin\Debug\MMSProviders\Russia\Motiv.mm1" />
+    <None Include="bin\Debug\MMSProviders\Russia\Smarts.mm1" />
+    <None Include="bin\Debug\MMSProviders\Russia\USI.mm1" />
+    <None Include="bin\Debug\MMSProviders\Saint Kitts and Nevis\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Saint Lucia\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Saint Vincent and the Grenadines\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Saudi Arabia\STC.mm1" />
+    <None Include="bin\Debug\MMSProviders\Singapore\M1.mm1" />
+    <None Include="bin\Debug\MMSProviders\Singapore\SingTel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Singapore\Starhub.mm1" />
+    <None Include="bin\Debug\MMSProviders\Slovakia\T-Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\South Africa\Cell C.mm1" />
+    <None Include="bin\Debug\MMSProviders\South Africa\MTN.mm1" />
+    <None Include="bin\Debug\MMSProviders\South Africa\VodaCom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Spain\Amena.mm1" />
+    <None Include="bin\Debug\MMSProviders\Spain\Movistar.mm1" />
+    <None Include="bin\Debug\MMSProviders\Spain\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Sri Lanka\Dialog.mm1" />
+    <None Include="bin\Debug\MMSProviders\Sweden\Tele2.mm1" />
+    <None Include="bin\Debug\MMSProviders\Sweden\Telia.mm1" />
+    <None Include="bin\Debug\MMSProviders\Sweden\Tre.mm1" />
+    <None Include="bin\Debug\MMSProviders\Sweden\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Switzerland\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\Switzerland\Sunrise.mm1" />
+    <None Include="bin\Debug\MMSProviders\Switzerland\Swisscom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Syria\Syriatel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Taiwan\Chunghwa.mm1" />
+    <None Include="bin\Debug\MMSProviders\Taiwan\ForEasTone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Taiwan\KG Telcom.mm1" />
+    <None Include="bin\Debug\MMSProviders\Taiwan\Mobitai.mm1" />
+    <None Include="bin\Debug\MMSProviders\Taiwan\TransAsia.mm1" />
+    <None Include="bin\Debug\MMSProviders\Taiwan\TWN.mm1" />
+    <None Include="bin\Debug\MMSProviders\Taiwan\Vibo.mm1" />
+    <None Include="bin\Debug\MMSProviders\Thailand\AIS.mm1" />
+    <None Include="bin\Debug\MMSProviders\Thailand\DTAC.mm1" />
+    <None Include="bin\Debug\MMSProviders\Thailand\Mobilelife.mm1" />
+    <None Include="bin\Debug\MMSProviders\Thailand\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\Tunisia\Tuntel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Turkey\Avea.mm1" />
+    <None Include="bin\Debug\MMSProviders\Turkey\Telsim.mm1" />
+    <None Include="bin\Debug\MMSProviders\Turkey\Turkcell.mm1" />
+    <None Include="bin\Debug\MMSProviders\Turks and Caicos Islands\Cable and Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\Ukraine\Kyivstar.mm1" />
+    <None Include="bin\Debug\MMSProviders\Ukraine\Life.mm1" />
+    <None Include="bin\Debug\MMSProviders\Ukraine\UMC.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Arab Emirates\DU.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Arab Emirates\Etisalat.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Kingdom\BT.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Kingdom\O2.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Kingdom\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Kingdom\T-Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Kingdom\Tesco.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Kingdom\Three.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Kingdom\Virgin.mm1" />
+    <None Include="bin\Debug\MMSProviders\United Kingdom\Vodafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\United States\AT&amp;T Wireless.mm1" />
+    <None Include="bin\Debug\MMSProviders\United States\Cingular.mm1" />
+    <None Include="bin\Debug\MMSProviders\United States\Orange.mm1" />
+    <None Include="bin\Debug\MMSProviders\United States\T-Mobile.mm1" />
+    <None Include="bin\Debug\MMSProviders\Uruguay\Ancel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Uruguay\Movistar.mm1" />
+    <None Include="bin\Debug\MMSProviders\Uzbekistan\Beeline.mm1" />
+    <None Include="bin\Debug\MMSProviders\Uzbekistan\Unitel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Vietnam\Mobifone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Vietnam\Vinafone.mm1" />
+    <None Include="bin\Debug\MMSProviders\Yemen\Sabafon.mm1" />
+    <None Include="bin\Debug\MMSProviders\Yugoslavia\Mobtel.mm1" />
+    <None Include="bin\Debug\MMSProviders\Yugoslavia\Monet.mm1" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\aaa.txt" />
+    <Content Include="bin\Debug\Box.jpg" />
+    <Content Include="bin\Debug\Box.png" />
+    <Content Include="bin\Debug\Box_CDs_Setup.png" />
+    <Content Include="bin\Debug\Logo_1.jpg" />
+    <Content Include="bin\Debug\Logo_2.jpg" />
+    <Content Include="bin\Debug\Logo_3.jpg" />
+    <Content Include="bin\Debug\Logo_4.jpg" />
+    <Content Include="bin\Debug\Logo_5.jpg" />
+    <Content Include="bin\Debug\Logo_6.jpg" />
+    <Content Include="bin\Debug\MessagingToolkit.Barcode.dll" />
+    <Content Include="bin\Debug\MessagingToolkit.Core.dll" />
+    <Content Include="bin\Debug\MessagingToolkit.Core.Utilities.exe" />
+    <Content Include="bin\Debug\MessagingToolkit.Core.Utilities.pdb" />
+    <Content Include="bin\Debug\MessagingToolkit.Core.Utilities.vshost.exe" />
+    <Content Include="bin\Debug\MessagingToolkit.Core.Utilities.xml" />
+    <Content Include="bin\Debug\MessagingToolkit.MMS.dll" />
+    <Content Include="bin\Debug\MessagingToolkit.Pdu.dll" />
+    <Content Include="bin\Debug\MessagingToolkit.UI.dll" />
+    <Content Include="bin\Debug\MessagingToolkit.Wap.dll" />
+    <Content Include="bin\Debug\smart.jpg" />
+    <Content Include="bin\Debug\SmartSoft Print.png" />
+    <Content Include="bin\Debug\SmartSoft.jpg" />
+    <Content Include="bin\Debug\SmartSoft.png" />
+    <Content Include="TextFile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\MMSProviders\United Arab Emir\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

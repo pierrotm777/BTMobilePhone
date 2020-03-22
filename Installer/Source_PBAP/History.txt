@@ -1,0 +1,351 @@
+History:
+v1.6.9 27-12-2016
+-auto phone books update is now ON by default.
+-phone contacts are now read by the main timer only one time and if list need an update.
+-update translator code (SMS screens are updated).
+-a new option stop or not on startup the Bluetooth (<RestartBTBeforeStart>false</RestartBTBeforeStart>).
+now, by default, the Bluetooth isn't stopped on each startup (hope to have a quicker start).
+This feature is usable only manually (no screen button).
+-MOBILEPHONE_PHONEBOOKSORT function issue is solved.
+
+v1.6.8 25-12-2016
+-update resume feature solved.
+-update view contact info code for solve issue with label MOBILEPHONE_CONTACTSFROMPHONE.
+-add attach file option with send message.
+-sender message picture is now well extracted.
+
+v1.6.7 5-12-2016
+-update on/off timers 1&2.
+Commands:
+MOBILEPHONE_TIMER1ONOFF and MOBILEPHONE_TIMER2ONOFF
+Indicators:
+MOBILEPHONE_TIMERREQUESTINFOS and MOBILEPHONE_TIMERCHECKDEVICEPRESENCE
+-update PAN service code.
+-birthday only checked one time or if the date change.
+-uncomment AT commands result code (AT+CIND? used for update signal and battery values).
+
+v1.6.6 26-11-2016
+-simplify sms extract code !
+-add new simplified format for history lists.
+-new command and label MOBILEPHONE_PHONEBOOKTYPE (switch from simplified list to normal, history list only)
+-solve issue in list that crached RR.
+-remove * character for all events (iCarDS only).
+
+v1.6.5 31-10-2016
+-update sms code (add name and number) for iphone issue.
+-force call out screen to be loaded in all case.
+-update ringing code event.
+-update favorite code.
+-pictures are extracted for each number of a contact.
+-update history list code when no name and no datetime exist.
+-update history after a call in or call out.
+-update search picture code(decode international number).
+-update search name code(decode international number).
+
+v1.6.4 25-10-2016
+-add MOBILEPHONE_MAPSERVICE variable for disable SMS (MAP service).
+(1 or not define = ON  and 0 = OFF).
+-add option select phone plugin (icards only).
+-update sms read code.
+-add attached file option in read sms screen.
+-limit sms popup.
+-change sms popup form (icards).
+
+v1.6.3 18-10-2016
+-after the first contacts extract, the list is now loaded !
+-popup 'contacts extract' added (icards).
+-remove sms popup.
+-update build and save vcard in phone(accept several number, phone's type and address).
+
+v1.6.2 14-10-2016
+-rewrite contact's details and writer code.
+-sms message is now read in the good order.
+-double click on a contact call the number or load the numbers selector screen if several numbers are found for this contact.
+-favorite's screen accept now several numbers for one contact.
+
+v1.6.1 30-9-2016
+-update favorite issue (iCarDS).
+-update manual startup.
+-update settings after phone change (need quit RR or iCarDS).
+-change sms read screen (change message text from label to custom list).
+-update PAUSE and RESUME before and after call.
+-update VOLUME code before and after call.
+-change the iCards Language file to the good folder (C:\Program Files\TipTop software\iCar DS\Language\).
+-update uninstallation (ini files and cf_ind.txt file are now well restored).
+
+v1.6.0 13-9-2016
+-update load sms load screen's models(iCarDS).
+-add 'ACTIVATE;iCar DS' on load skipto screen (iCarDS).
+-the un-installer remove all plugin's files.
+-add 'send position' button into the sms screen writer (iCarDS).
+-update 'Lock In Motion' feature (ON by default. Block the SMS access when the car is in motion).
+-add external power check now run very well and checked each 10s (MOBILEPHONE_BATTERYCHARGING indicator return True or False, Need a USB connection).
+-remove extra characters from phone numbers in lists and photo (iphone issue).
+
+v1.5.9 9-9-2016
+-the un-installer will not uninstall add-ons skin files.
+-no sms popup and no auto add contact by default.
+-update events into the ExecTBL.ini file (iCarDS installer only).
+-add optional events into the ExecTBL.ini file (iCarDS installer only).
+-add ringing feature in car's speakers (need a ringin.wav file under ...iCar DS\Extentions\MobilePhone\RingTone\).
+You can change the ringin.wav file by your, the code adapt automatically the ringin length loop.
+
+v1.5.8 31-8-2016
+-add debug log file for the event HFP_Ringing.
+-update code and add debug log file for the event HFP_StandBy.
+
+v1.5.7 23-8-2016
+-add send gps position in write sms screen (Google Maps, Bing Maps and Yandex Maps).
+-update RR screens.
+-update sms read code (for uncomplet subject issue).
+-replace CTRLUP and CTLRDOWN in contact's screen.
+-add MOBILEPHONE_SEARCHINLIST;txttosearch (search a string in custom list , by hold the button 'ABC' in contact's list for RR only). 
+
+v1.5.6 21-8-2016
+-update info code in sms read screen.
+-reset msg id between unread or all sms check.
+-add multilanguage for SMS screens and helps popup.
+-update lock in motion code.
+-update sms read code when gps is active.
+
+v1.5.5 16-8-2016
+-update SMS read code.
+-add multilanguage for Sms screens.
+-remove all SETVOL;MASTER;... command for iCarDS.
+
+v1.5.4 11-8-2016
+-update iCarDS screen for mac address issue in dial box.
+-update setting2 screen.
+-add code for the options 'No Add Contact' and 'No Sms Popup'.
+
+v1.5.3 10-8-2016
+-add change start delay (default is 3x5s maximum Must >=2 and <=5)
+
+v1.5.2 28-7-2016
+-add commands:
+mobilephone_stopallcheck	stop or restart MAP and Network check (toogle command)
+mobilephone_stopallcheck;1	stop MAP and Network check.
+mobilephone_stopallcheck;0	restart MAP and Network check.
+-add stop add contact (set PhoneNoAddContact = true).
+-add stop no popup info (set PhoneNoPopupInfo = true).
+-limit number of popup.
+-add Tools folder.
+-update second phone code in settings.
+
+v1.5.1 26-7-2016
+-add read sms iphone compatibility?
+
+v1.5.0 25-7-2016
+-update favorite icards screen.
+-update mobilecall icards screen.
+-update models icards screen.
+-update viewentry code.
+-add sort list when hold the vcard extract button(icards).
+-update view and build contact screens (complete addresse an birthday added).
+-stop auto unread sms if all sms read is used .
+-change enter settings code.
+
+v1.4.9 18-7-2016
+-update main code !
+-update contact's address infos.
+-add favorites to sms write screen.
+-all iCarDS screens are ready!
+
+v1.4.8 14-7-2016
+-update favorites code.
+-add *ONMOBILEPHONEALLRESUME RR event.
+-update contact's list (check only contact with phone number).
+
+v1.4.7 22-6-2016
+-remove /DISCARDABLE in contact's screen that clear custom list.
+-remove alarm code(used only AT commands). Need to delete xml settings file.
+-MOBILEPHONE_DIAL;$VAR$ accepted.
+-add add, del and call favorites contacts screen code (10 favorites by default but more is possible).
+-add emergency and voice mail number in multilanguage name.
+-PAN service now run very well (if your phone accept this feature).
+-add auto run and stop PAN service code (need 9s for this check):
+PAN auto stop if Wifi or LAN connection is found.
+PAN auto start if Wifi and LAN connections are lost.
+-add help button on contacts and favorites screens.
+-move some log position for better read.
+-update skins (DFX5,Reborn,Carwings and eLite2_800x600).
+-add HELP button.
+-save old volume before a SAY command (for read sms or listen to a new call).
+-restore old volume after a SAY command.
+-save and restore volume after AVRCP use.
+-save and restore volume when phone return to standby mode (after a call).
+-MAP is now checked only each 60s .
+-add GPSVALID2 (idem original GPSVALID but return always 'True' or 'False' and not 'Vrai' or 'Faux' like in french).
+-add send SMS command (for alarm or what you want)
+MOBILEPHONE_SENDSMS;0102030405;text
+MOBILEPHONE_SENDSMS;$MyNumber$;$MyText$
+ 
+v1.4.6 27-5-2016
+-force PAUSE audio sources with InCall mode.
+-update MOBILEPHONE_DIAL;111 and MOBILEPHONE_DIALBYNAME;bbb code.
+(MOBILEPHONE_DIAL;EMERGENCY or MOBILEPHONE_DIAL;MSGVOCAL or MOBILEPHONE_DIAL;111 accepted).
+-update MOBILEPHONE_DIAL code.
+-save old volume and resume old volume value after each call.
+
+v1.4.5 26-5-2016
+-Add attach file info into SMS notification.
+-Add speech to text feature with SMS notification (multilanguage ready).
+-debug code for iCarDS.
+-build chameleon skin for iCarDS.
+-check birthday just one time.
+-add multilanguage code.
+-update number of unread messages code.
+
+v1.4.4 16-5-2016
+-Update phone book extract code for compatibility with international number.
+-Add MOBILEPHONE_CLEAR in Reborn skin .
+-Update AVRCP check.
+-Update Roaming RR event(send only one time).
+-Update SMS extract, read and notification code.
+-Change beta status to normal.
+
+v1.4.3 10-5-2016
+-Update new unread SMS check code (replace timer by a counter).
+-Update remote service code (RR crash is solved).
+
+v1.4.2 8-5-2016
+-Update new unread SMS check code.
+-Update remote service code.
+
+v1.4.1 7-5-2016
+-Add new timer (60s) for check new unread SMS presence.
+-Add plugin operating time.
+
+v1.4.0 6-5-2016
+-Update MOBILEPHONE_SYSINFO code (error in 64bits).
+-Add code for check if file MobilePhone.xml is the last (old settings are saved)
+-First version usable by iCarDS.
+-Add Local services list.
+-Update remote services list code.
+-Add some other log code .
+-Add indicator code for battery and signal.
+
+v1.3.9 22-4-2016
+-Add some log info.
+-Update log file code.
+-Add WAIT phone mode.
+-Add SWAP phone feature (if two phones are defined in settings)
+-Set sliders to 0 if phone is disconnected.
+-Add system informations code.
+-Update manual connection code.
+-Add multi language code.
+-Update prefix number code.
+
+v1.3.8 18-4-2016
+-Change the code for load the plugin.
+
+v1.3.7 17-4-2016
+-Add MOBILEPHONE_PHONEBOOKSORT (return the pb.vcf and MobilePhone_PB.txt files in good order).
+-Update the viewer vcard code (now accept if the vcard and the RR list are not synchronised)
+-Update eLite2 skin.
+-Change code that load the plugin through a BackgroundWorker.
+
+v1.3.6 16-4-2016
+-Add MOBILEPHONE_SETSOURCE;AVRCP and MOBILEPHONE_SETSOURCE;NONE
+-Add a new threads for initiate the plugin(hope that solve the RR crash issue).
+-Add blink indicator vcard update for first vcard extract !
+-Change code when phone receive a standby event(vcard update is moved into the outgoincall event)
+-Add second phone settings code.
+
+v1.3.5 11-4-2016
+-Add auto vcard update after each call (need to set PhoneBookAutoUpdate to true in the settings).
+-Update Reborn settings screen (bad rssi signal indicator).
+-Add commands MOBILEPHONE_PHONEBOOKGET;XX and MOBILEPHONE_ADDITEM;MYLIST,0102030405,name .
+-Added Reborn themes colors, and update the screens MOBILEPHONE_ENTRY.skin and MOBILEPHONE_CONTACT_EDIT.skin.
+-Check if the language selected has its own variables language list under the folder Languages.
+-Add ACTIVESOURCE label info . When the AVRCP player is used ACTIVESOURCE = AVRCP Player and ACTIVESOURCEID return 10.
+-Update code around GpsLockout.
+
+v1.3.4 6-4-2016
+-Add black list code for the MOBILEPHONE_CONTACT_EDIT.skin and MOBILEPHONE_ENTRY.skin screens.
+(update add a contact, update delete a contact and reset black list)
+-Update the code around the MOBILEPHONE_SETTINGS.skin (device selected is always the phone connected).
+-Update speech recognition code (recognition ins't only for US language).
+-Update MOBILEPHONE_SETTINGS2.skin screen for GTRANSLATOR compatibility.
+-Add 'vCard Extract' button into the MOBILEPHONE_CONTACTS.skin Reborn screen .
+-Update the installer code .
+
+v1.3.3 27-3-2016
+-Now, the variable MOBILEPHONE_PHOTOPATH in the MOBILEPHONE screen, is always updated.
+-Add ROAMING indicator.
+-PhoneExecATCmd setting is now set to TRUE by default.
+It's important for have return of external power run on off.
+-Add delete one phone number in black list.
+-Add reset black list.
+-Value returned by the label MOBILEPHONE_SPEECHCULTURE is now the good language.
+-Settings screens update.
+-Accept international and national phone format and return the good contact's picture if exist .
+Need the settings:
+<PhoneCountryCodes>
+<string>0</string>
+<string>33</string>
+<string>00</string>
+</PhoneCountryCodes>
+Where for the france:
+0 = networkCarrierCode
+33 = countryCode
+00 = internationalCarrierCode
+
+v1.3.2 25-3-2016
+-Add button A2DP service
+-Add several labels
+-Update check services screen for Reborn,DFX5 and elite2
+-Add player code and update player screen.
+-Add tempo on plugin start
+If RR crash , try to edit the setting PhoneStartupTimer (minimum=5 and maximum=60).
+
+v1.3.1 22-3-2016
+-Speaker volume accept now 0 to maximum.
+-Speaker volume is set to maximum on start (15)
+-Micro and speaker volume are now ready for use (0 to 15)
+mobilephone_microvolume;x where x = 0 to 15
+mobilephone_speakervolume;x where x = 0 to 15
+-Found a big issue that crashed RR with the plugins RRVehicleMaintenance or RRGoogleMapsTools
+-Add interface from contact's address to Google Maps view.
+-Debug file is deleted after each RR start !
+-Change the priority thread from normal to low (think to solve some RR crash)
+
+v1.3.0 19-3-2016
+-MOBILEPHONE_EDIT_ENTRY command is replaced by the command MOBILEPHONE_NEWENTRY
+-You can select a contact unknown in all list and edit it for after add it into your phone (Hold View button)
+-Add unicode log debug file (MobilePhone.log)
+-Add error handler popup
+
+v1.2.9 18-3-2016
+-Add birthday check (new icon button on the MOBILPHONE.skin screen)
+-Change search devices list for not have disconnection
+-Add automatic reconnection feature (can look for two phones)
+-When you click on a contact the contact's viewer read the infos of this contact
+-Update Crawings contact's editor screen for a easier use
+-Add birthday line into the Obex\NewCard.vcf file
+
+v1.2.8 16-3-2016
+-Pan IP address is now well updated into the screen pop-up.
+-Update one phone list only is now possible.
+-Add black list number in list.
+-Add new contact build.
+-Solved issue when a contact haven't a phone number.
+-Solved issue when several phones found for one contact and no address.
+-Add contact's organisation info
+-Add OPP service(copy a new contact into your phone). Thanks to ClockWork for this new feature :-)
+-Add A2DP service. Thanks to ClockWork for this new feature :-)
+-Add create new contact and save it to phone (OPP service used)
+-Solved bad disconnection on RR exit (Thanks ClockWork)
+-Add onresume and onsuspend support ?
+-Add MAP notification (SMS unread check only)
+
+v1.2.7
+-Pan service is now set on or off.
+-Carwings, DFX5, Reborn and eLite2 800x600 skins are ready for this version.
+
+v1.2.1
+-This new version run with the complete BlueSoleil SDK and accept the services:
+PBAP (Phone Book)
+MAP (Messages)
+AVRCP (Media player)
+PAN

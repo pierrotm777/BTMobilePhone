@@ -1,0 +1,15 @@
+I-Create a button:
+  1)Carwings_Dynamic_Lite
+    "MyApp13","NETINFO"
+  2)Carwings_Dynamic_Lite with RideRunner Dynamic Menus
+    You need to do nothing, just select PI-RRNetworkInfo into your list.
+II-Copy the Carwings_Dynamic_Lite screens files into your skin folder
+
+RRNetworkInfo Sin Commands
+
+[Buttons]
+
+
+[Labels]
+
+[Indicators]

@@ -1,0 +1,34 @@
+RideRunner Skin
+RRScreen MOBILEPHONE_SETPHONETYPE
+MOBILEPHONE_CHOOSENUMBER_off.jpg,MOBILEPHONE_CHOOSENUMBER_off.jpg,MOBILEPHONE_CHOOSENUMBER_on.png,MOBILEPHONE_CHOOSENUMBER_down.jpg
+
+[Includes]
+INC,Color.txt
+
+/EFFECTIN=17
+/EFFECTOUT=18
+
+L,74,26,250,40,#COLOR#,24,"Arial","=$l_set_BTM_Mobile_Number$","CENTER"
+L,74,88,250,40,#COLOR#,24,"Arial","=$l_set_BTM_Home_Number$","CENTER"
+L,74,150,250,40,#COLOR#,24,"Arial","=$l_set_BTM_Work_Number$","CENTER"
+L,74,212,250,40,#COLOR#,24,"Arial","=$l_set_BTM_Fax_Number$","CENTER"
+L,74,276,250,40,#COLOR#,24,"Arial","=$l_set_BTM_Other_Number$","CENTER"
+
+/
+B10,69,12,277,67,"Esc||SetVar;PhoneNumberNType;1",
+B10,69,76,277,64,"Esc||SetVar;PhoneNumberNType;2",
+B06,69,140,277,63,"Esc||SetVar;PhoneNumberNType;3",
+B10,69,202,277,63,"Esc||SetVar;PhoneNumberNType;4",
+B10,69,263,277,67,"Esc||SetVar;PhoneNumberNType;5",
+
+/
+IMG,16,22,50,50,"$SKINPATH$Indicators\phone_mobile.png",all
+IMG,16,82,50,50,"$SKINPATH$Indicators\phone_home.png",all
+IMG,16,145,50,50,"$SKINPATH$Indicators\phone_work.png",all
+IMG,16,210,50,50,"$SKINPATH$Indicators\phone_fax.png",all
+IMG,16,272,50,50,"$SKINPATH$Indicators\phone_other.png"
+
+/
+B,9,327,152,65,"CANCEL",""
+ 
+END

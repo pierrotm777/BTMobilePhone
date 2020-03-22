@@ -1,0 +1,4 @@
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers\bin\Debug\PhoneNumbers.dll
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers\bin\Debug\PhoneNumbers.pdb
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers\obj\Debug\PhoneNumbers.dll
+E:\Téléchargements terminés\pmezard-libphonenumber-csharp-f5236354a379\csharp\PhoneNumbers\obj\Debug\PhoneNumbers.pdb

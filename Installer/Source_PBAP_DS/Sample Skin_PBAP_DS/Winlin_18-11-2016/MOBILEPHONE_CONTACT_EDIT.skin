@@ -1,0 +1,159 @@
+RideRunner Skin
+RRScreen "MOBILEPHONE_CONTACT_EDIT"
+screen_1024x600_off.png,screen_1024x600_off.png,screen_1024x600_off.png,screen_1024x600_off.png
+
+[Includes]
+INC,xy.txt
+INC,shadow.txt
+INC,FontMainBottom.txt
+INC,FontBar.txt
+INC,FontBottom.txt
+
+[Backgrounds]
+IMG,0,-2,1024,600,"$SKINPATH$Theme\$ThemePanels$\Panels\full_1024_600.png",out
+IMG,842,1,170,170,"$SKINPATH$Theme\$ThemePanels$\Panels\menu_info_210_210.png",out
+IMG,105,335,100,100,"$SKINPATH$Theme\$ThemePanels$\Panels\menu_info_210_210.png",out
+IMG,842,203,170,334,"$SKINPATH$Theme\$ThemePanels$\Panels\menu_info_210_210.png",out
+IMG,0,545,1024,55,"$SKINPATH$Theme\$ThemePanels$\Panels\bottom_1024_60.png",out
+
+[]
+L,880,173,38,24,255,128,0,14,#FontMainBottomStyle#,"=ID :","RIGHT"
+L,923,173,107,24,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$MOBILEPHONE_NBOFPHONEINCONTACT$","LEFT",
+
+[Full Name]
+IMG,224,14,76,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_shadow_$shadow$.png",out
+IMG,224,14,76,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L01,224,27,76,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDNAMEPREFIX","CENTER,
+B05,224,14,76,49,"OSKTOVAR;MOBILEPHONE_CARDNAMEPREFIX||OSKTEXT;$MOBILEPHONE_CARDNAMEPREFIX$||SETVAR;OSK_HELP;$l_set_BTM_EnterNamePrefix$",
+IMG,661,14,76,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_shadow_$shadow$.png",out
+IMG,661,14,76,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L01,661,27,76,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDNAMESUFFIX","CENTER",
+B05,661,14,76,49,"OSKTOVAR;MOBILEPHONE_CARDNAMESUFFIX||OSKTEXT;$MOBILEPHONE_CARDNAMESUFFIX$||SETVAR;OSK_HELP;$l_set_BTM_EnterNamePrefix$",
+IMG,305,14,350,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_shadow_$shadow$.png",out
+IMG,305,14,350,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L,5,27,213,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_ContactFullName$","RIGHT",
+L01,310,27,340,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDNAME","SCROLL-LEFT",
+B05,305,14,350,49,"OSKTOVAR;MOBILEPHONE_CARDNAME||OSKTEXT;$MOBILEPHONE_CARDNAME$||SETVAR;OSK_HELP;$l_set_BTM_EnterName$",
+
+[Number]
+IMG,224,66,338,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_shadow_$shadow$.png",out
+IMG,224,66,338,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L,5,75,213,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_ContactNumber$","RIGHT",
+B04,224,66,338,49,"NUMOSKTOVAR;MOBILEPHONE_CARDPHONENUMBER||OSKTEXT;$MOBILEPHONE_CARDPHONENUMBER$",
+
+[Number Type]
+IMG,569,66,85,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_shadow_$shadow$.png",out
+IMG,569,66,85,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L01,226,75,329,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDPHONENUMBER||=  (||MOBILEPHONE_CARDPHONELABEL||=)","LEFT",
+I,589,70,42,42,"ByVar;PhoneNumberNType;<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_mobile.png<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_home.png<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_work.png<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_fax.png<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_other.png:a"
+I,110,340,90,90,"ByVar;PhoneNumberNType;<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_mobile.png<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_home.png<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_work.png<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_fax.png<<$SKINPATH$Theme\$ThemeIcons$\MenuIcons\phone_other.png:a"
+B04,569,66,85,49,"MENU;CONTACT_SET_PHONENUMBER_TYPE.SKIN",
+
+[Other Numbers and Address]
+IMG,661,66,77,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_off.png",off
+IMG,661,66,77,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_on.png",on
+IMG,661,66,77,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_down.png",down
+IMG,661,66,77,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_102_75_shadow_$shadow$.png",off
+L,680,82,44,34,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_AddInContact$","LEFT",
+B,661,66,77,49,"MOBILEPHONE_CARDADDOTHERNUMBER",""
+
+[Birthday]
+L,5,128,213,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_ContactBirthDay$","RIGHT", 
+IMG,224,118,76,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L01,229,128,66,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$MOBILEPHONE_CARDBDAY_DAY$","CENTER",
+B04,224,118,76,49,"NUMOSKTOVAR;MOBILEPHONE_CARDBDAY_DAY||OSKTEXT;$MOBILEPHONE_CARDBDAY_DAY$",
+IMG,305,118,76,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L01,312,128,66,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$MOBILEPHONE_CARDBDAY_MONTH$","CENTER",
+B04,305,118,76,49,"NUMOSKTOVAR;MOBILEPHONE_CARDBDAY_MONTH||OSKTEXT;$MOBILEPHONE_CARDBDAY_MONTH$",
+IMG,386,118,85,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L01,397,128,75,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$MOBILEPHONE_CARDBDAY_YEAR$","CENTER",
+B04,386,118,85,49,"NUMOSKTOVAR;MOBILEPHONE_CARDBDAY_YEAR||OSKTEXT;$MOBILEPHONE_CARDBDAY_YEAR$",
+IMG,476,118,85,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L16,490,128,66,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"= (||MOBILEPHONE_CARDAGE||=)","LEFT",
+
+[Address]
+IMG,224,280,570,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+IMG,224,334,570,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+IMG,224,387,570,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L,6,289,213,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_ContactAddress$","RIGHT",
+L01,228,289,589,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDADDRSTREET","LEFT",
+B04,224,280,570,49,"NUMOSKTOVAR;MOBILEPHONE_CARDADDRSTREET||OSKTEXT;$MOBILEPHONE_CARDADDRSTREET$||SETVAR;OSK_HELP;Enter a contact's mail",
+
+[City]
+L01,228,351,230,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDADDRCITY","LEFT",
+
+[Zip]
+L01,228,402,227,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDADDRPOSTALCODE","LEFT",
+L01,475,402,227,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDADDRSTATE","LEFT",
+
+[Country]
+L01,476,351,223,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDADDRCOUNTRY","LEFT",
+
+[Email]
+IMG,224,172,378,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L,6,184,211,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_ContactEmail$","RIGHT",
+L01,228,184,363,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDEMAIL","LEFT",
+B07,224,172,378,49,"OSKTOVAR;MOBILEPHONE_CARDEMAIL||OSKTEXT;$MOBILEPHONE_CARDEMAIL$||SETVAR;OSK_HELP;Enter a contact's mail",
+
+[Note]
+IMG,224,440,570,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L,7,448,213,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_ContactNote$","RIGHT",
+L01,228,448,320,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDNOTE","LEFT",
+B07,224,440,570,49,"OSKTOVAR;MOBILEPHONE_CARDNOTE||OSKTEXT;$MOBILEPHONE_CARDNOTE$||SETVAR;OSK_HELP;Enter a contact's note",
+
+[Organisation]
+IMG,224,226,570,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L,6,237,211,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_ContactOrganisation$","RIGHT",
+L01,228,235,334,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDORGANISATION","LEFT",
+B07,224,226,570,49,"OSKTOVAR;MOBILEPHONE_CARDORGANISATION||OSKTEXT;$MOBILEPHONE_CARDORGANISATION$||SETVAR;OSK_HELP;Enter a contact's organisation",
+
+[Geo Position]
+IMG,224,493,570,49,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_400_90_off.png",out
+L,6,501,213,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_ContactGeoPosition$","RIGHT",
+L01,228,495,223,30,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CARDGEOPOSITION","LEFT",
+B07,224,493,570,49,"OSKTOVAR;MOBILEPHONE_CARDGEOPOSITION||OSKTEXT;$MOBILEPHONE_CARDGEOPOSITION$||SETVAR;OSK_HELP;Enter a contact's position",
+
+[Build]
+IMG,342,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,342,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,342,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,342,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+L,342,546,150,44,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,16,#FontMainBottomStyle#,"=$l_set_BTM_ContactBuild$","VHCENTER"
+B,342,546,150,44,"MOBILEPHONE_CARDBUILD",""
+
+[Save]
+IMG,512,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,512,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,512,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,512,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+L,512,546,150,44,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,16,#FontMainBottomStyle#,"=$l_contact_Save$","VHCENTER"
+B,512,546,150,44,"MOBILEPHONE_CARDSAVE",""
+
+[Reset]
+IMG,682,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,682,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,682,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,682,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+L,682,546,150,44,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,16,#FontMainBottomStyle#,"=$l_set_BTM_ContactReset$","VHCENTER"
+B,682,546,150,44,"MOBILEPHONE_CARDRESET",""
+
+[Exit]
+IMG,852,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,852,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,852,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,852,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+L,852,546,150,44,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,16,#FontMainBottomStyle#,"=$l_contact_exit$","VHCENTER"
+B,852,546,150,44,"ESC",""
+
+[Black List]
+IMG,173,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,173,546,150,44,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+L,173,547,150,43,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_AddInBlackList$","VHCENTER"
+B02,173,545,150,45,"MOBILEPHONE_ADDCONTACTINBLACKLIST",
+
+[Indicator]
+I01,851,9,155,155,"MOBILEPHONE_CARDIMAGE:a"
+A,848,208,160,320
+B06,471,393,240,44,"OSKTOVAR;MOBILEPHONE_CARDADDRSTATE||OSKTEXT;$MOBILEPHONE_CARDADDRSTATE$",
+ 
+END

@@ -1,0 +1,575 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>An implementation of an OBEX Server using the Brecham.OBEX library.</title>
+    <style type="text/css">
+        body
+            {
+    	    font-family: Verdana, Arial, Helvetica, sans-serif;
+	        font-size: 70%;
+            }
+        h1  {
+	        font-size: 140%;
+	        margin-top: 0em;
+	        }
+        h2	{ font-size: 130%; }
+        h3	{ font-size: 115%; }
+
+    </style>
+<style type="text/css">
+.csharpcode, .csharpcode pre
+{
+	color: black;
+	font-family: Consolas, "Courier New", Courier, Monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+
+.csharpcode pre { margin: 0em; }
+
+.csharpcode .rem { color: #008000; }
+.csharpcode .usertypes { color: #2b91af; }
+.csharpcode .kwrd { color: #0000ff; }
+
+.csharpcode .str { color: #006080; }
+
+.csharpcode .op { color: #0000c0; }
+
+.csharpcode .preproc { color: #cc6633; }
+
+.csharpcode .asp { background-color: #ffff00; }
+
+.csharpcode .html { color: #800000; }
+
+.csharpcode .attr { color: #ff0000; }
+
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+
+.csharpcode .lnum { color: #606060; }
+</style>
+</head>
+<body>
+    <h1>
+        An implementation of an OBEX Server using the Brecham.OBEX library.</h1>
+    <address>
+        <span>
+        Andy Hume, 13th March 2010</span>
+    </address>
+    <p>
+        This is a sample implementation of an OBEX Server using the Brecham.OBEX library.
+        It includes the source for both the concrete implementation of both a PUT / Inbox
+        Server and a GET / Folder Browsing server,
+        as well as the implementation of base OBEX Server infrastructure. &nbsp; A sample
+        command-line program is also included which writes the files it receives to
+        disk, and can handle GET of files and Folder
+        Listings, and can listen on Bluetooth, IrDA, or TCP/IP.&nbsp; A similar NETCF WinForms
+        program is also included.</p>
+    <p>
+        Things may change later on, but for now at least the
+        code isn't a simple &#x2018;create a new instance of this class, and it will do
+        the job just like that&#x2019;. With server side code I feel that there will always
+        be some different behaviour wanted, for instance to write the received files to
+        a MemoryStream instead of to disk, or to also support GET and SETPATH, or to listen
+        or more protocol at once, or to support multi connections simultaneously, etc. To
+        provide only a closed binary implementation would likely not be the most useful
+        delivery.&nbsp;
+    </p>
+    <p>
+        So I intend not to release an official complete version as such but instead let
+        the community improve it as it sees fit. So the code here is provided to be added
+        into your project, with some integration work likely needed.&nbsp; Of course I welcome
+        any changes to the code, let me have you diffs and I&#x2019;ll integrate them for
+        later version.&nbsp; It could even become a CodePlex project if there was demand
+        and support for that.</p>
+    <p>
+        In brief the main changes in this version is support for running on 32feet.NET's
+        new Widcomm support.
+        <!-- ___________________________________________________________________ -->
+    </p>
+    <h2>
+        License</h2>
+    <p>
+        The code is of course copyright me, but is free for any use. All I ask is for a
+        note in your product stating that it uses Brecham Obex, this should be in the About
+        Box or equivalent and/or in a readme-type document.</p>
+
+    <!-- ___________________________________________________________________ -->
+    <h2>
+        Features</h2>
+    <p>
+        The sample server can listen on IrDA, and TCP/IP, and Bluetooth (thanks Alan). It
+        currently supports two modes, supports either one or multiple concurrent connection,
+        and will also kill any session
+        if it has been idle for three minutes. Since r6 there
+        is support for running on 32feet.NET's new Widcomm support.&nbsp; Widcomm includes
+        built-in OPP and FTP services, they will need to be stopped before this server is
+        used.</p>
+    <p>
+        All the reading and writing of the PDUs from and to the client is done with (Network-)Stream’s
+        asynchronous methods, that is using BeginRead/BeginWrite etc. So no dedicated thread
+        is required. (Since r2 a synchronous server host is also implemented, and r6 includes
+        a asynchronous-Sockets server host implementation).&nbsp;
+        The application calls <code>Start</code> which starts the read for
+        the first PDU and then returns, the server then runs in the background on a thread
+        pool thread whenever there's work to be done (note that writes to the peer and to the PUT storage
+        stream are done synchronously, as it is presumed to be relatively fast, so not needing
+        asynchronous handling). The server signals that the session has completed by setting
+        an event.
+    </p>
+    <p>
+        The code includes a set of unit-tests, covering the various sequences of PDUs in
+        the PUT and GET operations, various errors on the content stream etc, and very simple
+        folder listings, a number of areas
+        need test coverage. Those items and more are listed below.</p>
+    <!-- ___________________________________________________________________ -->
+    <h2>
+        Architecture</h2>
+    <p>
+        Just a brief description here, see below for more details on the code structure.</p>
+    <p><img src="arch_over.PNG" alt="foo" style="display: block;"/>
+        For most flexibility the code is structured into the three server components as show
+        in the diagram:</p>
+    <ul>
+        <li>Network server &#x2014; Handles the network connections.&nbsp; Creates a new server
+            host for each new connection.</li>
+        <li>Server host &#x2014; Reads and writes PDUs from the network connection.&nbsp; It
+            parses each PDU it receives and passes it up to the server.&nbsp; It then
+            sends back the PDU returned by the server. </li>
+        <li>Server &#x2014; In the abstract, handles the PDUs received by the server
+            host,
+            and for each returns a response PDU or an error.&nbsp; In the concrete in ObexInboxServer
+            it implements
+            the OBEX Inbox server functionality, handing the PUT operation etc,
+            and in the ObexGetServer class the OBEX Folder Browsing server functionality. </li>
+    </ul>
+    <p>
+        The server implements the following interface.</p>
+    
+    <!-- code formatted by http://manoli.net/csharpformat/ -->
+    <pre class="csharpcode">    <span class="rem">// Summary:</span>
+    <span class="rem">//     Handles the OBEX protocol: it handles the PDUs read by </span>
+    <span class="rem">//     ObexServer.IObexServerHost and for each returns a PDU for </span>
+    <span class="rem">//     it to send or an error.</span>
+    <span class="kwrd">public</span> <span class="kwrd">interface</span> IObexServer
+    {
+
+        <span class="rem">// Summary:</span>
+        <span class="rem">//     When overriden in a descendant class, accepts a PDU just received,</span>
+        <span class="rem">//     handles it as it sees fit, and returns a PDU to be sent in response.</span>
+        <span class="usertypes">ObexCreatedPdu</span> HandlePdu(<span class="usertypes">ObexParsedRequestPdu</span> requestPdu);
+
+        <span class="rem">// Summary:</span>
+        <span class="rem">//     Get or set the container ObexServer.ObexServerHost.</span>
+        <span class="rem">//     It is set by ObexServerHost.AddHandler(ObexServer.IObexServer).</span>        
+        <span class="usertypes">ObexServerHost</span> Host { <span class="kwrd">get</span>; <span
+            class="kwrd">set</span>; }
+
+    }
+</pre>
+
+    <!-- ___________________________________________________________________ -->
+    <h2>
+        Changes</h2>
+    <h3>
+        r6</h3>
+    <p>
+        The main feature in this release is support for running on 32feet.NET's new Widcomm
+        support, more generally that is support for platforms where BluetoothClient/Listener
+        do not support Sockets.&nbsp; Since there is no common superclass/interface for
+        the network client classes (BluetoothClient, TcpClient,etc) we were passing Socket
+        instances, but we now have implemented wrapper classes SocketListener and SocketClient.&nbsp;
+        Widcomm includes built-in OPP and FTP services, they will need to be stopped before
+        this server is used.</p>
+    <p>
+        There were two other minor features. Firstly the addition of a new property &#x2018;RemoteEndPoint&#x2019
+        on ObexServerHost; as requested in the forum.&nbsp; Secondly I implemented support
+        for the new Async Sockets support in FX 3.5. It is not configured for use by default
+        nor is it unit-tested. Finally I provide a WinForms application to run the server
+        on Win32, it is based on the NETCF ForCf application..
+    </p>
+    <h3>
+        r5</h3>
+    <p>
+        Two features were added in this release.&nbsp; Firstly handling of multiple connections,
+        secondly Authentication.</p>
+    <p>
+        On the first we start a new host for each incoming connection, this works with the
+        AsyncComms host only.&nbsp; We store the active servers in a list and thus can kill
+        them when required etc.&nbsp; It also required some changes: </p>
+    <ul>
+        <li>Moved knowledge of the current folder into the server, rather than in the parent
+            network server. &nbsp;We now pass it
+        in the Put/Get/FolderChange event args.</li> 
+        <li>  Added an Exit event to the host, so that it can be used to clean up when the server
+            exits.</li> 
+        <li>Added a Kill method, and handling/suppression of related errors in exit logging.</li> 
+        <li>And of course
+        the idle-killer and shutdown have to know of the multiple servers, Exit event, and
+        Kill method etc.</li> 
+        </ul>
+    <p>
+        The authentication supports authenticating the client, but will ignore any authentication
+        requests from the client. &nbsp;All code is by default disabled within #if LOCAL_AUTHENTICATION blocks.</p>
+    <p>
+        Some changes have been made to the logging.&nbsp; Some simple profiling of many
+        multiple connection showing a fair amount of time being spent in the trace serializing
+        lock, so we've set the default level in Debug builds to Information rather than
+        Verbose &#x2014; and still all off by default in Release builds; also changed the
+        levels of some writeline etc.&nbsp; For best performance use the Release build!</p>
+    <p>
+        In testing, we've added testing of the Folder-Listing XML creation code.&nbsp; That
+        uses some custom mocking code to create the fake FileInfo/DirectoryInfo objects.&nbsp;
+        We also verify every folder-listing we send in Debug build.&nbsp; We also testing
+        of the expected OBEX PDUs in some test cases.</p>
+    <p>
+        We have updated to referencing and including Brecham.Obex 1.7.</p>
+    <h3>
+        r4</h3>
+    <p>
+        The main changes in this release in the implementation of the GET operation, and
+        the full OBEX Folder Browsing service including GET of
+        arbitrary files, Folder Listings, and SETPATH.&nbsp; As can be seen in the
+        NetworkServer class in CmdlineRunner there are two events raised by the ObexGetServer: CreateGetStream
+        and FolderChange.</p>
+    <p>
+        Other changes were minor including changes to the ForCf to display the host logging
+        on screen and use Smartphone-compatible
+        controls (protocol combobox rather that radio buttons).&nbsp; Also work was carried out towards getting clean server
+        stop (which wasn't important in CmdlineRunner app), which included cleaning up BluetoothListener&#x2019;'s SDP record on server stop.</p>
+    <p>
+        Other fixes included ensure a clean creation of the PUT destination file rather than just opening it for
+        write, and also catching all exception on file open, for instance if the supplied filename
+        includes bad characters.&nbsp; Also changes to socket creation because NETCF&#x2019;s TCPListener
+        finalizes the socket!!</p>
+    <h3>
+        r3</h3>
+    <p>
+        Firstly on performance I did
+        some testing to check whether the maximum packet size accepted by the server was
+        important for PUT performance.&nbsp; The resulting chart show clearly that it does.&nbsp;
+        Thus the default maximum MRU (maximum receive unit) size is now set to 16KB.
+    </p>
+    <p>
+        <a href="chart full size.PNG">
+        <img 
+            src="chart half size.PNG" 
+            alt="Chart showing performance increases with maximum packet size."/>
+        </a>
+        </p>
+    <p>
+        The second issue fixed post r2 was to set the Bluetooth CoD bits correctly.&nbsp;
+        The service class bit &#x201C;ObjectTransfer&#x201D; should be set when an OBEX server is running; when
+        doing an OBEX operation some client devices won't list a discovered peer unless
+        it has that bit set.&nbsp; That was fixed in method CmdlineRunner.NetworkServer.ListenOnBluetooth.</p>
+    <p>
+        Also
+        the &#x2018;callback&#x2019; to request where to write the content from a new PUT request
+        was previously a virtual method that was implemented by creating a subclass and
+        overriding that method, it has now been converted into a standard event &#x2014; like
+        on a WinForms event or similar.</p>
+    <p>
+        Other changes in r3 were just code tidying and re-arranging. &nbsp; &nbsp;For instance
+        all the classes have been placed
+        in a file of their own with the filename matching the class name, this is much easier
+        to navigate than the multiple classes per file as previously.</p>
+    <h3>
+        r2</h3>
+    <p>
+        In r2 Alan McFarlane split the class into two, one class now handling the communications
+        (reading and writing PDUs) and the other handling the OBEX protocol PDUs.&nbsp;
+        This allows the two to be changed independently and to allow implementations of
+        each to be swapped easily.&nbsp; He also created a new implementation of the communications
+        class using the normal synchronous NetworkStream Read and Write methods rather than
+        the asynchronous BeginRead/EndRead etc versions used originally.&nbsp; This was
+        in response to the issue raised on the forums about the relative slowness of the
+        server compared with the built-in OBEX Server in Windows CE.&nbsp; Performance was
+        not improved by this change in operation, so any slowness
+        is elsewhere.&nbsp; As Alan notes, some tidying-up is still required.</p>
+    <p>
+        The other changes, also contributed by Alan in r2, are support for IPv6 including support
+        for Vista's dual-IPv4-IPv6 sockets, so that an instance can accept connections on
+        both IPv4 and IPv6.</p>
+    <!-- ___________________________________________________________________ -->
+    <h2>
+        To Do</h2>
+    <ol>
+        <li>Implement tests to verify the server's behaviour under various sorts of connection
+            close and failure.</li>
+        <li>Implement tests to verify the server's behaviour with various peer connection types,
+            using network streams, and delivering the PDUs in various chunks for instance. Also
+            having two PDU arrive in the same delivery (as is allowed where the second is an
+            Abort (OBEX13.pdf section 3).</li>
+        <li>Implement tests to verify the server's behaviour under the receipt of an Abort PDU.</li>
+        <li>Implement tests to verify the server's behaviour where the client abandons a PUT
+            operation. For instance if the connection is disconnected, or through a &#x2018;different&#x2019;
+            PDU arriving. Though as an Inbox server the only legal other PDUs would be CONNECT
+            and DISCONNECT and they would thus likely be terminal anyway.</li>
+        <li>Implement tests to verify the server's behaviour with timeouts.</li>
+        <li>Implement IDisposable on the server, to allow the server to be closed by the containing
+            environment.</li>
+        <li style="text-decoration: line-through">Implement support for multiple concurrent connections.&nbsp; This will mainly be
+            implementing code outside the existing server class.</li>
+        <li style="text-decoration: line-through">Should the CreatePutStream action be an event rather than an abstract method? Similarly
+            for the other callbacks suggested below.</li>
+        <li style="text-decoration: line-through">Should the server make a callback when it is exiting?</li>
+        <li>Should it make a callback when a PUT operation completes?</li>
+        <li>Should it make a callback whenever it receives a PUT body chunk, to allow progress
+            reporting for instance?&nbsp; Or, if the application want to monitor the progress
+            of the PUT should it just supply a WriteProgressDecoratorStream (see Brecham.Obex
+            sample PutGUI/PutGuiCs) wrapping the real [File-]Stream.</li>
+    </ol>
+
+    <!-- ___________________________________________________________________ -->
+    <h2>
+        The code</h2>
+    <p>
+        The components are implemented in the following locations.</p>
+        <table border="0">
+            <tr>
+                <td style="width: 127px; height: 15px; font-weight: bold;">
+                </td>
+                <td style="width: 100px; height: 15px; font-weight: bold;">
+                    Project</td>
+                <td style="width: 100px; height: 15px; font-weight: bold;">
+                    Class</td>
+                <td style="width: 100px; height: 15px; font-weight: bold;">
+                    File</td>
+            </tr>
+            <tr>
+                <td style="width: 127px; font-weight: bold;">
+                    Network server</td>
+                <td style="width: 100px">
+                    CmdlineRunner</td>
+                <td style="width: 100px">
+                    CmdlineRunner.NetworkServer</td>
+                <td style="width: 100px">
+                    NetworkServer.cs</td>
+            </tr>
+            <tr>
+                <td style="width: 127px; font-weight: bold;">
+                    Server host</td>
+                <td style="width: 100px; height: 14px">
+                    ObexServer</td>
+                <td style="width: 100px; height: 14px">
+                    ObexServer.ObexServerHost</td>
+                <td style="width: 100px; height: 14px">
+                    ObexServerHost.cs</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold; width: 127px; height: 14px">
+                    — async comms</td>
+                <td style="width: 100px; height: 14px">
+                    ObexServer</td>
+                <td style="width: 100px; height: 14px">
+                    ObexServer.AsyncObexServerHost</td>
+                <td style="width: 100px; height: 14px">
+                    AsyncComms.cs</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold; width: 127px">
+                    — sync comms</td>
+                <td style="width: 100px">
+                    ObexServer</td>
+                <td style="width: 100px">
+                    ObexServer.SyncObexServerHost</td>
+                <td style="width: 100px">
+                    SyncComms.cs</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold; width: 127px">
+                    Server</td>
+                <td style="width: 100px">
+                </td>
+                <td style="width: 100px">
+                </td>
+                <td style="width: 100px">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 127px; font-weight: bold;">
+                    &#x2014; interface</td>
+                <td style="width: 100px">
+                    ObexServer</td>
+                <td style="width: 100px">
+                    ObexServer.IObexServer</td>
+                <td style="width: 100px">
+                    IObexServer.cs</td>
+            </tr>
+            <tr>
+                <td style="width: 127px; font-weight: bold;">
+                    — base class</td>
+                <td style="width: 100px">
+                    ObexServer</td>
+                <td style="width: 100px">
+                    ObexServer.ObexServerBase</td>
+                <td style="width: 100px">
+                    ObexServerBase.cs</td>
+            </tr>
+            <tr>
+                <td style="width: 127px; font-weight: bold;">
+                    &#x2014; Inbox server</td>
+                <td style="width: 100px">
+                    ObexServer</td>
+                <td style="width: 100px">
+                    ObexServer.ObexInboxServer</td>
+                <td style="width: 100px">
+                    ObexInboxServer.cs</td>
+            </tr>
+            <tr>
+                <td style="width: 127px; font-weight: bold;">
+                    &#x2014; Folder Browsing server</td>
+                <td style="width: 100px">
+                    ObexServer</td>
+                <td style="width: 100px">
+                    ObexServer.ObexGetServer</td>
+                <td style="width: 100px">
+                    ObexGetServer.cs</td>
+            </tr>
+        </table>
+    <h3>
+        Network server</h3>
+    <p>
+        <code><span style="font-family: Verdana">
+        Creating you own code based on these samples should hopefully not be too difficult&hellip; &nbsp;
+        The code in <code>NetworkServer</code> is called from the command-line or Windows
+        Forms application, which passes the network protocol to listen on. It creates the
+        network server socket, and each time a new connection arrives a new instance of
+        the OBEX server class is created, i.e. in its <code>ListenAndHandleForever</code> method:
+        </span></code> </p>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">        <span class="kwrd">private</span> <span class="kwrd">void</span> ListenAndHandleForever(Socket serverSock)
+        {
+            System.Threading.Thread thrd = <span class="kwrd">new</span> System.Threading.Thread(Killer);
+            thrd.Start();
+            <span class="rem">//</span>
+            Console.WriteLine(DateTime.Now.ToShortTimeString() + <span class="str">", server started, listening on: "</span> + EndPointToString(serverSock.LocalEndPoint));
+            <span class="kwrd">while</span> (<span class="kwrd">true</span>) {
+                Console.WriteLine(<span class="str">"Waiting for connection..."</span>);
+                <strong>Socket peerSock = serverSock.Accept(); </strong>                DateTime start = DateTime.UtcNow;
+                Console.WriteLine(DateTime.Now.ToShortTimeString() + <span class="str">", new connection from: "</span> + EndPointToString(peerSock.RemoteEndPoint));
+                NetworkStream peer = <span class="kwrd">new</span> NetworkStream(peerSock, <span class="kwrd">true</span>);
+                m_hackPeerStream = peer; <span class="rem">//HACK m_hackPeerStream for server 'Killer' hack.</span>
+                <span class="rem">// CreatePutStream is now a Event on ObexInboxServer so we don't</span>
+                <span class="rem">// have to subclass ObexInboxServer to SavePutToCurrentDirectoryObexServer.</span>
+                <span class="rem">// Instead the contents of that class are now method SavePutToCurrentDirectory,</span>
+                <span class="rem">// which we set on the event.</span>
+                <strong>ObexInboxServer handler = <span class="kwrd">new</span> ObexInboxServer();
+                handler.CreatePutStream
+                    += SavePutToCurrentDirectory;
+                    <span class="rem">//Or- += WritePutToNull;</span>
+                m_host = CreateHost(peer, handler);
+                m_host.Start();  <span class="rem">// Go!</span></strong>
+                m_host.ExitWaitHandle.WaitOne(); <span class="rem">// Block until the server completes.</span>
+                Console.WriteLine(<span class="str">"Connection lasted {0}"</span>, DateTime.UtcNow - start);
+                Console.WriteLine(DateTime.Now.ToShortTimeString() + <span class="str">", server instance exited due to: "</span> + m_host.ExitReason);
+                <span class="rem">//?m_host.RethrowAnyError();//HACK NEW BAD????</span>
+            }
+        }
+</pre>
+    <p>
+        Actually in the current code the above method is split across two methods: ListenAndHandleForever,
+        and RunSingleConnectionBlocking.&nbsp; That&#x2019;s because the current version also supports
+        multiple concurrent connections when configured to do so (see the
+        configuration variable at the top of class NetworkServer). &nbsp;Multi-connection
+        support is in methods: ListenAndHandleForever, RunNewMultiConnectionNonBlocking,
+        and MultiServerHostExited.&nbsp; Whenever
+        a new connection is received a new host is created, added to the 'active' list,
+        and started running in the background (it thus doesn&#x2019;t work with the SyncHost implementation). &nbsp;The server
+        host now has an Exit event and its own Kill method.&nbsp; The network server adds
+        a Exit event handler to remove the instance from the 'active' list, and the Kill
+        method is used at shutdown and idle server clean-up.</p>
+    <p>
+        The network server includes two event handler methods to handle the 'create
+        PUT stream' event, one is used to write the content to content to disk using the
+        Name header for the filename, and the second can be used to just discard the content.&nbsp;
+        It also has event handlers for the 'create GET stream' and folder-change events.</p>
+    <p>
+        For usage in a Forms application see the Compact Framework section below.</p>
+    <p>
+        Sorry to the VB guys, hope the C# code is not too difficult to follow.</p>
+    <h3>
+        Server host</h3>
+    <p>
+        Class <code>ObexServerHost</code>, as above, implements the container for the 
+        server instance.&nbsp; It doesn't implement the comms functionality itself but it is implemented in
+        a subclass, two of which are provided: <code>AsyncObexServerHost</code> and 
+        <code>SyncObexServerHost</code>.&nbsp;<code>NetworkServer</code> creates an 
+        instance of one of those classes.  When started they run reading PDUs passing 
+        them to the server instance and sending back the response PDUs.&nbsp; At this level and exceptions
+        from the server implementation are caught and dealt with.</p>
+    <h3>Server</h3>
+    <p>
+        The server is implemented by hierarchy <code>IObexServer</code> &larr; 
+        <code>ObexServerBase</code> &larr; <code>ObexInboxServer and ObexGetServer</code>.&nbsp; The first 
+        is the interface as shown above, in effect specifying simply that request
+        PDUs are passed to it and it returns a response PDU.&nbsp; <span style="font-family: Courier New">
+            ObexServerBase</span> provides a simple implementation of the hosting arrangement.</p>
+    <p>
+        <span style="font-family: Courier New">ObexInboxServer</span> provides two features.&nbsp;
+        Firstly it splits the PDUs by opcode and passes each to a corresponding virtual
+        method, there is one virtual method for each opcode type: Connect, Disconnect, Put,
+        Get, SetPath, Session, and Abort.&nbsp; Where a method is not used locally the virtual
+        method simply returns a NotImplemented PDU.</p>
+    <p>
+        Secondly it supplies handling of the PDUs required for a simple default/Inbox server.&nbsp;
+        It handles Connect, Disconnect, Put, and Abort.&nbsp; The Connect handler sends
+        back a success response after reading the maximum packet size value from the incoming
+        PDU etc, and the Abort method will cancel any current Put operation.&nbsp; The Put
+        handler knows how to deal with the various sequences of
+        PDUs that make up a PUT operation. It requires only that the application provides an event handler that knows where to store the received content (event handler
+        <span style="font-family: Courier New">CreatePutStream</span>, or by
+        overriding method <code>OnCreatePutStream</code>).</p>
+    <p>
+        Similarly the ObexGetServer class supports the GET and SETPATH operations,
+        and generating Folder-Listing XML.&nbsp; Similar to the PUT case, it requires that the host supplies
+        event handlers, one which creates the source Stream
+        for the GET content, including noting if it is requesting a folder-listing, and the second for the folder-change
+        event.</p>
+    <h3>
+        Compact Framework</h3>
+    <p>
+        I&#x2019;ve done a little testing on the NETCF, having created a simple Window Forms
+        application (<code>ForCf</code>) that does the work done on the desktop by the CmdlineRunner
+        application. It seems to work OK in the emulator when I have it listen on TCP/IP
+        and connect to it from one of the main library&#x2019;s samples. Getting it to compile
+        required commenting out all the server&#x2019;s tracing code, so it&#x2019;s rather
+        harder to monitor/debug etc&hellip;
+    </p>
+    <p>
+        This project ultimately calls the <code>ListenAndHandle</code> method as shown above;
+        which in the &#x2018;sync&#x2019; host at least never returns.&nbsp; So instead it is called from a new thread. As
+        the comment in the <code>buttonGo_Click</code> method notes there is a much better
+        solution, after the implementation of to-do number 9, the starting code shouldn't
+        block on <code>ExitWaitHandle</code>, but should instead use the &#x2018;session
+        exited&#x2019; callback (or number 10, and on PUT completion).</p>
+
+    <!-- ___________________________________________________________________ -->
+    <h2>
+        Assembly dependencies</h2>
+    <p>
+        In total there are three third-party library dependencies: on Brecham.Obex.dll (which is included), on the
+        NUnit test framework, and finally on 32feet.NET.&nbsp; Depending on which of those
+        are present some of the projects may not build.&nbsp; The main assembly will always
+        build however.</p>
+    <p>
+        In detail, the main assembly &#x201C;ObexServer&#x201D; depends only on Brecham.Obex.dll
+        which is included. The tests assembly &#x201C;ObexServer.Test&#x201D; also has
+        a dependency on the NUnit framework assembly and won&#x2019;t build if it is not
+        present.&nbsp; The desktop runner application &#x201C;CmdlineRunner&#x201D; has
+        a dependency on InTheHand.Net.Personal.dll and won&#x2019;t build without it.&nbsp;
+        Finally the NETCF application &#x201C;ForCf&#x201D; has dependencies on the NETCF
+        versions of both Brecham.Obex.dll and on InTheHand.Net.Personal.dll, and on the
+        NETCF build environment as supplied by VS2005 etc.</p>
+    <p>
+        Note: the project needs the Brecham.Obex. The assemblies for the two platforms are
+        included in the download for ease of use. The test project also depends on a set
+        of streams I’ve previously created for test scenarios, the binary is included.</p>
+    <!-- ___________________________________________________________________ -->
+</body>
+</html>

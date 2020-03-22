@@ -1,0 +1,59 @@
+RideRunner Skin
+RRScreen picture
+mobilephone_player_off.png,mobilephone_player_off.png,mobilephone_player_on.png,mobilephone_player_down.png
+
+/DISCARDABLE
+I,627,93,165,158,"MOBILEPHONE_ALBUMPICTURE",,,
+IMG,87,15,140,40,"phone.png",out
+
+[ Include File ]
+INC,TopText.txt
+
+[BOTTOM BAR LABELS W/MULTIPLE COPIES FOR DROP SHADOW EFFECTS]
+L,748,267,50,24,255,255,255,14,"Arial","mobilephone_avrcpvol||=%","LEFT",,"DS=2,2,0,0,0"
+L,71,562,50,24,255,255,255,14,"Arial","mobilephone_avrcpvol||=%","LEFT",,"DS=2,2,0,0,0"
+L,234,132,380,31,255,255,255,18,"Arial:b","MOBILEPHONE_AVRCP_ALBUM","LEFT",,"DS=2,2,0,0,0"
+L,234,177,380,31,255,255,255,18,"Arial:b","MOBILEPHONE_AVRCP_ARTIST","LEFT",,"DS=2,2,0,0,0"
+L,234,222,380,31,255,255,255,18,"Arial:b","MOBILEPHONE_AVRCP_TITLE","LEFT",,"DS=2,2,0,0,0"
+L,95,513,47,24,255,255,255,15,"Arial","=0:00","LEFT",,"DS=2,2,0,0,0"
+L,414,513,47,24,255,255,255,15,"Arial","mobilephone_avrcp_trackpos","CENTER",,"DS=2,2,0,0,0"
+L,741,513,50,24,255,255,255,15,"Arial","mobilephone_avrcp_tracklen","CENTER",,"DS=2,2,0,0,0"
+L,129,222,100,31,255,255,255,18,"Arial:b","=Title :","LEFT",,"DS=2,2,0,0,0"
+L,129,177,100,31,255,255,255,18,"Arial:b","=Artist :","LEFT",,"DS=2,2,0,0,0"
+L,283,93,290,31,255,255,255,18,"Arial:b","=AVRCP Informations","LEFT",,"DS=2,2,0,0,0"
+L,26,169,36,32,255,255,255,16,"Arial Narrow:b","=OK","CENTER",,"DS=2,2,0,0,0"
+L,-4,500,84,32,255,255,255,16,"Arial Narrow:b","=Visu","CENTER",,"DS=2,2,0,0,0"
+L,0,137,84,32,255,255,255,16,"Arial Narrow:b","=Browsing","CENTER",,"DS=2,2,0,0,0"
+L,129,132,100,31,255,255,255,18,"Arial:b","=Album :","LEFT",,"DS=2,2,0,0,0"
+L,690,561,92,23,255,255,255,16,"Arial","TIME","LEFT",,"DS=2,2,0,0,0"
+
+[ Bottom Bar Buttons ]
+B,1,495,79,47,"VISU",
+B,1,135,95,65,"MOBILEPHONE_AVRBROWSINGOK",
+B,124,543,64,57,"mobilephone_avrvolup",
+B,249,545,63,54,"mobilephone_avrvoldown",
+B,337,544,64,57,"MOBILEPHONE_AVRPREV",
+B,402,544,63,57,"MOBILEPHONE_AVRNEXT",
+B,468,544,70,57,"MOBILEPHONE_AVRPLAY",@MOBILEPHONE_AVRPAUSE@
+B,554,542,61,56,"MOBILEPHONE_AVRSHUFFLE",@MOBILEPHONE_AVRREPEAT@
+B,623,541,59,57,"MIXER",@SKIN@
+B,10,544,57,57,"MOBILEPHONE_AVRMUTE",
+
+[BOTTOM BAR INDICATORS]
+I,7,544,62,53,"MUTE:b"
+I04,65,173,22,20,"MOBILEPHONE_AVRBROWSINGOK",,,"Indicators\LED_GREEN_*.png"
+
+[Visu]
+
+Z,3,3,797,72,
+
+[ Blank Album Art Image box ]
+IMG,625,92,173,165,"Albumart_frame.png",out
+
+[Slider Song position]
+S,144,515,592,22,288,18,172,39,H,,"POINTERH.GIF",20,"MOBILEPHONE_AVRCP_TRACKPOS",""
+
+[Sliders Volume]
+S02,759,300,30,205,759,290,30,225,V,,"POINTER.GIF",20,"mobilephone_avrcpvol",""
+ 
+END

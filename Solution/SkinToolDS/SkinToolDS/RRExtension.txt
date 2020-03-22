@@ -1,0 +1,2515 @@
+Option Strict Off
+Option Explicit On
+
+Imports System.Reflection
+Imports System.Net
+Imports System.Drawing
+Imports System.Threading
+
+
+'*****************************************************************
+' Every Plugin MUST have its OWN set of GUIDs. use Tools->Create GUID
+'*****************************************************************
+<ComClass("C9B8A362-E768-4B13-97FF-DF0B7F69A976", "0E0DE3DC-3419-42CD-8C1F-89FDBCD481A8")> _
+Public Class RRExtension
+
+    Dim RunOnce As Boolean ' set to prevent a double execution of code
+    Friend SDK As RRSDK ' set type of var to the subclass
+
+    Dim MyActualItinery As String
+    Dim MyActualPlace As String
+    Dim MouseX As Integer
+    Dim MouseY As Integer
+
+    'Dim RRGPS = CreateObject("RideRunner.GPS")
+    ''LOCK = GPS.Valid -- Is the information on the GPS Valid ? True/False (Has a lock)
+    ''LAT = GPS.Lat -- Parsed GPS Latitude (double)
+    ''LON = GPS.Lon -- Parsed GPS Longitude (double)
+    ''HDG = GPS.Hdg -- Parsed GPS Heading (double)
+    ''ALT = GPS.Alt -- Parsed GPS Altitude (double)
+    ''SPD = GPS.Speed -- Parsed GPS Speed (double)
+    ''SATS = GPS.Sats -- Parsed GPS number of sattelites in use (integer)
+    ''N = GPS.Clients -- Number of Applications connected to GPS, including caller (integer)
+    ''GPRMC = GPS.NMEA("$GPRMC") -- Most recent $GPRMC nmea message (works with all $XXXXX messages)
+    ''It is also possible to close/open the GPS port for internal use, though you should be mindful of other application using the GPS (including RR) -- thus why the number of clients connected to the GPS.
+    ''GPS.ClosePort -- Closes GPS Port (so it is available for other applications outside RR)
+    ''GPS.OpenPort -- Re-Opens GPS Port (after being closed by ClosePort)
+
+    Dim GmapsBrowser As New GmapsApiForm
+
+    Dim WithEvents Timer1 As New System.Windows.Forms.Timer
+    Dim WithEvents Timer2 As New System.Windows.Forms.Timer
+    Dim WithEvents Timer3 As New System.Windows.Forms.Timer
+
+    'Events
+    'Private Event GMapsToolsMenu()
+
+    '*****************************************************************
+    '* This is an interface to add commands/labels/indicators/sliders
+    '* to RideRunner without needing a whole new application for such.
+    '*
+    '* You can monitor commands executed in RR by checking the CMD
+    '* paramter of ProcessCommand and similarly monitor labels and
+    '* indicators of the current screen. The idea is so you can create
+    '* new commands, labels, indicators and sliders without having
+    '* to re-compile or understand the code in RideRunner.
+    '*
+    '* Furthermore, it should be possible to intercept commands and
+    '* modify them to your interst, say "AUDIO" to "LOAD;MYAUDIO.SKIN"
+    '* for this all you need to do is modify CMD and return 3 on the
+    '* processcommand call so that RR executes the command you return.
+    '*
+    '* You're free to use this code in any way you see fit.
+    '*
+    '*****************************************************************
+
+    '*****************************************************************
+    '* This sub is called when pluginmgr;about command is used
+    '*
+    '*****************************************************************
+    Public Sub About(ByRef frm As Object)
+        MsgBox("RRGoogleMapsTools RR Plugin", vbOKOnly, "By pierrotm777")
+    End Sub
+
+    '*****************************************************************
+    '* This sub is called when pluginmgr;settings command is used
+    '*
+    '*****************************************************************
+    Public Sub Settings(ByRef frm As Object)
+        SDK.Execute("gmaps_settings")
+    End Sub
+
+    '*****************************************************************
+    '* This function is called immediatly after plugin is loaded and
+    '* when ever RR is changing the plugin status (enabled/disabled)
+    '* when True its enabled, False its disabled
+    '* calls to the SDK methods should not be made when the plugin is
+    '* disabled. When plugin is DISABLED no calls into the plugin will
+    '* be made. This is all handled by the Sub-Class I have created
+    '* (RRSDK.cls)
+    '*
+    '*****************************************************************
+    Public Sub Enabled(ByRef state As Boolean)
+
+        ' set sub class state, which will handle all processing to the
+        ' real RR SDK
+        SDK.Enabled = state
+
+    End Sub
+
+    '*****************************************************************
+    '* This sub is called immediatly after plugin is loaded and
+    '* enabled, its only called once.
+    '* pluginDataPath = contains where the plugin should store any of
+    '* its WRITEABLE\SETTINGS data to.
+    '*
+    '* NOTE: The plugin is required to create this directory if needed.
+    '*
+    '*****************************************************************
+    Public Sub Initialize(ByRef pluginDataPath As String)
+
+        On Error Resume Next
+
+        ' pluginDataPath will contain a USER Profile (my documents) folder path
+        ' suitable for storing WRITEABLE settings to
+        ' this would make your plugin OS compliant (VISTA and onward)
+        ' not to mention, its proper programming, user data should NOT be stored in "Program Files"
+        '
+        ' example (typical vista): "C:\Users\Username\Documents\RideRunner\Plugins\MyPlugin\"
+        '
+        ' App.path will be the path of the ACTUALL LOADED .dll (not recomend for any writes)
+        '
+        ' uncomment code below if u need the directory
+        '
+
+        If Directory.Exists(pluginDataPath) = False Then Directory.CreateDirectory(pluginDataPath)
+        MainPath = pluginDataPath
+
+        'initialise les settings
+        If File.Exists(MainPath & "RRGoogleMapsTools.ini") = False Then GoogleMapsToolsSettings()
+        INI = New INIReader(MainPath & "RRGoogleMapsTools.ini")
+        Language = INI.ReadString("RRGoogleMapsTools", "language", "")
+
+        SkinPath = SDK.GetUserVar("SKINPATH")
+        SkinName = Path.GetDirectoryName(SkinPath)
+        dt = SkinName.Split("\")
+        SkinName = dt(dt.Length - 1)
+
+        SDK.SetUserVar("InfoLogo", "info_logo.png")
+
+        If Directory.Exists(MainPath & "MyItineries") = False Then
+            Directory.CreateDirectory(MainPath & "MyItineries")
+        End If
+        'indique le nombre de fichiers .xml sous le dossier \MyItineries
+        SDK.SetUserVar("XMLNUMBEROFFILES", CStr(GetFileCount(MainPath & "MyItineries")))
+        SDK.SetUserVar("GPSLAT2", "43.295949")
+        SDK.SetUserVar("GPSLON2", "5.363045")
+        SDK.SetUserVar("ACTUALSTEP", "0") 'initialise x = 0 pour la boucle d'Itinery
+
+        SDK.SetUserVar("GPSLATCLIP", "***")
+        SDK.SetUserVar("GPSLONCLIP", "***")
+        SDK.SetUserVar("ADDRESSCLIP", "***")
+        SDK.SetUserVar("PHONECLIP", "***")
+        SDK.SetUserVar("ZOOMCLIP", "***")
+        SDK.SetUserVar("PLACENAMECLIP", "***")
+
+        'definition des buttons
+        'SDK.SetUserVar("LBL_BUTTON_MARKER", "Add/Del")
+        SDK.SetUserVar("GMAPS_VARTYPETOSEND", "Point")
+        SDK.Execute("SETIND;GMAPS_STATUSTIMER1;ON")
+        SDK.SetUserVar("MENUFILE", "RRGoogleMapsTools_Gps.skin")
+
+        'mise à jour de la liste des xml
+        ListefilesIntoDirectory("MyItineries")
+        'creation de la liste des languages
+        If Not File.Exists(MainPath & "Languages.txt") Then
+            ListeDirectoriesIntoDirectory(MainPath & "Languages", True)
+
+        End If
+
+
+        'définition du language court pour google
+        GoogleLanguage = LanguageToGoogleLanguage(Language) 'ShortLanguage()
+        'read(languages)
+        ReadLanguageVars()
+
+        GmpcKeySequenceMenu = INI.ReadString("GarminMobilePC", "keysequence", "")
+
+
+
+        ZoomMaps = INI.ReadString("Itinery", "zoommaps", "")
+        ForceSettings = INI.ReadString("Itinery", "forcesettings", "")
+        MyActualItinery = INI.ReadString("Itinery", "itinery", "")
+        MyActualPlace = INI.ReadString("Itinery", "place", "")
+        Latitude = INI.ReadString("Itinery", "Latitude", "")
+        Longitude = INI.ReadString("Itinery", "Longitude", "")
+        NbOfKmlLayer = INI.GetAllKeysInIniFileSection("KmlLayers").Length
+        NbOfFusionTablesLayer = INI.GetAllKeysInIniFileSection("FusionLayers").Length
+        NbOfXmlLayer = INI.GetAllKeysInIniFileSection("XmlLayers").Length
+
+        MouseX = CInt(INI.ReadString("Sygic", "MouseX", ""))
+        MouseY = CInt(INI.ReadString("Sygic", "MouseY", ""))
+
+        'ReadFusionLayers = INI.ReadString("FusionLayers", "layer1", "")
+        'ReadKmlLayers = INI.ReadString("KmlLayers", "layer1", "")
+        'SDK.SetUserVar("PRELOAD", "RRGoogleMapsTools.skin")
+    End Sub
+
+    '*****************************************************************
+    '* This sub is called on unload of plugin by RR
+    '*
+    '*****************************************************************
+    Public Sub Terminate()
+        'SDK.Execute("SENDMSG;ElcosMenu;Exit")
+
+        'ajouté le 20-3-2016 à tester
+        If IsNothing(Timer1) = False Then
+            Timer1.Stop()
+            Timer1.Enabled = False
+        End If
+        If IsNothing(Timer2) = False Then
+            Timer2.Stop()
+            Timer2.Enabled = False
+        End If
+        If IsNothing(Timer3) = False Then
+            Timer3.Stop()
+            Timer3.Enabled = False
+        End If
+        'ajouté le 20-3-2016 à tester
+        'GmapsBrowser.Dispose()
+
+    End Sub
+
+
+    '*****************************************************************
+    '* This function provides the metadata
+    '*
+    '* a string containing a "item" is passed into the function
+    '*
+    '*
+    '*****************************************************************
+    Public Function Properties(ByRef item As String) As String
+
+        Properties = ""
+        Select Case item
+            Case "version"
+                Properties = Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            Case "author"
+                Properties = "pierrotm777"
+            Case "category"
+                Properties = "TBD"
+            Case "description"
+                Properties = "Google Maps Add On"
+            Case "supporturl"
+                Properties = "pierrotm777@gmail.com"
+            Case "menuitem"
+                Properties = Chr(34) + "GMAPS_TOOLS" + Chr(34) + ",G MAPS T,Icons\GMAPS TOOLS.png,Gmaps Tools,Google Maps Tools is selected"
+        End Select
+
+    End Function
+
+#Region "ProcessCommand"
+    '*****************************************************************
+    '* This Function will be called with the current command string
+    '* The return parameter of this function determines the handling
+    '* To be taken upon returning to RR:
+    '*
+    '* 0 = Command not processed here
+    '* 1 = Command completed + return to previous screen
+    '* 2 = Command completed, stay on current screen
+    '* 3 = Command has been changed/modified, execute returned one
+    '*
+    '* frm is the form object which generated the current command. Be
+    '* VERY VERY careful when using it.
+    '*
+    '* frm.tag contains the screen name for the same screen.
+    '* you can poll other propperties/methods from the screen but you
+    '* will need to look at RR's frmskin to know what you can use/do.
+    '*****************************************************************
+    Public Function ProcessCommand(ByRef CMD As String, ByRef frm As Object) As Short
+        'If CMD.Length = 0 Then Exit Function
+
+        Select Case LCase(CMD)
+            '#############################  CARTES  ##################################################################
+            Case "onexit"
+                Try
+                    If Timer1.Enabled = True Then Timer1.Enabled = False : Timer1.Dispose()
+                    If Timer2.Enabled = True Then Timer2.Enabled = False : Timer2.Dispose()
+                    If Timer3.Enabled = True Then Timer3.Enabled = False : Timer3.Dispose()
+                    'GmapsBrowser.Hide()
+                    GmapsBrowser.Dispose()
+                    'If File.Exists(MainPath & "gmaps_gpstoadd.html") Then File.Delete(MainPath & "gmaps_gpstoadd.html")
+                    If File.Exists(MainPath & "querystring.js") Then File.Delete(MainPath & "querystring.js") 'utilisé avec logo animé uniquement
+                    If File.Exists(MainPath & "gmaps_countries.html") Then File.Delete(MainPath & "gmaps_countries.html")
+                    'If File.Exists(MainPath & "gmaps_placesearch.html") Then File.Delete(MainPath & "gmaps_placesearch.html")
+                    If File.Exists(MainPath & "gmaps_skyearth.html") Then File.Delete(MainPath & "gmaps_skyearth.html")
+                    If File.Exists(MainPath & "gmaps_earth3d.html") Then File.Delete(MainPath & "gmaps_earth3d.html")
+                    If File.Exists(MainPath & "gmaps_showhidesun.html") Then File.Delete(MainPath & "gmaps_showhidesun.html")
+                    If File.Exists(MainPath & "gmaps_direction.html") Then File.Delete(MainPath & "gmaps_direction.html")
+                    'If File.Exists(MainPath & "gmaps_geolocatewifispot.html") Then File.Delete(MainPath & "gmaps_geolocatewifispot.html")
+                    'If File.Exists(MainPath & "gmaps_panoramio.html") Then File.Delete(MainPath & "gmaps_panoramio.html")
+                    'If File.Exists(MainPath & "gmaps_weather.html") Then File.Delete(MainPath & "gmaps_weather.html")
+                    'If File.Exists(MainPath & "gmaps_streetview.html") Then File.Delete(MainPath & "gmaps_streetview.html")
+                    'If File.Exists(MainPath & "gmaps_ruler.html") Then File.Delete(MainPath & "gmaps_ruler.html")
+                    'If File.Exists(MainPath & "gmaps_wikipanoyou.html") Then File.Delete(MainPath & "gmaps_wikipanoyou.html")
+
+                    'Sauvegarde la dernière position GPS
+                    If ForceSettings = "Yes" Then
+                        If SDK.GetInd("GPSVALID") = "False" Then
+                            If SDK.GetInfo("GMAPS_LATITUDE") <> "***" Then INI.Write("Itinery", "Latitude", SDK.GetInfo("GMAPS_LATITUDE"))
+                            If SDK.GetInfo("GMAPS_LONGITUDE") <> "***" Then INI.Write("Itinery", "Longitude", SDK.GetInfo("GMAPS_LONGITUDE"))
+                        Else
+                            INI.Write("Itinery", "Latitude", SDK.GetInfo("GPSLAT"))
+                            INI.Write("Itinery", "Longitude", SDK.GetInfo("GPSLON"))
+                        End If
+                    End If
+                    ProcessCommand = 2
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                    ProcessCommand = 2
+                End Try
+
+
+            Case "gmaps_savelatlon"
+                'Sauvegarde la derinère position GPS
+                If SDK.GetInd("GPSVALID") = "False" Then
+                    INI.Write("Itinery", "Latitude", SDK.GetInfo("GMAPS_LATITUDE"))
+                    INI.Write("Itinery", "Longitude", SDK.GetInfo("GMAPS_LONGITUDE"))
+                End If
+                ProcessCommand = 2
+
+                'Case "gmaps_tools" 'carte principale
+                '    SDK.Execute("load;RRGoogleMapsTools.skin||WAIT;2||GMAPS_TOOLS_MAIN")
+                '    ProcessCommand = 2
+            Case "gmaps_tools" 'internal
+                If SDK.GetInd("online") = "True" Then
+                    SDK.Execute("load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm")
+                    If Timer1.Enabled = True Then Timer1.Enabled = False ': RestartTimerAfterLoad = True
+                    If Timer2.Enabled = True Then Timer2.Enabled = False ': RestartTimerAfterLoad = True
+                    If Timer3.Enabled = True Then Timer3.Enabled = False ': RestartTimerAfterLoad = True
+                    CreateGpsToAdd_Html()
+                    'SDK.Execute("load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm")
+                    GmapsBrowser.go(MainPath & "gmaps_gpstoadd.html") 'carte avec croix centrale ou avec logo header
+                    GmapsBrowser.Show()
+                    'If RestartTimerAfterLoad = True Then Timer1.Enabled = True : Timer2.Enabled = True : RestartTimerAfterLoad = False
+                    ProcessCommand = 2
+                Else
+                    If SDK.GetInd("pluginmgr;status;gps2city") = "True" Then
+                        SDK.Execute("gmaps_gps2city_copy")
+                    Else
+                        SDK.SetUserVar("ADDRESSCLIP", "***")
+                    End If
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l-set_CheckInternet") & "||menu;RRGoogleMapsTools_info.skin")
+                    ProcessCommand = 2
+                End If
+
+            Case "gmaps_addmarker" 'ajout d'un marqueur dans 'gmaps_gpstoadd.html'
+                GmapsBrowser.ClickOnButton("AddMarker")
+                ProcessCommand = 2
+            Case "gmaps_delmarker" 'effacement d'un marqueur dans 'gmaps_gpstoadd.html'
+                Clipboard.Clear()
+                SDK.SetUserVar("GPSLATCLIP", "***")
+                SDK.SetUserVar("GPSLONCLIP", "***")
+                SDK.SetUserVar("ADDRESSCLIP", "***")
+                SDK.SetUserVar("PHONECLIP", "***")
+                SDK.SetUserVar("PLACENAMECLIP", "***")
+                GmapsBrowser.ClickOnButton("DelMarker")
+                ProcessCommand = 2
+            Case "gmaps_goaddress" 'entrée d'une adresse pour 'gmaps_gpstoadd.html'
+                GmapsBrowser.SetValueinInput("address", SDK.GetInfo("=$GOADDRESS$"))
+                GmapsBrowser.ClickOnButton("Go")
+                ProcessCommand = 2
+            Case "gmaps_golatlon"
+                GmapsBrowser.SetValueinInput("latlng", SDK.GetInfo("=$GOADDRESS$"))
+                GmapsBrowser.ClickOnButton("ReverseGeocode")
+                ProcessCommand = 2
+
+            Case "gmaps_tosavepoi"
+                If SDK.GetUserVar("GPSLATCLIP") <> "***" And SDK.GetUserVar("GPSLONCLIP") <> "***" Then
+                    Dim sDat As New System.IO.StreamWriter(MainPath & "Gmaps_Zips.dat", True)
+                    'Dim nb As Integer
+                    'If File.Exists(MainPath & "Gmaps_Zips.dat") Then
+                    'Dim nblines() As String = File.ReadAllLines(MainPath & "Gmaps_Zips.dat")
+                    'nb = nblines.Length
+                    'Else
+                    'nb = 1
+                    'End If
+                    '"01000","+46.2022","+5.1892","Saint-Denis-lès-Bourg","01","Rhône-Alpes",""
+                    sDat.WriteLine(Chr(34) & Chr(34) & "," & Chr(34) & SDK.GetUserVar("GPSLATCLIP") & Chr(34) & "," & Chr(34) & SDK.GetUserVar("GPSLONCLIP") & Chr(34) & "," & Chr(34) & SDK.GetUserVar("ADDRESSCLIP") & Chr(34) & "," & Chr(34) & Chr(34) & "," & Chr(34) & Chr(34))
+                    sDat.Close()
+                End If
+                ProcessCommand = 2
+            Case "gmaps_togpsexec"
+                If SDK.GetUserVar("GPSLATCLIP") <> "***" And SDK.GetUserVar("GPSLONCLIP") <> "***" Then
+                    Dim sDat As New System.IO.StreamWriter(MainPath & "GPSExec.ini", True)
+                    'LATTITUDE,LONGITUDE,MINHDG,MAXHDG,DIST,UNIT,SKINCOMMAND
+                    sDat.WriteLine(SDK.GetUserVar("GPSLATCLIP") & "," & SDK.GetUserVar("GPSLONCLIP") & ",,," & "1,KM," & Chr(34) & "RR_CMD" & Chr(34))
+                    sDat.Close()
+                End If
+                ProcessCommand = 2
+
+            Case "gmaps_panbyright"
+                GmapsBrowser.Jscript("panbyright()")
+                ProcessCommand = 2
+            Case "gmaps_panbyleft"
+                GmapsBrowser.Jscript("panbyleft()")
+                ProcessCommand = 2
+            Case "gmaps_panbytop"
+                GmapsBrowser.Jscript("panbytop()")
+                ProcessCommand = 2
+            Case "gmaps_panbybottom"
+                GmapsBrowser.Jscript("panbybottom()")
+                ProcessCommand = 2
+
+            Case "gmaps_zoom+" 'zoom+ dans ttes les pages html sauf 'google maps'
+                GmapsBrowser.Jscript("setmapzoom(5)")
+                ZoomMaps = GetZoom()
+                ProcessCommand = 2
+            Case "gmaps_zoom-" 'zoom- dans ttes les pages html sauf 'google maps'
+                GmapsBrowser.Jscript("setmapzoom(-5)")
+                ZoomMaps = GetZoom()
+                ProcessCommand = 2
+            Case "gmaps_homeposition" '
+                GmapsBrowser.Jscript("homePosition()")
+                ProcessCommand = 2
+            Case "gmaps_homepositionsave" '
+                INI.Write("Itinery", "Latitude", SDK.GetInfo("GPSLAT"))
+                INI.Write("Itinery", "Longitude", SDK.GetInfo("GPSLON"))
+                ProcessCommand = 2
+                'Case "gmaps_shift" 'carte des pays
+                '    GmapsBrowser.Jscript("pushShift()")
+                '    ProcessCommand = 2
+                'Case "gmaps_zoominmap"
+                '    SendKeysToApplication(vbNullString, "GmapsApiForm", "{LSHIFT}") 'appuie sur la touche 'SHIFT'
+                '    ProcessCommand = 2
+            Case "gmaps_zoom" 'changement du zoom pour ttes les pages html sauf 'google maps'
+                SDK.Execute("NUMOSKTOCMD;GMAPS_ZOOM;GMAPS_EDIT_ZOOM||OSKTEXT;" & INI.ReadString("Itinery", "zoommaps", ""))
+                ProcessCommand = 2
+            Case "gmaps_edit_zoom"
+                INI.Write("Itinery", "zoommaps", SDK.GetUserVar("GMAPS_ZOOM"))
+                SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;Zoom is now '" + SDK.GetUserVar("GMAPS_ZOOM") + "'||menu;RRGoogleMapsTools_info.skin")
+                ProcessCommand = 2
+
+            Case "gmaps_back" 'back dans ttes les pages html sauf 'google maps'
+                GmapsBrowser.go("b")
+                ProcessCommand = 2
+            Case "gmaps_forward" 'forward dans ttes les pages html sauf 'google maps'
+                GmapsBrowser.go("f")
+                ProcessCommand = 2
+            Case "gmaps_home" 'home dans ttes les pages html sauf 'google maps'
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                'GmapsBrowser.go("h")
+                GmapsBrowser.go("" + INI.ReadString("WebBrowser", "home", "") + "")
+                ProcessCommand = 2
+            Case "gmaps_refresh" 'refresh dans ttes les pages html sauf 'google maps'
+                GmapsBrowser.go("r")
+                ProcessCommand = 2
+            Case "gmaps_stop" 'stop dans ttes les pages html sauf google 'maps'
+                GmapsBrowser.go("s")
+                ProcessCommand = 2
+            Case "gmaps_zoombyshift" 'zoom par selection d'une zone
+                'KeySequence = Replace(INI.ReadString("Sygic", "keysequence", ""), "{LAT}", LatitudeClipped).Replace("{LON}", LongitudeClipped)
+                'gps = Split(KeySequence, "{CLICK}")
+                SendKeysToApplication(vbNullString, "GmapsApiForm", "{SHIFT}")
+                ProcessCommand = 2
+            Case "gmaps_url"
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                SDK.Execute("LOAD;WEBBrowserOSK.skin")
+                ProcessCommand = 2
+            Case "gmaps_gotourl" 'internal command
+                If LCase(frm.Tag) = "rrgooglemapstools_webbrowser.skin" Then
+                    GmapsBrowser.go(SDK.GetInfo("OSKTEXT"))
+                End If
+                ProcessCommand = 2
+
+            Case "gmaps_countries" 'carte des pays
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                CreateCountries_Html()
+                CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                GmapsBrowser.Show()
+                GmapsBrowser.go(MainPath & "gmaps_countries.html") 'carte des pays
+                SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("country"))
+                SDK.SetUserVar("GOADDRESS", SDK.GetUserVar("l-set_GmapsCountry"))
+                ProcessCommand = 3
+
+            Case "gmaps_placesearch" 'carte de recherche par critère
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                CreatePlaceSearchHtmlNew(INI.ReadString("RRGoogleMapsTools", "placesearchtype", ""), INI.ReadString("RRGoogleMapsTools", "radius", ""))
+                SDK.SetUserVar("LBL_BUTTON_MARKER", SDK.GetUserVar("l-set_DelButton"))
+                CMD = "load;RRGoogleMapsTools.skin||RUN;$SKINPATH$SCRIPTS\ElcosMenu\ElcosMenu.exe|RRGoogleMapsTools_Help_SendToRR.skin"
+                GmapsBrowser.Show()
+                GmapsBrowser.go(MainPath & "gmaps_placesearch.html")
+                SDK.SetUserVar("WhatdoYouWant", "1")
+                SDK.SetUserVar("GOADDRESS", SDK.GetUserVar("l-set_PlaceSearch1") & INI.ReadString("RRGoogleMapsTools", "placesearchtype", "") & SDK.GetUserVar("l-set_PlaceSearch2") & " " & INI.ReadString("RRGoogleMapsTools", "radius", "") & " m")
+                'Timer1.Start()
+                'AnimateCursorTimer() 'Timer 1
+                ProcessCommand = 3
+                'Case "gmaps_placesearch2" 'carte de recherche par critère
+                ''CreatePlaceSearchHtml(INI.ReadString("RRGoogleMapsTools", "placesearchtype", ""), INI.ReadString("RRGoogleMapsTools", "radius", ""))
+                'CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                'GmapsBrowser.Show()
+                'GmapsBrowser.go(MainPath & "gmaps_placesearch_sp.html")
+                'SDK.SetUserVar("WhatdoYouWant", "1")
+                'SDK.SetUserVar("GOADDRESS", "I look for : '" & INI.ReadString("RRGoogleMapsTools", "placesearchtype", "") & "', around " & INI.ReadString("RRGoogleMapsTools", "radius", "") & " m")
+                ''WhatdoYouWant = 1
+                'ProcessCommand = 3
+            Case "gmaps_placetypetosearch"
+                Clipboard.Clear()
+                SDK.SetUserVar("GPSLATCLIP", "***")
+                SDK.SetUserVar("GPSLONCLIP", "***")
+                SDK.SetUserVar("ADDRESSCLIP", "***")
+                SDK.SetUserVar("PHONECLIP", "***")
+                SDK.SetUserVar("PLACENAMECLIP", "***")
+                SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l-set_PlaceSearch3") & "||Menu;RRGoogleMapsTools_PlaceType.skin||CLCLEAR;ALL")
+                If File.Exists(MainPath & "Places.txt") = True Then
+                    SDK.Execute("CLLOAD;" & MainPath & "Places.txt" & "||CLFIND;" & INI.ReadString("RRGoogleMapsTools", "placesearchtype", ""))
+                Else
+                    buildPlacesFile()
+                    SDK.Execute("CLLOAD;" & MainPath & "Places.txt" & "||CLFIND;" & INI.ReadString("RRGoogleMapsTools", "placesearchtype", ""))
+                    'SDK.ErrScrn("!! Info !!", MainPath & "Places.txt file is not found !!!", "")
+                End If
+                ProcessCommand = 2
+            Case "gmaps_place_select"
+                If frm.CL.Text = "" Then
+                    CreatePlaceSearchHtmlNew(INI.ReadString("RRGoogleMapsTools", "placesearchtype", ""), INI.ReadString("RRGoogleMapsTools", "radius", ""))
+                    GmapsBrowser.go(MainPath & "gmaps_placesearch.html")
+                    GmapsBrowser.Refresh()
+                    SDK.SetUserVar("GOADDRESS", "I look for : '" & INI.ReadString("RRGoogleMapsTools", "placesearchtype", "") & "', around " & INI.ReadString("RRGoogleMapsTools", "radius", "") & " m")
+                Else
+                    CreatePlaceSearchHtmlNew(frm.CL.Text, INI.ReadString("RRGoogleMapsTools", "radius", ""))
+                    GmapsBrowser.go(MainPath & "gmaps_placesearch.html")
+                    GmapsBrowser.Refresh()
+                    SDK.SetUserVar("GOADDRESS", "I look for : '" & frm.CL.Text & "', around " & INI.ReadString("RRGoogleMapsTools", "radius", "") & " m")
+                    frm.CL.Clear()
+                End If
+                ProcessCommand = 2
+
+                'carte geolocalisation connexion internet(google gears pose un pb avec IE < 9)
+            Case "gmaps_geolocatewifispot"
+                'MsgBox(ieVersion.ToString, vbOKOnly, "test")
+                Dim ver() = Split(ieVersion.ToString, ".")
+                If CInt(ver(0)) >= 9 Then
+                    If Timer1.Enabled = True Then Timer1.Stop()
+                    If Timer2.Enabled = True Then Timer2.Stop()
+                    If Timer3.Enabled = True Then Timer3.Stop()
+                    CreateGeolocateWifiSpot_Html()
+                    CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                    GmapsBrowser.Show()
+                    GmapsBrowser.go(MainPath & "gmaps_geolocatewifispot.html") 'geolocalisation d'un spot wifi ou d'une connexion internet
+                    SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("info"))
+                    SDK.SetUserVar("GOADDRESS", "Your Web connection is here !!!")
+                    ProcessCommand = 3
+                Else
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;Your Internet Explorer version is " & ieVersion.ToString & " !!!<crlf>This map need a IE9 version or higher !!!||menu;RRGoogleMapsTools_info.skin")
+                    ProcessCommand = 2
+                End If
+
+                'visualiser un trajet sur la carte google maps
+            Case "gmaps_googlemaps" 'XXXXXXXXXXXX 'http://maps.google.com/maps?saddr={start_address}&daddr={destination_address}
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                SDK.SetUserVar("includefile", "")
+                SDK.SetUserVar("menufile", "RRGoogleMapsTools_Itn.txt")
+                SDK.Execute("load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm||RELOADSCREEN")
+                If SDK.GetUserVar("NEWORIGINE") <> "" And SDK.GetUserVar("NEWDISTINATION") <> "" Then
+                    GmapsBrowser.Show()
+                    GmapsBrowser.go("http://maps.google.com/maps?hl=" & GoogleLanguage & "&saddr=" + SDK.GetUserVar("NEWORIGINE") + "&daddr=" + SDK.GetUserVar("NEWDISTINATION"))
+                    SDK.SetUserVar("GOADDRESS", "You see your travel !!!")
+                Else
+                    SDK.SetUserVar("Itinery_info", "Enter an origine and a destination !!!")
+                    SDK.Execute("gmaps_itinery")
+                End If
+                ProcessCommand = 2
+
+                'visualiser une adresse dans google maps
+            Case "gmaps_fulladdress" 'XXXXXXXXXXXX 'GoogleMap("val+d'eau+bourde", "villenave+d+ornon", "33140", "")
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                Dim sBrow As String = "http://maps.google.com/maps?hl=" & GoogleLanguage & "&q="
+                Dim sAdd As String = "val+d'eau+bourde"
+                Dim sCity As String = "villenave+d+ornon"
+                Dim sZip As String = "33140"
+                Dim sName As String = ""
+                sBrow = sBrow & sAdd & ",+" & sCity & ",+" & sZip & "+(" & sName & ")&hl=" & GoogleLanguage & "&z=8"
+                CMD = "load;RRGoogleMapsTools_Full.skin||RUN;;GmapsApiForm"
+                SDK.SetUserVar("GOADDRESS", "You see the address " & sCity & ", " & sAdd & ", " & sName & ", " & sZip & "!!!")
+                GmapsBrowser.Show()
+                GmapsBrowser.go(sBrow)
+                ProcessCommand = 3
+
+                'visualiser une zone par latitude et logitude sur la carte google maps
+            Case "gmaps_zone" 'XXXXXXXXXXXX
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                CMD = "load;RRGoogleMapsTools_Full.skin||RUN;;GmapsApiForm"
+                GmapsBrowser.Show()
+                GmapsBrowser.go("http://maps.google.com/maps?hl=" & GoogleLanguage & "&ie=UTF8&ll=25.82029,-80.180969&spn=0.397433,1.033401&z=5&layer=t")
+                SDK.SetUserVar("GOADDRESS", "You see a zone between 25.82029,-80.180969 and 0.397433,1.033401 !!!")
+                ProcessCommand = 3
+
+            Case "gmaps_fullview"
+                'If Timer1.Enabled = True Then Timer1.Stop()
+                'If Timer2.Enabled = True Then Timer2.Stop()
+                CMD = "load;RRGoogleMapsTools_Full.skin||RUN;;GmapsApiForm"
+                ProcessCommand = 3
+
+            Case "gmaps_stdview"
+                'If Timer1.Enabled = True Then Timer1.Stop()
+                'If Timer2.Enabled = True Then Timer2.Stop()
+                CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                ProcessCommand = 3
+
+            Case "gmaps_planetarium"
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                CreatePlanetarium_Html()
+                CMD = "load;RRGoogleMapsTools_Full.skin||RUN;;GmapsApiForm"
+                GmapsBrowser.Show()
+                GmapsBrowser.go(MainPath & "gmaps_planetarium.html") 'carte des pays
+                SDK.SetUserVar("ADDRESSCLIP", "***")
+                SDK.SetUserVar("GOADDRESS", "Planetarium")
+                ProcessCommand = 3
+
+            Case "gmaps_earth3d"
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                CreateEarth3D_Html()
+                GmapsBrowser.Show()
+                GmapsBrowser.go(MainPath & "gmaps_earth3d.html")
+                SDK.SetUserVar("GOADDRESS", "Enter a town !!!")
+                SDK.SetUserVar("WhatdoYouWant", "2")
+                ProcessCommand = 3
+            Case "gmaps_earth3dsearch" 'recherche un lieu dans earth3D
+                GmapsBrowser.SetValueinInput("location", SDK.GetInfo("=$GOADDRESS$"))
+                GmapsBrowser.ClickOnButton("Go")
+                ProcessCommand = 2
+
+            Case "gmaps_showhidesun"
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                CreateShowHideSun_Html()
+                GmapsBrowser.Show()
+                GmapsBrowser.go(MainPath & "gmaps_showhidesun.html")
+                SDK.SetUserVar("GOADDRESS", "You see our sun !!!")
+                ProcessCommand = 3
+            Case "gmaps_showsun"
+                GmapsBrowser.ClickOnButton("showsun")
+                ProcessCommand = 2
+            Case "gmaps_hidesun"
+                GmapsBrowser.ClickOnButton("hidesun")
+                ProcessCommand = 2
+
+            Case "gmaps_route" 'XXXXXXXXXXXX
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                CreateRoute_Html()
+                'CreateRoute_Html2()
+                GmapsBrowser.Show()
+                GmapsBrowser.go(MainPath & "gmaps_direction.html")
+                ProcessCommand = 3
+
+            Case "gmaps_getroute" 'XXXXXXXXXXXX
+                Dim start_location As String = "bordeaux"
+                Dim end_location As String = "nice"
+                Dim travel_mode As String = "DRIVING"
+                'GmapsBrowser.Jscript("animate(" & SDK.GetInfo("GPSLAT") & ", " & SDK.GetInfo("GPSLON") & ", " & IndHDG & ")")
+                'GmapsBrowser.Jscript("calcRoute(" + Chr(34) + start_location + Chr(34) + ", " + Chr(34) + end_location + Chr(34) + ")") '& ", " & travel_mode & ", 1)")
+                GmapsBrowser.Jscript("calcRoute(""Nice"", ""Bordeaux"")")
+                ProcessCommand = 2
+
+            Case "gmaps_streetview"
+                If Timer1.Enabled = True Then Timer1.Stop() : RestartTimerAfterLoad = True
+                If Timer2.Enabled = True Then Timer2.Stop() : RestartTimerAfterLoad = True
+                If Timer3.Enabled = True Then Timer3.Stop() : RestartTimerAfterLoad = True
+                'CreateStreetviewService_Html()
+                'SDK.Execute("load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm")
+                'GmapsBrowser.Show()
+                'GmapsBrowser.go(MainPath & "gmaps_streetview.html") 'carte street view service
+                'SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("country"))
+                'SDK.SetUserVar("GOADDRESS", SDK.GetUserVar("l-set_GpstoAdd"))
+                SDK.SetUserVar("WhatdoYouWant", "3")
+                StreetViewWithPano = True
+                RulerIsActive = False
+                SDK.Execute("GMAPS_TOOLS")
+                If RestartTimerAfterLoad = True Then Timer1.Enabled = True : Timer2.Enabled = True : RestartTimerAfterLoad = False
+                ProcessCommand = 2
+
+            Case "gmaps_ruler"
+                If Timer1.Enabled = True Then Timer1.Stop() : RestartTimerAfterLoad = True
+                If Timer2.Enabled = True Then Timer2.Stop() : RestartTimerAfterLoad = True
+                If Timer3.Enabled = True Then Timer3.Stop() : RestartTimerAfterLoad = True
+                'CreateRuler_Html()
+                'SDK.Execute("load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm")
+                'GmapsBrowser.Show()
+                'GmapsBrowser.go(MainPath & "gmaps_ruler.html") 'carte street view service
+                ''SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("country"))
+                'SDK.SetUserVar("GOADDRESS", SDK.GetUserVar("l-set_Ruler"))
+                'SDK.SetUserVar("WhatdoYouWant", "1")
+                ''If RestartTimerAfterLoad = True Then Timer1.Enabled = True : Timer2.Enabled = True : RestartTimerAfterLoad = False
+                StreetView = False
+                RulerIsActive = True
+                SDK.Execute("GMAPS_TOOLS")
+                ProcessCommand = 2
+
+            Case "gmaps_addruler"
+                GmapsBrowser.ClickOnButton("AddMarker")
+                ProcessCommand = 2
+            Case "gmaps_delruler"
+                GmapsBrowser.ClickOnButton("DelMarker")
+                ProcessCommand = 2
+
+                'Case "gmaps_wikipanoyou"
+                '    If Timer1.Enabled = True Then Timer1.Stop()
+                '    If Timer2.Enabled = True Then Timer2.Stop()
+                '    PanoramioLayer = 1
+                '    WikipediaLayer = 1
+                '    YoutubeLayer = 1
+                '    Create_WikiPanoYou_Html()
+                '    SDK.Execute("SETVAR;LAYERSON;0||SETVAR;LAYERON;2||SETVAR;INCLUDEFILE;RRGoogleMapsTools_Ind2.txt||load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm||RELOADSCREEN")
+                '    GmapsBrowser.Show()
+                '    GmapsBrowser.go(MainPath & "gmaps_wikipanoyou.html") 'carte wikipedia, panoramio and youtube
+                '    'SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("country"))
+                '    SDK.SetUserVar("GOADDRESS", SDK.GetUserVar("l-set_Ruler"))
+                '    SDK.SetUserVar("WhatdoYouWant", "1")
+                '    ProcessCommand = 2
+
+                'Case "gmaps_geocaching"
+                '    LatitudeClipped = SDK.GetInfo("=$GPSLATCLIP$")
+                '    LongitudeClipped = SDK.GetInfo("=$GPSLONCLIP$")
+                '    CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                '    GmapsBrowser.Show()
+                '    GmapsBrowser.Geocaching_Login()
+                '    GmapsBrowser.go("http://www.geocaching.com/map/?ll=" + LatitudeClipped + "," + LongitudeClipped) 'carte geocaching.com
+                '    'SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("country"))
+                '    'SDK.SetUserVar("GOADDRESS", SDK.GetUserVar("l-set_GpstoAdd"))
+                '    'SDK.SetUserVar("WhatdoYouWant", "3")
+                '    ProcessCommand = 3
+
+                'Transit directions
+            Case "gmaps_transitdirection"
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                SDK.Execute("SETVAR;INCLUDEFILE;RRGoogleMapsTools_Ind1.txt||SETVAR;MENUFILE;RRGoogleMapsTools_Gps.skin||load;RRGoogleMapsTools_Full.skin||SETVAR;LBL_BUTTON_MARKER;" & SDK.GetUserVar("l-set_AddDelButton") & "||RUN;;GmapsApiForm||RELOADSCREEN")
+                TransitLayer = 0
+                GmapsBrowser.Show()
+                GmapsBrowser.go(MainPath & "gmaps_transitdirection.html") 'carte transit direction
+                'SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("country"))
+                'SDK.SetUserVar("GOADDRESS", SDK.GetUserVar("l-set_Ruler"))
+                SDK.SetUserVar("WhatdoYouWant", "1")
+                ProcessCommand = 2
+
+                '#########################################################################################################
+            Case "gmaps_settings"
+                Language = INI.ReadString("RRGoogleMapsTools", "language", "")
+                ReadLanguageVars()
+                SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l_set_ActualLanguage") & " '" & Language & "'||LOAD;RRGoogleMapsTools_Settings.skin")
+                If File.Exists(MainPath & "Languages.txt") Then
+                    SDK.Execute("CLCLEAR;ALL||CLLOAD;" & MainPath & "Languages.txt" & "||CLFIND;" & Language) 'selectionne la ligne du language actuel
+                    'SDK.Execute("CLCLEAR;ALL||CLLOAD;" & MainPath & "Languages.txt") 'ne selectionne pas la ligne du language actuel
+                Else
+                    SDK.ErrScrn("!! Info !!", MainPath & "'Languages.txt' file is not found !!!", "")
+                End If
+                ProcessCommand = 2
+            Case "gmaps_language_select"
+                TextWithoutLF = Replace(frm.CL.Text, vbLf, "", 1) 'efface le linefeed retourné par le frm.CL.Text
+                'SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l_set_NewLanguage") & " '" & TextWithoutLF & "'")
+                INI.Write("RRGoogleMapsTools", "language", TextWithoutLF)
+                Language = INI.ReadString("RRGoogleMapsTools", "language", "")
+                'GoogleMapsToolsSettings()
+                GoogleLanguage = LanguageToGoogleLanguage(Language)
+                'SDK.SetUserVar("RRGoogleMapsToolsInfo", "You must rerun RR  :-) !!!<crlf>**************************")
+                CMD = "SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l_set_NewLanguage") & " '" & TextWithoutLF & "'||ESC||SETVAR;ShortLanguage;" & GoogleLanguage & "||menu;RRGoogleMapsTools_info.skin"
+                ProcessCommand = 3
+            Case "gmaps_googlelanguage"
+                GoogleLanguage = LanguageToGoogleLanguage(Language)
+                ProcessCommand = 2
+
+            Case "gmaps_language_updatelist"
+                ListeDirectoriesIntoDirectory("Languages", True)
+                ProcessCommand = 2
+
+            Case "gmaps_settings2"
+                SDK.Execute("LOAD;RRGoogleMapsTools_Settings2.skin||CLCLEAR;ALL")
+                ProcessCommand = 2
+
+            Case "oncldblclick"
+                If LCase(frm.Tag) = "rrgooglemapstools_settings.skin" Then
+                    SDK.Execute("rrgooglemapstools_language_select")
+                ElseIf LCase(frm.Tag) = "rrgooglemapstools_itineries.skin" Then
+                    SDK.Execute("rrgooglemapstools_itinery_select")
+                End If
+                ProcessCommand = 2
+
+                'Case "onscreenchange"
+                '    If LCase(frm.tag) <> "rrgooglemapstools.skin" Or LCase(frm.tag) <> "rrgooglemapstools_full.skin" Then
+                '        If Timer1.Enabled = True Then Timer1.Enabled = False
+                '        If Timer2.Enabled = True Then Timer1.Enabled = False
+                '        'GmapsBrowser.Hide()
+                '        'GmapsBrowser.Dispose()
+                '    End If
+                '    ProcessCommand = 2
+
+            Case "gmaps_latlon"
+                If SDK.GetInd("ONLINE") = "True" Then
+                    SDK.Execute("OSKTOCMD;FOUND_LATLON;FOUND_LATLON")
+                Else
+                    'SDK.ErrScrn("!! Info !!", "You haven't a valid 'WEB' connection !!!", "")
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l-set_CheckInternet") & "||menu;RRGoogleMapsTools_info.skin")
+                End If
+                ProcessCommand = 2
+            Case "found_latlon" ' commande interne
+                AddressToLatLon = ""
+                If SDK.GetUserVar("FOUND_LATLON") = "" Then
+                    SDK.SetUserVar("FOUND_LATLON", SDK.GetUserVar("l-set_GpsCoordinates") & Replace(SDK.GetInfo("GPSLAT"), ",", ".") & "," & Replace(SDK.GetInfo("GPSLON"), ",", "."))
+                Else
+                    AddressToLatLon = getGoogleMapsGeocode(SDK.GetUserVar("FOUND_LATLON"))
+                    SDK.SetUserVar("RRGoogleMapsToolsInfo", SDK.GetUserVar("l-set_LatLonFound1") & " " & SDK.GetUserVar("FOUND_LATLON") & SDK.GetUserVar("l-set_LatLonFound2") & AddressToLatLon)
+                End If
+                CMD = "menu;RRGoogleMapsTools_info.skin"
+                ProcessCommand = 3
+
+            Case "gmaps_address"
+                If SDK.GetInd("ONLINE") = "True" Then
+                    SDK.Execute("OSKTOCMD;FOUND_ADDRESS;FOUND_ADDRESS")
+                Else
+                    'SDK.ErrScrn("!! Info !!", "You haven't a valid 'WEB' connection !!!", "")
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l-set_CheckInternet") & "||menu;RRGoogleMapsTools_info.skin")
+                End If
+                ProcessCommand = 2
+            Case "found_address" ' commande interne
+                LatLonToAddress = ""
+                If SDK.GetInd("GPSVALID") = "False" Then
+                    'SDK.ErrScrn("!! Info !!", "You haven't a valid 'GPS' signal !!!", "")
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l-set_CheckGps") & "||menu;RRGoogleMapsTools_info.skin")
+                    ProcessCommand = 2
+                ElseIf SDK.GetInd("ONLINE") = "False" Then
+                    'SDK.ErrScrn("!! Info !!", "You haven't a valid 'WEB' connection !!!", "")
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l-set_CheckInternet") & "||menu;RRGoogleMapsTools_info.skin")
+                    ProcessCommand = 2
+                Else
+                    If SDK.GetUserVar("FOUND_ADDRESS") <> "" Then
+                        sArray = Split(SDK.GetUserVar("FOUND_ADDRESS"), ",") 'séparation latitude longitude
+                        'MsgBox(sArray(0) & vbCrLf & sArray(1), vbOKOnly, "Info")
+                        If sArray.Length = 2 Then
+                            getGoogleMapsReverseGeocode(sArray(0), sArray(1))
+                            SDK.SetUserVar("RRGoogleMapsToolsInfo", "GPS coordinates : '" & SDK.GetUserVar("FOUND_ADDRESS") & "'<crlf>The addresse is ...<crlf><crlf>" & LatLonToAddress)
+                        ElseIf sArray.Length = 4 Then
+                            SDK.SetUserVar("RRGoogleMapsToolsInfo", "The format for the Latitude and the longitude<crlf>is bad ...<crlf><crlf>The good format is XX.XXXXXX and not XX,XXXXXX")
+                        End If
+                    Else
+                        'getGoogleMapsReverseGeocode("40.714224", "-73.961452") '285 Bedford Ave, Brooklyn, État de New York 11211, États-Unis
+                        getGoogleMapsReverseGeocode(Replace(SDK.GetInfo("GPSLAT"), ",", "."), Replace(SDK.GetInfo("GPSLON"), ",", "."))
+                        SDK.SetUserVar("RRGoogleMapsToolsInfo", "The address for your actual GPS coordinates<crlf>is ... <crlf><crlf>" & LatLonToAddress)
+                    End If
+                    CMD = "menu;RRGoogleMapsTools_info.skin" '40.714224,-73.961452
+                    ProcessCommand = 3
+                End If
+
+            Case "gmaps_lookforaroundplace" 'aller sur https://code.google.com/apis/console si on obtient l'erreur 'REQUEST_DENIED'
+                CMD = "SETVAR;NEWSTEP;gmaps_place_newstep||SETVAR;PREVSTEP;gmaps_place_prevstep"
+                INI.Write("Itinery", "place", "-33.8670522,151.1957362" & ".xml")
+                LookForPlace("-33.8670522,151.1957362", "food", "harbour", 1) 'marseille
+                ProcessCommand = 3
+            Case "gmaps_place_newstep"
+                MyActualPlace = INI.ReadString("Itinery", "place", "")
+                LookForPlaceByXml(MyActualItinery, "", "", Val(SDK.GetUserVar("ACTUALSTEP")))
+                SDK.SetUserVar("ACTUALSTEP", Val(SDK.GetUserVar("ACTUALSTEP")) + 1)
+                ProcessCommand = 2
+            Case "gmaps_place_prevstep"
+                MyActualPlace = INI.ReadString("Itinery", "place", "")
+                If Val(SDK.GetUserVar("ACTUALSTEP")) >= 1 Then
+                    SDK.SetUserVar("ACTUALSTEP", Val(SDK.GetUserVar("ACTUALSTEP")) - 1)
+                End If
+                LookForPlaceByXml(MyActualItinery, "", "", Val(SDK.GetUserVar("ACTUALSTEP")))
+                ProcessCommand = 2
+
+            Case "gmaps_distancematrix"
+                If SDK.GetInd("ONLINE") = "True" Then
+                    SDK.Execute("OSKTOCMD;FOUND_DISTANCEMATRIX;FOUND_DISTANCEMATRIX")
+                Else
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;You haven't a valid 'WEB' connection !!!||menu;RRGoogleMapsTools_info.skin")
+                End If
+                ProcessCommand = 2
+            Case "found_distancematrix" 'internal only
+                MyDistanceMatrix = ""
+                If SDK.GetUserVar("FOUND_DISTANCEMATRIX") <> "" Then
+                    pArray = Split(SDK.GetUserVar("FOUND_DISTANCEMATRIX"), ",") 'séparation des villes départ et arrivée
+                    DistanceMatrix(pArray(0), pArray(1))
+                    SDK.SetUserVar("MYORIGINE", pArray(0))
+                    SDK.SetUserVar("MYDISTINATION", pArray(1))
+                    sArray = Split(MyDistanceMatrix, ",") 'séparation durée et distance
+                    SDK.SetUserVar("RRGoogleMapsToolsInfo", "For the travel " & UCase(pArray(0)) & " > " & UCase(pArray(1)) & "<crlf><crlf>Travel's duration : " & sArray(0) & "<crlf>Travel's distance : " & sArray(1))
+                    CMD = "menu;RRGoogleMapsTools_info.skin"
+                End If
+                ProcessCommand = 3
+
+                '####################  RECUP ITINERAIRE GOOGLE  ##########################################################
+            Case "gmaps_itinery" 'création d'un nouvel itinéraire avec sauvegarde du fichier .xml
+                SDK.SetUserVar("includefile", "")
+                SDK.SetUserVar("menufile", "RRGoogleMapsTools_Itn.txt")
+                SDK.Execute("RELOADSCREEN")
+                ProcessCommand = 2
+
+            Case "gmaps_build_itinery" 'internal only
+                If SDK.GetUserVar("NEWORIGINE") <> "" And SDK.GetUserVar("NEWDISTINATION") <> "" Then
+                    INI.Write("Itinery", "itinery", SDK.GetUserVar("NEWORIGINE") & "_" & SDK.GetUserVar("NEWDISTINATION") & ".xml")
+                    ItineryByGoogle(SDK.GetUserVar("NEWORIGINE"), SDK.GetUserVar("NEWDISTINATION"))
+                    'CMD = "SETVAR;NEWSTEP;gmaps_itinery_newstep||SETVAR;PREVSTEP;gmaps_itinery_prevstep"
+                    'CMD = "load;RRGoogleMapsTools.skin"
+                End If
+                ProcessCommand = 2
+
+            Case "gmaps_choose_itinery" 'choose an itinery into a list
+                SDK.SetUserVar("includefile", "")
+                SDK.SetUserVar("menufile", "RRGoogleMapsTools_Itn.txt")
+                SDK.Execute("RELOADSCREEN")
+                If SDK.GetInd("GPSVALID") = "False" Then
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;You haven't a valid 'GPS' signal !!!<crlf><crlf>Please turn 'ON' your GPS ...||menu;RRGoogleMapsTools_info.skin")
+                    Exit Function
+                    ProcessCommand = 2
+                End If
+                If File.Exists(MainPath & "Itineries.txt") Then
+                    sArray = File.ReadAllLines(MainPath & "Itineries.txt")
+                    If UBound(sArray) > 0 Then
+                        If INI.ReadString("Itinery", "itinery", "") <> "" Then
+                            SDK.Execute("CLCLEAR;ALL||SETVAR;RRGoogleMapsToolsInfo;The actual Itinery is the '" & Replace(MyActualItinery, ".xml", "").Replace("_", " to ") & "'||menu;RRGoogleMapsTools_Itineries.skin||CLCLEAR;ALL")
+                        Else
+                            INI.Write("Itinery", "itinery", " *** ")
+                            SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;The actual Itinery is the '" & INI.ReadString("Itinery", "itinery", "") & "'||menu;RRGoogleMapsTools_Itineries.skin||CLCLEAR;ALL")
+                        End If
+                        For p = 0 To UBound(sArray)
+                            SDK.Execute("CLADD;" & sArray(p))
+                            If File.Exists(MainPath & "gmaps.gif") Then
+                                SDK.Execute("CLSETIMG;" & p + 1 & ";" & MainPath & "gmaps.gif")
+                            Else
+                                SDK.Execute("CLSETIMG;" & p + 1 & ";" & MainPath & "Error.gif")
+                            End If
+                        Next
+                        SDK.Execute("CLFIND;" & INI.ReadString("Itinery", "itinery", ""))
+                        ProcessCommand = 2
+                    Else
+                        SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;No Itinery is the defined !!!<crlf>Please, create one itinery for use this option !||menu;RRGoogleMapsTools_Itineries.skin||CLCLEAR;ALL")
+                        ProcessCommand = 2
+                    End If
+                Else
+                    SDK.ErrScrn("!! Info !!", MainPath & "Itineries.txt file is not found !!!", "The Itineries.txt file is made !!!")
+                    ListefilesIntoDirectory("MyItineries") 'create the Itineries.txt file
+                    CMD = "gmaps_choose_itinery"
+                    ProcessCommand = 3
+                End If
+
+            Case "gmaps_itinery_select"
+                TextWithoutLF = Replace(frm.CL.Text, vbLf, "", 1) 'efface le linefeed retourné par le frm.CL.Text
+                'SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;The Itinery is now '" & TextWithoutLF & "'")
+                INI.Write("Itinery", "itinery", TextWithoutLF)
+                Itinery_selected = Split(Replace(TextWithoutLF, ".xml", ""), "_")
+                SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;The new Itinery is...<crlf>From '" & Itinery_selected(0) & " To " & Itinery_selected(1) & "'||menu;RRGoogleMapsTools_info.skin||CLCLEAR;ALL")
+                If INI.ReadString("Itinery", "xmlloaded", "") = "Run" Then
+                    SDK.SetUserVar("Step_Number", "*")
+                    'SDK.SetUserVar("InfoLogo", "Info_Logo.png")
+                    SDK.Execute("wait;3||itinery_selected||SETVAR;NEWSTEP;gmaps_itinery_newstep||SETVAR;PREVSTEP;gmaps_itinery_prevstep")
+                    SDK.SetUserVar("ACTUALSTEP", 1)
+                Else
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;The new Itinery is loaded<crlf>But the Step By stop function is inactive ...<crlf>Please, change your setting<crlf>'xmlloaded=Stop' by 'xmlloaded=Run'")
+                End If
+                ProcessCommand = 2
+            Case "itinery_selected" 'internal command
+                If INI.ReadString("Itinery", "xmlloaded", "") = "Run" Then
+                    ItineryByXmlFile(INI.ReadString("Itinery", "itinery", ""), 1)
+                    sArray = Split(Replace(INI.ReadString("Itinery", "itinery", ""), ".xml", ""), "_")
+                    SDK.SetUserVar("NEWORIGINE", sArray(0))
+                    SDK.SetUserVar("NEWDISTINATION", sArray(1))
+                    SDK.SetUserVar("Itinery_Info", Replace(INI.ReadString("Itinery", "itinery", ""), "_", " --> ").Replace(".xml", ""))
+                    SDK.Execute("ESC||load;RRGoogleMapsTools.skin||RELOADSCREEN")
+                Else
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;The new Itinery is loaded<crlf>But the Step By stop function is inactive ...<crlf>Please, change your setting<crlf>'xmlloaded=Stop' by 'xmlloaded=Run'||wait;5||ESC||load;RRGoogleMapsTools.skin")
+                End If
+                ProcessCommand = 2
+
+            Case "gmaps_itinery_nextstep"
+                MyActualItinery = INI.ReadString("Itinery", "itinery", "")
+                ItineryByXmlFile(MyActualItinery, CInt(SDK.GetUserVar("ACTUALSTEP")))
+                SDK.SetUserVar("ACTUALSTEP", CStr(CInt(SDK.GetUserVar("ACTUALSTEP") + 1)))
+                ProcessCommand = 2
+
+            Case "gmaps_itinery_prevstep"
+                MyActualItinery = INI.ReadString("Itinery", "itinery", "")
+                If Val(SDK.GetUserVar("ACTUALSTEP")) >= 1 Then
+                    SDK.SetUserVar("ACTUALSTEP", Val(SDK.GetUserVar("ACTUALSTEP")) - 1)
+                End If
+                ItineryByXmlFile(MyActualItinery, Val(SDK.GetUserVar("ACTUALSTEP")))
+                ProcessCommand = 2
+
+            Case "gmaps_xmlnumber"
+                GetFileCount(MainPath & "MyItineries")
+                ProcessCommand = 2
+                '#########################################################################################################
+
+            Case "gmaps_grab_weather"
+                Grab_Weather("bordeaux")
+                ProcessCommand = 2
+
+            Case "gmaps_webbrowser_off"
+                GmapsBrowser.Hide()
+                ProcessCommand = 2
+
+            Case "gmaps_web_yahoo"
+                GmapsBrowser.Show()
+                GmapsBrowser.go("http://www.yahoo.fr")
+                ProcessCommand = 2
+
+            Case "gmaps_web_tomtom"
+                GmapsBrowser.Show()
+                GmapsBrowser.go("http://www.tomtom.com/livetraffic")
+                ProcessCommand = 2
+
+            Case "gmaps_web_gmail"
+                GmapsBrowser.Show()
+                'https://mail.google.com/mail/?tab=wm#inbox
+                'GmapsBrowser.go("http://google.com")
+                GmapsBrowser.go("https://mail.google.com/mail/?tab=wm#inbox")
+                ProcessCommand = 2
+
+            Case "gmaps_messagebox"
+                CMD = "SETVAR;INFOTITLE;||SETVAR;MESSAGE;An itinery already exist with this name !!!<crlf>Are you sure to replace it by this new itinery ?||menu;MessageBoxLarge_Confirm.skin"
+                ProcessCommand = 3
+
+            Case "gmaps_check_network"
+                If SDK.GetInd("ONLINE") = "True" Then
+                    SDK.Execute("OSKTOCMD;FOUND_CHECK_NETWORK;FOUND_CHECK_NETWORK")
+                Else
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;You haven't a valid 'WEB' connection !!!||menu;RRGoogleMapsTools_info.skin")
+                End If
+                ProcessCommand = 2
+            Case "found_check_network" 'internal only
+                If SDK.GetUserVar("FOUND_CHECK_NETWORK") = "" Then
+                    If My.Computer.Network.Ping(SDK.GetUserVar("FOUND_CHECK_NETWORK"), 1000) Then
+                        MsgBox("Server pinged successfully.")
+                    Else
+                        MsgBox("Ping request timed out.")
+                    End If
+                    My.Computer.Network.DownloadFile("http://www.anywebsite.com/downloads/anyfile.txt", MainPath & "\anyfile.txt")
+                    'My.Computer.Network.UploadFile(MainPath & "\anyfile.txt", "http://www.anywebsite.com/uploads/")
+                End If
+                ProcessCommand = 2
+
+            Case "gmaps_iplocation"
+                If SDK.GetInd("ONLINE") = "True" Then
+                    SDK.Execute("OSKTOCMD;FOUND_IPLOCATION;FOUND_IPLOCATION")
+                Else
+                    'SDK.ErrScrn("!! Info !!", "You haven't a valid 'WEB' connection !!!", "")
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;You haven't a valid 'WEB' connection !!!||menu;RRGoogleMapsTools_info.skin")
+                End If
+                ProcessCommand = 2
+            Case "found_iplocation" 'internal only
+                If SDK.GetUserVar("FOUND_IPLOCATION") <> "" Then
+                    If InStr(SDK.GetUserVar("FOUND_IPLOCATION"), " ") Then
+                        server = Replace(SDK.GetUserVar("FOUND_IPLOCATION"), " ", "+") 'remplacement des espace par un +
+                    Else
+                        server = SDK.GetUserVar("FOUND_IPLOCATION")
+                    End If
+                    ' Get the list of the addresses associated with the requested server.
+                    IPAddresses(server)
+                    SDK.SetUserVar("RRGoogleMapsToolsInfo", "The IP Address for the server : '" & SDK.GetUserVar("FOUND_IPLOCATION") & "'<crlf>is ...<crlf><crlf>" & MyAddressInfo)
+                    CMD = "menu;RRGoogleMapsTools_info.skin" '||wait;3||MyIPAddressAdditionalInfo"
+                    ' Get additonal address information.
+                    'IPAddressAdditionalInfo()
+                Else
+                    'If no server name is passed as an argument to this program, use the current 
+                    ' server name as default.
+                    server = Dns.GetHostName()
+                    'Console.WriteLine(("Using current host: " + server))
+                    'SDK.SetUserVar("IPINFO", "Using current host: " + server)
+                    SDK.SetUserVar("RRGoogleMapsToolsInfo", "Using current host: " + server)
+                    CMD = "menu;RRGoogleMapsTools_info.skin" '||wait;3||MyIPAddressAdditionalInfo"
+                End If
+                ProcessCommand = 3
+
+            Case "gmaps_edit_latlon"
+                gps = Split(SDK.GetUserVar("GMAP_FORCELATLON"), ",")
+                INI.Write("Itinery", "latitude", gps(0))
+                INI.Write("Itinery", "longitude", gps(1))
+                CMD = "SETVAR;RRGoogleMapsToolsInfo;New Gps Coordinates<crlf>Latitude : " + gps(0) + "<crlf>Longitude : " + gps(1) + "||menu;RRGoogleMapsTools_info.skin"
+                ProcessCommand = 3
+
+            Case "gmaps_dispose"
+                If Timer1.Enabled = True Then Timer1.Stop()
+                If Timer2.Enabled = True Then Timer2.Stop()
+                If Timer3.Enabled = True Then Timer3.Stop()
+                GmapsBrowser.Dispose()
+                ProcessCommand = 2
+
+            Case "gmaps_tomtomtraffic" 'carte traffic tomtom
+                CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                GmapsBrowser.Show()
+                GmapsBrowser.go("http://www.tomtom.com/livetraffic") 'http://www.tomtom.com/livetraffic/?Lid=2  '/?Lid=2 l'option ?Lide= force le language
+                ProcessCommand = 3
+
+                '##############################  Envoie au GPS par defaut  ############################
+            Case "gmaps_sendtogps"
+                'SDK.SetUserVar("GPSLATCLIP", CStr(Math.Round(Val(gps(0)), 6)))
+                'SDK.SetUserVar("GPSLONCLIP", CStr(Math.Round(Val(gps(1)), 6)))
+                'SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("formatedAddress"))
+                If SDK.GetInfo("=$GPSLATCLIP$") = "***" Then
+                    Select Case SDK.GetUserVar("GMAPS_VARTYPETOSEND")
+                        Case "Point"
+                            CMD = "SETVAR;RRGoogleMapsToolsInfo;No Gps Coordinates to send to '" + INI.ReadString("RRGoogleMapsTools", "navigation", "") + "'||menu;RRGoogleMapsTools_info.skin"
+                        Case "Itinery"
+                            CMD = "SETVAR;RRGoogleMapsToolsInfo;No Itinery to send to '" + INI.ReadString("RRGoogleMapsTools", "navigation", "") + "'||menu;RRGoogleMapsTools_info.skin"
+                    End Select
+                Else
+                    Select Case INI.ReadString("RRGoogleMapsTools", "navigation", "")
+                        Case "Sygic"
+                            If ProcessesRunning("drive") = 1 Then
+                                If SDK.GetInd("pluginmgr;status;rrsygicdrive") = "True" Then
+                                    SDK.Execute("load;RRSygicDrive.skin||wait;0.5||rrsygicdrive_navigatetomenu||wait;0.5||rrsygicdrive_sendtogps")
+                                Else
+                                    SDK.Execute("load;external_gps.skin||wait;0.5||gmaps_gpstosygic")
+                                End If
+                            Else
+                                SDK.ErrScrn("Error found !!!", "No Sygic FLEET process exist !!!", "Please, run Sygic before ...", 5)
+                            End If
+                        Case "iGo8"
+                            If ProcessesRunning(Replace(INI.ReadString("iGo8", "processname", ""), ".exe", "")) = 1 Then
+                                SDK.Execute("gmaps_gpstoigo8")
+                            Else
+                                SDK.ErrScrn("Error found !!!", "No Sygic iGo8 process exist !!!", "Please, run iGo8 before ...", 5)
+                            End If
+
+                        Case "GMPC"
+                            If ProcessesRunning("que") = 1 Then
+                                If SDK.GetInd("pluginmgr;status;rrgmpc") = "True" Then
+                                    SDK.Execute("load;gmpc.skin||wait;0.5||rrgmpc_gpstogmpc")
+                                Else
+                                    SDK.Execute("load;gmpc.skin||wait;0.5||gmaps_gpstogmpc")
+                                End If
+                            Else
+                                SDK.ErrScrn("Error found !!!", "No Garmin Mobile Pc process exist !!!", "Please, run GmPc before ...", 5)
+                            End If
+
+                        Case "PcNavi12"
+                            If ProcessesRunning("pc_navigator") = 1 Then
+                                If SDK.GetInd("pluginmgr;status;rrpcnavigator") = "True" Then
+                                    SDK.Execute("Load;external_gps.skin||wait;0.5||pcnavi_gpstonavigator")
+                                Else
+                                    SDK.Execute("Load;external_gps.skin||wait;0.5||gmaps_gpstonavigator")
+                                End If
+                            Else
+                                SDK.ErrScrn("Error found !!!", "No Pc_Navigator process exist !!!", "Please, run Pc_Navigator before ...", 5)
+                            End If
+
+                        Case "iGuidance"
+                            SDK.ErrScrn("Error found !!!", "The plugin doesn't accept iGuidance !!!", "... Sorry ...", 5)
+
+                    End Select
+                End If
+                ProcessCommand = 2
+                '######################################################################################
+
+                '##############################  Commande de Sygic  ###################################
+            Case "gmaps_lattosygic"
+                LatitudeClipped = SDK.GetInfo("=$GPSLATCLIP$") 'INI.ReadString("Sygic", "latitude", "")
+                LongitudeClipped = SDK.GetInfo("=$GPSLONCLIP$") 'INI.ReadString("Sygic", "longitude", "")
+                KeySequence = Replace(INI.ReadString("Sygic", "keysequence", ""), "{LAT}", LatitudeClipped).Replace("{LON}", LongitudeClipped)
+                gps = Split(KeySequence, "{CLICK}")
+                SendKeysToApplication(vbNullString, INI.ReadString("Sygic", "windowname", ""), gps(0))
+                MouseMove(MouseX, MouseY)
+                MouseButtonClick(MouseButtons.Left, MouseX, MouseY)
+                ProcessCommand = 2
+            Case "gmaps_lontosygic"
+                LatitudeClipped = SDK.GetInfo("=$GPSLATCLIP$") 'INI.ReadString("Sygic", "latitude", "")
+                LongitudeClipped = SDK.GetInfo("=$GPSLONCLIP$") 'INI.ReadString("Sygic", "longitude", "")
+                KeySequence = Replace(INI.ReadString("Sygic", "keysequence", ""), "{LAT}", LatitudeClipped).Replace("{LON}", LongitudeClipped)
+                gps = Split(KeySequence, "{CLICK}")
+                SendKeysToApplication(vbNullString, INI.ReadString("Sygic", "windowname", ""), gps(1))
+                MouseMove(MouseX, MouseY)
+                MouseButtonClick(MouseButtons.Left, MouseX, MouseY)
+                ProcessCommand = 2
+            Case "gmaps_gpstosygic"
+                'If ProcessesRunning("drive") = 1 Then
+                '    'If SDK.GetUserVar("GMAPS_VARTYPETOSEND") = "Point" Then
+                SDK.Execute("gmaps_lattosygic||wait;0.5||gmaps_lontosygic")
+                '    'ElseIf SDK.GetUserVar("GMAPS_VARTYPETOSEND") = "Itinery" Then
+                '    '    'File.Copy("igo4.txt", INI.ReadString("Sygic", "sygicpath", "") & "..\..\Res\itinerary\")
+                '    'End If
+                'Else
+                '    SDK.ErrScrn("Error found !!!", "No Sygic FLEET process exist !!!", "Please, run Sygic before ...", 5)
+                'End If
+                ProcessCommand = 2
+                '######################################################################################
+
+                '##############################  Commande de iGo8  ####################################
+            Case "gmaps_gpstoigo8"
+                'If ProcessesRunning(Replace(INI.ReadString("iGo8", "processname", ""), ".exe", "")) = 1 Then
+                If Directory.Exists(INI.ReadString("iGo8", "kmlpath", "")) Then
+                    'NewKml.CreateKmlFile(INI.ReadString("iGo8", "kmlpath", "") & "FromRRforiGo8.kml", SDK.GetInfo("=$PLACENAMECLIP$"), SDK.GetInfo("=$GPSLONCLIP$"), SDK.GetInfo("=$GPSLATCLIP$"))
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;A new .kml file was copied under the path ...<crlf>" + INI.ReadString("iGo8", "kmlpath", "") + "||menu;RRGoogleMapsTools_info.skin")
+                End If
+                'Else
+                '    SDK.ErrScrn("Error found !!!", "No Sygic iGo8 process exist !!!", "Please, run iGo8 before ...", 5)
+                'End If
+                ProcessCommand = 2
+                '######################################################################################
+                '##########################  Commande de GarminMobilePc  ##############################
+            Case "rrgmpc_gpstogmpcmenu"
+                Gmpc_CoordinatesMenu()
+                ProcessCommand = 2
+            Case "rrgmpc_lattogmpc"
+                LatitudeClipped = SDK.GetInfo("GMAPS_LATITUDE")
+                If GmPcVersion = "5.00.60" Then
+                    SendKeysToApplication("CDP_FIELD_WND", vbNullString, GmPc_LatLonConvert60(LatitudeClipped, "LAT"))
+                    SendKeysToApplication("CDP_FIELD_WND", vbNullString, "{TAB}")
+                    SDK.SetUserVar("GMPC_LAT", GmPc_LatLonConvert60(LatitudeClipped, "LAT"))
+                ElseIf GmPcVersion = "5.00.70" Then
+                    SendKeysToApplication("CDP_FIELD_WND", vbNullString, "{RIGHT 3}")
+                    SendKeysToApplication("CDP_FIELD_WND", vbNullString, GmPc_LatLonConvert70(LatitudeClipped, "LAT"))
+                    SDK.SetUserVar("GMPC_LAT", GmPc_LatLonConvert70(LatitudeClipped, "LAT"))
+                End If
+                ProcessCommand = 2
+            Case "rrgmpc_lontogmpc"
+                LongitudeClipped = SDK.GetInfo("GMAPS_LONGITUDE")
+                If GmPcVersion = "5.00.60" Then
+                    SendKeysToApplication("CDP_FIELD_WND", vbNullString, GmPc_LatLonConvert60(LongitudeClipped, "LON"))
+                    SDK.SetUserVar("GMPC_LON", GmPc_LatLonConvert60(LongitudeClipped, "LON"))
+                ElseIf GmPcVersion = "5.00.70" Then
+                    SendKeysToApplication("CDP_FIELD_WND", vbNullString, GmPc_LatLonConvert70(LongitudeClipped, "LON"))
+                    SDK.SetUserVar("GMPC_LON", GmPc_LatLonConvert70(LongitudeClipped, "LON"))
+                End If
+                ProcessCommand = 2
+            Case "rrgmpc_gpstogmpc"
+                'If ProcessesRunning("que") = 1 Then
+                SDK.Execute("rrgmpc_gpstogmpcmenu||wait;0.5||rrgmpc_lattogmpc||wait;0.5||rrgmpc_lontogmpc")
+                'Else
+                '    SDK.ErrScrn("Error found !!!", "No Garmin Mobile Pc process exist !!!", "Please, run GmPc before ...", 5)
+                'End If
+                ProcessCommand = 2
+
+                '######################################################################################
+
+                '##########################   Commande de Pc Navigator   ##############################
+            Case "gmaps_gpstonavigator"
+                'If ProcessesRunning("pc_navigator") = 1 Then
+                LatitudeClipped = SDK.GetInfo("GMAPS_LATITUDE")
+                LongitudeClipped = SDK.GetInfo("GMAPS_LONGITUDE")
+                SendCommands(INI.ReadString("PcNavigator", "hostnumber", ""), INI.ReadString("PcNavigator", "portnumber", ""), "$destination=" & LatitudeClipped & "," & LongitudeClipped & ";navigate" & vbLf)
+                'Else
+                '    SDK.ErrScrn("Error found !!!", "No Pc_Navigator process exist !!!", "Please, run Pc_Navigator before ...", 5)
+                'End If
+                ProcessCommand = 2
+                '######################################################################################
+
+                '###########################   Commande de iGuidance   ################################
+            Case "gmaps_gpstoiguidance"
+                If ProcessesRunning("iguidanceumpc.exe") = 1 Then
+                    LatitudeClipped = SDK.GetInfo("=$GPSLATCLIP$")
+                    LongitudeClipped = SDK.GetInfo("=$GPSLONCLIP$")
+
+                Else
+                    SDK.ErrScrn("Error found !!!", "No iGuidance process exist !!!", "Please, run iGuidance before ...", 5)
+                End If
+                ProcessCommand = 2
+                '######################################################################################
+
+            Case "gmaps_snapshotsize"
+                Dim fencesnapshot()
+                Dim fenceok = False
+                fencesnapshot = Split(SDK.GetUserVar("gmaps_snapshotsize"), ",")
+                If fencesnapshot.Length = 4 Then
+                    If IsNumeric(fencesnapshot(0)) = True And IsNumeric(fencesnapshot(0)) = True And IsNumeric(fencesnapshot(1)) = True And IsNumeric(fencesnapshot(2)) = True And IsNumeric(fencesnapshot(3)) = True Then
+                        INI.Write("RRGoogleMapsTools", "screenshot", SDK.GetUserVar("gmaps_snapshotsize"))
+                        CMD = "SETVAR;RRGoogleMapsToolsInfo;The new size is ..." & INI.ReadString("RRGoogleMapsTools", "screenshot", "") & "||menu;RRGoogleMapsTools_info.skin"
+                    End If
+                Else
+                    CMD = "SETVAR;RRGoogleMapsToolsInfo;The format is bad ...<crlf>The good format is '529,416,0,74'||menu;RRGoogleMapsTools_info.skin"
+                End If
+                ProcessCommand = 3
+
+            Case "gmaps_screenshot"
+                Dim tmpdate As String = Now.ToString
+                Dim tmppath As String
+                Dim bmap As Bitmap
+                Dim curscreen As New classShoter
+                Dim fencesnapshot()
+                fencesnapshot = Split(INI.ReadString("RRGoogleMapsTools", "screenshot", ""), ",")
+                bmap = classShoter.ShotScreenPart(fencesnapshot(0), fencesnapshot(1), fencesnapshot(2), fencesnapshot(3))
+                tmpdate = tmpdate.Replace("/", "-").Replace(":", " ")
+                tmppath = MainPath & "MyItineriesJPG\Gmaps" & " - " & tmpdate & ".jpg"
+                Dim tmpbmap As New System.Drawing.Bitmap(bmap)
+                tmpbmap.Save(tmppath, System.Drawing.Imaging.ImageFormat.Jpeg)
+                ProcessCommand = 2
+
+            Case "runsygic"
+                'Dim myProcess As New Process()
+                'myProcess.StartInfo.UseShellExecute = False
+                ' You can start any process, HelloWorld is a do-nothing example.
+                'myProcess.StartInfo.FileName = "C:\Program Files\Sygic FLEET Truck\Drive\WindowsXP\drive.exe"
+                'myProcess.StartInfo.Arguments = "-no-safety -r800,530 -p0x0"
+                'myProcess.StartInfo.CreateNoWindow = True
+                'myProcess.Start()
+                'MsgBox(myProcess.ProcessName, vbOKOnly, "Process is Launched")
+                Process.Start(INI.ReadString("Sygic", "sygicpath", "") & "drive.exe", INI.ReadString("Sygic", "sygicarguments", ""))
+                ProcessCommand = 2
+
+            Case "gmaps_timers_startstop" 'commande start/stop timers
+                SDK.Execute("BYIND;GMAPS_TIMERS;GMAPS_TIMERS_START<<GMAPS_TIMERS_STOP")
+                ProcessCommand = 2
+                'stop les timers
+            Case "gmaps_timers_stop"
+                If Timer1.Enabled = True Then Timer1.Enabled = False
+                If Timer2.Enabled = True Then Timer1.Enabled = False
+                If Timer3.Enabled = True Then Timer3.Stop()
+                ProcessCommand = 2
+                'lance les timers
+            Case "gmaps_timers_start"
+                Select Case SDK.GetUserVar("WhatdoYouWant")
+                    Case "0", "3"
+                        'LatLonAddUpdateTimer() 'mise à jour lat lon et adresse
+                        AnimateCursorTimer() 'mise à jour curseur (fonction animate)
+                        If SDK.GetInd("pluginmgr;status;gps2city") = "True" Then GPS2CityUpdateTimer()
+                    Case "1"
+                        AnimateCursorTimer()
+                        If SDK.GetInd("pluginmgr;status;gps2city") = "True" Then GPS2CityUpdateTimer()
+                        'Case "2"
+                        'Timer1.Start()
+
+                End Select
+                ProcessCommand = 2
+
+            Case "gmaps_sendtomobilephone"
+                If SDK.GetInd("pluginmgr;status;mobilephone") = "True" And SDK.GetInfo("=$PHONECLIP$") <> "*" And SDK.GetInfo("=$PHONECLIP$") <> "***" Then
+                    SDK.Execute("LOAD;MOBILEPHONE.SKIN||MOBILEPHONE_UNFORMATEDNUMBER||SETVAR;RRGoogleMapsToolsInfo;Ready for call the phone number '" & SDK.GetInfo("=$PHONECLIP$") & "'||MENU;RRGoogleMapsTools_info.skin")
+                Else
+                    SDK.ErrScrn("Error found !!!", "You can't use this function !!", "You need to install the plugin 'BTMobilePhone' or 'MobilePhone.NET'", 5)
+                End If
+                ProcessCommand = 2
+
+            Case "gmaps_sendtoskype"
+                If SDK.GetInd("pluginmgr;status;rrskype") = "True" Then
+                    SDK.Execute("LOAD;RRSKYPE.SKIN||CLCLEAR;ALL||CLADD;" & SDK.GetInfo("=$PHONECLIP$").Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "").Replace(".", "") & "||SETVAR;RRGoogleMapsToolsInfo;Ready for call the phone number '" & SDK.GetInfo("=$PHONECLIP$") & "'||menu;RRGoogleMapsTools_info.skin")
+                Else
+                    SDK.ErrScrn("Error found !!!", "You can't use this function !!", "You need to install the plugin 'RRSKYPE' !", 5)
+                End If
+                ProcessCommand = 2
+
+            Case "gmaps_gps2city"
+                If SDK.GetInd("pluginmgr;status;gps2city") = "True" Then
+                    SDK.Execute("CLCLEAR;ALL||LOAD;GPS2City.SKIN||CLLOAD;$pluginspath$Gps2City\gps2city.txt;true||CLFIND;$CURRENTCOUNTRY$")
+                Else
+                    SDK.ErrScrn("Error found !!!", "You can't use this function !!", "You need to install the plugin 'GPS2City' !", 5)
+                End If
+                ProcessCommand = 2
+            Case "gmaps_gps2city_copy"
+                'GPS2CityUpdate()
+                SDK.SetUserVar("GPSLATCLIP", "***")
+                SDK.SetUserVar("GPSLONCLIP", "***")
+                SDK.SetUserVar("PHONECLIP", "***")
+                SDK.SetUserVar("ADDRESSCLIP", "From GPS2City>:<crlf><crlf>" & SDK.GetInfo("CURRENTSTATE") & "(" & SDK.GetInfo("CURRENTZIP") & "), " & SDK.GetInfo("CURRENTCITY") & "<crlf>" & SDK.GetInfo("CURRENTCOUNTY"))
+                SDK.SetUserVar("PLACENAMECLIP", "***")
+                ProcessCommand = 2
+                '######################################################################################
+                'Case "gmaps_skyearth" 'remplacé par planetarium
+                '    If Timer1.Enabled = True Then Timer1.Stop()
+                '    If Timer2.Enabled = True Then Timer2.Stop()
+                '    CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                '    CreateSkyEarth_Html()
+                '    GmapsBrowser.Show()
+                '    GmapsBrowser.go(MainPath & "gmaps_skyearth.html")
+                '    SDK.SetUserVar("GOADDRESS", "You look at the sky above your head !!!")
+                '    ProcessCommand = 3
+
+                'Case "gmaps_panoramio" 'carte panoramio
+                '    If Timer1.Enabled = True Then Timer1.Stop()
+                '    If Timer2.Enabled = True Then Timer2.Stop()
+                '    CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+                '    CreatePanoramioV3_Html()
+                '    GmapsBrowser.Show()
+                '    GmapsBrowser.go(MainPath & "gmaps_panoramio.html")
+                '    SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("photoPanel"))
+                '    SDK.SetUserVar("GOADDRESS", "Click on a picture !!!")
+                '    ProcessCommand = 3
+
+                'Case "gmaps_read_latlonaddress" 'mise à jour adresse(remplacé par 'gmaps_setclipboard_auto')
+                '    If LCase(SDK.GetInfo("RRSCREEN")) = "rrgooglemapstools.skin" And SDK.GetInd("online") = "True" Then
+                '        If CType(iData.GetData(DataFormats.Text), String) <> "" Then
+                '            gps = Split(CType(iData.GetData(DataFormats.Text), String), "|")
+                '            gps2 = Split(gps(0), ",")
+                '            SDK.SetUserVar("GPSLATCLIP", gps2(0))
+                '            SDK.SetUserVar("GPSLONCLIP", gps2(1))
+                '            SDK.SetUserVar("ADDRESSCLIP", getGoogleMapsReverseGeocode(gps2(0), gps2(1)))
+                '        End If
+                '    Else
+                '        SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;You haven't a valid 'WEB' connection !!!<crlf>This function can't used without !!!||menu;RRGoogleMapsTools_info.skin")
+                '        SDK.SetUserVar("GPSLATCLIP", "GPS OFF")
+                '        SDK.SetUserVar("GPSLONCLIP", "GPS OFF")
+                '    End If
+                '    ProcessCommand = 2
+
+                '**************************
+                'Interface Java <--> VB.NET
+                '**************************
+                'Case "getjavascriptstring" 'OK
+                '    SDK.SetUserVar("GPSLATCLIP", GmapsBrowser.getJavascriptString("getCenterLatLngText();"))
+                '    ProcessCommand = 2
+
+                'Case "gmaps_vartypetosend" ' remplacé par un click sur l'indicator 
+                '    Select Case SDK.GetUserVar("GMAPS_VARTYPETOSEND")
+                '        Case "Point"
+                '            SDK.SetUserVar("GMAPS_VARTYPETOSEND", "Itinery")
+                '        Case "Itinery"
+                '            SDK.SetUserVar("GMAPS_VARTYPETOSEND", "Point")
+                '    End Select
+                '    ProcessCommand = 2
+
+                'Case "enter"
+                '    'If LCase(frm.tag) = "confirm.skin" Then
+                '    '    EncodeInUnicode(MainPath & "Languages\" & Language & "\RRGoogleMapsTools.txt", MainPath & "Languages\" & Language & "\RRGoogleMapsTools.txt")
+                '    '    SDK.Execute("ESC")
+                '    '    ProcessCommand = 2
+                '    'Else
+                '    '    ProcessCommand = 0
+                '    'End If
+
+                'Case "gmaps_tools_headerlogo" 'carte principale avec logo animé
+                '    If Timer1.Enabled = True Then Timer1.Stop() : RestartTimerAfterLoad = True
+                '    If Timer2.Enabled = True Then Timer2.Stop() : RestartTimerAfterLoad = True
+                '    If SDK.GetInd("online") = "True" Then
+                '        CreateGpsToAdd_HeaderLogo_Html()
+                '        CreateQueryFile()
+                '        'SDK.Execute("gmaps_delmarker||SETVAR;INCLUDEFILE;RRGoogleMapsTools_Ind2.txt||SETVAR;MENUFILE;RRGoogleMapsTools_Gps.skin||load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm||RELOADSCREEN")
+                '        SDK.Execute("gmaps_delmarker||load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm")
+                '        GmapsBrowser.Show()
+                '        GmapsBrowser.go(MainPath & "gmaps_gpstoadd.html") 'carte avec croix centrale
+                '        SDK.SetUserVar("WhatdoYouWant", "0")
+                '        SDK.SetUserVar("GOADDRESS", SDK.GetUserVar("l-set_GpstoAdd"))
+                '        If RestartTimerAfterLoad = True Then Timer1.Enabled = True : Timer2.Enabled = True : RestartTimerAfterLoad = False
+                '    Else
+                '        SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;" & SDK.GetUserVar("l-set_CheckInternet") & "||menu;RRGoogleMapsTools_info.skin||SETVAR;GPSLATCLIP;GPS OFF||SETVAR;GPSLONCLIP;GPS OFF")
+                '    End If
+                '    ProcessCommand = 2
+
+                'Clipboard methode remplacé par la fonction sendToVBOnMarkerClick
+                'Case "gmaps_setclipboard_manual" 'read WindowInfo on marker click
+                '    Clipboard.Clear()
+                '    SendKeysToApplication(vbNullString, "GmapsApiForm", "^c")
+                '    If CType(iData.GetData(DataFormats.Text), String) <> "" Then
+                '        'If it's text, then paste it into the textbox
+                '        gps = Split(CType(iData.GetData(DataFormats.Text), String), ",")
+                '        SDK.SetUserVar("GPSLATCLIP", gps(0))
+                '        SDK.SetUserVar("GPSLONCLIP", gps(1))
+                '        SDK.SetUserVar("ADDRESSCLIP", getGoogleMapsReverseGeocode(gps(0), gps(1)))
+                '        SDK.SetUserVar("PLACENAMECLIP", getGoogleMapsReverseGeocode(gps(0), gps(1)))
+                '    End If
+                '    ProcessCommand = 2
+                'Case "gmaps_setclipboard_auto" 'read WindowInfo on marker click
+                '    If CType(iData.GetData(DataFormats.Text), String) <> "" And InStr(CType(iData.GetData(DataFormats.Text), String), "|") Then
+                '        'place_search version***********************
+                '        gps = Split(CType(iData.GetData(DataFormats.Text), String), "|")
+                '        gps2 = Split(gps(3), ",")
+                '        'place.name+'|'+place.formatted_address+'|'+place.international_phone_number+'|'+latLng.lat().toFixed(6) + ',' + latLng.lng().toFixed(6)
+                '        SDK.SetUserVar("GPSLATCLIP", gps2(0))
+                '        SDK.SetUserVar("GPSLONCLIP", gps2(1))
+                '        SDK.SetUserVar("PHONECLIP", gps(2)) 'SDK.SetUserVar("PHONECLIP", Replace(gps(2), " ", "."))
+                '        SDK.SetUserVar("MOBILEPHONE_UNFORMATEDNUMBER", gps(2).ToString.Trim)
+                '        SDK.SetUserVar("ADDRESSCLIP", gps(1)) 'SDK.SetUserVar("ADDRESSCLIP", getGoogleMapsReverseGeocode(gps2(0), gps2(1)))
+                '        SDK.SetUserVar("PLACENAMECLIP", gps(0))
+                '        '*******************************************
+                '        SDK.Execute("RUN;$SKINPATH$SCRIPTS\ElcosMenu\ElcosMenu.exe|RRGoogleMapsTools_Help_PhoneCoord.skin")
+                '    ElseIf InStr(CType(iData.GetData(DataFormats.Text), String), "|" Or ")" Or "(" Or " " Or "-" Or "+") Then
+                '        SDK.SetUserVar("GPSLATCLIP", "-")
+                '        SDK.SetUserVar("GPSLONCLIP", "-")
+                '        SDK.SetUserVar("PHONECLIP", CType(iData.GetData(DataFormats.Text), String))
+                '        SDK.SetUserVar("MOBILEPHONE_UNFORMATEDNUMBER", CType(iData.GetData(DataFormats.Text), String).Trim)
+                '        SDK.SetUserVar("ADDRESSCLIP", "-")
+                '        SDK.SetUserVar("PLACENAMECLIP", "-")
+                '        '*******************************************
+                '        SDK.Execute("RUN;$SKINPATH$SCRIPTS\ElcosMenu\ElcosMenu.exe|RRGoogleMapsTools_Help_PhoneCoord.skin")
+                '    Else
+                '        'If it's not text, print a warning message
+                '        'CMD = "SETVAR;RRGoogleMapsToolsInfo;Please, select the Gps coordinates before<crlf>to use this function ...||menu;RRGoogleMapsTools_info.skin"
+                '    End If
+                '    ProcessCommand = 2
+
+                'Case "mysendeys"
+                '    SendKeyA(VK_ESCAPE)
+                '    SendKeyA(VK_F11)
+                '    SendKeyA(VK_PAGE_DOWN)
+                '    SendKeyA(VK_DOWN)
+                '    SendKeyA(VK_DOWN)
+                '    ProcessCommand = 2
+
+                '################################   Interface PHP   ###################################
+            Case "gmaps_sendtowebsite"
+                'Process.Start("http://kristie33140.free.fr/Gmaps/createkml.php?fname=MyXmlFile&&lat=27&&lon=10&&info=esso&&infoextended=1.301€&&marker=restaurantStyle&&count=1")
+
+                Poi_Open = New Thread(AddressOf Poi)
+                Poi_Open.IsBackground = True
+                Poi_Open.Start()
+
+                ProcessCommand = 2
+                '######################################################################################
+            Case "gmaps_gmapsembbed" 'ne marche plus que dans une iframe
+                CMD = "load;RRGoogleMapsTools.skin"
+                GmapsBrowser.Show()
+                GmapsBrowser.go("https://www.google.fr/maps/@" + SDK.GetInfo("GPSLAT") + "," + SDK.GetInfo("GPSLON") + "z")
+                'GmapsBrowser.go("https://maps.google.fr/maps?f=q&source=s_q&hl=fr&geocode=&q=17+avenue+George+V,+Paris&output=embed") 'https://maps.google.fr/maps?f=q&source=s_q&hl=en&geocode=&q=17+avenue+George+V,+Paris&output=embed
+                'GmapsBrowser.go("https://maps.google.com/maps?q=" + SDK.GetInfo("GPSLAT") + "+" + SDK.GetInfo("GPSLON") + "&output=embed") 'https://maps.google.com/maps?q=48.86291+2.30536&output=embed  
+                'GmapsBrowser.go("https://www.google.com/maps/preview?hl=fr#!data=!1m4!1m3!1d24077938!2d" + SDK.GetInfo("GPSLAT") + "!3d" + SDK.GetInfo("GPSLON")) 'https://www.google.com/maps/preview?hl=fr#!data=!1m4!1m3!1d24077938!2d-95.677068!3d37.0625") '
+                ProcessCommand = 3
+
+            Case "gmaps_embbed_view"
+                If Timer1.Enabled = True Then Timer1.Stop() : RestartTimerAfterLoad = True
+                If Timer2.Enabled = True Then Timer2.Stop() : RestartTimerAfterLoad = True
+                If Timer3.Enabled = True Then Timer3.Stop() : RestartTimerAfterLoad = True
+                SDK.Execute("load;RRGoogleMapsTools_Full.skin||RUN;;GmapsApiForm")
+                CreateEmbbededMapView_Html()
+                GmapsBrowser.go(MainPath & "gmaps_embbededmap.html")
+                GmapsBrowser.Show()
+                ProcessCommand = 2
+            Case "gmaps_embbed_search"
+                If Timer1.Enabled = True Then Timer1.Stop() : RestartTimerAfterLoad = True
+                If Timer2.Enabled = True Then Timer2.Stop() : RestartTimerAfterLoad = True
+                If Timer3.Enabled = True Then Timer3.Stop() : RestartTimerAfterLoad = True
+                SDK.Execute("load;RRGoogleMapsTools_Full.skin||RUN;;GmapsApiForm")
+                CreateEmbbededSearch_Html("Lyon France")
+                GmapsBrowser.go(MainPath & "gmaps_embbededmap.html")
+                GmapsBrowser.Show()
+                ProcessCommand = 2
+            Case "gmaps_embbed_direction"
+                If Timer1.Enabled = True Then Timer1.Stop() : RestartTimerAfterLoad = True
+                If Timer2.Enabled = True Then Timer2.Stop() : RestartTimerAfterLoad = True
+                If Timer3.Enabled = True Then Timer3.Stop() : RestartTimerAfterLoad = True
+                SDK.Execute("load;RRGoogleMapsTools_Full.skin||RUN;;GmapsApiForm")
+                CreateEmbbededDirection_Html("Paris", "Lyon")
+                GmapsBrowser.go(MainPath & "gmaps_embbededmap.html")
+                GmapsBrowser.Show()
+                ProcessCommand = 2
+        End Select
+
+        If LCase(Left$(CMD, 16)) = "gmaps_goaddress;" Then 'entrée d'une adresse pour 'gmaps_gpstoadd.html'
+            If LCase(SDK.GetInfo("RRSCREEN")) <> "rrgooglemapstools.skin" Then
+                SDK.Execute("GMAPS_TOOLS")
+            End If
+            GmapsBrowser.SetValueinInput("address", Mid$(CMD, 17))
+            GmapsBrowser.ClickOnButton("Go")
+            ProcessCommand = 2
+        End If
+        If LCase(Left$(CMD, 15)) = "gmaps_golatlon;" Then 'entrée d'une adresse pour 'gmaps_gpstoadd.html'
+            If LCase(SDK.GetInfo("RRSCREEN")) <> "rrgooglemapstools.skin" Then
+                SDK.Execute("GMAPS_TOOLS")
+            End If
+            GmapsBrowser.SetValueinInput("latlng", Mid$(CMD, 16))
+            GmapsBrowser.ClickOnButton("ReverseGeocode")
+            ProcessCommand = 2
+        End If
+
+        '## tomtom traffic map   ##########################################
+        'gmaps_tomtomtraffic;x
+        If LCase(Left$(CMD, 20)) = "gmaps_tomtomtraffic;" Then
+            If Timer1.Enabled = True Then Timer1.Stop()
+            If Timer2.Enabled = True Then Timer2.Stop()
+            If Timer3.Enabled = True Then Timer3.Stop()
+            Dim tomtomLang As String = Mid$(CMD, 21)
+            CMD = "load;RRGoogleMapsTools.skin||RUN;;GmapsApiForm"
+            GmapsBrowser.Show()
+            'so the direct link for using TomTom in german is   http://www.tomtom.com/livetraffic/?Lid=3
+            'the last number means the country. 2=FR, 4=USA, 5=NL, 6=Spain, 7=Italy 1=UK aso.
+            GmapsBrowser.go("http://www.tomtom.com/livetraffic/?Lid=" & tomtomLang)
+            SDK.SetUserVar("GOADDRESS", "Tomtom Traffic is ready !!!")
+            ProcessCommand = 3
+        End If
+        '## tomtom traffic map   ##########################################
+
+    End Function
+#End Region
+
+    Private Sub Poi()
+        Dim total As Integer = 2
+        For i = 0 To total 'poiList.Count - 2700 '51,87709, 4,17875, Vierpolders , vv, ZH, 31-181-414644
+            'PostToMyXmlFile("MyXxFile.xml", Replace(poiList(i).Lat, ",", "."), Replace(poiList(i).Long, ",", "."), poiList(i).Name, poiList(i).ExtendedData, "restaurantStyle", i)
+
+            Process.Start("http://kristie33140.free.fr/Gmaps/createkml.php?fname=MyXmlFile&&lat=" & SDK.GetInfo("GPSLAT") & "&&lon=" & SDK.GetInfo("GPSLON") & "&&info=Test" & i & "&&infoextended=Extended Info" & i & "&&marker=restaurantStyle&&count=" & i & "&&total=" & total)
+
+            'Process.Start("http://kristie33140.free.fr/Gmaps/createkml.php?fname=MyXmlFile&&lat=" & Replace(poiList(i).Lat, ",", ".") &
+            '"&&lon=" & Replace(poiList(i).Long, ",", ".") & "&&info=" & poiList(i).Name & "&&infoextended=" & poiList(i).ExtendedData & "&&marker=restaurantStyle&&count=" & i)
+        Next
+    End Sub
+
+
+#Region "ReturnLabel"
+    '*****************************************************************
+    '* This Function will be called with a requested label code and
+    '* format specified at the skin file. Simply return any text to
+    '* be displayed for the specified format.
+    '*****************************************************************
+    Public Function ReturnLabel(ByRef LBL As String, ByRef FMT As String) As String
+        ReturnLabel = ""
+        Select Case LCase(LBL)
+            Case "gmaps_plugindesc"
+                ReturnLabel = "Google Maps Add On"
+            Case "gmaps_pluginver"
+                ReturnLabel = Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            Case "gmaps_mylabel"
+                ReturnLabel = ""
+
+            Case "gmaps_language"
+                ReturnLabel = INI.ReadString("RRGoogleMapsTools", "language", "")
+
+            Case "gmaps_units"
+                ReturnLabel = INI.ReadString("Itinery", "units", "")
+
+            Case "gmaps_zoom"
+                ReturnLabel = INI.ReadString("Itinery", "zoommaps", "")
+            Case "gmaps_actualzoom"
+                ReturnLabel = ZoomMaps
+
+            Case "gmaps_mapstype"
+                ReturnLabel = INI.ReadString("Itinery", "mapstype", "")
+
+            Case "gmaps_travelmode"
+                ReturnLabel = INI.ReadString("Itinery", "travelmode", "")
+
+            Case "gmaps_gps2city"
+                ReturnLabel = INI.ReadString("Gps2City", "gps2city", "")
+
+            Case "gmaps_gpsname"
+                ReturnLabel = INI.ReadString("RRGoogleMapsTools", "navigation", "")
+
+            Case "gmaps_itinery"
+                ReturnLabel = Replace(INI.ReadString("Itinery", "itinery", ""), "_", " > ").Replace(".xml", "")
+                'ReturnLabel = MyItinery
+
+            Case "gmaps_vartypetosend"
+                ReturnLabel = SDK.GetUserVar("GMAPS_VARTYPETOSEND")
+
+            Case "gmaps_snapshotsize"
+                ReturnLabel = INI.ReadString("RRGoogleMapsTools", "screenshot", "")
+
+            Case "gmaps_latlondistance"
+                Select Case INI.ReadString("Itinery", "distance", "")
+                    Case "internal"
+                        ReturnLabel = Math.Round(LatLonDistance(SDK.GetInfo("GPSLAT"), SDK.GetInfo("GPSLON"), Val(SDK.GetUserVar("GPSLAT2")), Val(SDK.GetUserVar("GPSLON2")), "KM"), 3) & " Km"
+                    Case "web"
+                        DistanceMatrix(SDK.GetUserVar("MYORIGINE"), SDK.GetUserVar("MYDISTINATION"))
+                        ReturnLabel = MyDistanceMatrix
+                End Select
+
+            Case "ipaddress"
+                ReturnLabel = MyAddressInfo
+
+                'Case "myipaddressadditionalinfo"
+                'ReturnLabel = MyIPAddressAdditionalInfo
+
+            Case "gmaps_latitude"
+                ReturnLabel = SDK.GetInfo("=$GPSLATCLIP$")
+            Case "gmaps_longitude"
+                ReturnLabel = SDK.GetInfo("=$GPSLONCLIP$")
+            Case "gmaps_address"
+                ReturnLabel = SDK.GetInfo("=$ADDRESSCLIP$")
+            Case "gmaps_phone"
+                ReturnLabel = SDK.GetInfo("=$PHONECLIP$")
+
+            Case "gmaps_sygicinterface"
+                If SDK.GetInd("pluginmgr;status;rrsygicdrive") = "True" Then
+                    ReturnLabel = "Sygic Interface  'by plugin'"
+                Else
+                    ReturnLabel = "Sygic Interface"
+                End If
+
+            Case "gmaps_gmpcinterface"
+                If SDK.GetInd("pluginmgr;status;rrgmpc") = "True" Then
+                    ReturnLabel = "GMPC Interface  'by plugin'"
+                Else
+                    ReturnLabel = "GMPC Interface"
+                End If
+
+            Case "gmaps_igo8interface"
+                'If SDK.GetInd("pluginmgr;status;rrgmpc") = "True" Then
+                'ReturnLabel = "GMPC Interface  'by plugin'"
+                'Else
+                ReturnLabel = "iGo8 Interface"
+                'End If
+
+            Case "gmaps_pcnavi11interface"
+                If SDK.GetInd("pluginmgr;status;rrpcnavigator") = "True" Then
+                    ReturnLabel = "Pc_Navigator Interface  'by plugin'"
+                Else
+                    ReturnLabel = "Pc_Navigator Interface"
+                End If
+
+            Case "gmaps_clipboard"
+                ReturnLabel = CType(iData.GetData(DataFormats.Text), String)
+
+            Case "gmaps_readov2poi"
+                ReturnLabel = ReadSpeedcamOv2.ToString
+
+
+
+        End Select
+
+    End Function
+#End Region
+
+#Region "ReturnIndicatorEx"
+    '*****************************************************************
+    '* This Function will be called with requested indicator code
+    '* specified at the skin file. Simply return "True" or "False" to
+    '* displayed the respective ON or OFF layer of the skin images.
+    '* alternatively you can specify a path to a file to be displayed
+    '* as the indicator specified. Return "False" to erase the image.
+    '* ONLY return something else IF AND ONLY IF you process that code
+    '*****************************************************************
+    Public Function ReturnIndicatorEx(ByRef IND As String) As String
+        ReturnIndicatorEx = ""
+
+        Select Case LCase(IND)
+            Case "gmaps_gpsok"
+                If SDK.GetInd("GPSVALID") = "True" Then
+                    ReturnIndicatorEx = "True"
+                End If
+
+            Case "gmaps_list_exist"
+                If MyXmlNumberOfFiles > 0 Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+
+            Case "gmaps_language_actual"
+                If Language <> "" Then
+                    ReturnIndicatorEx = MainPath & "Languages\" & Language & "\" & Language & ".gif"
+                Else
+                    ReturnIndicatorEx = MainPath & "Languages\Error.gif"
+                End If
+
+            Case "gmaps_units"
+                ReturnIndicatorEx = "True"
+
+            Case "gmaps_forcesettings"
+                Select Case INI.ReadString("Itinery", "forcesettings", "")
+                    Case "No"
+                        ReturnIndicatorEx = "False"
+                    Case "Yes"
+                        ReturnIndicatorEx = "True"
+                End Select
+
+            Case "ind_gps2city"
+                Select Case SDK.GetInd("pluginmgr;status;gps2city") = "True"
+                    Case "True"
+                        ReturnIndicatorEx = "True"
+                    Case "False"
+                        ReturnIndicatorEx = "False"
+                End Select
+
+            Case "gmaps_savexmlafterdownload"
+                Select Case INI.ReadString("Itinery", "xmlfilesave", "")
+                    Case "True"
+                        ReturnIndicatorEx = "True"
+                    Case "False"
+                        ReturnIndicatorEx = "False"
+                End Select
+
+            Case "gmaps_runafterxmlloaded"
+                Select Case INI.ReadString("Itinery", "xmlloaded", "")
+                    Case "Stop"
+                        ReturnIndicatorEx = "False"
+                    Case "Run"
+                        ReturnIndicatorEx = "True"
+                End Select
+
+            Case "gmaps_distancebyweb"
+                Select Case INI.ReadString("Itinery", "distance", "")
+                    Case "web"
+                        ReturnIndicatorEx = "True"
+                    Case "internal"
+                        ReturnIndicatorEx = "False"
+                    Case "off"
+                        ReturnIndicatorEx = ""
+                End Select
+
+            Case "ind_distance"
+                Select Case INI.ReadString("Itinery", "distance", "")
+                    Case "web"
+                        ReturnIndicatorEx = SkinPath & "Indicators\web.png"
+                    Case "internal"
+                        ReturnIndicatorEx = SkinPath & "Indicators\internal.png"
+                    Case "off"
+                        ReturnIndicatorEx = "False"
+                End Select
+
+            Case "gmaps_position_updated"
+                If GmapsBrowser.GetTextContentOfElementByID("latlng") <> "(" + SDK.GetUserVar("GPSLATCLIP") + ", " + SDK.GetUserVar("GPSLONCLIP") + ")" Then
+                    SDK.Execute("gmaps_read_latlonaddress")
+                    ReturnIndicatorEx = "False"
+                Else
+                    ReturnIndicatorEx = "True"
+                End If
+
+            Case "gmaps_vartypetosend"
+                Select Case SDK.GetUserVar("GMAPS_VARTYPETOSEND")
+                    Case "Point"
+                        ReturnIndicatorEx = "True" '==>00.png
+                    Case "Itinery"
+                        ReturnIndicatorEx = "False" '==>01.png
+                End Select
+
+
+            Case "gmaps_clipboardok"
+                'If CType(iData.GetData(DataFormats.Text), String) <> "" And InStr(CType(iData.GetData(DataFormats.Text), String), "|") Then
+                If OnMarckerClickedRecieveInfo = True Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+            Case "gmaps_gpscoorok"
+                If SDK.GetInfo("=$GPSLATCLIP$") <> "***" And SDK.GetInfo("=$GPSLONCLIP$") <> "***" Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+
+                'Case "gmaps_gpsitineryok"
+                'If SDK.GetInfo("=$ADDRESSCLIP$") <> "" Then
+                'ReturnIndicatorEx = "True"
+                'Else
+                'ReturnIndicatorEx = "False"
+                'End If
+
+            Case "gmaps_mobilephoneok"
+                If SDK.GetInd("pluginmgr;status;mobilephone") = "True" And SDK.GetInfo("=$PHONECLIP$") <> "*" And SDK.GetInfo("=$PHONECLIP$") <> "***" Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+            Case "gmaps_skypeok"
+                If SDK.GetInd("pluginmgr;status;rrskype") = "True" Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+            Case "ind_sygicinterface"
+                If SDK.GetInd("pluginmgr;status;rrsygicdrive") = "True" And INI.ReadString("RRGoogleMapsTools", "navigationinterface", "") = "plugin" Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = SkinPath & "Indicators\internal.png"
+                End If
+            Case "ind_gmpcinterface"
+                If SDK.GetInd("pluginmgr;status;rrgmpc") = "True" And INI.ReadString("RRGoogleMapsTools", "navigationinterface", "") = "plugin" Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = SkinPath & "Indicators\internal.png"
+                End If
+            Case "ind_igo8interface"
+                'If SDK.GetInd("pluginmgr;status;rrgmpc") = "True" And INI.ReadString("RRGoogleMapsTools", "navigationinterface", "") = "plugin" Then
+                'ReturnIndicatorEx = "True"
+                'Else
+                ReturnIndicatorEx = SkinPath & "Indicators\internal.png"
+                'End If
+            Case "ind_pcnavi11interface"
+                If SDK.GetInd("pluginmgr;status;rrpcnavigator") = "True" And INI.ReadString("RRGoogleMapsTools", "navigationinterface", "") = "plugin" Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = SkinPath & "Indicators\internal.png"
+                End If
+            Case "ind_iguidanceinterface"
+                If SDK.GetInd("pluginmgr;status;rriguidance") = "True" And INI.ReadString("RRGoogleMapsTools", "navigationinterface", "") = "plugin" Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = SkinPath & "Indicators\internal.png"
+                End If
+
+            Case "gmaps_timers"
+                If Timer1.Enabled = True Or Timer2.Enabled = True Then
+                    ReturnIndicatorEx = "True"
+                End If
+
+            Case "gmaps_trafficlayer"
+                If TrafficLayer = 1 Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+
+            Case "gmaps_bikelayer"
+                If BikeLayer = 1 Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+
+                'Case "gmaps_weatherlayer"
+                '    If WeatherLayer = 1 Then
+                '        ReturnIndicatorEx = "True"
+                '    Else
+                '        ReturnIndicatorEx = "False"
+                '    End If
+
+                'Case "gmaps_cloudlayer"
+                '    If CloudLayer = 1 Then
+                '        ReturnIndicatorEx = "True"
+                '    Else
+                '        ReturnIndicatorEx = "False"
+                '    End If
+
+            Case "gmaps_transitlayer"
+                If TransitLayer = 1 Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+
+            Case "gmaps_fusionlayer"
+                If FusionTablesLayer = 1 Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+
+            Case "gmaps_kmllayer"
+                If KmlLayer = 1 Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+
+            Case "gmaps_xmllayer"
+                If XmlLayer = 1 Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+
+                'ne fonctionne plus
+                'Case "gmaps_panoramiolayer"
+                '    If PanoramioLayer = 1 Then
+                '        ReturnIndicatorEx = "True"
+                '    Else
+                '        ReturnIndicatorEx = "False"
+                '    End If
+                'Case "gmaps_wikipedialayer"
+                '    If WikipediaLayer = 1 Then
+                '        ReturnIndicatorEx = "True"
+                '    Else
+                '        ReturnIndicatorEx = "False"
+                '    End If
+                'Case "gmaps_youtubelayer"
+                '    If YoutubeLayer = 1 Then
+                '        ReturnIndicatorEx = "True"
+                '    Else
+                '        ReturnIndicatorEx = "False"
+                '    End If
+
+            Case "gmaps_streetview"
+                If StreetView = 1 Then
+                    ReturnIndicatorEx = "True"
+                Else
+                    ReturnIndicatorEx = "False"
+                End If
+
+            Case "gmaps_readov2poi" 'True of False
+                ReturnIndicatorEx = ReadSpeedcamOv2.ToString
+
+            Case "gmaps_headerlogo"
+                ReturnIndicatorEx = IIf(HeaderLogo = True, MainPath & "images\cross.png", MainPath & "images\W.png")
+        End Select
+
+    End Function
+#End Region
+
+#Region "IndicatorClick"
+    '*****************************************************************
+    '* This Sub will be called with an indicator code "CLICKED"
+    '* specified at the skin file. This "event" so to speak can be used
+    '* to toggle indicators or execute any code you desire when clicking
+    '* on a specifig indicator in the skin. You can also modify IND and
+    '* monitor the IND parameter as to detect/alter the behaviour of
+    '* how RR will process the indicator code being clicked.
+    '*****************************************************************
+    Public Sub IndicatorClick(ByRef IND As String)
+        Select Case LCase(IND)
+            Case "gmaps_list_exist"
+                If SDK.GetInfo("gmaps_list_exist") = "False" Then
+                    ListefilesIntoDirectory("MyItineries") 'recreate the Itineries.txt file
+                    MyXmlNumberOfFiles = ""
+                    INI.Write("RRGoogleMapsTools", "xmlfile", "True")
+                    SDK.Execute("SETIND;rrgooglemapstools_list_exist;ON")
+                Else
+                    MyXmlNumberOfFiles = ""
+                    INI.Write("RRGoogleMapsTools", "xmlfile", "False")
+                    SDK.Execute("SETIND;rrgooglemapstools_list_exist;OFF")
+                End If
+
+                '**********************************Timer 1*******************************************
+            Case "gmaps_statustimers"
+                Select Case INI.ReadString("Timers", "status", "")
+                    Case "True"
+                        INI.Write("Timers", "status", "False")
+                    Case "False"
+                        INI.Write("Timers", "status", "True")
+                End Select
+                '************************************************************************************
+
+            Case "gmaps_vartypetosend" 'replace the button "gmaps_vartypetosend"
+                Select Case SDK.GetUserVar("GMAPS_VARTYPETOSEND")
+                    Case "Point"
+                        SDK.SetUserVar("GMAPS_VARTYPETOSEND", "Itinery")
+                    Case "Itinery"
+                        SDK.SetUserVar("GMAPS_VARTYPETOSEND", "Point")
+                End Select
+
+                '*******************************Units Choice*****************************************
+
+            Case "gmaps_units"
+                Select Case INI.ReadString("Itinery", "units", "")
+                    Case "MI"
+                        INI.Write("Itinery", "units", "FT")
+                        SDK.SetUserVar("GMAPSUNITS", "Feet")
+                    Case "FT"
+                        INI.Write("Itinery", "units", "YD")
+                        SDK.SetUserVar("GMAPSUNITS", "Yard")
+                    Case "YD"
+                        INI.Write("Itinery", "units", "KM")
+                        SDK.SetUserVar("GMAPSUNITS", "Kilometer")
+                    Case "KM"
+                        INI.Write("Itinery", "units", "M")
+                        SDK.SetUserVar("GMAPSUNITS", "Meter")
+                    Case "M"
+                        INI.Write("Itinery", "units", "MI")
+                        SDK.SetUserVar("GMAPSUNITS", "Miles")
+                End Select
+                '************************************************************************************
+
+            Case "gmaps_forcesettings"
+                Select Case INI.ReadString("Itinery", "forcesettings", "")
+                    Case "No"
+                        INI.Write("Itinery", "forcesettings", "Yes")
+                    Case "Yes"
+                        INI.Write("Itinery", "forcesettings", "No")
+                End Select
+
+            Case "gmaps_force_latlon"
+                SDK.Execute("OSKTOCMD;GMAP_FORCELATLON;GMAPS_EDIT_LATLON")
+
+            Case "gmaps_mapstype" 'ROADMAP","TERRAIN","SATELLITE","HYBRID"
+                Select Case INI.ReadString("Itinery", "mapstype", "")
+                    Case "ROADMAP"
+                        INI.Write("Itinery", "mapstype", "TERRAIN")
+                    Case "TERRAIN"
+                        INI.Write("Itinery", "mapstype", "SATELLITE")
+                    Case "SATELLITE"
+                        INI.Write("Itinery", "mapstype", "HYBRID")
+                    Case "HYBRID"
+                        INI.Write("Itinery", "mapstype", "ROADMAP")
+                End Select
+
+            Case "gmaps_travelmode" '"DRIVING","BICYCLING","WALKING","DIRECT"
+                Select Case INI.ReadString("Itinery", "travelmode", "")
+                    Case "DRIVING"
+                        INI.Write("Itinery", "travelmode", "BICYCLING")
+                    Case "BICYCLING"
+                        INI.Write("Itinery", "travelmode", "WALKING")
+                    Case "WALKING"
+                        INI.Write("Itinery", "travelmode", "DIRECT")
+                    Case "DIRECT"
+                        INI.Write("Itinery", "travelmode", "DRIVING")
+                End Select
+
+            Case "gmaps_readov2poi" 'True of False
+                ReadSpeedcamOv2 = Not ReadSpeedcamOv2
+                INI.Write("Itinery", "ReadOv2POI", ReadSpeedcamOv2.ToString)
+
+            Case "gmaps_gps2city"
+                Select Case INI.ReadString("Gps2City", "gps2city", "")
+                    Case "World"
+                        INI.Write("Gps2City", "gps2city", "Us")
+                    Case "Us"
+                        INI.Write("Gps2City", "gps2city", "World")
+                End Select
+
+            Case "gmaps_savexmlafterdownload"
+                Select Case INI.ReadString("Itinery", "xmlfilesave", "")
+                    Case "True"
+                        INI.Write("Itinery", "xmlfilesave", "False")
+                    Case "False"
+                        INI.Write("Itinery", "xmlfilesave", "True")
+                End Select
+
+            Case "gmaps_runafterxmlloaded"
+                Select Case INI.ReadString("Itinery", "xmlloaded", "")
+                    Case "Run"
+                        INI.Write("Itinery", "xmlloaded", "Stop")
+                    Case "Stop"
+                        INI.Write("Itinery", "xmlloaded", "Run")
+                End Select
+
+            Case "gmaps_distancebyweb"
+                Select Case INI.ReadString("Itinery", "distance", "")
+                    Case "internal"
+                        INI.Write("Itinery", "distance", "web")
+                    Case "web"
+                        INI.Write("Itinery", "distance", "off")
+                    Case "off"
+                        INI.Write("Itinery", "distance", "internal")
+                End Select
+
+            Case "gmaps_gpsname"
+                Select Case INI.ReadString("RRGoogleMapsTools", "navigation", "")
+                    Case "Sygic"
+                        INI.Write("RRGoogleMapsTools", "navigation", "iGo8")
+                    Case "iGo8"
+                        INI.Write("RRGoogleMapsTools", "navigation", "GMPC")
+                    Case "GMPC"
+                        INI.Write("RRGoogleMapsTools", "navigation", "PcNavi12")
+                    Case "PcNavi12"
+                        INI.Write("RRGoogleMapsTools", "navigation", "iGuidance")
+                    Case "iGuidance"
+                        INI.Write("RRGoogleMapsTools", "navigation", "Sygic")
+                End Select
+
+            Case "gmaps_gpsinterface"
+                Select Case INI.ReadString("RRGoogleMapsTools", "navigationinterface", "")
+                    Case "internal"
+                        INI.Write("RRGoogleMapsTools", "navigationinterface", "plugin")
+                    Case "plugin"
+                        INI.Write("RRGoogleMapsTools", "navigationinterface", "internal")
+                End Select
+
+            Case "gmaps_trafficlayer"
+                Select Case SDK.GetInd("gmaps_trafficlayer")
+                    Case "True"
+                        GmapsBrowser.Jscript("trafficOff()")
+                        TrafficLayer = 0
+                    Case "False"
+                        GmapsBrowser.Jscript("trafficOn()")
+                        TrafficLayer = 1
+                End Select
+            Case "gmaps_bikelayer"
+                Select Case SDK.GetInd("gmaps_bikelayer")
+                    Case "True"
+                        GmapsBrowser.Jscript("bikeOff()")
+                        BikeLayer = 0
+                    Case "False"
+                        GmapsBrowser.Jscript("bikeOn()")
+                        BikeLayer = 1
+                End Select
+
+                'ne fonctionne plus
+                'Case "gmaps_weatherlayer"
+                '    If WeatherOnPanramioOff = 0 Then
+                '        WeatherOnPanramioOff = 1
+                '        'PanoramioLayer = 0 'ne fonctionne plus
+                '        WeatherLayer = 1
+                '        ZoomMaps = 5
+                '        SDK.Execute("GMAPS_TOOLS")
+                '    Else
+                '        Select Case SDK.GetInd("gmaps_weatherlayer")
+                '            Case "True"
+                '                GmapsBrowser.Jscript("weatherOff()")
+                '                WeatherLayer = 0
+                '                If CloudLayer = 1 Then ZoomMaps = 5 Else ZoomMaps = INI.ReadString("Itinery", "zoommaps", "")
+                '                GmapsBrowser.Jscript("setmapforcezoom(" & ZoomMaps & ")")
+                '            Case "False"
+                '                GmapsBrowser.Jscript("weatherOn()")
+                '                WeatherLayer = 1
+                '                ZoomMaps = 5
+                '                GmapsBrowser.Jscript("setmapforcezoom(" & ZoomMaps & ")")
+                '        End Select
+                '    End If
+                'ne fonctionne plus
+                'Case "gmaps_cloudlayer"
+                '    If WeatherOnPanramioOff = 0 Then
+                '        WeatherOnPanramioOff = 1
+                '        'PanoramioLayer = 0 ne fonctionne plus
+                '        CloudLayer = 1
+                '        ZoomMaps = 5
+                '        SDK.Execute("GMAPS_TOOLS")
+                '    Else
+                '        Select Case SDK.GetInd("gmaps_cloudlayer")
+                '            Case "True"
+                '                GmapsBrowser.Jscript("cloudOff()")
+                '                CloudLayer = 0
+                '                If WeatherLayer = 1 Then ZoomMaps = 5 Else ZoomMaps = INI.ReadString("Itinery", "zoommaps", "")
+                '                GmapsBrowser.Jscript("setmapforcezoom(" & ZoomMaps & ")")
+                '            Case "False"
+                '                GmapsBrowser.Jscript("cloudOn()")
+                '                CloudLayer = 1
+                '                ZoomMaps = 5
+                '                GmapsBrowser.Jscript("setmapforcezoom(" & ZoomMaps & ")")
+                '        End Select
+                '    End If
+
+                'ne fonctionne plus
+                'Case "gmaps_panoramiolayer"
+                '    If WeatherOnPanramioOff = 1 Then
+                '        WeatherOnPanramioOff = 0
+                '        WeatherLayer = 0
+                '        CloudLayer = 0
+                '        PanoramioLayer = 1
+                '        ZoomMaps = 13
+                '        SDK.Execute("GMAPS_TOOLS")
+                '    Else
+                '        Select Case SDK.GetInd("gmaps_panoramiolayer")
+                '            Case "True"
+                '                GmapsBrowser.Jscript("panoramioOff()")
+                '                PanoramioLayer = 0
+                '                ZoomMaps = INI.ReadString("Itinery", "zoommaps", "")
+                '                GmapsBrowser.Jscript("setmapforcezoom(" & ZoomMaps & ")")
+                '            Case "False"
+                '                GmapsBrowser.Jscript("panoramioOn()")
+                '                ZoomMaps = 5
+                '                GmapsBrowser.Jscript("setmapforcezoom(" & ZoomMaps & ")")
+                '                PanoramioLayer = 1
+                '        End Select
+                '    End If
+
+                'Case "gmaps_wikipedialayer"
+                '    Select Case SDK.GetInd("gmaps_wikipedialayer")
+                '        Case "True"
+                '            GmapsBrowser.Jscript("wikipediaOff()")
+                '            WikipediaLayer = 0
+                '        Case "False"
+                '            GmapsBrowser.Jscript("wikipediaOn()")
+                '            WikipediaLayer = 1
+                '    End Select
+                'Case "gmaps_youtubelayer"
+                '    Select Case SDK.GetInd("gmaps_youtubelayer")
+                '        Case "True"
+                '            GmapsBrowser.Jscript("youtubeOff()")
+                '            YoutubeLayer = 0
+                '        Case "False"
+                '            GmapsBrowser.Jscript("youtubeOn()")
+                '            YoutubeLayer = 1
+                '    End Select
+            Case "gmaps_transitlayer"
+                Select Case SDK.GetInd("gmaps_transitlayer")
+                    Case "True"
+                        GmapsBrowser.Jscript("transitOff()")
+                        TransitLayer = 0
+                    Case "False"
+                        GmapsBrowser.Jscript("transitOn()")
+                        TransitLayer = 1
+
+                End Select
+            Case "gmaps_fusionlayer"
+                Select Case SDK.GetInd("gmaps_fusionlayer")
+                    Case "True"
+                        GmapsBrowser.Jscript("fusionOff()")
+                        FusionTablesLayer = 0
+                    Case "False"
+                        GmapsBrowser.Jscript("fusionOn()")
+                        FusionTablesLayer = 1
+                End Select
+            Case "gmaps_kmllayer"
+                Select Case SDK.GetInd("gmaps_kmllayer")
+                    Case "True"
+                        GmapsBrowser.Jscript("kmlOff()")
+                        KmlLayer = 0
+                    Case "False"
+                        GmapsBrowser.Jscript("kmlOn()")
+                        KmlLayer = 1
+                End Select
+            Case "gmaps_xmllayer"
+                Dim Xml As Boolean = False
+                For i = 1 To NbOfXmlLayer
+                    If INI.ReadString("XmlLayers", "layer" & i, "") <> "" Then
+                        Xml = True
+                    Else
+                        If Xml = True Then Xml = True Else Xml = False
+                    End If
+                Next
+                If Xml = True Then
+                    Select Case SDK.GetInd("gmaps_xmllayer")
+                        Case "True"
+                            GmapsBrowser.Jscript("xmlOff()")
+                            XmlLayer = 0
+                        Case "False"
+                            GmapsBrowser.Jscript("xmlOn()")
+                            XmlLayer = 1
+                    End Select
+                Else
+                    'MsgBox("Xml is Off")
+                    SDK.Execute("SETVAR;RRGoogleMapsToolsInfo;Xlm is Off||menu;RRGoogleMapsTools_info.skin")
+                End If
+            Case "gmaps_headerlogo"
+                Select Case HeaderLogo
+                    Case True
+                        HeaderLogo = False
+                        SDK.Execute("gmaps_tools")
+                    Case False
+                        HeaderLogo = True
+                        'SDK.Execute("gmaps_tools_headerlogo")
+                        SDK.Execute("gmaps_tools")
+                End Select
+
+            Case "gmaps_streetview"
+                Select Case SDK.GetInd("gmaps_streetview")
+                    Case "True"
+                        GmapsBrowser.Jscript("StreetViewOff()")
+                        StreetView = 0
+                    Case "False"
+                        GmapsBrowser.Jscript("StreetViewOn()")
+                        StreetView = 1
+                End Select
+        End Select
+
+    End Sub
+#End Region
+
+#Region "Sliders"
+    '*****************************************************************
+    '* This Function will be called with requested slider code
+    '* specified at the skin file. Simply return the value of the
+    '* slider to be displayed. Values should range from 0 to 65536.
+    '* It is also possible to intercept/change the slider code before
+    '* it is processed in RideRunner (to overwrite existing codes).
+    '*****************************************************************
+    Public Function ReturnSlider(ByRef SLD As String) As Integer
+
+        'This tells RR that the Slider was not processed in this plugin
+        ReturnSlider = -1
+
+        Select Case LCase(SLD)
+            'Case "gmaps_download_sld" 'Front left tire battery level
+            'ReturnSlider = SDK.GetUserVar("TotalDownloaded") * 65536 / SDK.GetUserVar("TotalToDownload")
+            'If ReturnSlider > 65536 Then ReturnSlider = 65536
+
+            'Case "gmaps_distance_sld"
+            'ReturnSlider = Math.Round(LatLonDistance(SDK.GetInfo("GPSLAT"), _
+            'SDK.GetInfo("GPSLON"), _
+            'Val(SDK.GetUserVar("GPSLAT2")), _
+            'Val(SDK.GetUserVar("GPSLON2")), "KM"), 3) * 65536 / SDK.GetUserVar("Distance à parcourir")
+            'If ReturnSlider > 65536 Then ReturnSlider = 65536
+
+        End Select
+
+    End Function
+
+
+    '*****************************************************************
+    '* This Function will be called with requested slider code
+    '* specified at the skin file. Simply return the value of the
+    '* slider to be displayed. Values should range from 0 to 65536.
+    '* It is also possible to intercept/change the slider code before
+    '* it is processed in RideRunner (to overwrite existing codes).
+    '*****************************************************************
+    Public Sub SetSlider(ByRef SLD As String, ByRef Value As Integer, ByRef Direction As Boolean)
+
+        Select Case LCase(SLD)
+            'Case "myslider"
+            'MsgBox("Myslider Clicked to set value to:" & CStr(Value) & " Direction: " + IIf(Direction, "UP", "DOWN"))
+
+            'Case "myslider2"
+            'Insert code to process/set slider value here
+
+        End Select
+
+    End Sub
+
+#End Region
+
+    Public Sub New()
+        MyBase.New()
+
+        If RunOnce = False Then ' only want to do once
+            RunOnce = True
+            'Code here is executed when loading the Extension plugin
+            ' set RRSDK (this is the sub class)
+            SDK = New RRSDK
+
+            ' run any one time code here
+
+        End If
+
+    End Sub
+
+#Region "Timers"
+    '##################################  TIMERS ######################################
+    Public Function GpsHdg() As Integer
+        GpsHdg = CInt(SDK.GetInfo("GPSHDG"))
+        Return GpsHdg
+    End Function
+    Public Sub AnimateCursor()
+        On Error Resume Next
+        If GpsHdg() = 0 Or GpsHdg() = 360 Then
+            IndHDG = "'N'"
+        ElseIf GpsHdg() >= 1 And GpsHdg() <= 45 Then
+            IndHDG = "'NE'"
+        ElseIf GpsHdg() >= 46 And GpsHdg() <= 90 Then
+            IndHDG = "'E'"
+        ElseIf GpsHdg() >= 91 And GpsHdg() <= 135 Then
+            IndHDG = "'SE'"
+        ElseIf GpsHdg() >= 136 And GpsHdg() <= 180 Then
+            IndHDG = "'S'"
+        ElseIf GpsHdg() >= 181 And GpsHdg() <= 225 Then
+            IndHDG = "'SW'"
+        ElseIf GpsHdg() >= 226 And GpsHdg() <= 270 Then
+            IndHDG = "'W'"
+        ElseIf GpsHdg() >= 271 And GpsHdg() <= 315 Then
+            IndHDG = "'NW'"
+        ElseIf GpsHdg() >= 316 And GpsHdg() <= 359 Then
+            IndHDG = "'N'"
+        End If
+
+        If SDK.GetUserVar("WhatdoYouWant") <> "3" Then
+            GmapsBrowser.Jscript("animate(" & SDK.GetInfo("GPSLAT") & ", " & SDK.GetInfo("GPSLON") & ", " & IndHDG & ")")
+        Else
+            GmapsBrowser.Jscript("animate(" & SDK.GetInfo("GPSLAT") & ", " & SDK.GetInfo("GPSLON") & ", " & SDK.GetInfo("GPSHDG") & ")")
+        End If
+
+        'gps = Split(GetLatLon(), ",")
+        'SDK.SetUserVar("GPSLATCLIP", gps(0))
+        'SDK.SetUserVar("GPSLONCLIP", gps(1))
+        'Dim addr = GetAddress()
+        'SDK.SetUserVar("ADDRESSCLIP", addr)
+        ''ZoomMaps = GetZoom()
+    End Sub
+    Public Sub AnimateCursorTimer()
+        AddHandler Timer1.Tick, AddressOf AnimateCursor
+        With Timer1
+            Dim interval As Double = Val(INI.ReadString("Timers", "delay", "")) '10 interval ini
+            'Dim interval As Double = 2
+            If interval > 0 Then
+                .Interval = interval
+                .Enabled = True
+                .Tag = interval * 60000
+            Else
+                .Enabled = False
+            End If
+            .Start()
+        End With
+    End Sub
+
+    'Public Sub LatLonAddUpdate()
+    '    'gps = Split(Replace(GmapsBrowser.GetTextContentOfElementByID("latlng"), "(", "").Replace(")", ""), ",")
+    '    'SDK.SetUserVar("GPSLATCLIP", CStr(Math.Round(Val(gps(0)), 6)))
+    '    'SDK.SetUserVar("GPSLONCLIP", CStr(Math.Round(Val(gps(1)), 6)))
+    '    ''SDK.SetUserVar("ADDRESSCLIP", GmapsBrowser.GetTextContentOfElementByID("formatedAddress"))
+    '    ''SDK.SetUserVar("ZOOMCLIP", GmapsBrowser.GetTextContentOfElementByID("zoom_level"))
+
+    'End Sub
+    'Private Sub LatLonAddUpdateTimer()
+    '    AddHandler Timer2.Tick, AddressOf LatLonAddUpdate
+    '    With Timer2
+    '        Dim interval As Double = Val(INI.ReadString("Timers", "delay", "")) '10 interval ini
+    '        'Dim interval As Double = 5000
+    '        If interval > 0 Then
+    '            .Interval = interval
+    '            .Enabled = True
+    '            .Tag = interval * 60000
+    '        Else
+    '            .Enabled = False
+    '        End If
+    '        .Start()
+    '    End With
+    'End Sub
+
+    Public Sub GPS2CityUpdate()
+        If InStr(SDK.GetUserVar("ADDRESSCLIP"), "From GPS2City>:") Or InStr(SDK.GetUserVar("ADDRESSCLIP"), "***") Then
+            SDK.SetUserVar("GPSLATCLIP", "***")
+            SDK.SetUserVar("GPSLONCLIP", "***")
+            SDK.SetUserVar("PHONECLIP", "***")
+            SDK.SetUserVar("ADDRESSCLIP", "From GPS2City>:<crlf><crlf>" & SDK.GetInfo("CURRENTSTATE") & "(" & SDK.GetInfo("CURRENTZIP") & "), " & SDK.GetInfo("CURRENTCITY") & "<crlf>" & SDK.GetInfo("CURRENTCOUNTY"))
+            SDK.SetUserVar("PLACENAMECLIP", "***")
+        Else
+            'Timer3.Stop()
+        End If
+
+    End Sub
+    Private Sub GPS2CityUpdateTimer()
+        AddHandler Timer3.Tick, AddressOf GPS2CityUpdate
+        With Timer3
+            Dim interval As Double = Val(INI.ReadString("Timers", "delay", "")) '10 interval ini
+            'Dim interval As Double = 3
+            If interval > 0 Then
+                .Interval = interval
+                .Enabled = True
+                .Tag = interval * 60000
+            Else
+                .Enabled = False
+            End If
+            .Start()
+        End With
+    End Sub
+
+    '#################################################################################
+#End Region
+
+
+    Public Function GetLatLon() As String
+        Return GmapsBrowser.getJavascriptString("getCenterLatLngText()")
+    End Function
+    Public Function GetAltitude() As String
+        Return GmapsBrowser.getJavascriptString("getAltitudeText()")
+    End Function
+    Public Function GetAddress() As String
+        Return GmapsBrowser.getJavascriptString("getAddress()")
+    End Function
+    Public Function GetZoom() As String
+        Return GmapsBrowser.getJavascriptString("getmapzoom()")
+    End Function
+
+#Region "RR Events"
+    'Public Sub GmapsToolsRunMenu() Handles Me.GMapsToolsMenu
+    '    SDK.Execute("*ONGMAPSTOOLSMENU", True)
+    'End Sub
+#End Region
+
+End Class

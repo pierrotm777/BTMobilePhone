@@ -1,0 +1,23 @@
+RideRunner Skin
+RRScreen MenuItemSet
+MOBILEPHONE_CHECK_Off.png,MOBILEPHONE_CHECK_Off.png,MOBILEPHONE_CHECK_On.png,MOBILEPHONE_CHECK_down.png
+
+/EFFECTIN=17
+/EFFECTOUT=18
+IDL,5,"ESC"
+
+[ Standard RideRunner Labels ]
+L,56,63,59,25,255,255,255,16,"Arial:B","=Vcard","CENTER",,"DS=2,2,0,0,0"
+L,61,150,59,25,255,255,255,16,"Arial:B","=Pan","CENTER",,"DS=2,2,0,0,0"
+L,263,150,74,25,255,255,255,16,"Arial:B","=AVRCP","CENTER",,"DS=2,2,0,0,0"
+L,265,63,61,25,255,255,255,16,"Arial:B","=MAP","CENTER",,"DS=2,2,0,0,0"
+L,21,3,410,34,255,255,255,18,"Arial:B","MOBILEPHONE_PHONEDEVICENAME||= ||=$l_set_BTM_UsableServices$||= !","CENTER",,"DS=2,2,0,0,0"
+
+[  ]
+I,328,63,66,61,"MOBILEPHONE_MAPOK",,,"Mobile_Indicators\BT_MAP_*.png"
+I,328,151,66,61,"MOBILEPHONE_AVRCPOK",,,"Mobile_Indicators\BT_AVRCP_*.png"
+I,118,63,66,61,"MOBILEPHONE_PBAPOK",,,"Mobile_Indicators\BT_PBAP_*.png"
+I,69,151,116,61,"MOBILEPHONE_PANOK",,,"Mobile_Indicators\BT_PAN_*.png"
+B,170,224,118,53,"ESC",
+ 
+END

@@ -1,0 +1,15 @@
+RoadRunner Skin
+RRScreen proplvv
+proplvv.jpg,proplvv.jpg,,
+T,555,169,235,35,555,169,255,20,"Arial",ed6,
+T,406,93,367,39,0,128,255,20,"Arial",ed7,
+B,268,377,130,60,calltvvw@,
+B,419,375,131,60,phide@,
+I,26,62,272,296,fotot
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

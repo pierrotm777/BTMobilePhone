@@ -1,0 +1,84 @@
+RideRunner Skin
+RRScreen "MOBILEPHONE_CONTACTS"
+MOBILEPHONE_CONTACTS.png,MOBILEPHONE_CONTACTS.png,clear.png,clear.png
+
+[ REQUIRED FILES TO LOAD ]
+IMG,1,72,800,390,"MOBILE_THEME\$THEMECOLOR$\Contacts_down.PNG",DOWN
+IMG,17,469,117,61,"Mobile_Indicators\call_down.PNG",DOWN
+IMG,150,469,117,61,"Mobile_Indicators\End_down.PNG",DOWN
+IMG,322,492,159,42,"Mobile_Indicators\Contacts_Button_Down.PNG",DOWN
+IMG,522,491,159,42,"Mobile_Indicators\Contacts_Button_Down.PNG",DOWN
+INC,ELITE\STATIC\STATIC.ELITE
+INC,ELITE\LIST\up-down-Mobile_Contacts.ELITE
+
+[Labels]
+L,117,88,43,16,#FontColorR#,#FontColorG#,#FontColorB#,11,"Bazouk SSi","=CONN","LEFT",,"DS=2,2,0,0,0"
+L,560,88,43,16,#FontColorR#,#FontColorG#,#FontColorB#,11,"Bazouk SSi","=EXTP","RIGHT",,"DS=2,2,0,0,0"
+L,560,112,43,16,#FontColorR#,#FontColorG#,#FontColorB#,11,"Bazouk SSi","=SMS","RIGHT",,"DS=2,2,0,0,0"
+L,560,136,43,16,#FontColorR#,#FontColorG#,#FontColorB#,11,"Bazouk SSi","=ROAM","RIGHT",,"DS=2,2,0,0,0"
+L,117,112,43,16,#FontColorR#,#FontColorG#,#FontColorB#,11,"Bazouk SSi","=AVAIL","LEFT",,"DS=2,2,0,0,0"
+L,117,136,43,16,#FontColorR#,#FontColorG#,#FontColorB#,11,"Bazouk SSi","=INC","LEFT",,"DS=2,2,0,0,0"
+L,637,114,79,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"Bazouk SSi","=Contacts","CENTER",,"DS=2,2,0,0,0"
+L,716,303,76,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"#FONTFAMILY#:B","=ABC","CENTER",,"DS=2,2,0,0,0"
+L,716,207,76,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"Bazouk SSi","=Favorites","CENTER",,"DS=2,2,0,0,0"
+L,716,114,76,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"Bazouk SSi","MOBILEPHONE_PHONEBOOKTYPE","CENTER",,"DS=2,2,0,0,0"
+L,327,502,142,19,#FontColorR#,#FontColorG#,#FontColorB#,14,"#FONTFAMILY#:B","=SMS  R/W","CENTER",,"DS=2,2,0,0,0"
+L,310,470,72,19,#FontColorR#,#FontColorG#,#FontColorB#,11,"Bazouk SSi:B","=Battery:","LEFT",,"DS=2,2,0,0,0"
+L,520,470,49,19,#FontColorR#,#FontColorG#,#FontColorB#,11,"Bazouk SSi:B","=Signal:","LEFT",,"DS=2,2,0,0,0"
+L,529,502,149,20,#FontColorR#,#FontColorG#,#FontColorB#,14,"#FONTFAMILY#:B","=View Contact","CENTER",,"DS=2,2,0,0,0"
+L,717,375,74,70,#FontColorR#,#FontColorG#,#FontColorB#,12,"#FONTFAMILY#:B","=Phone Book Update","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,637,207,76,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"Bazouk SSi","=Missed","CENTER",,"DS=2,2,0,0,0"
+L,639,303,76,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"Bazouk SSi","=Received","CENTER",,"DS=2,2,0,0,0"
+L,637,400,76,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"#FONTFAMILY#:B","=Dialed","CENTER",,"DS=2,2,0,0,0"
+L,25,485,102,23,#FontColorR#,#FontColorG#,#FontColorB#,18,"#FONTFAMILY#:B","=Call","center",,"DS=1,2,0,0,0"
+L,161,485,99,25,#FontColorR#,#FontColorG#,#FontColorB#,18,"#FONTFAMILY#:B","=End","center",,"DS=1,2,0,0,0"
+
+[ ** ]
+L01,179,132,241,28,#FontColorR#,#FontColorG#,#FontColorB#,20,"#FONTFAMILY#:B","MOBILEPHONE_DIALBOX",
+L02,178,88,167,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"Arial:B","MOBILEPHONE_MANUFACTURER","LEFT",
+L03,373,88,167,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"Arial:B","MOBILEPHONE_PHONEDEVICENAME","RIGHT",
+L04,373,106,167,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"Arial:B","MOBILEPHONE_OWNNUMBER","RIGHT",
+L04,526,144,17,16,#FontColorR#,#FontColorG#,#FontColorB#,12,"Arial:B","MOBILEPHONE_PHONESELECTED","RIGHT",
+L05,178,106,167,16,255,0,0,12,"#FONTFAMILY#:B","MOBILEPHONE_NETWORKNAME","LEFT"
+
+[List]
+SC01,93,173,499,279,0,0,0,01,040,040,255,0,0,255,128,0,true,16,"Arial",00,"","MOBILEPHONE_UPDATECL","MOBILEPHONE_DIALORSELECT"
+IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60
+
+[Buttons]
+B01,636,74,78,96,"MOBILEPHONE_PB",
+B03,717,362,76,93,"MOBILEPHONE_SYNC",@MOBILEPHONE_PHONEBOOKSORT@
+B03,716,267,76,93,"MENU;SKIPTO_OSK.SKIN",""
+B03,716,172,76,93,"MOBILEPHONE_FAVORITE_ADD",""
+B03,716,76,76,93,"MOBILEPHONE_PHONEBOOKTYPE",""
+B04,636,170,79,95,"MOBILEPHONE_MCH",
+B05,636,266,80,93,"MOBILEPHONE_ICH",
+B06,635,361,79,95,"MOBILEPHONE_OCH",
+B19,520,488,164,45,"MOBILEPHONE_VIEWENTRY",@MOBILEPHONE_NEWENTRY@
+B01,318,488,167,46,"MOBILEPHONE_SMSREAD",@MOBILEPHONE_SMSWRITE@
+B19,14,467,125,65,"MOBILEPHONE_DIAL||ESC",
+B21,147,467,123,64,"MOBILEPHONE_HANGUP",
+
+[INDICATORS]
+I01,91,85,18,18,"MOBILEPHONE_CONNECTED",,,"Mobile_Indicators\LED_GREEN_*.png"
+I02,91,109,18,18,"MOBILEPHONE_NETWORKAVAIL",,,"Mobile_Indicators\LED_GREEN_*.png"
+I03,91,133,18,18,"MOBILEPHONE_INCALL",,,"Mobile_Indicators\LED_GREEN_*.png"
+I03,611,109,18,18,"MOBILEPHONE_MESSAGERECEIVED:b",500,500,"Mobile_Indicators\LED_GREEN_*.png"
+I03,611,133,18,18,"MOBILEPHONE_ISROAMING:B",500,500,"Mobile_Indicators\LED_GREEN_*.png"
+I04,611,85,18,18,"MOBILEPHONE_BATTERYCHARGING",,,"Mobile_Indicators\LED_GREEN_*.png"
+I04,638,362,76,7,"MOBILEPHONE_PHONEOCH",,,"Mobile_Indicators\LED_Balken_*.png"
+I04,716,362,76,7,"MOBILEPHONE_SYNCHRONIZING:B",500,500,"Mobile_Indicators\LED_Balken_*.png"
+I04,638,267,76,7,"MOBILEPHONE_PHONEICH",,,"Mobile_Indicators\LED_Balken_*.png"
+I04,638,171,76,7,"MOBILEPHONE_PHONEMCH",,,"Mobile_Indicators\LED_Balken_*.png"
+I04,638,75,76,7,"MOBILEPHONE_PHONEPB",,,"Mobile_Indicators\LED_Balken_*.png"
+I01,708,465,82,68,"MOBILEPHONE_PHONEBOOKPICTURE",,,
+I04,720,36,41,27,"MOBILEPHONE_MESSAGERECEIVED",,,
+
+[Sliders]
+S03,601,171,32,281,601,171,32,281,V,01,"SLIDERS\EQ.png",20,"CLSLIDER",""
+S02,376,471,102,14,421,58,102,14,H,"SLIDERS\bar.png",,60,"mobilephone_batterystrength",""
+S01,577,471,102,14,151,58,102,14,H,"SLIDERS\bar.png",,60,"mobilephone_signalstrength",""
+IMG,376,471,102,14,"SLIDERS\background.png",all
+IMG,577,471,102,14,"SLIDERS\background.png",all
+ 
+END

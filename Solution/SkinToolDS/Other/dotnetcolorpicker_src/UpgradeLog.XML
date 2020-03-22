@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="PJLControls">
+</Property><Property Name="Fichier solution" Value="E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls.sln">
+</Property><Property Name="Date" Value="dimanche 31 juillet 2016">
+</Property><Property Name="Time" Value="17:58">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="PJLControls.sln" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls.sln">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\PJLControls.csproj" Description="Fichier projet correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\PJLControls.csproj">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\AssemblyInfo.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\ColourPanel.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\ColourPanel.cs">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\ColourPanelForm.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\ColourPanelForm.cs">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\ColourPanelWithCapture.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\ColourPanelWithCapture.cs">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\ColourPicker.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\ColourPicker.cs">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\CustomColorPanel.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\CustomColorPanel.cs">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\CustomColorPicker.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\CustomColorPicker.cs">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\Utils.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\Utils.cs">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\ColourPanel.resx" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\ColourPanel.resx">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\ColourPanelForm.resx" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\ColourPanelForm.resx">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\ColourPanelWithCapture.resx" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\ColourPanelWithCapture.resx">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\ColourPicker.resx" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\ColourPicker.resx">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\CustomColorPanel.resx" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\CustomColorPanel.resx">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\CustomColorPicker.resx" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\PJLControls\CustomColorPicker.resx">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\PJLControls.csproj" Description="Projet correctement converti">
+</Event><Event ErrorLevel="3" Project="PJLControls" Source="PJLControls\PJLControls.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ColorPickerDemo" Source="ColorPickerDemo\ColorPickerDemo.csproj" Description="Fichier projet correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\ColorPickerDemo\ColorPickerDemo.csproj">
+</Event><Event ErrorLevel="0" Project="ColorPickerDemo" Source="ColorPickerDemo\AssemblyInfo.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\ColorPickerDemo\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="ColorPickerDemo" Source="ColorPickerDemo\DemoForm.cs" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\ColorPickerDemo\DemoForm.cs">
+</Event><Event ErrorLevel="2" Project="ColorPickerDemo" Source="ColorPickerDemo\licenses.licx" Description="Échec de la sauvegarde du fichier avec le nom E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\ColorPickerDemo\licenses.licx">
+</Event><Event ErrorLevel="0" Project="ColorPickerDemo" Source="ColorPickerDemo\DemoForm.resx" Description="Fichier correctement sauvegardé en tant que E:\Téléchargements terminés\dotnetcolorpicker_src\Backup\ColorPickerDemo\DemoForm.resx">
+</Event><Event ErrorLevel="0" Project="ColorPickerDemo" Source="ColorPickerDemo\ColorPickerDemo.csproj" Description="Projet correctement converti">
+</Event><Event ErrorLevel="3" Project="ColorPickerDemo" Source="ColorPickerDemo\ColorPickerDemo.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="PJLControls.sln" Description="Solution correctement convertie">
+</Event><Event ErrorLevel="3" Project="" Source="PJLControls.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PJLControls" Source="PJLControls\PJLControls.csproj" Description="Analyse terminée : la mise à niveau n'est pas requise pour les fichiers projet.">
+</Event><Event ErrorLevel="0" Project="ColorPickerDemo" Source="ColorPickerDemo\ColorPickerDemo.csproj" Description="Analyse terminée : la mise à niveau n'est pas requise pour les fichiers projet.">
+</Event></UpgradeLog>

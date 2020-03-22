@@ -1,0 +1,27 @@
+RoadRunner Skin
+RRScreen phone_key
+create_phonebok_nomer.jpg,create_phonebok_nomer.jpg,,
+B,662,190,103,60,,
+B,537,189,103,60,,
+B,409,188,103,60,,
+B,662,110,103,60,,
+B,33,109,103,60,,
+B,284,189,103,60,,
+B,157,191,103,60,,
+B,31,274,103,60,,
+B,159,273,103,60,,
+B,287,273,103,60,,
+B,413,275,103,60,,
+B,538,275,103,60,,
+B,662,273,103,60,,
+B,268,374,130,60,menu@open@infouser.skin,
+T,169,105,453,61,0,128,255,61,,,
+B,419,375,131,60,menu@open@book_create_name.skin,
+B,30,190,103,60,,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

@@ -1,0 +1,53 @@
+C:\My Dropbox\Software\TestGPS\Capture\bin\Debug\Capture.exe.config
+C:\My Dropbox\Software\TestGPS\Capture\bin\Debug\Capture.exe
+C:\My Dropbox\Software\TestGPS\Capture\bin\Debug\Capture.pdb
+C:\My Dropbox\Software\TestGPS\Capture\bin\Debug\Capture.xml
+C:\My Dropbox\Software\TestGPS\Capture\obj\Debug\ResolveAssemblyReference.cache
+C:\My Dropbox\Software\TestGPS\Capture\obj\Debug\Capture.Form1.resources
+C:\My Dropbox\Software\TestGPS\Capture\obj\Debug\Capture.Resources.resources
+C:\My Dropbox\Software\TestGPS\Capture\obj\Debug\Capture.vbproj.GenerateResource.Cache
+C:\My Dropbox\Software\TestGPS\Capture\obj\Debug\Capture.exe
+C:\My Dropbox\Software\TestGPS\Capture\obj\Debug\Capture.xml
+C:\My Dropbox\Software\TestGPS\Capture\obj\Debug\Capture.pdb
+C:\My Dropbox\Software\GPSUtils\Capture\bin\Debug\Capture.exe.config
+C:\My Dropbox\Software\GPSUtils\Capture\obj\Debug\Capture.exe
+C:\My Dropbox\Software\GPSUtils\Capture\obj\Debug\Capture.xml
+C:\My Dropbox\Software\GPSUtils\Capture\obj\Debug\Capture.pdb
+C:\My Dropbox\Software\GPSUtils\Capture\bin\Debug\Capture.exe
+C:\My Dropbox\Software\GPSUtils\Capture\bin\Debug\Capture.pdb
+C:\My Dropbox\Software\GPSUtils\Capture\bin\Debug\Capture.xml
+C:\My Dropbox\Software\GPSUtils\Capture\obj\Debug\ResolveAssemblyReference.cache
+C:\My Dropbox\Software\GPSUtils\Capture\obj\Debug\Capture.Form1.resources
+C:\My Dropbox\Software\GPSUtils\Capture\obj\Debug\Capture.Resources.resources
+C:\My Dropbox\Software\GPSUtils\Capture\obj\Debug\GenerateResource.read.1.tlog
+C:\My Dropbox\Software\GPSUtils\Capture\obj\Debug\GenerateResource.write.1.tlog
+C:\My Dropbox\Software\GPSUtils\Release\Capture.exe.config
+C:\My Dropbox\Software\GPSUtils\Release\Capture.exe
+C:\My Dropbox\Software\GPSUtils\Release\Capture.pdb
+C:\My Dropbox\Software\GPSUtils\Release\Capture.xml
+C:\My Dropbox\Software\VBdotnet\GPSUtils\Capture\bin\Debug\Capture.exe.config
+C:\My Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\Capture.exe
+C:\My Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\Capture.xml
+C:\My Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\Capture.pdb
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\bin\Debug\Capture.exe.config
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\bin\Debug\Capture.exe
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\bin\Debug\Capture.pdb
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\bin\Debug\Capture.xml
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\ResolveAssemblyReference.cache
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\Capture.Form1.resources
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\Capture.Resources.resources
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\GenerateResource.read.1.tlog
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\GenerateResource.write.1.tlog
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\Capture.exe
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\Capture.xml
+C:\Dropbox\Software\VBdotnet\GPSUtils\Capture\obj\Debug\Capture.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\bin\Debug\Capture.exe.config
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\bin\Debug\Capture.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\bin\Debug\Capture.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\bin\Debug\Capture.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\obj\Debug\Capture.Form1.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\obj\Debug\Capture.Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\obj\Debug\Capture.vbproj.GenerateResource.Cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\obj\Debug\Capture.exe
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\obj\Debug\Capture.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\SkinToolDS\Other\GPSUtils\Capture\obj\Debug\Capture.pdb

@@ -1,0 +1,14 @@
+RoadRunner Skin
+RRScreen o_prog
+o_prog.jpg,o_prog.jpg,,
+B,267,387,136,49,setti@open@menu.skin,
+B,416,387,136,49,setti@open@menu.skin,
+B,1,242,252,109,run@pccar.ru,
+B,1,105,252,109,run@compcar.ru,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

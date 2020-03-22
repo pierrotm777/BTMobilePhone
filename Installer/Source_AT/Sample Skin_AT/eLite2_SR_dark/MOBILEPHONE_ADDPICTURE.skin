@@ -1,0 +1,50 @@
+RideRunner Skin
+RRScreen MobilePhone.
+MOBILEPHONE_ADDPICTURE.png,MOBILEPHONE_ADDPICTURE.png,clear.png,themed-SMS_AddPic.png
+
+[ REQUIRED FILES TO LOAD ]
+INC,ELITE\LIST\up-down-Mobile_Contacts.ELITE
+INC,ELITE\STATIC\STATIC.ELITE
+INC,font.elite 
+
+[   SMS   ] 
+L06,765,39,33,20,255,255,0,12,"Arial","MOBILEPHONE_NUMBEROFSMSFOUND","LEFT",,"DS=2,2,0,0,0"
+I04,727,31,41,27,"MOBILEPHONE_MESSAGERECEIVED",0,0,"Mobile_Indicators\SMS_*.png"
+
+  
+
+[ ** ]
+L,627,361,72,29,255,255,255,18,"Arial:B","=Save","CENTER",,"DS=2,2,0,0,0"
+L,139,74,74,29,255,128,0,16,"Arial","=Name","LEFT",,"DS=2,2,0,0,0"
+L,139,105,74,29,255,128,0,16,"Arial","=Tel.","LEFT",,"DS=2,2,0,0,0"
+L,223,74,315,29,255,255,255,18,"Arial:B","CLDESC","LEFT",,"DS=2,2,0,0,0"
+L,223,105,315,29,255,255,255,18,"Arial:B","CLTEXT","LEFT",,"DS=2,2,0,0,0"
+L,578,105,174,29,255,255,255,18,"Arial:B","DLTEXT","LEFT",,"DS=2,2,0,0,0"
+
+[CL List]
+SC01,133,145,404,198,255,255,255,01,025,025,255,0,0,255,128,0,true,16,"Arial"
+IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60
+
+[DL List]
+
+AX,613,144,162,199,"OPT_NOFOCUS"
+
+[Buttons]
+B19,613,351,101,50,"MOBILEPHONE_SAVEPICTURETOITEM",
+B22,337,351,89,46,"MOBILEPHONE_ADDPICTURETOITEM",
+
+[INDICATORS]
+I01,337,350,90,49,"MOBILEPHONE_PHONEBOOKPICTURE",,,
+
+[Sliders]
+S03,555,144,39,199,555,145,39,199,V,01,"SLIDERS\EQ.png",20,"CLSLIDER",""
+
+/,
+L,122,402,55,19,255,255,255,11,"@Kozuka Gothic Pr6N R","=Battery:","LEFT",,"DS=2,2,0,0,0"
+L,388,402,49,19,255,255,255,11,"@Kozuka Gothic Pr6N R","=Signal:","LEFT",,"DS=2,2,0,0,0"
+S02,440,406,102,14,421,58,102,14,H,"SLIDERS\bar.png",,60,"mobilephone_batterystrength",""
+S01,180,406,102,14,151,58,102,14,H,"SLIDERS\bar.png",,60,"mobilephone_signalstrength",""
+IMG,440,406,102,14,"SLIDERS\background.png",all
+IMG,180,406,102,14,"SLIDERS\background.png",all
+ 
+END

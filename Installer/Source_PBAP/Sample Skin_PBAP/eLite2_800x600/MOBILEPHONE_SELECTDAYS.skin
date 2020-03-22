@@ -1,0 +1,35 @@
+RideRunner Skin
+RRScreen MessageBox_Ok.
+message-coming-soon_transparent.png,message-coming-soon_transparent.png,clear.png,message-coming-soon_transparent.png
+INC,FONT.ELITE
+
+/EFFECTIN=0
+/EFFECTOUT=0
+
+[Labels]
+L,373,373,63,25,255,255,255,18,"#FONTFAMILY#","=OK","CENTER",,"DS=2,2,0,0,0"
+L,186,79,427,25,255,0,0,18,"#FONTFAMILY#","=$MOBILEPHONE_INFO$","CENTER",,"DS=2,2,0,0,0"
+L,260,135,108,27,255,255,255,18,"#FONTFAMILY#","=Monday","LEFT",,"DS=2,2,0,0,0"
+L,260,191,115,27,255,255,255,18,"#FONTFAMILY#","=Tuesday","LEFT",,"DS=2,2,0,0,0"
+L,260,247,139,27,255,255,255,18,"#FONTFAMILY#","=Wednesday","LEFT",,"DS=2,2,0,0,0"
+L,453,135,104,27,255,255,255,18,"#FONTFAMILY#","=Friday","LEFT",,"DS=2,2,0,0,0"
+L,453,191,124,27,255,255,255,18,"#FONTFAMILY#","=Saturday","LEFT",,"DS=2,2,0,0,0"
+L,453,247,124,27,255,255,255,18,"#FONTFAMILY#","=Sunday","LEFT",,"DS=2,2,0,0,0"
+L,453,304,124,27,255,255,255,18,"#FONTFAMILY#","=Week","LEFT",,"DS=2,2,0,0,0"
+L,260,304,119,27,255,255,255,18,"#FONTFAMILY#","=Thirsday","LEFT",,"DS=2,2,0,0,0"
+
+[Indicators]
+I,214,135,27,27,"MOBILEPHONE_ALARM_MONDAY",,,"Indicators\Check_*.png"
+I,412,135,27,27,"MOBILEPHONE_ALARM_FRIDAY",,,"Indicators\Check_*.png"
+I,412,191,27,27,"MOBILEPHONE_ALARM_SATURDAY",,,"Indicators\Check_*.png"
+I,412,247,27,27,"MOBILEPHONE_ALARM_SUNDAY",,,"Indicators\Check_*.png"
+I,412,304,27,27,"MOBILEPHONE_ALARM_WEEKDAY",,,"Indicators\Check_*.png"
+I,214,191,27,27,"MOBILEPHONE_ALARM_TUESDAY",,,"Indicators\Check_*.png"
+I,214,247,27,27,"MOBILEPHONE_ALARM_WEDNESDAY",,,"Indicators\Check_*.png"
+I,214,304,27,27,"MOBILEPHONE_ALARM_THIRSDAY",,,"Indicators\Check_*.png"
+
+[Buttons]
+B,339,359,121,53,"ESC",
+B,339,359,121,53,"ESC",
+ 
+END

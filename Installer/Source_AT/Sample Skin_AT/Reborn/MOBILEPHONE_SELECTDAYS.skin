@@ -1,0 +1,36 @@
+RideRunner Skin
+RRScreen MessageBox.
+11ASTATUS_EMPTY.gif,11ASTATUS_OFF.jpg,11ASTATUS_OFF.jpg,11ASTATUS_DOWN.jpg
+
+/EFFECTIN=17
+
+/EFFECTOUT=18
+INC,COLOR.txt
+IDL,5
+
+[Labels]
+L,202,315,90,41,255,255,255,24,"Arial","=Quit","CENTER",
+L,38,44,415,25,255,0,0,18,"Arial","=$MOBILEPHONE_INFO$","CENTER",
+L,96,101,108,27,#COLOR#,18,"Arial","=Monday","LEFT",
+L,96,133,115,27,#COLOR#,18,"Arial","=Tuesday","LEFT",
+L,96,166,156,27,#COLOR#,18,"Arial","=Wednesday","LEFT",
+L,315,101,104,27,#COLOR#,18,"Arial","=Friday","LEFT",
+L,315,133,124,27,#COLOR#,18,"Arial","=Saturday","LEFT",
+L,315,165,124,27,#COLOR#,18,"Arial","=Sunday","LEFT",
+L,315,198,124,27,#COLOR#,18,"Arial","=Week","LEFT",
+L,96,198,119,27,#COLOR#,18,"Arial","=Thirsday","LEFT",
+
+[Indicators]
+I,56,100,27,27,"MOBILEPHONE_ALARM_MONDAY",,,"Indicators\Check_*.png"
+I,273,101,27,27,"MOBILEPHONE_ALARM_FRIDAY",,,"Indicators\Check_*.png"
+I,273,133,27,27,"MOBILEPHONE_ALARM_SATURDAY",,,"Indicators\Check_*.png"
+I,273,165,27,27,"MOBILEPHONE_ALARM_SUNDAY",,,"Indicators\Check_*.png"
+I,273,198,27,27,"MOBILEPHONE_ALARM_WEEKDAY",,,"Indicators\Check_*.png"
+I,56,133,27,27,"MOBILEPHONE_ALARM_TUESDAY",,,"Indicators\Check_*.png"
+I,56,166,27,27,"MOBILEPHONE_ALARM_WEDNESDAY",,,"Indicators\Check_*.png"
+I,56,198,27,27,"MOBILEPHONE_ALARM_THIRSDAY",,,"Indicators\Check_*.png"
+
+[Buttons]
+B,86,265,322,127,"ESC",
+ 
+END

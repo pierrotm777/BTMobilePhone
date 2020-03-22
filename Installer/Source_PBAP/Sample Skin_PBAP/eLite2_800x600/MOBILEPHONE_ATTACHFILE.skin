@@ -1,0 +1,41 @@
+RideRunner Skin
+RRScreen MOBILEPHONE_ATTACHFILE
+MOBILEPHONE_ATTACHFILE_Off.png,MOBILEPHONE_ATTACHFILE_Off.png,MOBILEPHONE_ATTACHFILE_Off.png,MOBILEPHONE_ATTACHFILE_Off.png
+
+/EFFECTIN=17
+/EFFECTOUT=18
+
+INC,THEME\$FONTCOLOR$\FONT.elite
+
+IDL,15
+IMG,414,28,88,60,"icons\list\arrow-pg-up.png",all
+IMG,413,102,88,60,"icons\list\arrow-up.png",all
+IMG,413,176,88,60,"icons\list\arrow-down.png",all
+IMG,413,249,88,60,"icons\list\arrow-pg-down.png",all
+IMG,413,324,88,60,"icons\players\back.png",all
+
+[Labels]
+L01,17,3,67,24,#FontColorR#,#FontColorG#,#FontColorB#,20,"#FONTFAMILY#:B","=Drive:","LEFT"
+L02,603,459,170,28,#FontColorR#,#FontColorG#,#FontColorB#,20,"#FONTFAMILY#:B","=Select","CENTER",
+L02,22,325,153,35,#FontColorR#,#FontColorG#,#FontColorB#,20,"#FONTFAMILY#:B","=Select","CENTER",
+L02,92,0,410,24,#FontColorR#,#FontColorG#,#FontColorB#,20,"#FONTFAMILY#:B","=$MOBILEPHONE_PATHATTCHFILE$","SCROLL-LEFT",
+I,27,69,148,134,"FILE;$MOBILEPHONE_PATHATTCHFILE$$IMAGEFILENAME$:a",,, 
+
+[ Buttons]
+B01,415,20,83,75,"PGUP",""
+B02,415,96,83,75,"UP",""
+B04,413,320,83,75,"ESC",""
+B05,416,172,83,75,"DOWN",""
+B06,6,419,58,76,"PGDOWN",""
+B09,8,278,182,119,"SETVARBYCODE;MOBILEPHONE_PATHATTCHFILE;DLPATH||SETVARBYCODE;IMAGEFILENAME;DLCAPTION||Esc||UnloadAllScreens||SETVAR;l_ReadingPhoneBook;A file is attached !||POPUP;ReadingPhoneBook.SKIN;5",""
+
+/, Directory Format
+SD,00,00,30,30,"$MOBILEPHONE_PATHATTCHFILE$","*.*",1
+
+/, S, x, y, w, h, fore R;RGB, G, B,  back R;RGB, G, B,  folder R;RGB, G, B,  file R;RGB, G, B, selected R;RGB, G, B, select R;RGB, G, B, trs, font pt;FONT, font name
+S01,213,40,190,341,#FontColorR#,#FontColorG#,#FontColorB#,000,000,000,255,255,255,255,255,255,64,64,64,255,255,255,TRUE,20,"#FONTFAMILY#:B"
+
+/, IL, LIST, SelImg, UnselImg, EndImg, LimitMode, Drag, MaxSpeed
+IL,DL,transparent.bmp,sel.bmp,end.bmp,1,50,60
+ 
+END

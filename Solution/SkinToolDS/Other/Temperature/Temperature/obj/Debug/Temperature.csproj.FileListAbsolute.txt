@@ -1,0 +1,9 @@
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\bin\Debug\Temperature.exe
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\bin\Debug\Temperature.pdb
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Debug\Temperature.MainForm.resources
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Debug\Temperature.Properties.Resources.resources
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Debug\Temperature.csproj.GenerateResource.Cache
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Debug\Temperature.exe
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Debug\Temperature.pdb
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\bin\Debug\OpenHardwareMonitorLib.dll

@@ -1,0 +1,12 @@
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\bin\Samsung Plugin.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\bin\Samsung Plugin.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\bin\Samsung Plugin.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\Samsung\obj\Debug\ResolveAssemblyReference.cache
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\Samsung\obj\Debug\Resources.resources
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\Samsung\obj\Debug\GenerateResource.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\Samsung\obj\Debug\GenerateResource.write.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\Samsung\obj\Debug\Samsung Plugin.dll
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\Samsung\obj\Debug\Samsung Plugin.xml
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\Samsung\obj\Debug\Samsung Plugin.pdb
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\Samsung\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\Samsung\obj\Debug\GenerateResource-ResGen.write.1.tlog

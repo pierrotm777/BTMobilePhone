@@ -1,0 +1,22 @@
+RoadRunner Skin
+RRScreen vizovi_ishodiashie
+vizovi_on.jpg,vizovi_ishodiashie.jpg,,
+B,91,287,567,52,taprov@4,
+B,92,229,567,52,taprov@3,
+B,91,170,567,52,taprov@2,
+B,92,109,567,52,taprov@1,
+W,86,105,578,238,255,255,255,28,"Arial",booksearch@30@4,
+B,267,386,133,54,call,
+B,418,387,136,52,menu@open@menu.skin,
+B,666,103,131,79,openicall@Open@Vizovi.skin,
+B,11,102,64,95,lvverh@,
+B,665,264,134,83,openmiscall@Open@vizovi_propushennie.skin,
+B,666,186,135,73,spisok@Open@vizovi_ishodiashie.skin,
+B,10,236,71,102,lvniz@,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

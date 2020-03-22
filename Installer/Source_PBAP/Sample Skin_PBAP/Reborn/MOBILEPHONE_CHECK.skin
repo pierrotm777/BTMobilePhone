@@ -1,0 +1,35 @@
+RideRunner Skin
+RRScreen MenuItemSet
+MOBILEPHONE_CHECK_Off.png,MOBILEPHONE_CHECK_Off.png,MOBILEPHONE_CHECK_Off.png,MOBILEPHONE_CHECK_down.png
+INC,Color.txt
+
+/EFFECTIN=17
+/EFFECTOUT=18
+IDL,5,"ESC"
+
+/DISCARDABLE
+
+[ Standard RideRunner Labels ]
+L,56,56,59,25,#COLOR#,16,"Arial:B","=Vcard","CENTER",
+L,373,249,59,25,#COLOR#,16,"Arial:B","=Esc","CENTER",
+L,61,145,59,25,#COLOR#,16,"Arial:B","=Pan","CENTER",
+L,234,145,74,25,#COLOR#,16,"Arial:B","=AVRCP","CENTER",
+L,440,145,55,25,#COLOR#,16,"Arial:B","=FTP","CENTER",,,
+L,620,145,55,25,#COLOR#,16,"Arial:B","=SPP","CENTER",,,
+L,233,56,61,25,#COLOR#,16,"Arial:B","=MAP","CENTER",
+L,439,56,61,25,#COLOR#,16,"Arial:B","=OPP","CENTER",,,
+L,618,56,61,25,#COLOR#,16,"Arial:B","=A2DP","CENTER",,,
+L,187,7,410,30,#COLOR#,18,"Arial:B","MOBILEPHONE_PHONEDEVICENAME||= ||=$l_set_BTM_UsableServices$||= !","CENTER",
+
+[  ]
+I,297,63,66,61,"MOBILEPHONE_MAPOK",,,"Indicators\BT_MAP_*.png"
+I,503,63,66,61,"MOBILEPHONE_OPPOK",,,"Indicators\BT_OPP_*.png"
+I,683,63,66,61,"MOBILEPHONE_A2DPOK",,,"Indicators\BT_HEADSET_*.png"
+I,296,151,66,61,"MOBILEPHONE_AVRCPOK",,,"Indicators\BT_AVRCP_*.png"
+I,501,151,66,61,"MOBILEPHONE_FTPOK",,,"Indicators\BT_FTP_*.png"
+I,682,151,66,61,"MOBILEPHONE_SPPOK",,,"Indicators\BT_SPP_*.png"
+I,118,63,66,61,"MOBILEPHONE_PBAPOK",,,"Indicators\BT_PBAP_*.png"
+I,69,151,116,61,"MOBILEPHONE_PANOK",,,"Indicators\BT_PAN_*.png"
+B,337,232,124,53,"ESC",
+ 
+END

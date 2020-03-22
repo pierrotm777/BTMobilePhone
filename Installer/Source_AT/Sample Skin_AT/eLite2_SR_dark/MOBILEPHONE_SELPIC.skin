@@ -1,0 +1,24 @@
+RideRunner Skin
+RRScreen MobilePhone.
+MOBILEPHONE_CONTACTS.png,MOBILEPHONE_CONTACTS.png,clear.png,clear.png
+
+[ GENERAL, TOP + BOTTOM Buttons, Indicators and Labels]
+INC,ELITE\STATIC\STATIC.ELITE
+
+[ Load Fonts ]
+INC,font.elite 
+
+[   SMS   ] 
+L06,765,39,33,20,255,255,0,12,"Arial","MOBILEPHONE_NUMBEROFSMSFOUND","LEFT",,"DS=2,2,0,0,0"
+I04,727,31,41,27,"MOBILEPHONE_MESSAGERECEIVED",0,0,"Mobile_Indicators\SMS_*.png"
+
+[List Filter]
+S,88,141,505,212,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,128,0,TRUE,16,"Arial"
+SD,00,01,80,80,"$PLUGINSPATH$MobilePhone\Photo\","*.jpg;*.bmp;*.gif;*.png",true
+S03,601,139,32,216,601,139,32,216,V,01,"SLIDERS\EQ.png",20,"DLSLIDER",""
+IL01,DL,transparent.bmp,sel.bmp,1,70,50
+
+[Picture]
+I02,467,73,72,57,"PICTURE",,,
+ 
+END

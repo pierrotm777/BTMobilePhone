@@ -1,0 +1,25 @@
+RoadRunner Skin
+RRScreen sms_num
+create_phonebok_nomer.jpg,create_phonebok_nomer.jpg,,
+B,662,190,103,60,sendsmsn@ed@+,
+B,536,188,103,60,sendsmsn@ed@5,
+B,411,188,103,60,sendsmsn@ed@4,
+B,284,189,103,60,sendsmsn@ed@3,
+B,157,191,103,60,sendsmsn@ed@2,
+B,31,274,103,60,sendsmsn@ed@6,
+B,159,273,103,60,sendsmsn@ed@7,
+B,287,273,103,60,sendsmsn@ed@8,
+B,413,275,103,60,sendsmsn@ed@9,
+B,538,275,103,60,sendsmsn@ed@0,
+B,662,273,103,60,sendsmsn@ed@#,
+B,268,377,130,60,konvvsm@open@sms_viev_and_send.skin,
+T,170,106,455,61,0,128,255,61,"Arial",ed@,
+B,419,375,131,60,menu@open@sms_createt_text.skin,
+B,30,190,103,60,sendsmsn@ed@1,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

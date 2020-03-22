@@ -1,0 +1,6 @@
+GridAdd;Test*-*-*ssid_name*-*-*profile;ssid<<profile<<securityEnabled<<networkConnectable<<wlanSignalQuality<<dot11DefaultAuthAlgorithm<<dot11DefaultCipherAlgorithm<<Connected<<HasProfile;ssid: ssid.name<<Wifi Profile<<$skinpath$Plugins\iCarWiFi\security.png<<networkConnectable<<$skinpath$Plugins\iCarWiFi\wlanSignal_1.png<<AuthAlgorithm<<CipherAlgorithm<<$skinpath$Plugins\iCarWiFi\emergency.png<<$skinpath$Plugins\iCarWiFi\profile.png
+
+GridAdd;1;date<<time<<name<<detail<<detail_cost<<work_cost<<cost<<odometer<<price<<count<<lattitude<<longitude<<calc_cost;DATE<<TIME<<Note Name<<Note Detail<<Note list & Info<<Note cost & info<<Cost<<Odometer<<Note count0<<Note count1<<Latitude<<Longitude<<str4
+
+GridAdd;separator;name<<detail<<cost<<time_reminder_icon<<time_reminder<<odometer_reminder_icon<<odometer_reminder<<alarm_reminder_icon;<<<<
+GridAdd;name;name<<detail<<cost<<time_reminder_icon<<time_reminder<<odometer_reminder_icon<<odometer_reminder<<alarm_reminder_icon;Name<< <<Info8<< << << << <<<<<<

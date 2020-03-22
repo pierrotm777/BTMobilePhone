@@ -1,0 +1,65 @@
+RideRunner Skin
+RRScreen MOBILEPHONE_SMS
+MOBILEPHONE_SMSREAD.png,MOBILEPHONE_SMSREAD.png,clear.png,themed-SMS_Read.png
+
+[ REQUIRED FILES TO LOAD ]
+INC,ELITE\STATIC\STATIC.ELITE
+
+[ SETS THE MID MENU IMAGES ]
+INC,font.elite 
+
+[   SMS   ] 
+L06,765,39,33,20,255,255,0,12,"Arial","MOBILEPHONE_NUMBEROFSMSFOUND","LEFT",,"DS=2,2,0,0,0"
+I04,727,31,41,27,"MOBILEPHONE_MESSAGERECEIVED",0,0,"Mobile_Indicators\SMS_*.png"
+
+[Labels]
+L,125,189,588,33,255,0,0,22,"Arial Narrow","MOBILEPHONE_INFO","LEFT",,"DS=2,2,0,0,0"
+L,127,224,585,167,255,255,255,22,"Arial Narrow","=$MOBILEPHONE_MESSAGE$","WRAP",,"DS=2,2,0,0,0"
+L,736,103,47,28,255,255,255,18,"Arial Narrow","=$MOBILEPHONE_SMSNUMBER$","CENTER",,"DS=2,2,0,0,0"
+L,135,77,65,33,255,128,0,18,"Arial Narrow","=From :","LEFT",,"DS=2,2,0,0,0"
+L,210,77,391,33,255,255,255,18,"Arial Narrow","MOBILEPHONE_SMSFROMNUMBER","LEFT",,"DS=2,2,0,0,0"
+L,210,121,391,33,255,255,255,18,"Arial Narrow","MOBILEPHONE_SMSFROMDATETIME","LEFT",,"DS=2,2,0,0,0"
+L,135,121,65,33,255,128,0,18,"Arial Narrow","=Time :","LEFT",,"DS=2,2,0,0,0"
+L,24,222,65,33,255,255,255,18,"Arial Narrow","=Read","CENTER",,"DS=2,2,0,0,0"
+
+[Buttons]
+B,730,136,63,31,"mobilephone_smsselectone;-",""
+B,729,65,63,35,"mobilephone_smsselectone;+",""
+B,6,200,100,69,"mobilephone_smsreadone;$MOBILEPHONE_SMSNUMBER$",""
+
+[List]
+
+/SC01,136,236,588,260,255,255,255,0,0,0,255,0,0,255,255,255,true,16,"Arial",00,
+
+/IL,CL,transparent.bmp,sel.bmp,end.bmp,0,50,60
+
+[Sliders]
+
+/S03,743,238,45,259,743,238,45,259,V,01,"SLIDERS\EQ.png",20,"CLSLIDER",""
+
+[Indicators]
+I01,619,76,89,80,"FILE;$MOBILEPHONE_PHOTOPATH$",,,""
+
+[ GENERAL, DOWN IMAGES BY THEMECOLOR ]
+
+[ GENERAL, TOP + BOTTOM Buttons, Indicators and Labels]
+
+[ GENERAL, LEFT + RIGHT Buttons, Indicators and Labels]
+
+[ GENERAL, NAME OF THE SKIN]
+
+[ SETS THE MID MENU IMAGES ]
+
+[ SETS THE DIRECTORY ]
+
+[ COVER ART ]
+
+[ 5-BUTTONS COMMANDS - Second Mainline]
+
+[ 5-BUTTONS ICONS - Second Mainline ]
+
+[ 5-BUTTONS LABELS - Second Mainline ]
+
+[ RIGHT BUTTONS COMMANDS - IMAGES]
+ 
+END

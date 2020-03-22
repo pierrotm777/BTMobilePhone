@@ -1,0 +1,129 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99EE14B6-C33E-468B-A756-62DB66598028}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TransportConnection</RootNamespace>
+    <AssemblyName>TransportConnection</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>3C41C503-53EF-4c2a-8DD4-A8217CAD115E</PlatformID>
+    <OSVersion>4.20</OSVersion>
+    <DeployDirSuffix>TransportConnection</DeployDirSuffix>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FormFactorID>
+    </FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETCF;PocketPC</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETCF;PocketPC</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Brecham.Obex, Version=1.3.2466.31055, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Brecham.Obex.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Net.Personal">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Samples\TransportConnection\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Samples\TransportConnection\StreamInfra.cs">
+      <Link>StreamInfra.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Samples\TransportConnection\TraceStream.cs">
+      <Link>TraceStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Samples\TransportConnection\TraceStreamTests.cs">
+      <Link>TraceStreamTests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Samples\TransportConnection\TransportConnection.cs">
+      <Link>TransportConnection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Samples\TransportConnection\ProtocolComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\..\Samples\TransportConnection\ProtocolComboBox.Designer.cs">
+      <DependentUpon>ProtocolComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlatformDetector.cs" />
+    <Compile Include="TcpipAddressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TcpipAddressDialogCf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TcpipAddressDialogCf.Designer.cs">
+      <DependentUpon>TcpipAddressDialogCf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TcpipAddressDialogSmartphone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TcpipAddressDialogSmartphone.Designer.cs">
+      <DependentUpon>TcpipAddressDialogSmartphone.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Samples\TransportConnection\ProtocolComboBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProtocolComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TcpipAddressDialogCf.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TcpipAddressDialogCf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TcpipAddressDialogSmartphone.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TcpipAddressDialogSmartphone.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.v1.targets" />
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v2.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

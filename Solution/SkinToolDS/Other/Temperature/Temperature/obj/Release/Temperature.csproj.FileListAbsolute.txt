@@ -1,0 +1,43 @@
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\bin\Release\Temperature.exe
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\bin\Release\Temperature.pdb
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Release\Temperature.MainForm.resources
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Release\Temperature.Properties.Resources.resources
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Release\Temperature.csproj.GenerateResource.Cache
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Release\Temperature.exe
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Release\Temperature.pdb
+C:\Documents and Settings\Howard\My Documents\Visual Studio 2008\Projects\Temperature\Temperature\bin\Release\OpenHardwareMonitorLib.dll
+C:\Users\Howard\Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Release\Temperature.exe
+C:\Users\Howard\Documents\Visual Studio 2008\Projects\Temperature\Temperature\obj\Release\Temperature.pdb
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\obj\Release\Temperature.exe
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\obj\Release\Temperature.pdb
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\bin\Release\Temperature.exe
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\bin\Release\Temperature.pdb
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\bin\Release\OpenHardwareMonitorLib.dll
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\obj\Release\Temperature.csprojResolveAssemblyReference.cache
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\obj\Release\Temperature.MainForm.resources
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\obj\Release\Temperature.Properties.Resources.resources
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\obj\Release\Temperature.csproj.GenerateResource.Cache
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\obj\Release\Temperature.Form2.resources
+C:\Users\Howard\Documents\Visual Studio 2012\Projects\Temperature\Temperature\obj\Release\Temperature.frmAbout.resources
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\obj\Release\Temperature.exe
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\obj\Release\Temperature.pdb
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\bin\Release\Temperature.exe
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\bin\Release\Temperature.pdb
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\bin\Release\OpenHardwareMonitorLib.dll
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\obj\Release\Temperature.csprojResolveAssemblyReference.cache
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\obj\Release\Temperature.MainForm.resources
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\obj\Release\Temperature.Form2.resources
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\obj\Release\Temperature.Properties.Resources.resources
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\obj\Release\Temperature.csproj.GenerateResource.Cache
+C:\Users\Howard\Documents\Visual Studio 2015\Projects\Temperature\Temperature\bin\Release\hcwgenericclasses.dll
+E:\Téléchargements terminés\Temperature\Temperature\obj\Release\Temperature.exe
+E:\Téléchargements terminés\Temperature\Temperature\obj\Release\Temperature.pdb
+E:\Téléchargements terminés\Temperature\Temperature\bin\Release\Temperature.exe
+E:\Téléchargements terminés\Temperature\Temperature\bin\Release\Temperature.pdb
+E:\Téléchargements terminés\Temperature\Temperature\bin\Release\OpenHardwareMonitorLib.dll
+E:\Téléchargements terminés\Temperature\Temperature\obj\Release\Temperature.MainForm.resources
+E:\Téléchargements terminés\Temperature\Temperature\obj\Release\Temperature.Properties.Resources.resources
+E:\Téléchargements terminés\Temperature\Temperature\obj\Release\Temperature.csproj.GenerateResource.Cache
+E:\Téléchargements terminés\Temperature\Temperature\bin\Release\Temperature.exe.config
+E:\Téléchargements terminés\Temperature\Temperature\obj\Release\Temperature.csprojResolveAssemblyReference.cache

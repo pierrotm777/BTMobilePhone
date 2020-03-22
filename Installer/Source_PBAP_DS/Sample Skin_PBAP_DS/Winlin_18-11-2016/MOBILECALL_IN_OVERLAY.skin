@@ -1,0 +1,57 @@
+RideRunner Skin
+RRScreen call_in_overlay
+screen_600x110_off.png,screen_600x110_off.png,screen_600x110_off.png,screen_600x110_off.png
+
+
+/SHOWEFFECT6
+/HIDEEFFECT5
+
+/POSY=0
+INC,xy.txt
+INC,shadow.txt
+INC,FontMainBottom.txt
+INC,FontBar.txt
+INC,cf_FontBar.txt
+INC,FontBottom.txt
+
+
+/
+IMG,0,0,600,110,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_600_110.png",out
+
+/V,50
+IMG,0,0,120,108,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_90_off.png",off
+IMG,0,0,120,108,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_90_on.png",on
+IMG,0,0,120,108,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_90_down.png",down
+IMG,0,0,120,108,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_shadow_100_90_$shadow$.png",off
+I,32,22,50,50,"FILE;$SKINPATH$Theme\$ThemeName$\MenuIcons\$CurrentAppImg$:a"
+L,10,9,97,16,#cf_FontBarRed#,#cf_FontBarGreen#,#cf_FontBarBlue#,10,#cf_FontBarStyle#,"BYVAR;CurrentApp;$MyAppHotKeysText$","SCROLL-CENTER",
+L,10,73,97,16,#cf_FontBarRed#,#cf_FontBarGreen#,#cf_FontBarBlue#,10,#cf_FontBarStyle#,"BYVAR;CurrentApp;$ButtonLabel$","SCROLL-CENTER"
+I,89,10,15,10,"!iCarDS_Active"
+IND,1,0,0
+B,0,0,120,108,"SETVAR;TOP_State;1||L_OVERLAY",@SetMyAppHotKey@
+
+[Contact's Infos]
+IMG,120,0,360,108,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_260_90_off.png",off
+IMG,120,0,360,108,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_260_90_on.png",on
+IMG,120,0,360,108,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_260_90_down.png",down
+IMG,120,0,360,108,"$SkinPath$Theme\$ThemeButtons$\buttons\menu_8_260_90_shadow_$shadow$.png",off
+I,138,10,85,85,"MOBILEPHONE_NEWPHOTOPATH",,,
+L,227,12,248,22,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_Calling$","CENTER"
+L,227,43,249,22,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CALLERNAME","CENTER"
+L,228,75,249,21,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_CALLERID","CENTER"
+B,120,0,360,108,"MOBILEPHONE_PICKUP||MOBILEPHONE_UNMUTEMIC||MOBILEPHONE_UNMUTESPKR",@MENU;MOBILECALL.skin||PHONECLOSEOVERLAY@
+//B,120,0,360,108,"MOBILEPHONE_TRANSAUDIO",""
+//B,120,0,360,108,"MENU;MOBILECALL.skin||PHONECLOSEOVERLAY", 
+
+
+
+[Exit Button]
+IMG,480,0,120,108,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_90_off.png",off
+IMG,480,0,120,108,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_90_on.png",on
+IMG,480,0,120,108,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_90_down.png",down
+IMG,480,0,120,108,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_shadow_100_90_$shadow$.png",off
+B,480,0,120,108,"MOBILEPHONE_HANGUP",
+I,517,27,50,50,"File;$SKINPATH$phone_down.png:a"
+
+
+END

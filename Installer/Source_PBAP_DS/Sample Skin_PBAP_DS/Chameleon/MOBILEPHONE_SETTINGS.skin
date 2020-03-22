@@ -1,0 +1,178 @@
+RideRunner Skin
+RRScreen MOBILEPHONE_SETTINGS
+screen_1024x600_off.png,screen_1024x600_off.png,screen_1024x600_off.png,screen_1024x600_off.png,,,Icons\BT_01.png
+
+[Includes]
+INC,xy.txt
+INC,shadow.txt
+INC,FontMainBottom.txt
+INC,FontBar.txt
+INC,FontBarLabel.txt
+INC,FontBottom.txt
+INC,4_cf_s$Media_S$0.txt
+
+Script,OnScreenStart,SEARCHLIST;$SEARCHPHONE$||ONCLCLICK
+
+Script,OnScreenEnd,MOBILEPHONE_CLEAR
+
+[Background Images]
+IMG,0,0,1024,600,"$SKINPATH$Theme\$ThemePanels$\Panels\full_1024_600.png",out
+IMG,141,63,740,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,141,103,740,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,141,144,740,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+IMG,141,185,740,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+
+[]
+IMG,0,563,1024,36,"$SKINPATH$Theme\$ThemePanels$\Panels\bottom_1024_60.png",out
+
+[Labels]
+L,147,69,272,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_PhoneDescription$ :","LEFT",
+L,147,108,272,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_PhoneName$ :","LEFT",
+L,147,150,272,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_PhoneMacAddress$ :","LEFT",
+L,147,190,272,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$l_set_BTM_PhoneStatus$ :","LEFT",
+L,431,69,441,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$MOBILEPHONE_CLDESC$","LEFT",
+L,431,108,441,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_PHONEDEVICENAME","LEFT",
+L,431,150,441,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_PHONEDEVICEMACADDRESS","LEFT",
+L,431,190,441,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"MOBILEPHONE_PHONESTATUS","SCROLL-LEFT",
+
+[Apply]
+IMG,0,120,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,0,120,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_on.png",on
+IMG,0,120,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_down.png",down
+IMG,0,120,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_90_$shadow$.png",off
+B07,0,120,121,84,"MOBILEPHONE_SETTINGS_APPLY",""
+I,36,196,50,5,"MOBILEPHONE_SETTINGS_CHANGED:b"
+IND,MOBILEPHONE_SETTINGS_CHANGED,i_Off.png,i_On.png
+L,13,144,97,28,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=$l_set_BTM_Apply$","CENTER",
+
+[Cancel]
+IMG,0,204,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,0,204,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_on.png",on
+IMG,0,204,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_down.png",down
+IMG,0,204,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_90_$shadow$.png",off
+B08,0,204,121,84,"MOBILEPHONE_SETTINGS_CANCEL",""
+L,13,235,97,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=$l_set_BTM_Cancel$","CENTER",
+
+[Default]
+IMG,0,288,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,0,288,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_on.png",on
+IMG,0,288,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_down.png",down
+IMG,0,288,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_90_$shadow$.png",off
+B11,0,288,121,84,"MOBILEPHONE_SETTINGS_DEFAULT",""
+L,6,300,110,54,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=$l_set_BTM_Default$","VHCENTER",
+
+[Update Devices]
+IMG,0,372,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,0,372,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_on.png",on
+IMG,0,372,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_down.png",down
+IMG,0,372,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_90_$shadow$.png",off
+B09,0,372,121,84,"MOBILEPHONE_SETTINGS_UPDATEDEVICELIST",""
+L,4,383,112,56,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=$l_set_BTM_UpdateDevices$","VHCENTER",
+
+[Remote Services List]
+IMG,0,456,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,0,456,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_on.png",on
+IMG,0,456,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_down.png",down
+IMG,0,456,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_90_$shadow$.png",off
+B10,0,456,121,84,"MOBILEPHONE_SETTINGS_UPDATEREMOTELIST",""
+L,13,470,97,49,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=$l_set_BTM_ServicesList$","VHCENTER",
+
+[Service Accepted]
+IMG,903,120,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,903,120,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,903,120,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,903,120,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_60_$shadow$.png",off
+B01,903,119,121,84,"MOBILEPHONE_REMOTESERVICESUSABLE",""
+I,939,120,50,50,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\seach_t.png:a"
+L,910,152,105,40,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=$l_set_MobilePhoneServices$","VHCENTER",
+
+[System Info]
+IMG,903,204,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,903,204,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_on.png",on
+IMG,903,204,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_down.png",down
+IMG,903,204,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_90_$shadow$.png",off
+L,910,235,105,28,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=$l_set_BTM_SystemInfo$","CENTER",
+B04,903,204,121,84,"mobilephone_sysinfo",""
+
+[Phone Pair/Unpair]
+IMG,903,288,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,903,288,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_on.png",on
+IMG,903,288,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_down.png",down
+IMG,903,288,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_90_$shadow$.png",off
+L,910,315,105,28,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=Pair UnPair","VHCENTER",
+B05,903,288,121,84,"MOBILEPHONE_PAIRED",@MOBILEPHONE_UNPAIRED@
+
+[Phone delete]
+IMG,903,372,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,903,372,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,903,372,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,903,372,121,84,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_60_$shadow$.png",off
+L,926,385,78,54,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=Delete","VHCENTER",
+B06,903,372,121,84,"MOBILEPHONE_DELETEPAIRED",""
+
+[Other Phone]
+IMG,903,62,121,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,903,62,121,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,903,62,121,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,903,62,121,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_60_$shadow$.png",off
+L,915,65,100,22,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"=$l_set_BTM_SetPhone$","CENTER",
+L,930,90,75,28,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,13,#FontMainBottomStyle#,"MOBILEPHONE_PHONESELECTED","CENTER",
+B,903,62,121,60,"MOBILEPHONE_SETTINGS_PHONE2||ONCLCLICK",
+
+[Top Bar]
+IMG,8,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_off.png",off
+IMG,8,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_on.png",on
+IMG,8,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_down.png",down
+IMG,8,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_shadow_$shadow$.png",off
+I,33,5,50,50,"FILE;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\$CurrentAppImg$:a"
+B,8,0,100,60,"SETVAR;TOP_State;1||TopButtonsLoad",@SetMyAppHotKey@
+I,33,52,50,5,"!iCarDS_Active"
+IND,!iCarDS_Active,i_Off.png,i_on.png
+
+[]
+IMG,108,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_off.png",off
+IMG,108,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_on.png",on
+IMG,108,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_down.png",down
+IMG,108,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_r_100_60_shadow_$shadow$.png",off
+IMG,133,5,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\$button10img$:a",all
+B,108,0,100,60,"$button10command$",@SetTopButton10@
+
+[]
+IMG,816,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_off.png",off
+IMG,816,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_on.png",on
+IMG,816,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_down.png",down
+IMG,816,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_l_100_60_shadow_$shadow$.png",off
+IMG,841,5,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\$button11img$:a",all
+B,816,0,100,60,"$button11command$",@SetTopButton11@
+
+[Quit]
+IMG,916,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",off
+IMG,916,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",on
+IMG,916,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_90_off.png",down
+IMG,916,0,100,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_shadow_100_60_$shadow$.png",off
+IMG,941,5,50,50,"$SKINPATH$Theme\$ThemeIcons$\MenuIcons\close.png:a",all
+B,916,0,100,60,"ESC",""
+
+[Settings2]
+IMG,903,480,121,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_off.png",off
+IMG,903,480,121,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_on.png",on
+IMG,903,480,121,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_down.png",down
+IMG,903,480,121,60,"$SkinPath$Theme\$ThemeButtons$\buttons\btn_100_60_shadow_$shadow$.png",off
+I,939,485,50,50,"File;$SKINPATH$Theme\$ThemeIcons$\MenuIcons\ff.png:a"
+B,903,480,121,60,"LOAD;MOBILEPHONE_SETTINGS2.skin",""
+
+[Info]
+IMG,125,247,722,37,"$SKINPATH$Theme\$ThemePanels$\Panels\top_824_50.png",out
+L,137,252,700,27,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,18,#FontMainBottomStyle#,"=$MOBILEPHONE_SETTINGSINFO$","SCROLL-LEFT",
+
+[Version Infos]
+L,10,571,300,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_PluginVersion$ : ||MOBILEPHONE_PLUGINVER","LEFT",
+L,660,571,350,25,#FontMainBottomRed#,#FontMainBottomGreen#,#FontMainBottomBlue#,14,#FontMainBottomStyle#,"=$l_set_BTM_BlueSoleilSDKVersion$ : ||MOBILEPHONE_SDKVERSION","RIGHT",
+ 
+[ List Definitions ]
+IMG,126,294,722,245,"$SKINPATH$Theme\$ThemePanels$\Panels\panel_924_420.png",out
+IMG,852,294,27,245,"$SKINPATH$Theme\$ThemeButtons$\buttons\btn_main_slider.png",out
+S,803,294,75,245,803,294,75,245,V,,"slider_r.png",80,"CLSLIDER",
+SC01,131,298,713,241,#L_FC_R#,#L_FC_G#,#L_FC_B#,01,040,040,#L_PC_R#,#L_PC_G#,#L_PC_B#,#L_SdC_R#,#L_SdC_G#,#L_SdC_B#,TRUE,20,#FontMainBottomStyle#
+ 
+END

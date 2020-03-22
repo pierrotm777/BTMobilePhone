@@ -1,0 +1,765 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+		<title>OBEX library &mdash; Programmer&rsquo;s guide</title>
+
+		<!-- Use NDoc's stylesheet -->
+		<link rel="stylesheet" type="text/css" href="MSDN.css" />
+		<!-- But override the stupid margin//width -->
+		<style type="text/css">
+			body {margin: 15px; width: auto}
+		</style>
+
+		<style type="text/css">
+			//code.inline { font-weight: bold; }
+			code.sample { display: block; /*white-space: pre;*/ padding-left: 2em; }
+			dt { font-weight: bold; }
+			dd { margin-left: 1em; }
+		</style>
+
+
+	</head>
+
+	<body>
+		<h1>OBEX library &mdash; Programmer&rsquo;s guide</h1>
+        <p >
+            12<sup>th</sup> October 2008 — release 1.7 (1.7.1012).</p>
+        <h2>
+            Introduction</h2>
+        <p>
+			The library can be used at two levels.
+			At the upper level it provides full support for all client-side OBEX
+			operations, including Put, Get, SetPath, Delete, and Abort. 
+
+			At a lower lever it provides full
+			general parsing and creating of OBEX PDUs (packets); this usage should be rare
+			however and won&rsquo;t be discussed further here.</p>
+        <p>
+			The library also provides a parser for the OBEX Folder Listing objects.
+        </p>
+        <p>
+            The library currently includes no
+			support for server-side operation, nor for reliable sessions. However the source code for a basic OBEX server is available on the website.</p>
+
+		<!-- _______________________________________________________  -->
+		<h2>Client-side operations</h2>
+		<p>
+            A short example may be most explanatory.  The following PUTs a file to an IrDA peer.</p>
+		<p>
+			<!-- From VbPutSample.vb -->
+			<code class="sample">
+				Imports System
+				<br />Imports System.IO	'e.g. FileStream, FileMode, etc.
+				<br />
+				<br />Imports Brecham.Obex
+				<br />
+				<br />Imports InTheHand.Net           'e.g. IrDAEndPoint
+				<br />Imports InTheHand.Net.Sockets   'e.g. IrDAClient
+				<br />' Available from http://32feet.net/.
+				<br />
+				<br />
+				<br />Class VbPutSampleSample
+				<br />&nbsp;&nbsp;&nbsp;Public Shared Sub Main(ByVal args() As String)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' Open file as selected by the user
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If args.Length &lt;&gt; 1 Then
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("No filename given.")
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exit Sub
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim filename As String = args(0)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim srcFile As New FileStream(filename, FileMode.Open, FileAccess.Read)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' Connect
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim cli As New IrDAClient("OBEX")
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim sess As New <b>ObexClientSession(cli.GetStream, 4096)</b>
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sess.<b>Connect</b>
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' And Send
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim name As String = Path.GetFilename(filename)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim contentLength As Int64 = srcFile.Length
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sess.<b>PutFrom(srcFile, name, Nothing, contentLength)</b>
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cli.Close
+				<br />&nbsp;&nbsp;&nbsp;End Sub
+				<br />End Class
+			</code>
+		</p>
+		<p>
+			That is of course lacking any exception handling but is otherwise
+			complete.  The other operations are called in a similar fashion.  The supported
+			operations are as follows.
+		</p>
+		<dl>
+			<dt>Connect</dt>
+			<dd>
+				Sends a connection requests to the peer.  Can be used to select a
+				particular service / application on the peer,
+				for instance the Folder Browsing Service.
+				It also exchanges the maximum receive sizes with the peer,
+				without which a maximum send size of 255 bytes will be used by both ends.
+				It also checks that the peer is using the same version of the OBEX protocol as
+				us &mdash; though version 1.0 alone is defined currently.  Its use is optional.
+			</dd>
+			<dt>Disconnect</dt>
+			<dd>
+				Closes the session. Its use is optional.
+			</dd>
+			<dt>Put/from</dt>
+			<dd>
+				Uploads an object to the peer, with the library reading the content from a
+				<code>Stream</code> supplied by the consumer.
+				This is as shown in the PUT sample above.
+			</dd>
+			<dt>Put</dt>
+			<dd>
+				Uploads an object to the peer, with the consumer writing to a <code>Stream</code>
+				returned by the library.
+				An example of its usage is the PutGuiVb.vb sample.
+			</dd>
+			<dt>Get/to</dt>
+			<dd>
+				Downloads an object from the peer, with the library writing the content to a
+				<code>Stream</code> supplied by the consumer.
+				An example of its usage is the GetFolderListing C# sample.
+			</dd>
+			<dt>Get</dt>
+			<dd>
+				Downloads an object from the peer, with the consumer reading from a <code>Stream</code>
+				returned by the library.
+				An example of its usage is the GetFolderListing C# sample, it is
+				also used internally by the <code>GetFolderListing</code>
+				method on <code>ObexClientSession</code>.
+			</dd>
+			<dt>GetFolderListing</dt>
+			<dd>
+                Combines downloading a Folder Listing and parsing it to return the items it contains.</dd>
+            <dt>Delete</dt>
+			<dd>
+				Deletes an object on the peer, can be a file or a folder.
+			</dd>
+			<dt>SetPath</dt>
+			<dd>
+				Changes the current folder on the peer.  As well as changing to a named child folder,
+				it can also be used to back up one level, or reset to the default folder.
+				An example of its usage is the FolderExplorerVb and GetFolderListing samples.
+			</dd>
+			<dt>Abort</dt>
+			<dd>
+				Aborts the current operation.  This is the only operation that it is legal
+				to call whilst another operation is in progress.
+			</dd>
+		</dl>
+		<!-- _________________________________ -->
+		<h3>Metadata</h3>
+		<p>
+			All OBEX protocol information is carried in headers, both the information
+			describing the objects being transferred and the data itself.
+			Common headers are
+			Name, Type, Length, and Body and EndOfBody carrying the data itself.
+			Most of the operations (Put, Get, SetPath etc) have a core method that
+			take a collection of headers, as an instance of the class
+			<code>ObexHeaderCollection</code>, but that is for very advanced uses only, instead
+            there are always also much more
+			user-friendly overloads that take various combinations of individual
+			header values (for Name, Type, Length etc).
+		</p>
+		<p>For instance the Put operation has four overloads:</p>
+		<p>
+			<code class="sample">
+				public ObexPutStream Put(ObexHeaderCollection headers);
+				<br />public ObexPutStream Put(String name, String type);
+				<br />public ObexPutStream Put(String name, String type, UInt32 length);
+				<br />public ObexPutStream Put(String name, String type, Int64 length);
+			</code>
+		</p>
+        <p>
+            The most suitable overload can be chosen depending on what information is known
+            about the object. Also, in most cases a null value is accepted if a particular value
+            is not known. For instance in that case, both <code>name</code> and <code>type</code>
+            will accept <code>null</code> / <code>Nothing</code>. Some cases do require a header
+            value, for instance <code>void SetPath(String folderName)</code> obviously requires
+            a non-null value. A normal PUT and GET operation is thus 
+            <code>sess.PutFrom(srcStream, "name.txt", Nothing)</code> and
+            <code>sess.GetTo(dstStream, "name.txt", Nothing)</code>
+            respectively.
+        </p>
+        <p>
+			The OBEX <code>Length</code> header is generally optional and can hold only a
+			32-bit unsigned integer so if a larger value is supplied is will not be
+			included in the request.
+			The <code>Int64</code> overload exists mainly to accept the
+			value returned by <code>Stream.Length</code>, but also for non-CLS
+			Compatible environments (i.e. where <code>UInt32</code> is not supported).
+		</p>
+		<p>
+		    Finally, it is also possible also to access the response metadata returned
+		    by the server in a GET operation.  This is available through the 
+		    <code>ResponseHeaders</code> property on <code>ObexGetStream</code>.
+		    Common headers include <code>Length</code>, 
+            and <code>Time</code>.  The <code>Length</code> header
+            being most useful, as it is necessary to allow progress reporting.  See for 
+            instance the <code>FolderExplorer2</code> example which does byte-by-byte progress 
+            reporting if that header is returned by the server, or bouncing bar pseudo 
+            progress reporting if not.
+		</p>
+		<!-- _______________________________________________________  -->
+		<h2>Error handling</h2>
+		<p>
+			If the server rejects or cannot handle an operation it will return an
+			error response code.  On any unexpected response code the library throws an <code>ObexResponseException</code>, which contains the response code
+			received and any attached description, they are combined in the <code>Message</code>
+			it produces.  For instance if the user on a Windows PC rejects a Put the
+			<code>ObexResponseException</code> will contain the following message,
+			where the library has added a textual translation of the numerical code:
+		</p>
+		<p>
+			<code class="sample">Unexpected OBEX response code: 0xC3 (Forbidden).</code>
+		</p>
+		<p>
+			There is one case where an <code>ObexResponseException</code> is initiated locally,
+			that&rsquo;s in Connect where the peer server reports no support for the
+			requested service / application.  A response code of <code>0xFE</code> is used in
+			that case.
+		</p>
+		<p>
+			Any fundamental misbehaviour from the peer, for instance illegal length fields
+			in the response PDU, will cause a
+			<code>ProtocolViolationException</code> to be thrown.  Any known
+			minor misbehaviours have been allowed for though &mdash; for instance the
+			Wireless Link application for IrDA OBEX in Windows sends a <code>Success</code>
+			code in cases where it should send a <code>Continue</code>.
+		</p>
+		<p>
+			The library does not catch any exception on accessing the <code>Stream</code> to
+			the peer server,
+			and thus any <code>IOException</code>s and <code>SocketException</code>s etc will be
+			forwarded to the consumer. The only other exception defined by the library is
+			<code>ObexCreateTooLongException</code> and should not occur when using the session
+			interfaces.
+		</p>
+		<p>
+			Finally, if Aborting a currently active command then that command can throw an
+			exception on being interrupted.  If an <code>ObexPutStream</code> or 
+		    <code>ObexGetStream</code> operation is in progress then they are closed
+		    and thus any operations on them will fail with <code>ObjectDisposedException</code>,
+		    all the other operations (on <code>ObexClientSession</code> itself) fail
+		    with <code>InvalidOperationException</code>.
+		</p>
+
+		<!-- _______________________________________________________  -->
+		<h2>Asynchronous operations and timeouts</h2>
+		<p>
+            Step-by-step forms of some of the operations are provided, for instance the
+			<code>PutStream</code> and <code>GetStream</code> forms of the Put and Get
+			operations, and they support the use of the fallback asynchronous method on Streams,
+			i.e.
+			<code>BeginWrite</code> / <code>EndWrite</code> and
+			<code>BeginRead</code> / <code>EndRead</code> respectively.  However
+			currently there aren&rsquo;t asynchronous forms of the initiating methods i.e.
+			<code>Put</code>, and <code>Get</code>, nor are there asynchronous versions
+			of other methods e.g. <code>PutFrom</code> / <code>GetTo</code> /
+			<code>SetPath</code> etc.
+		</p>
+		<p>
+			The calling application can of course call the methods asynchronously, whether
+			in a Background Worker component or by manually using a thread-pool thread, or even
+            through delegate’s <code>BeginInvoke</code>
+			feature.  As noted above, one can ask the server to cancel any operation by calling
+			<code>Abort</code>, in this case from the main thread.&nbsp; However as noted below
+            if the peer might also ignore the abort and thus a timeout should be applied also.</p>
+        <p>
+            With an operation running on a thread in the background, to get progress information one can convert a line like
+            <code>sess.PutFrom(source, "file.txt", null);</code> into
+        </p>
+        <p>
+            <code class="sample">using(ObexPutStream putStream = sess.Put("file.txt", null)) {
+                <br />&nbsp;&nbsp;while(true) {
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;int curCount = source.Read(buffer, 0, buffer.Length;
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;if (curCount == 0) {
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;}
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;totalCount += curCount;
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;UpdateProgess(totalCount);
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;putStream.Write(buffer, 0, curCount);
+                <br />&nbsp;&nbsp;}
+                <br />}
+                </code>
+        </p>
+        <p>
+			See the PutGuiVb2 and FolderExplorer2 samples
+			for complete examples of calling the library from a Background Worker component.  Both
+			samples update a progress bar control as the content is uploaded / downloaded respectively, and both also provide
+			a &#x201C;Cancel&#x201D; button to allow the user to cancel the download. The example
+			below includes a fragment of that program, it shows the work done by the background
+			worker thread; that is copying the file content to the peer, and updating the progress
+			status as it goes.
+		</p>
+		<p>
+			<code class="sample">
+				Sub DoWork(ByVal sender As Object, ByVal e As DoWorkEventArgs) _
+				<br />Handles backgroundWorker1.DoWork
+				<br />&nbsp;&nbsp;Dim args As BgWorkerArgs = CType(e.Argument, BgWorkerArgs)
+				<br />&nbsp;&nbsp;Dim buffer(1023) As Byte
+				<br />&nbsp;&nbsp;Dim count As Int32
+				<br />&nbsp;&nbsp;Dim updatePeriod As New TimeSpan(0,0,0,0, 250)
+				<br />&nbsp;&nbsp;Dim lastProgress As DateTime = DateTime.UtcNow
+				<br />&nbsp;&nbsp;Dim elapsed As TimeSpan
+				<br />&nbsp;&nbsp;label1.Text = "Sending PUT content..."
+				<br />&nbsp;&nbsp;Try
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;While(True)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If (backgroundWorker1.CancellationPending)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.Cancel = True
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args.Connection.ObexClientSession.Abort("User cancelled")
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exit While
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = args.Source.Read(buffer, 0, buffer.Length)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If(count = 0)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exit While
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args.putStream.Write(buffer, 0, count)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' Progress reporting; rate-limited.
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elapsed = DateTime.UtcNow - lastProgress
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If (elapsed > updatePeriod) Then
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim percentage As Int32 = CType((100.0 * args.Source.Position) / args.Source.Length,Int32)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backgroundWorker1.ReportProgress(percentage)
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lastProgress = DateTime.UtcNow
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;End While
+				<br />&nbsp;&nbsp;Finally
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;args.PutStream.Close
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;args.Source.Close
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;' If we wanted to do another Put to the same peer we wouldn't close
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;' the session and its underlying network stream here.
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;args.Connection.ObexClientSession.Dispose
+				<br />&nbsp;&nbsp;End Try
+				<br />End Sub
+			</code>
+		</p>
+		<h3>
+            A more complex form of asynchronous calling</h3>
+        <p>
+			See the PutGUI sample for
+			an example of calling a library method asynchronously, using
+			<code>delegate.BeginInvoke</code> to run the operation and a callback method to
+			complete the operation.  In summary the code is of the form shown below.
+        </p>
+		<p>
+			<code class="sample">
+				delegate void PutFromNtiCaller(Stream source, String name, String type, Int64 length);
+				<br />
+				<br />private void button1_Click(object sender, EventArgs e)
+				<br />{
+				<br />&nbsp;&nbsp;&nbsp;&#x2026;
+				<br />&nbsp;&nbsp;&nbsp;state.m_putCaller = new PutFromNtiCaller(sess.<b>PutFrom</b>);
+				<br />&nbsp;&nbsp;&nbsp;AsyncCallback cb = new AsyncCallback(PutCompleted);
+				<br />&nbsp;&nbsp;&nbsp;state.SetStartTime();
+				<br />&nbsp;&nbsp;&nbsp;IAsyncResult ar = state.m_putCaller.BeginInvoke(state.m_progressStream,
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putName, null, state.m_fileStream.Length,cb, state);
+				<br />&nbsp;&nbsp;&nbsp;&#x2026;
+				<br />}
+				<br />
+				<br />void PutCompleted(IAsyncResult ar)
+				<br />{
+				<br />&nbsp;&nbsp;&nbsp;&#x2026;
+				<br />&nbsp;&nbsp;&nbsp;// Get the result of the Put operation. This doesn't need to
+				<br />&nbsp;&nbsp;&nbsp;// be on the UI thread, but the rest does...
+				<br />&nbsp;&nbsp;&nbsp;state.m_putCaller.EndInvoke(ar);
+				<br />&nbsp;&nbsp;&nbsp;this.labelStatus.Text = "PutFrom took: " + state.Elapsed.ToString();
+				<br />&nbsp;&nbsp;&nbsp;&#x2026;
+				<br />}
+			</code>
+		</p>
+		<p>
+			If one wants to monitor the
+			progress of the self-contained <code>PutFrom</code> or <code>GetTo</code> operations
+			one way would to create a new <code>Stream</code> type that follows the
+			&lsquo;Decorator Pattern&rsquo; and simply passes all
+			read / writes onto the actual stream whilst counting the number of bytes transferred.
+			See the PutGUI sample for an example of such code.
+		</p>
+		<h3>
+            Timeouts</h3>
+        <p>
+			There is also no explicit support for timeouts in the library, but this will be considered
+			in the future based on feedback.  At the moment the calling application will have to
+			cancel an operation if it is taking too long.  Depending on the type of timeout
+			required one could set a timeout on the <code>Stream</code> or <code>Socket</code>
+			or by synchronizing with the asynchronous invocation of the
+			operation and calling <code>Abort</code> if it is taking too long.
+			Note however if the server on the peer fails to respond to the
+			<code>Abort</code> command then again no timeout will occur.  To guard
+			against this one might consider setting a timeout before calling <code>Abort</code>.
+			One can set a communications timeout using <code>NetworkStream.ReadTimeout</code>,
+			<code>Socket.ReceiveTimeout</code>, or ultimately with
+        </p>
+		<p>
+			<code class="sample">
+				Socket.SetSocketOption(SocketOptionLevel.Socket,
+				SocketOptionName.SendTimeout, timeout);
+			</code>
+		</p>
+		<p>
+			for instance.
+        </p>
+        <p>
+            For simplicity, of course simply closing the connection will always be easiest.</p>
+        <h3>Asynchronous operations on the Compact Framework</h3>
+        <p>
+            Of course things are somewhat different on the NETCF; there&#x2019;s no <code>delegate.BeginInvoke</code>,
+            no <code>BackgroundWorker</code> component, and no fallback implementation of <code>
+                BeginRead/-Write</code> on <code>Stream</code> that provides for asynchronous
+            usage of the currently non-asynchronous <code>ObexPut/-GetStream</code>s for instance.
+            I&#x2019;m very surprised that the <code>BackgroundWorker</code> component is not
+            included, I can understand that providing the other two may for instance provide
+            the ability for developers to unconsciously cause the creation of many threads,
+            but the BackgroundWorker explicitly uses at most one extra thread, and the extra
+            code in applications creating threads and handling the calling of &#x2018;update&#x2019;
+            operations on the UI thread must surely outweigh the increase in the framework assemblies
+            if the BackgroundWorker was provided&hellip;
+        </p>
+        <p>
+            In all cases therefore one has to manually create a new thread for the background
+            operation, whether by <code>thrd = New Thread(methodCallback) + thrd.Start()</code>
+            or by <code>ThreadPool.QueueUserWorkItem(methodCallback)</code>. The PutGuiVb and
+            FolderExplorer samples create
+            a new thread explicitly, mimicing most of the BackgroundWorker
+            behaviour: handling
+            the thread creation, the &#x2018;run worker completed&#x2019; callback, and the
+            &#x2018;report progress&#x2019; feature.&nbsp; The PutGuiCs sample
+            uses <code>ThreadPool.QueueUserWorkItem</code> encapsulated in code that mimics
+            the <code>delegate.BeginInvoke</code> behaviour.</p>
+        <!-- _______________________________________________________  -->
+		<h2>OBEX objects</h2>
+		<p>
+			The OBEX protocol defines a number of object types, these include
+			Folder Listing, Capability, and Object Profile.
+			The library provides a Folder Listing parser which returns the items
+			included in the folder-listing object.  The simplest way to use it is
+			to use the <code>GetFolderListing</code> method on
+			<code>ObexClientSession</code>,
+			it returns an <code>ObexFolderListing</code> object which provides two
+			lists, one of the folders and another of the files in the current folder.
+			The example here shows
+			a simple example of displaying the folder listing on the console.
+			To change the current folder, use the <code>SetPath</code> methods.
+		</p>
+		<p>
+			<code class="sample">
+				Sub DisplayCurrentFoldersListing(sess As ObexClientSession)
+				<br />&nbsp;&nbsp;&nbsp;Dim listing As ObexFolderListing = sess.<b>GetFolderListing</b>
+				<br />&nbsp;&nbsp;&nbsp;If (listing.<b>HasParentFolder</b>) Then
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("&lt;DIR> ..")
+				<br />&nbsp;&nbsp;&nbsp;End If
+				<br />&nbsp;&nbsp;&nbsp;For Each folder As ObexFolderItem In listing.<b>Folders</b>
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("&lt;DIR> {0}", folder.Name)
+				<br />&nbsp;&nbsp;&nbsp;Next
+				<br />&nbsp;&nbsp;&nbsp;For Each file As ObexFileItem In listing.<b>Files</b>
+				<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("      {0}", file.Name)
+				<br />&nbsp;&nbsp;&nbsp;Next
+				<br />End Sub
+			</code>
+		</p>
+		<p>
+			The parser can also be accessed directly through the
+			<code>ObexFolderListing</code> object in the <code>Brecham.Obex.Objects</code>
+			namespace.  This for instance allows one to access the individual items as
+			they arrive over the network instead of only all items being returned once
+			the end of the listing is received.
+		</p>
+		<h3>
+            Bugs in documents produced by third-party devices</h3>
+        <p>
+            There are five issues to note with the content of the documents produced by third-party
+            devices.
+            During testing it was found that not all devices follow the specification. The Nokia
+            6670, for instance, produces documents where the <code>folder</code> item can contain
+            undefined attributes; the parser can be configured to fail or to discard the item
+            to when it encounters such a situation. Secondly some devices produce listings containing
+            bad dates, for instance the root folder on a LG K800 phone has dates like the following
+            <code>modified="19800000T-90000"</code> where a negative time is clearly invalid.
+            &nbsp;If the option <code>IgnoreBadDateFormats</code> to ObexFolderListingParser
+            is set to true then any such errors will be ignored and a result without the date
+            values is returned.&nbsp; Thirdly some devices produce listings where the user-perm
+            (permissions) attribute has an empty value.&nbsp; This is disallowed by the Folder-Listings
+            DTD in the OBEX specification, and thus the .NET XmlReader fails on reading that
+            attribute.&nbsp; We now use a modified version of the DTD to allow that content.</p>
+        <p>
+            Fourthly the specification is not clear
+            what whitespace handling mode should be used if an item includes the Display Name
+            content, 
+            I have seen no evidence that any device actually includes this information,
+            currently we include any whitespace.
+            Finally, again during testing a folder-listing entry from one OBEX server listed
+            a file whose size was 2,147,483,749 bytes as having instead a size of -2,147,483,547.
+            So beware of that.
+        </p>
+        <p>
+            There are also two issues with the encoding of the XML documents.&nbsp; Firstly
+            that the capabilities of the XmlTextReader in the Compact Framework are less
+            than in the full framework.&nbsp; The OBEX Folder Listing object is specified in
+            terms of a DTD and all the examples and real documents that I&#x2019;ve seen include a
+            DOCTYPE element referencing the DTD.&nbsp; Unfortunately the XmlTextReader on NETCF
+            does not support DTDs.&nbsp; Now if it simply didn&#x2019;t support DTDs and thus ignored
+            any such declaration (the DOCTYPE element) then all would be fine.&nbsp; But it
+            doesn&#x2019;t, when is sees such an element it throws NotSupportedException.&nbsp; So
+            we have to pre-parse the document and strip any such element. We handle stripping
+            both the simple DOCTYPE element like 
+            <code class="inline">&lt;!DOCTYPE folder-listing SYSTEM "obex-folder-listing.dtd"&gt;</code>
+            and also the more complex form as returned
+            by the Nokia 6670.</p>
+            <p><code class="sample">
+             &lt;?xml version="1.0"?&gt;
+             <br />&lt;!DOCTYPE folder-listing SYSTEM "obex-folder-listing.dtd"
+             <br />&nbsp;&nbsp;[ &lt;!ATTLIST folder mem-type CDATA #IMPLIED&gt;
+             <br />&nbsp;&nbsp;&lt;!ATTLIST folder label CDATA #IMPLIED&gt; ]&gt;
+             <br />&lt;folder-listing version="1.0"&gt;
+             <br />...
+            </code></p>
+        <p>
+            This functionality defaults
+            to enabled only on the Compact Framework version; this can be overridden
+            with the static <span style="color: #000066; font-family: Courier New">StripDocType</span>
+            property on class <span style="color: #000066; font-family: Courier New">ObexFolderListingParser.</span><span style="color: #000066; font-family: Courier New"></span></p>
+        <p>
+            Secondly, that various device types incorrectly include null bytes in the documents that they produce.
+            The XmlTextReader classes in the Microsoft supplied class libraries will throw an error
+            if such a byte is read.&nbsp; I&#x2019;ve seen the fault firstly in
+            the Belkin/Broadcom
+            software on Windows, the documents it produces end with null bytes.&nbsp; This was
+            known and worked-around in Beta 2, the parser being careful to stop reading immediately
+            that it hits the document end element.&nbsp; However,
+            feedback has identified that it may be that
+            documents produced by other devices contain null bytes in the <em>body</em> of the document.&nbsp; Therefore code has been added
+            that will strip all null bytes from a document as it is read.&nbsp; However I have
+            seem no example of this behaviour. Thus, this feature defaults to disabled on both platforms; this can be overridden with the static <span
+                style="color: #000066; font-family: Courier New">StripNullBytes</span> property
+            on class <span style="color: #000066; font-family: Courier New">ObexFolderListingParser.</span><span style="color: #000066; font-family: Courier New"></span></p>
+        <p>
+            Now ideally we wouldn&#x2019;t have to do any of this
+                work, regardless of how good our code is, adding it has the natural effect of making
+                things a bit more fragile than if the XmlTextReader from the FCL handled all the
+                facilities that we needed (and third-party documents were completely valid).&nbsp;
+                This is most true for the null-byte stripping.&nbsp; Since this acts on a Stream
+                it does not know what text encoding the XmlTextReader will detect to use for the
+                document.&nbsp; In particular if the document is UTF-16 then stripping the nulls
+                will leave a corrupt document (unless it only contains ASCII characters and has
+                no byte-order-mark!).&nbsp; So consider carefully before enabling the <code>
+                    StripNullBytes</code> feature.</p>
+        <h3>
+            Other features</h3>
+		<p>
+			Finally, the DTDs for both the Folder
+			Listing and Capability XML objects are included in the library as resources
+			and can thus be accessed for use in your own application&#x2019;s XML parsers, either directly or with the supplied <code>XmlResolver</code>
+			(<code>ObexXmlResolver</code>).</p>
+
+		<!-- ___________________________________________________________ -->
+		<h2>Connecting to the peer OBEX server</h2>
+        <p>
+            As noted previously the library itself does not handle creating a connection to
+            a peer device and the OBEX server there. Either simple code using IrDAClient / BluetoothClient
+            directly can be used, or the release also includes a separate library to help with
+            connection. The library itself can of course be used with any connection type, IrDA,
+            Bluetooth, TCP/IP and Serial/USB cable for instance.</p>
+        <p>
+            If creating the connection manually, then for IrDA a connection could be created
+            with code as simple as the following:</p>
+        <p>
+            <code class="sample">IrDAClient cli = new IrDAClient("OBEX");
+                <br />
+                ObexSessionConnection sess = new ObexSessionConnection(cli.GetStream(), 8192);
+                <br />
+                sess.Connect()</code></p>
+        <p>
+            And for Bluetooth as simple as this:</p>
+        <p>
+            <code class="sample">Dim addr As BluetoothAddress = [... pre-selected ...]
+                <br />Dim cli As New BluetoothClient()
+                <br />Dim ep As New BluetoothEndPoint(addr, _
+                <br />&nbsp;&nbsp;&nbsp;InTheHand.Net.Bluetooth.<strong>BluetoothService.ObexObjectPush</strong>)
+                <br />cli.Connect(ep)
+                <br />Dim sess As New ObexSessionConnection(cli.GetStream(), 4096)
+                <br /><strong>sess.Connect()</strong></code></p>
+        <p>
+            For TCP/IP just use .NET&#x2019;s TcpClient or Socket classes. For serial/USB cable
+            connection use for example .NET's SerialPort class if the connection appears as
+            a real or virtual COM port, or whatever code is required for a USB connection. Note
+            that if the serial connection is the standard modem connection using v.250 i.e.
+            Hayes Compatible commands, then it needs to be switched into OBEX mode first. See
+            discussion of the standard &#x201c;AT +CPROT=0&#x201d;, and Sony Ericsson&#x2019;s
+            &#x201c;AT *EOBEX&#x201d; commands at Alan McFarlane&#x2019;s <a href="http://www.alanjmcf.me.uk/comms/infrared/IrDA%20uses%20(brief).html">
+                IrDA uses</a> document.
+        </p>
+        <p>
+            For further samples of connecting manually see the PutCmdline and VbPutSample.vb samples.&nbsp; Note that
+            the samples above show how to connect to the default OBEX Inbox / Bluetooth Object
+            Push Profile service, to connect to the OBEX Folder Browsing / Bluetooth File Transfer
+            Profile service different parameters are required, see the source of the library discussed below
+            for example code.&nbsp; In short to connect
+            to the Folder Browing service, on IrDA one connects to the same Service Name (OBEX)
+            but must do an OBEX connect to the target <code>ObexConstant.Target.FolderBrowsing</code>,
+            on Bluetooth one has to connect to the distinct FTP service and again to that OBEX
+            target, e.g.</p>
+        <p>
+            <code class="sample">BluetoothAddress addr = [... pre-selected ...]
+                <br />BluetoothEndPoint ep = new BluetoothEndPoint(addr, 
+                <br />&nbsp;&nbsp;&nbsp;<strong>BluetoothService.ObexFileTransfer</strong>);
+                <br />BluetoothClient cli = new BluetoothClient();
+                <br />cli.Connect(ep);
+                <br />ObexClientSession sess = new ObexClientSession(cli.GetStream(), 4096);
+                <br />
+                sess.<strong>Connect(ObexConstant.Target.FolderBrowsing);</strong></code></p>
+        <p>
+            In summary, for the Default/Inbox OBEX server, one uses:<br />
+        </p>
+        <ul>
+            <li>IrDA Service Name: <code>OBEX</code> (or for some servers, fallback to <code>OBEX:IrXfer</code>)</li>
+            <li>Bluetooth Profile: Object Push Profile (OPP)</li>
+            <li><code>BluetoothService.ObexObjectPush</code></li>
+            <li>OBEX Connect Target: blank i.e. use <code>ObexClientSession.Connect()</code>.</li>
+        </ul>
+        <p>
+            and for the Folder Browsing Service, one uses:<br />
+        </p>
+        <ul>
+            <li>IrDA Service Name: <code>OBEX</code></li>
+            <li>Bluetooth Profile: File Transfer Profile (FTP)</li>
+            <li><code>BluetoothService.ObexFileTransfer</code></li>
+            <li>OBEX Connect Target: FolderBrowsing i.e. use <code>ObexClientSession.Connect(ObexConstant.Target.FolderBrowsing)</code>.</li>
+        </ul>
+        <h3>
+            TransportConnection library
+        </h3>
+        <p>
+            However, as noted above a separate library that handles 
+			this is included in the samples.  It includes three classes, one to 
+			handle connections in a GUI application, one for console menu-driven 
+			applications like the GetFolderListings sample, and one that accepts a URI of a 
+			similar format to that used by 32feet.NET&#x2019;s ObexWebRequest class.
+        </p>
+		<p>
+			They are all based on that same set of subclasses which implement connection
+			to a peer device, to an OBEX server, and disconnecting and cleaning up.
+			Disconnect and clean-up is implemented using the IDisposable interface,
+			that is through calling a Dispose method.  Once connected, the connected
+			ObexClientSession instance is available through a property of the same name.
+		</p>
+        <p>
+            The library supports Bluetooth, IrDA, and TCP/IP connections.&nbsp; It also includes
+            a Forms user-control, ProtocolComboBox, to all the selection of the protocol to
+            be used.</p>
+		<p>
+			So examples of their usage would be as the following.
+		</p>
+		<p>
+			<code class="sample">
+			    Dim pf As System.Net.Sockets.ProtocolFamily = ProtocolComboBox1.SelectedProtocol
+			    <br />'&nbsp;&nbsp;&nbsp;&nbsp;Where ProtocolComboBox1 is an instance of Brecham.Obex.Net.Forms.ProtocolComboBox
+				<br />Dim toFolderBrowsingService As Boolean = …a compile-time constant probably…
+				<br />Dim conn As New GuiObexSessionConnection(pf, toFolderBrowsingService, label1)
+				<br />If conn.Connect Then Exit Sub
+				<br />' …use the connection… e.g.
+				<br />conn.ObexSessionConnection.SetPath("images")
+				<br />conn.ObexSessionConnection.Put(fileSource, "logo.gif", Nothing)
+				<br />conn.Dispose
+			</code>
+		</p>
+		<p>or</p>
+		<p>
+			<code class="sample">
+				using(ConsoleMenuObexSessionConnection conn = new ConsoleMenuObexSessionConnection()){
+				<br />&nbsp;&nbsp;if (!conn.Connect) { return; }
+				<br />&nbsp;&nbsp;// …use the connection…
+				<br />&nbsp;&nbsp;// Dispose is called by the 'using' block
+				<br />}
+			</code>
+		</p>
+		<p>
+			See the various sample projects for more samples of usage.
+		</p>
+		<p>
+			As implied by the samples above the GuiObexSessionConnection constructor 
+			takes two arguments: which protocol to use (Bluetooth/IrDA/etc), and whether 
+			to connect to the OBEX Folder Browsing service or to the default Inbox 
+			service.  It can also take a Windows Forms control on which status text 
+			will be displayed.  The choice of Bluetooth device is made by the user 
+			from the Windows Bluetooth devices dialog, since there&#x2019;s no
+			equivalent dialog for IrDA it currently just chooses the first device, and finally for TCP/IP a simple
+            dialog box is displayed to allow the entry of IP Address of Hostname.</p>
+		<p>
+			The ConsoleMenuObexSessionConnection asks the user which protocol, 
+			device, and which of the two OBEX services to connect to on the console, 
+			and also displays any status messages there too.
+		</p>
+		<p>
+			Finally, as noted above the UriObexSessionConnection constructor takes a 
+			URI in a similar format to that used by the ObexWebRequest class, 
+			differing only in that it allows no path to be set, for instance 
+			<code>obex://12345678/</code> instead of <code>obex://12345678/filename.vcf</code>,
+            there are also two new constructors that take an BluetoothAddress or an IrDAAddress
+            directly.</p>
+        <h3>
+            The TransportConnection library implementation</h3>
+		<p>
+			As noted above the source is included to allow extension or modification if
+			the supplied class do not suit your environment.  There are three abstract 
+			class below the three concrete classes already described.  The inheritance 
+			tree is as shown here.
+			We should note that these classes are an appendix to the main library and 
+			have not been tested as thoroughly as the library&#x2019;s code.  However they are used in most of the sample programs and have been seen to work well
+			there.
+		</p>
+		<ul>
+			<li>
+				TransportConnection
+				<ul>
+					<li>
+						ObexTransportConnection
+						<ul>
+							<li>
+								ObexSessionConnection
+								<ul>
+									<li>ConsoleMenuObexConnection</li>
+									<li>GuiObexSessionConnection</li>
+									<li>UriObexSessionConnection</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			If creating a new concrete class for an OBEX session connection then 
+			inherit from the <code>ObexSessionConnection</code> class, providing 
+			overrides of the <code>ChooseService</code>, <code>ChooseProtocol</code>,
+			<code>ChoosePeer</code>, and <code>ShowStatus</code> methods.  The 
+			other sources will show examples of what each method should do.
+		</p>
+        <h2>
+            OBEX Authentication</h2>
+        <p>
+            Even though the Bluetooth standards that use OBEX (GOEP) generally list support
+            for OBEX Authentication as mandatory I&#x2019;ve never seen it being used for real,
+            whether in Bluetooth environments or elsewhere.&nbsp; I&#x2019;ve done a little
+            work recently however to enable its use should it be necessary.</p>
+        <p>
+            Firstly the exception produced when the server returns an error code will now include
+            the headers that were included in the response packet.&nbsp; This is necessary when
+            the error is UNAUTHORIZED as the headers will then contain the AuthenticationChallenge
+            header containing the MD5 nonce challenge.&nbsp; The challenge value can then be
+            used to build a AuthenticationResponse header to complete the authentication.&nbsp;
+            Note that unlike all the other headers it appears that there can be multiple AuthenticationChallenge
+            headers in one PDU, currently if this occurs an ArgumentException will occur.</p>
+        <p>
+            Further support for Authentication can be provided in the future based on feedback.&nbsp;
+            Possibly fixing that issue and/or adding an event to allow authentication to be
+            handled automatically by the library.</p>
+
+        <!-- ___________________________________________________________ -->
+		<h2></h2>
+		<p>
+			Andy Hume
+		</p>
+
+	</body>
+</html>

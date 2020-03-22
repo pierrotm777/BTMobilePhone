@@ -1,0 +1,12 @@
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\bin\Debug\PJLControls.dll
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\bin\Debug\PJLControls.pdb
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\bin\Debug\PJLControls.xml
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\obj\Debug\PJLControls.ColorChangedEventArgs.resources
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\obj\Debug\PJLControls.ColorPanelForm.resources
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\obj\Debug\PJLControls.ColorPanelWithCapture.resources
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\obj\Debug\PJLControls.ColorPicker.resources
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\obj\Debug\PJLControls.CustomColorPanel.resources
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\obj\Debug\PJLControls.CustomColorPicker.resources
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\obj\Debug\PJLControls.csproj.GenerateResource.Cache
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\obj\Debug\PJLControls.dll
+E:\Téléchargements terminés\dotnetcolorpicker_src\PJLControls\obj\Debug\PJLControls.pdb

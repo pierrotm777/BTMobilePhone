@@ -1,0 +1,13 @@
+RoadRunner Skin
+RRScreen info
+sms_send_and_chitaem.jpg,sms_send_and_chitaem.jpg,,
+B,419,388,128,50,setti@open@sms_num.skin,
+B,269,387,128,50,sentssms@open@menu.skin,
+T,299,100,484,271,43,101,255,271,"Arial",ed@,
+I,503,0,40,25,priem
+I,474,0,25,25,hf
+I,545,0,40,25,Batt
+L,395,6,70,19,255,255,255,13,"Lucida Sans Unicode",operat@,"LEFT"
+L,271,7,65,19,255,255,255,13,"Lucida Sans Unicode",model@,
+
+END

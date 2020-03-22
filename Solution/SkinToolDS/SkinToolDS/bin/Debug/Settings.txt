@@ -1,0 +1,9 @@
+# This is the Lefebure GPS Data Path Pointer file. You need to use the format "Key=Value" for all settings.
+# Any line that starts with a # symbol will be ignored.
+# The only setting in this file should be the Data Path Location.
+
+Serial Port Number=10
+Serial Port Speed=4800
+Serial Port Data Bits=8
+Serial Port Stop Bits=1
+Session Label=mytest

@@ -1,0 +1,34 @@
+C:\My Dropbox\Software\GPSUtils\Simulator\bin\Debug\Simulator.exe.config
+C:\My Dropbox\Software\GPSUtils\Simulator\bin\Debug\Simulator.exe
+C:\My Dropbox\Software\GPSUtils\Simulator\bin\Debug\Simulator.pdb
+C:\My Dropbox\Software\GPSUtils\Simulator\bin\Debug\Simulator.xml
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\ResolveAssemblyReference.cache
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\Simulator.AutoTurnTimer.resources
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\Simulator.Form1.resources
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\Simulator.Resources.resources
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\Simulator.exe
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\Simulator.xml
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\Simulator.pdb
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\Simulator.FileSet.resources
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\Simulator.GenSet.resources
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\GenerateResource.read.1.tlog
+C:\My Dropbox\Software\GPSUtils\Simulator\obj\Debug\GenerateResource.write.1.tlog
+C:\My Dropbox\Software\VBdotnet\GPSUtils\Simulator\bin\Debug\Simulator.exe.config
+C:\My Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.exe
+C:\My Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.xml
+C:\My Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.pdb
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\bin\Debug\Simulator.exe.config
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\bin\Debug\Simulator.exe
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\bin\Debug\Simulator.pdb
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\bin\Debug\Simulator.xml
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\ResolveAssemblyReference.cache
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.AutoTurnTimer.resources
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.FileSet.resources
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.Form1.resources
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.GenSet.resources
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.Resources.resources
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\GenerateResource.read.1.tlog
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\GenerateResource.write.1.tlog
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.exe
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.xml
+C:\Dropbox\Software\VBdotnet\GPSUtils\Simulator\obj\Debug\Simulator.pdb

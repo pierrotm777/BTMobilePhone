@@ -1,0 +1,62 @@
+RideRunner Skin
+RRScreen THCT80_SETTINGS
+MOBILEPHONE_SETTINGS.png,MOBILEPHONE_SETTINGS.png,clear.png,clear.png
+
+[ REQUIRED FILES TO LOAD ]
+
+/IMG,0,68,800,437,"MOBILE_THEME\$THEMECOLOR$\Settings_down.PNG",DOWN
+INC,ELITE\STATIC\STATIC.ELITE
+
+/INC,ELITE\LIST\up-down-Mobile_Contacts.ELITE
+
+[ SETS THE MID MENU IMAGES ]
+INC,font.elite 
+
+[SMS]
+
+[Labels]
+L,143,98,230,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_PhoneDescription$","LEFT",,"DS=2,2,0,0,0"
+L,380,98,243,25,255,255,255,16,"Arial Narrow:b","CLDESC","LEFT",,"DS=2,2,0,0,0"
+L,380,190,275,25,255,255,255,16,"Arial Narrow:b","MOBILEPHONE_PHONEDEVICEMACADDRESS","LEFT",,"DS=2,2,0,0,0"
+L,380,235,275,25,255,255,255,16,"Arial Narrow:b","MOBILEPHONE_PHONESTATUS","SCROLL-LEFT",,"DS=2,2,0,0,0"
+L,144,144,230,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_PhoneName$","LEFT",,"DS=2,2,0,0,0"
+L,380,144,275,25,255,255,255,16,"Arial Narrow:b","MOBILEPHONE_PHONEDEVICENAME","LEFT",,"DS=2,2,0,0,0"
+L,144,190,230,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_PhoneMacAddress$","LEFT",,"DS=2,2,0,0,0"
+L,144,235,230,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_PhoneStatus$","LEFT",,"DS=2,2,0,0,0"
+L,146,274,510,35,255,0,0,18,"Arial Narrow:b","MOBILEPHONE_SETTINGSINFO","SCROLL-LEFT",,"DS=2,2,0,0,0"
+L,678,263,115,47,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=Pair","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,678,324,115,47,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=UnPair","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,678,387,115,47,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=Delete","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,678,80,115,47,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_SystemInfo$","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,28,153,75,28,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_Apply$","CENTER",,"DS=2,2,0,0,0"
+L,13,214,95,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_Cancel$","CENTER",,"DS=2,2,0,0,0"
+L,19,387,93,49,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_ServicesList$","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,22,83,74,49,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_SetPhone$","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,19,328,93,48,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_UpdateDevices$","WRAP-CENTER",,"DS=2,2,0,0,0"
+L,18,276,93,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=$l_set_BTM_Default$","CENTER",,"DS=2,2,0,0,0"
+L,6,510,353,20,#FontColorR#,#FontColorG#,#FontColorB#,12,"#FONTFAMILY#","=$l_set_BTM_PluginVersion$||=: ||pluginmgr;version;MOBILEPHONE","LEFT",,"DS=2,2,0,0,0"
+L,377,510,413,20,#FontColorR#,#FontColorG#,#FontColorB#,12,"#FONTFAMILY#","=$l_set_BTM_BlueSoleilSDKVersion$||=: ||mobilephone_sdkversion","RIGHT",,"DS=2,2,0,0,0"
+L,695,459,80,25,#FontColorR#,#FontColorG#,#FontColorB#,16,"#FONTFAMILY#","=More >","CENTER",,"DS=2,2,0,0,0"
+L,638,96,26,25,#FontColorR#,#FontColorG#,#FontColorB#,20,"#FONTFAMILY#:B","MOBILEPHONE_PHONESELECTED","CENTER",,"DS=2,2,0,0,0"
+
+[Buttons]
+B,676,256,118,60,"MOBILEPHONE_PAIR",
+B,676,317,118,60,"MOBILEPHONE_UNPAIR",
+B,676,380,118,60,"MOBILEPHONE_DELETE",
+B,677,75,118,60,"MOBILEPHONE_SYSINFO",
+B,676,440,118,60,"LOAD;MOBILEPHONE_SETTINGS2.SKIN",""
+B,8,135,115,59,"MOBILEPHONE_SETTINGS_APPLY",""
+B,8,196,115,58,"MOBILEPHONE_SETTINGS_CANCEL",""
+B,8,320,115,60,"MOBILEPHONE_SETTINGS_UPDATEDEVICELIST",""
+B,8,381,115,62,"MOBILEPHONE_SETTINGS_UPDATEREMOTELIST",""
+B,8,258,115,60,"MOBILEPHONE_SETTINGS_DEFAULT",""
+
+[Indicators]
+I,8,134,114,7,"MOBILEPHONE_SETTINGS_CHANGED:B",500,500,"Mobile_Indicators\LED_Balken_*.png"
+I,7,73,115,62,"MOBILEPHONE_SETTINGS_PHONE2",,,''
+
+[ List Definitions ]
+SC01,146,324,511,157,255,255,255,1,30,40,200,200,200,255,128,0,TRUE,18,"Arial:B",00,"","MOBILEPHONE_SETTINGS_UPDATEINFODEVICE",""
+IL,CL,transparent.bmp,sel.bmp,end.bmp,2,80,80
+ 
+END

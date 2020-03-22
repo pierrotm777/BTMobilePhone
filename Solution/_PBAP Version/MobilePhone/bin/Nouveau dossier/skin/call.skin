@@ -1,0 +1,18 @@
+RoadRunner Skin
+RRScreen call
+call_vizovi.jpg,call_vizovi.jpg,,
+B,96,248,103,49,menu,
+B,216,246,103,49,menu@hide,
+I,125,87,147,145,fotot
+I,303,-2,25,20,priem
+I,264,0,31,18,hf
+I,331,-3,19,19,Batt
+L,193,0,64,18,255,255,255,12,Arial,operat@,
+L,183,32,180,24,0,128,255,24,"Arial",nomerr@,
+L,314,56,73,24,0,128,255,24,"Arial",timm@,
+L,76,54,172,24,0,128,255,24,"Arial",imia@,
+L,99,1,47,18,255,255,255,12,Arial,model@,
+ 
+S,0,0,300,200,
+
+END

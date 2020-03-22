@@ -1,0 +1,9 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\WindowsApplication3.Form1.resources
+obj\Debug\WindowsApplication3.Properties.Resources.resources
+obj\Debug\WindowsApplication3.csproj.GenerateResource.Cache
+bin\Debug\WindowsApplication3.exe
+bin\Debug\WindowsApplication3.pdb
+obj\Debug\WindowsApplication3.exe
+obj\Debug\WindowsApplication3.pdb
+bin\Debug\Microsoft.WindowsCE.Forms.dll
