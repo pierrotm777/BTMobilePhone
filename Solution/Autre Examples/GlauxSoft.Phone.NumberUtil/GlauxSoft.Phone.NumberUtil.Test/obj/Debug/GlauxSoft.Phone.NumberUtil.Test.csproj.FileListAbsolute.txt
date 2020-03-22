@@ -1,7 +1,0 @@
-C:\00 Source\101 EvidenceStuff\2011\GooglePhoneLib\GlauxSoft.Phone.NumberUtil\GlauxSoft.Phone.NumberUtil.Test\bin\Debug\GlauxSoft.Phone.NumberUtil.Test.dll
-C:\00 Source\101 EvidenceStuff\2011\GooglePhoneLib\GlauxSoft.Phone.NumberUtil\GlauxSoft.Phone.NumberUtil.Test\bin\Debug\GlauxSoft.Phone.NumberUtil.Test.pdb
-C:\00 Source\101 EvidenceStuff\2011\GooglePhoneLib\GlauxSoft.Phone.NumberUtil\GlauxSoft.Phone.NumberUtil.Test\bin\Debug\GlauxSoft.Phone.NumberUtil.dll
-C:\00 Source\101 EvidenceStuff\2011\GooglePhoneLib\GlauxSoft.Phone.NumberUtil\GlauxSoft.Phone.NumberUtil.Test\bin\Debug\GlauxSoft.Phone.NumberUtil.pdb
-C:\00 Source\101 EvidenceStuff\2011\GooglePhoneLib\GlauxSoft.Phone.NumberUtil\GlauxSoft.Phone.NumberUtil.Test\obj\Debug\ResolveAssemblyReference.cache
-C:\00 Source\101 EvidenceStuff\2011\GooglePhoneLib\GlauxSoft.Phone.NumberUtil\GlauxSoft.Phone.NumberUtil.Test\obj\Debug\GlauxSoft.Phone.NumberUtil.Test.dll
-C:\00 Source\101 EvidenceStuff\2011\GooglePhoneLib\GlauxSoft.Phone.NumberUtil\GlauxSoft.Phone.NumberUtil.Test\obj\Debug\GlauxSoft.Phone.NumberUtil.Test.pdb

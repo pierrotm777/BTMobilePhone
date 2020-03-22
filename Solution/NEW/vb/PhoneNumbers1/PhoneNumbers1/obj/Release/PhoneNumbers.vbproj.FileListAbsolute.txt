@@ -1,2 +1,0 @@
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\vb\PhoneNumbers1\PhoneNumbers1\obj\Release\PhoneNumbers.Resources.resources
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\vb\PhoneNumbers1\PhoneNumbers1\obj\Release\PhoneNumbers.vbproj.GenerateResource.Cache

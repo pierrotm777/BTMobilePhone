@@ -1,1 +1,0 @@
-Ref files path = C:\Program Files\MessagingToolkit

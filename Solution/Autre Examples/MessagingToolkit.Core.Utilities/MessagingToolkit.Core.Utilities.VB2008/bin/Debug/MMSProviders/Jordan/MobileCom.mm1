@@ -1,5 +1,0 @@
-MMSC=http://172.16.1.96/servlets/mms
-WAPGateway=172.16.1.2
-APN=mms.mobilecom.jo
-APNAccount=mms
-APNPassword=mms

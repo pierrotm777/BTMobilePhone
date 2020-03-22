@@ -1,5 +1,0 @@
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\bin\FileTransferCodeDemoSDK.dll
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\bin\FileTransferCodeDemoSDK.pdb
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\SDK\obj\Debug\ResolveAssemblyReference.cache
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\SDK\obj\Debug\FileTransferCodeDemoSDK.dll
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Exemples\FileTransferCodeDemo\SDK\obj\Debug\FileTransferCodeDemoSDK.pdb

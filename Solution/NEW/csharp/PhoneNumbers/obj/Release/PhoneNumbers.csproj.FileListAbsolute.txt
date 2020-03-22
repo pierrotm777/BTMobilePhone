@@ -1,4 +1,0 @@
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\csharp\PhoneNumbers\bin\Release\PhoneNumbers.dll
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\csharp\PhoneNumbers\bin\Release\PhoneNumbers.pdb
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\csharp\PhoneNumbers\obj\Release\PhoneNumbers.dll
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\csharp\PhoneNumbers\obj\Release\PhoneNumbers.pdb

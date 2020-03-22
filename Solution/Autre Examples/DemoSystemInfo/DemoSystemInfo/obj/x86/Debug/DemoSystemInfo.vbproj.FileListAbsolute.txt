@@ -1,9 +1,0 @@
-C:\Program Files\Ride Runner\Plugins\MobilePhone\DemoSystemInfo\DemoSystemInfo\bin\Debug\DemoSystemInfo.exe
-C:\Program Files\Ride Runner\Plugins\MobilePhone\DemoSystemInfo\DemoSystemInfo\bin\Debug\DemoSystemInfo.pdb
-C:\Program Files\Ride Runner\Plugins\MobilePhone\DemoSystemInfo\DemoSystemInfo\bin\Debug\DemoSystemInfo.xml
-C:\Program Files\Ride Runner\Plugins\MobilePhone\DemoSystemInfo\DemoSystemInfo\obj\x86\Debug\DemoSystemInfo.Form1.resources
-C:\Program Files\Ride Runner\Plugins\MobilePhone\DemoSystemInfo\DemoSystemInfo\obj\x86\Debug\DemoSystemInfo.Resources.resources
-C:\Program Files\Ride Runner\Plugins\MobilePhone\DemoSystemInfo\DemoSystemInfo\obj\x86\Debug\DemoSystemInfo.vbproj.GenerateResource.Cache
-C:\Program Files\Ride Runner\Plugins\MobilePhone\DemoSystemInfo\DemoSystemInfo\obj\x86\Debug\DemoSystemInfo.exe
-C:\Program Files\Ride Runner\Plugins\MobilePhone\DemoSystemInfo\DemoSystemInfo\obj\x86\Debug\DemoSystemInfo.xml
-C:\Program Files\Ride Runner\Plugins\MobilePhone\DemoSystemInfo\DemoSystemInfo\obj\x86\Debug\DemoSystemInfo.pdb

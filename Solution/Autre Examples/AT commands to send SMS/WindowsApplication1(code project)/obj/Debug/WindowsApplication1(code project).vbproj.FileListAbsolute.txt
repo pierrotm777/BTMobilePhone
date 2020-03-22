@@ -1,9 +1,0 @@
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\AT commands to send SMS\WindowsApplication1(code project)\bin\Debug\WindowsApplication1(code project).exe
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\AT commands to send SMS\WindowsApplication1(code project)\bin\Debug\WindowsApplication1(code project).pdb
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\AT commands to send SMS\WindowsApplication1(code project)\bin\Debug\WindowsApplication1(code project).xml
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\AT commands to send SMS\WindowsApplication1(code project)\obj\Debug\WindowsApplication1_code_project_.Form1.resources
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\AT commands to send SMS\WindowsApplication1(code project)\obj\Debug\WindowsApplication1_code_project_.Resources.resources
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\AT commands to send SMS\WindowsApplication1(code project)\obj\Debug\WindowsApplication1(code project).vbproj.GenerateResource.Cache
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\AT commands to send SMS\WindowsApplication1(code project)\obj\Debug\WindowsApplication1(code project).exe
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\AT commands to send SMS\WindowsApplication1(code project)\obj\Debug\WindowsApplication1(code project).xml
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\Autre Examples\AT commands to send SMS\WindowsApplication1(code project)\obj\Debug\WindowsApplication1(code project).pdb

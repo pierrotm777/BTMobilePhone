@@ -1,5 +1,0 @@
-MMSC=http://mmsc:8002
-WAPGateway=192.168.10.10
-APN=mms.umc.ua
-APNAccount=mms
-APNPassword=umc

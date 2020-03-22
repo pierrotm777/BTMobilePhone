@@ -1,5 +1,0 @@
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\csharp\PhoneNumbers\bin\Debug\PhoneNumbers.dll
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\csharp\PhoneNumbers\bin\Debug\PhoneNumbers.pdb
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\csharp\PhoneNumbers\obj\Debug\PhoneNumbers.dll
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\csharp\PhoneNumbers\obj\Debug\PhoneNumbers.pdb
-C:\tmp\VB.NET-2010\VB.NET Plugin Mobilephone\Solution\NEW\csharp\PhoneNumbers\obj\Debug\PhoneNumbers.csprojResolveAssemblyReference.cache

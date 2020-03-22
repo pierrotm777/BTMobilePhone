@@ -1,5 +1,0 @@
-repo: 9a67ec5c755755a618d1e3791f7cede6770318d2
-node: f5236354a379d6b3e0c9ccaf94231371b8b37343
-branch: csharp
-latesttag: null
-latesttagdistance: 464
